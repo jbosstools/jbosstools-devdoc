@@ -1,8 +1,8 @@
-# Tracing and logging
+= Tracing and logging
 
 When using eclipse the main place to look for logging is in the workspace log file located at `<workspace>/.metadata/.log`.
 
-# How to gather eclipse log and other in JBoss Tools
+== How to gather eclipse log and other in JBoss Tools
 
 If you have JBoss Tools installed the simplest way to gather logs and system configuration is to go to: 
 
@@ -12,7 +12,7 @@ This will open up a dialog where you can put in a name and description.
 
 When pressing Finish a .zip file is created that you open or share with others (for example in Jira)
 
-# How to enable tracing in Eclipse
+== How to enable tracing in Eclipse
 
 Put a `.options` file where your Eclipse is installed or explicilty reference one with TBD-command line argument.
 
