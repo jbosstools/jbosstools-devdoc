@@ -1,3 +1,5 @@
-== Test
+== Debugging 
 
-test
+link:tracing_logging.adoc[Tracing and logging in eclipse]
+
+link:how_to_debug_eclipse.adoc[]
