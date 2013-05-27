@@ -1,0 +1,132 @@
+JBoss Tools jira is located at
+https://jira.jboss.org/jira/browse/JBIDE[https://jira.jboss.org/jira/browse/JBIDE]
+and its related project JBoss Developer Studio has a jira at
+https://jira.jboss.org/jira/browse/JBDS[https://jira.jboss.org/jira/browse/JBDS]
+
+Lifecycle of an issue
+---------------------
+
+Overall the lifecycle of an issue that is supposed to be implemented
+(i.e. not rejected) the lifecycle is as follows:
+
+# Someone creates an issue
+
+# if it is a relevant issue a committer assigns it for a fix version
+
+# a committer fixes the issue and resolves the issue
+
+  during QA the issue gets
+
+    #  Closed or
+    #  Reopened if the issue is not fully resolved and then Goto #3
+
+Creation
+~~~~~~~~
+
+Anyone can create an issue. When the issue is created it should as a
+minimum have:
+
+* a *good summary* (selfexplanatory if possible)
+* a *Component* to make it show up categorized instead of in the
+https://jira.jboss.org/jira/secure/IssueNavigator.jspa?reset=true&mode=hide&sorter/order=DESC&sorter/field=priority&resolution=-1&pid=10020&component=-1["No
+Component"] component which would make it hard to see which components
+has the most need for attention/workload. If you feel there is no
+matching component go to the devel list and suggest one.
+* *Affects version*so we know which version to reproduce the issue in
+* *Description* to allow us to reproduce the issue or understand what
+the feature is about. Attach projects, output from Help > Report
+problem, screenshots or even a http://www.jingproject.com/[screencast]
+to illustrate what you want to describe.
+
+Assignment should not happen before you know for sure the committer is
+going to work on the issue.
+
+Assignment
+~~~~~~~~~~
+
+Only committers/developers should assign the issue. Do not assign the
+issue to anyone unless that is yourself or you know for sure he or she
+is supposed to work on it. If all issues are assigned we cannot see
+which are unassigned and needs attention.
+
+The one who is assigned should also make sure to set:
+
+* the *Fix Version(s)*to indicate when it should be completed, without a
+Fix Version it will not show up in the
+https://jira.jboss.org/jira/browse/JBIDE?report=com.atlassian.jira.plugin.system.project:roadmap-panel[Road
+Map] nor
+https://jira.jboss.org/jira/browse/JBIDE?report=com.atlassian.jira.plugin.system.project:changelog-panel[Change
+log]
+* the *Priority*should be set in context of the Fix Version, i.e. an
+issue can be trivial to implement but still be a Blocker if it is a must
+have feature or bug to have for the release.
+
+Automatic Assignment to component lead
+++++++++++++++++++++++++++++++++++++++
+
+Since April 1, 2010 we changed the default assignment from "Unassigned"
+to "Component Lead" meaning component lead's will get notification
+immidiatly for incoming issues and they should make sure the jira gets
+processed.
+
+If the issue is not yours, reassign to the right component/assignee.
+
+If not something that will be done by you, make the issue "Unassigned"
+and set proper fix version.
+
+Rememeber that to get automatic assigment for component lead on already
+assigned issues choose "Automatic" in the Assignment field.
+
+Discussions
+~~~~~~~~~~~
+
+*Keep description updated* - which means if issue has a discussion what
+actually should be done all this should be collected in description.
+That saves time for anyone who is working with this issue to understand
+what actually should be done and how to verify it. Last thing is useful
+for QA.
+
+Fixing/Resolving
+~~~~~~~~~~~~~~~~
+
+When an issue gets fixed the developer should make sure to:
+
+* *Add unittests*, any non-trival issue is not fixed and should not be
+committed before the unittest is there for it
+* *List the JIRA URL* in the relevant commit(s) (e.g.
+https://jira.jboss.org/jira/browse/JBIDE-42[https://jira.jboss.org/jira/browse/JBIDE-42]
+) together with a short comment on what was done
+* *Resolve*(not Close) the issue and *do not reassign it to QA* engineer
+to let track your progress on issues
+* *Comment* on what was done, i.e. sometimes "Done" is fine but if
+something were done differently than initially discussed in the jira or
+one of multiple options were implemented state which one and if some new
+api/feature was introduced put an explanation on how to use it.
+* *Write Test Cases/Scenarious* for QA and users with EXECUTE/ASSERT
+statements describing what should be tested manually to verify the
+testcase or*attach relevant screenshots* or *create screencast*to show
+new functionality.
+* *Verify the Component and Fix Version* is correct, remember that if we
+have branched for doing a release and you fixed the issue in both
+branches set both related versions (i.e. 3.0.0.beta1 and 3.0.0.cr1), if
+you only fixed it in one branch/trunk make sure you select the correct
+version. Be aware that an issue should not be closed if it points to a
+.x release, i.e. 3.1.x signals things to be done in the 3.1.x stream -
+an issue should target a or multiple *specific* issues when closed, i.e.
+3.1.1 and 3.2.M1.
+
+QA/Closing/Reopen
+~~~~~~~~~~~~~~~~~
+
+During QA a committer or QA engineer verifies the issue following the
+description and/or EXECUTE/ASSERT instructions and if the issue is
+completed he should:
+
+* *Verify the Component and Fix Version* is correct
+* *Close* the issue
+* *Comment* with which build/setup he verified it in
+
+If the issue is not completed then
+
+* *Reopen* the issue
+* *Comment* what is not working
