@@ -32,7 +32,7 @@ https://jira.jboss.org/jira/secure/IssueNavigator.jspa?reset=true&mode=hide&sort
 Component"] component which would make it hard to see which components
 has the most need for attention/workload. If you feel there is no
 matching component go to the devel list and suggest one.
-* *Affects version*so we know which version to reproduce the issue in
+* *Affects version* so we know which version to reproduce the issue in
 * *Description* to allow us to reproduce the issue or understand what
 the feature is about. Attach projects, output from Help > Report
 problem, screenshots or even a http://www.jingproject.com/[screencast]
@@ -51,13 +51,13 @@ which are unassigned and needs attention.
 
 The one who is assigned should also make sure to set:
 
-* the *Fix Version(s)*to indicate when it should be completed, without a
+* the *Fix Version(s)* to indicate when it should be completed, without a
 Fix Version it will not show up in the
 https://jira.jboss.org/jira/browse/JBIDE?report=com.atlassian.jira.plugin.system.project:roadmap-panel[Road
 Map] nor
 https://jira.jboss.org/jira/browse/JBIDE?report=com.atlassian.jira.plugin.system.project:changelog-panel[Change
 log]
-* the *Priority*should be set in context of the Fix Version, i.e. an
+* the *Priority* should be set in context of the Fix Version, i.e. an
 issue can be trivial to implement but still be a Blocker if it is a must
 have feature or bug to have for the release.
 
@@ -96,15 +96,15 @@ committed before the unittest is there for it
 * *List the JIRA URL* in the relevant commit(s) (e.g.
 https://jira.jboss.org/jira/browse/JBIDE-42[https://jira.jboss.org/jira/browse/JBIDE-42]
 ) together with a short comment on what was done
-* *Resolve*(not Close) the issue and *do not reassign it to QA* engineer
+* *Resolve* (not Close) the issue and *do not reassign it to QA* engineer
 to let track your progress on issues
-* *Comment* on what was done, i.e. sometimes "Done" is fine but if
-something were done differently than initially discussed in the jira or
+* *Comment* on what was done to let others and yourself come back and understand what was done. Sometimes "Done" is sufficient,
+but if anything were done differently than initially discussed in the jira or
 one of multiple options were implemented state which one and if some new
-api/feature was introduced put an explanation on how to use it.
+api/feature was introduced put an explanation on how to use it. In general, better to be explicit on what was done.
 * *Write Test Cases/Scenarious* for QA and users with EXECUTE/ASSERT
 statements describing what should be tested manually to verify the
-testcase or*attach relevant screenshots* or *create screencast*to show
+testcase or*attach relevant screenshots* or *create screencast* to show
 new functionality.
 * *Verify the Component and Fix Version* is correct, remember that if we
 have branched for doing a release and you fixed the issue in both
@@ -130,3 +130,10 @@ If the issue is not completed then
 
 * *Reopen* the issue
 * *Comment* what is not working
+
+What is jiralint and why does it complain ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The intent of the job is to catch jiras that somehow are in a wrong state.
+
+`jiralint` is a jenkins build job running every day checking if a jira have been resolved without a fix version or with a fix version having ".x" in the fix version.
