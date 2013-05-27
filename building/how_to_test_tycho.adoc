@@ -18,6 +18,7 @@ An easier approach is to add it to `~/.m2/settings.xml` as a profile you can tur
 
 To do this add the following to your `~/.m2/settings.xml` in a `<profiles>` setting:
 
+[source,xml]
     <profile>
       <id>tycho-staging</id>
       <properties>
