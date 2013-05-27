@@ -23,7 +23,7 @@ The <url> is the only thing that changes - you get that from the emails asking t
 
 Don't put it in activeProfiles.
 
-=== Run mvn withy specific tychoVersion
+=== Run mvn with out a specific tychoVersion
 
 And now you can without changing any of your pom's just run:
 
