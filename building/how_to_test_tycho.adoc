@@ -1,0 +1,33 @@
+== How to test new versions of Tycho 
+
+Once in a while the tycho team post a request to test new versions of Tycho.
+
+Here is how to do this easily without having to change all the projects pom.xml files.
+
+=== Add tycho staging to .m2/settings.xml
+
+Add this to your ~/.m2/settings.xml in the <profiles>:
+
+   <profile>
+      <id>tycho-staging</id>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>tycho-staged</id>
+          <name>Staging repository for Tycho builds</name>
+          <url>https://oss.sonatype.org/content/repositories/orgeclipsetycho-240</url>
+        </pluginRepository>
+      </pluginRepositories>
+   </profile>
+
+The <url> is the only thing that changes - you get that from the emails asking to test staged Tycho builds.
+
+Don't put it in activeProfiles.
+
+=== Run mvn withy specific tychoVersion
+
+And now you can without changing any of your pom's just run:
+
+   $ mvn -DtychoVersion=0.18.0 -P tycho-staging clean install
+
+And next time you want to test a new staging version of tycho you just go to your ~/.m2/settings.xml
+and update the url.
