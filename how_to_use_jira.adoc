@@ -9,16 +9,16 @@ Lifecycle of an issue
 Overall the lifecycle of an issue that is supposed to be implemented
 (i.e. not rejected) the lifecycle is as follows:
 
-# Someone creates an issue
+. Someone creates an issue
 
-# if it is a relevant issue a committer assigns it for a fix version
+. if it is a relevant issue a committer assigns it for a fix version
 
-# a committer fixes the issue and resolves the issue
+. a committer fixes the issue and resolves the issue
 
-  during QA the issue gets
+. during QA the issue gets
 
-    #  Closed or
-    #  Reopened if the issue is not fully resolved and then Goto #3
+.. Closed or
+.. Reopened if the issue is not fully resolved and then Goto #3
 
 Creation
 ~~~~~~~~
