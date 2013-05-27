@@ -8,6 +8,8 @@ If the Tycho version is already released you can try it out by running mvn with 
    
 Will run with Tycho version 0.42.
 
+== How to test staged, not yet released versions of Tycho
+
 If the Tycho version is not yet released, but only staged you need to let maven know about the plugin repository.
 
 You can do that by manually adding that to a projects `pom.xml` file but that very easily becomes tedious.
