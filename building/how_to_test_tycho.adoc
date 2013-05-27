@@ -51,3 +51,5 @@ Because of the defined property you can also be even more explicit and do:
 With this in place you only have to run that line assuming you have the version and staging.repo url available.
 
 No additional tweaking in pom.xml or settings.xml needed.
+
+okiedokie, that was informative
