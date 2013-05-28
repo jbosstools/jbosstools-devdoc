@@ -34,8 +34,8 @@ has the most need for attention/workload. If you feel there is no
 matching component go to the devel list and suggest one.
 * *Affects version* so we know which version to reproduce the issue in
 * *Description* to allow us to reproduce the issue or understand what
-the feature is about. Attach projects, output from Help > Report
-problem, screenshots or even a http://www.jingproject.com/[screencast]
+the feature is about. Attach projects, output from 'Help > Report
+problem', screenshots or even a http://www.jingproject.com/[screencast]
 to illustrate what you want to describe.
 
 Assignment should not happen before you know for sure the committer is
@@ -114,6 +114,8 @@ version. Be aware that an issue should not be closed if it points to a
 .x release, i.e. 3.1.x signals things to be done in the 3.1.x stream -
 an issue should target a or multiple *specific* issues when closed, i.e.
 3.1.1 and 3.2.M1.
+* *New and Noteworthy* if an issue is new and noteworthy then add the label `new_and_noteworthy` to be able to easily find it for when New and noteworthy is to be written.
+* *Verify release notes* every bug or major feature should have release notes added. This can be used for New and noteworthy too.
 
 QA/Closing/Reopen
 ~~~~~~~~~~~~~~~~~
