@@ -4,6 +4,8 @@
 Experiment in using github + asciidoc/markdown for wiki/contributor guides
 
 link:issues/how_to_use_jira.adoc[How to use Jira]
+
 link:debugging/tracing_logging.adoc[Tracing and logging in Eclipse]
+
 link:building/how_to_test_tycho.adoc[How to test Tycho]
 
