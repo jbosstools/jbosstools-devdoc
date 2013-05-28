@@ -117,6 +117,20 @@ an issue should target a or multiple *specific* issues when closed, i.e.
 * *New and Noteworthy* if an issue is new and noteworthy then add the label `new_and_noteworthy` to be able to easily find it for when New and noteworthy is to be written.
 * *Verify release notes* every bug or major feature should have release notes added. This can be used for New and noteworthy too.
 
+Note sure if the JIRA needs a release note?
+. JIRA needs a release note if:
+.. the JIRA was reported by GSS
+.. the JIRA was reported or commented on by a potential user (so someone outside of Red Hat)
+.. the JIRA fixes a bug that users would have encountered or been aware of
+.. the JIRA fix may surprise users (in a good or bad way)
+.. the JIRA documents a bug in a third-party product that impacts the ability to fix JBDS (e.g. pushed patch to Eclipse & waiting on Eclipserelease)
+.. the JIRA is about a new feature
+
+A JIRA does not need a release note if:
+.. the JIRA fixes a bug that occurred from an internal build
+.. the JIRA fixes a bug that users would not have been aware of
+.. the JIRA was just part of a developer's to-do-list
+
 QA/Closing/Reopen
 ~~~~~~~~~~~~~~~~~
 
