@@ -3,8 +3,7 @@ https://jira.jboss.org/jira/browse/JBIDE[https://jira.jboss.org/jira/browse/JBID
 and its related project JBoss Developer Studio has a jira at
 https://jira.jboss.org/jira/browse/JBDS[https://jira.jboss.org/jira/browse/JBDS]
 
-Lifecycle of an issue
----------------------
+== Lifecycle of an issue
 
 Overall the lifecycle of an issue that is supposed to be implemented
 (i.e. not rejected) the lifecycle is as follows:
@@ -20,8 +19,8 @@ Overall the lifecycle of an issue that is supposed to be implemented
 .. Closed or
 .. Reopened if the issue is not fully resolved and then Goto #3
 
-Creation
-~~~~~~~~
+== Creation
+
 
 Anyone can create an issue. When the issue is created it should as a
 minimum have:
@@ -41,8 +40,7 @@ to illustrate what you want to describe.
 Assignment should not happen before you know for sure the committer is
 going to work on the issue.
 
-Assignment
-~~~~~~~~~~
+== Assignment
 
 Only committers/developers should assign the issue. Do not assign the
 issue to anyone unless that is yourself or you know for sure he or she
@@ -61,24 +59,13 @@ log]
 issue can be trivial to implement but still be a Blocker if it is a must
 have feature or bug to have for the release.
 
-Automatic Assignment to component lead
-++++++++++++++++++++++++++++++++++++++
+=== Default Assignment
 
-Since April 1, 2010 we changed the default assignment from "Unassigned"
-to "Component Lead" meaning component lead's will get notification
-immidiatly for incoming issues and they should make sure the jira gets
-processed.
+Default assignee is 'Unassigned' but all component owners will get notified by email and
+can from there assign the issue(s).
 
-If the issue is not yours, reassign to the right component/assignee.
+== Discussions
 
-If not something that will be done by you, make the issue "Unassigned"
-and set proper fix version.
-
-Rememeber that to get automatic assigment for component lead on already
-assigned issues choose "Automatic" in the Assignment field.
-
-Discussions
-~~~~~~~~~~~
 
 *Keep description updated* - which means if issue has a discussion what
 actually should be done all this should be collected in description.
@@ -86,8 +73,7 @@ That saves time for anyone who is working with this issue to understand
 what actually should be done and how to verify it. Last thing is useful
 for QA.
 
-Fixing/Resolving
-~~~~~~~~~~~~~~~~
+== Fixing/Resolving
 
 When an issue gets fixed the developer should make sure to:
 
@@ -117,8 +103,8 @@ an issue should target a or multiple *specific* issues when closed, i.e.
 * *New and Noteworthy* if an issue is new and noteworthy then add the label `new_and_noteworthy` to be able to easily find it for when New and noteworthy is to be written.
 * *Verify release notes status* is set to something other than NONE. Follow the JIRA and Release Note criteria list below to help you decide whether it needs to be included in release notes or not.
 
-JIRA and Release Notes Criteria List
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Release Notes Criteria
+
 
 Note sure if the JIRA needs to be included in release notes?
 
@@ -135,8 +121,8 @@ Note sure if the JIRA needs to be included in release notes?
 .. the JIRA fixes a bug that users would not have been aware of
 .. the JIRA was just part of a developer's to-do-list
 
-QA/Closing/Reopen
-~~~~~~~~~~~~~~~~~
+== QA/Closing/Reopen
+
 
 During QA a committer or QA engineer verifies the issue following the
 description and/or EXECUTE/ASSERT instructions and if the issue is
@@ -151,8 +137,7 @@ If the issue is not completed then
 * *Reopen* the issue
 * *Comment* what is not working
 
-What is jiralint and why does it complain ?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+== What is jiralint and why does it complain ?
 
 The intent of the job is to catch jiras that somehow are in a wrong state.
 
