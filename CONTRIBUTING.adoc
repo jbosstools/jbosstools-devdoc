@@ -1,24 +1,28 @@
 How to contribute/edit documentation
 ====================================
 
+*Everyone* can contribute to the documentation, JBoss Tools committers all have push access and any non-committers can 
+edit and they will be turned into pull-requests which a committer can then apply. Even if the edits are not applied directly 
+your edits are visible in your fork.
+
 There are two recommended ways to contribute to the documentation, using the github web ui or offline local editing by cloning the repository. 
 You can do almost everything in both places, the main limitations of github web ui is that they currently do not support upload of images nor delete of content.
 The table below outlines the various options/workflows:
 
 [options="header"]
 |=========================
-|Task | local/offline | github.com/online 
-|Create text file | git add + commit + push |  Click the '+' icon, name the file and submit 
-|Edit content | git commit + push | Click the 'Edit' button, edit and submit
-|Delete content | git rm + commit + push | Not available, http://prose.io/ is an alternative UI that allows deletes
-|Notifications | N/A | click 'Watch' repository and you can control the amount of notifications you get   
+| *Task* | local/offline | github.com/online 
+| *Create text file* | git add + commit + push |  Click the '+' icon, name the file and submit 
+| *Edit content* | git commit + push | Click the 'Edit' button, edit and submit
+| *Delete content* | git rm + commit + push | Not available, http://prose.io/ is an alternative UI that allows deletes
+| *Notifications* | N/A | click 'Watch' repository and you can control the amount of notifications you get   
 |=========================
 
 Content guidelines
 ==================
 
 * Content should be for how to develop and/or contribute to JBoss Tools
-* Should not contain user guides for plugins functionallity unless that guide is needed for debugging/tracing/exploring the plugin
+* Should not contain user guides for plugins functionallity unless that guide is needed for debugging/tracing/exploring the plugin. User guides are in each plugin or at http://github.com/jbosstools/jbosstools-documentation
 * Use asciidoc (.adoc) wherever possible, see http://asciidoctor.org/docs/asciidoc-quick-reference[Asciidoc quick reference] for syntax.
 * use lowercase with _'s for space in filenames. (i.e. `how_to_contribute.adoc` is Good, 'How_To_Contribute.adoc' or 'howtocontribute.adoc' is Bad)
 
