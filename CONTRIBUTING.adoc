@@ -1,6 +1,22 @@
 Contributing to this documentation repository
 =============================================
 
+There are two recommended ways to contribute to the documentation here:
+
+* For the casual users and quick edits: use github web ui directly. For committers the edits are immediate, for others these edits are turned into pull-requests.
+* For adding images and editing pages in bulk and offline editing simply git clone the repository.
+
+[options="header"]
+|=========================
+|Task | git clone | web ui 
+|Create text file | git add + commit + push |  Click the '+' icon, name the file and submit 
+|Edit content | git commit + push | Click the 'Edit' button, edit and submit
+|Delete content | git rm + commit + push | Not available, http://prose.io/ is an alternative UI that allows deletes
+|Notifications | N/A | click 'Watch' repository and you can control the amount of notifications you get   
+|=========================
+
+You use either github
+
 * Content should be for how to develop and/or contribute to JBoss Tools
 * Should not contain user guides for plugins functionallity unless that guide is needed for debugging/tracing/exploring the plugin
 * Use asciidoc (.adoc) wherever possible, see http://asciidoctor.org/docs/asciidoc-quick-reference[Asciidoc quick reference] for syntax.
