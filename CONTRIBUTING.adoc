@@ -26,6 +26,7 @@ Content guidelines
 * Content should be for how to develop and/or contribute to JBoss Tools
 * Should not contain user guides for plugins functionallity unless that guide is needed for debugging/tracing/exploring the plugin. User guides are in each plugin or at http://github.com/jbosstools/jbosstools-documentation
 * Use asciidoc (.adoc) wherever possible, see http://asciidoctor.org/docs/asciidoc-quick-reference[Asciidoc quick reference] for syntax.
+* If you got existing content you want to convert to asciidoc http://johnmacfarlane.net/pandoc/[Pandoc] works great for almost any reasonable format
 * use lowercase with _'s for space in filenames. (i.e. `how_to_contribute.adoc` is Good, 'How_To_Contribute.adoc' or 'howtocontribute.adoc' is Bad)
 
 
