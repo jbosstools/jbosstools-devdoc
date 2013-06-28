@@ -1,6 +1,29 @@
 How to contribute/edit documentation
 ====================================
 
+Thanks for contributing to JBoss Tools Developer documentation. 
+
+The layout of the current documentation is the following:
+
+- link:building[]  - how to build JBoss Tools and its eclipse plugins
+- link:debugging[] - tips'n'tricks on how to best debug
+- link:issues[] - how to use issue tracker, shared queries etc.
+- <your topic here> - if you feel an overall issue are missing, do PR and suggest one
+
+To contribute content simply edit live on http://github.com[github] webui or clone the repository and submit a pull-request.
+
+Content guidelines
+==================
+
+* Content should be for how to develop and/or contribute to JBoss Tools
+* Should not contain user guides for plugins functionallity unless that guide is needed for debugging/tracing/exploring the plugin. User guides are in each plugin or at http://github.com/jbosstools/jbosstools-documentation
+* Use asciidoc (.adoc) wherever possible, see http://asciidoctor.org/docs/asciidoc-quick-reference[Asciidoc quick reference] for syntax.
+* If you got existing content you want to convert to asciidoc http://johnmacfarlane.net/pandoc/[Pandoc] works great for almost any reasonable format (especially with https://github.com/jgm/pandoc/pull/868[this patch] applied)
+* use lowercase with _'s for space in filenames. (i.e. `how_to_contribute.adoc` is Good, 'How_To_Contribute.adoc' or 'howtocontribute.adoc' is Bad)
+
+GitHub Web vs local/git
+=======================
+
 There are two recommended ways to contribute to the documentation, using the github web ui or offline local editing by cloning the repository. 
 You can do almost everything in both places, the main limitations of github web ui is that they currently do not support upload of images nor delete of content.
 The table below outlines the various options/workflows:
@@ -19,15 +42,5 @@ The table below outlines the various options/workflows:
 Note: *Everyone* can contribute to the documentation, JBoss Tools committers all have push access and any non-committers can 
 edit and they will be turned into pull-requests which a committer can then apply. Even if the edits are not applied directly 
 your edits are visible in your fork.
-
-Content guidelines
-==================
-
-* Content should be for how to develop and/or contribute to JBoss Tools
-* Should not contain user guides for plugins functionallity unless that guide is needed for debugging/tracing/exploring the plugin. User guides are in each plugin or at http://github.com/jbosstools/jbosstools-documentation
-* Use asciidoc (.adoc) wherever possible, see http://asciidoctor.org/docs/asciidoc-quick-reference[Asciidoc quick reference] for syntax.
-* If you got existing content you want to convert to asciidoc http://johnmacfarlane.net/pandoc/[Pandoc] works great for almost any reasonable format (especially with https://github.com/jgm/pandoc/pull/868[this patch] applied)
-* use lowercase with _'s for space in filenames. (i.e. `how_to_contribute.adoc` is Good, 'How_To_Contribute.adoc' or 'howtocontribute.adoc' is Bad)
-
 
 
