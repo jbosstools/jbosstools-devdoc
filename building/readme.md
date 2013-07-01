@@ -9,7 +9,7 @@ This will gets  the dependencies from the latest aggregate snapshots from contin
 
 ## Tell me more
 
-* [FAQ](wiki/FAQ)
-* [Detailed documentation](wiki/Details)
-* [Build options](wiki/Build options)
-* [Build from inside Eclipse](wiki/Build from inside Eclipse)
+* [FAQ](faq)
+* [Detailed documentation](details.md)
+* [Build options](build_options.md)
+* [Build from inside Eclipse](build_from_eclipse.md)
