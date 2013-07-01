@@ -1,6 +1,6 @@
-## General stuff
+## Target Platforms
 
-These target-platforms define the set of external dependencies we use in order to write and build JBoss Tools. Those dependencies can come from Eclipse.org, Atlassian, Google Web Toolkit...
+[target-platforms](https://github.com/jbosstools/jbosstools-target-platforms/) define the set of external dependencies we use in order to write and build JBoss Tools. Those dependencies can come from Eclipse.org, Atlassian, Google Web Toolkit...
 
 Target-platforms are meant to be used in IDE to provide the right set of dependencies to developers, and at build-time to provide the right set of dependency to the build, and at install-time to provide a site containing all dependencies to end-users.
 
@@ -23,6 +23,7 @@ The `-SNAPHSOT` suffix means that the target-platform is still on development an
 ### Choosing the appropriate target-platform.
 
 Depending on the version of JBoss Tools you are targetting, you can use one target-platform or another. Each branch is a "stream" of target platforms. Some tags are available for released versions.
+
 **You should only use released version**, except if you are willing to hack the target-platform.
 
 ### Load in IDE
