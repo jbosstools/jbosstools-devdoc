@@ -1,4 +1,4 @@
-== JBoss Tools Development Documentation
+== JBoss Tools Developer Documentation
 
 This repository contains documentation for building and developing JBoss Tools.
 
