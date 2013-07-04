@@ -3,3 +3,6 @@
 This repository contains documentation for building and developing JBoss Tools.
 
 It is meant to replace the articles related to development at jboss.org wiki found at https://community.jboss.org/wiki/JBossTools
+
+See link:[CONTRIUBTING.adoc] for how to contribute.
+
