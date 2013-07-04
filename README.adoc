@@ -4,5 +4,8 @@ This repository contains documentation for building and developing JBoss Tools.
 
 It is meant to replace the articles related to development at jboss.org wiki found at https://community.jboss.org/wiki/JBossTools
 
-See link:[CONTRIUBTING.adoc] for how to contribute.
+See link:CONTRIUBTING.adoc[Contributing] for how to write/add to these docs.
+
+In general it is to be a wiki all developers can push docs to, external contributors can do pull-requests or report issues
+to get things clarified/documented better.
 
