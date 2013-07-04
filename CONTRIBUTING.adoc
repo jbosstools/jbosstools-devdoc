@@ -24,8 +24,12 @@ Content guidelines
 GitHub Web vs local/git
 =======================
 
-There are two recommended ways to contribute to the documentation, using the github web ui or offline local editing by cloning the repository. 
-You can do almost everything in both places, the main limitations of github web ui is that they currently do not support upload of images nor delete of content.
+There are two recommended ways to contribute to the documentation:
+
+- using the github web ui
+- offline local editing by cloning the repository. 
+
+You can do almost everything in both places, the main limitations of github web ui is that they currently do not support upload of images.
 The table below outlines the various options/workflows:
 
 [options="header"]
@@ -34,7 +38,7 @@ The table below outlines the various options/workflows:
 | *Create text file* | git add + commit + push |  Click the '+' icon, name the file and submit 
 | *Add image/binary* | git add + commit + push | N/A
 | *Edit content* | git commit + push | Click the 'Edit' button, edit and submit
-| *Delete content* | git rm + commit + push | Not available, http://prose.io/ is an alternative UI that allows deletes
+| *Delete content* | git rm + commit + push | Use the new 'Delete' button on the file. http://prose.io/ is an alternative UI that also allows deletes
 | *Notifications* | N/A | click 'Watch' repository and you can control the amount of notifications you get 
 | *Comments* | N/A | use the github issue tracker to ask for clarifications or simply submit suggestions as a pull-request
 |=========================
