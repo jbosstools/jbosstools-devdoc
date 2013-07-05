@@ -1,18 +1,18 @@
-## Target Platforms
+# Target Platforms
 
-[target-platforms](https://github.com/jbosstools/jbosstools-target-platforms/) define the set of external dependencies we use in order to write and build JBoss Tools. Those dependencies can come from Eclipse.org, Atlassian, Google Web Toolkit...
+These target-platforms define the set of external dependencies we use in order to write and build JBoss Tools. Those dependencies can come from Eclipse.org, Atlassian, Google Web Toolkit...
 
 Target-platforms are meant to be used in IDE to provide the right set of dependencies to developers, and at build-time to provide the right set of dependency to the build, and at install-time to provide a site containing all dependencies to end-users.
 
 See these slides for generalities about target-platforms: http://www.slideshare.net/mickaelistria/a-journey-with-target-platforms.
 
-### Multiple vs Unified
+## Multiple vs Unified
 
 The **multiple** target-platform references multiple sites and it the one we maintain. It's the one to use in Eclipse IDE, since it includes sources (when available). It's available in _<jbosstools|jbdevstudio>/multiple_ folder.
 
 From this target-platform is deduced the **unified** target-platform which uses an aggregation of all those sites. The unified target-platform and site are used at build-time to save time while resolving dependencies, and also at install-time to ensure we provide to end-users all the dependencies he'll need in case he doesn't already have them.
 
-### Versions meaning
+## Versions meaning
 
 Here is the versioning patterns for target-platforms. Assuming we are targeting Eclipse x.y.z, target platform versions are of the form x.yz.MILESTONE(-SNAPSHOT). MILESTONE is a symbol that can be Alpha1, Alpha2, Beta1, CR1, or Final.
 When you see a target-platform with version x.yz.MILESTONE it means that it is the MILESTONE or the target-platform targeting Eclipse x.y.z.
@@ -23,7 +23,6 @@ The `-SNAPHSOT` suffix means that the target-platform is still on development an
 ### Choosing the appropriate target-platform.
 
 Depending on the version of JBoss Tools you are targetting, you can use one target-platform or another. Each branch is a "stream" of target platforms. Some tags are available for released versions.
-
 **You should only use released version**, except if you are willing to hack the target-platform.
 
 ### Load in IDE
@@ -118,7 +117,7 @@ Here is the suggested process:
 
     $ mvn -Dtycho.mode=maven versions:set
 
-  8. Commit it, tag it; push tag and commit to the right branch: 
+8. Commit it, tag it; push tag and commit to the right branch: 
     
         $ git add pom.xml pom.xml */*/pom.xml
         $ git commit -m "Version x.y.z.qualifier"
@@ -142,7 +141,7 @@ download.jboss.org & www.qa
 Template:
     
     
-    JBoss Tools Target Platform 4.30.5.Beta1 has been released.
+    JBoss Tools Target Platform 4.30.5.CR1 has been released.
 
     Changes
     =======
@@ -151,37 +150,40 @@ Template:
 
     Usage
     =====
-    Beta1 is what JBoss Tools CR1 will use.
+    Beta1 is what JBoss Tools 4.1.0.CR1 will use.
 
-    All jobs in jenkins have been updated to use Beta1.
+    All jobs in jenkins for *branch* have been updated to use TP 4.30.5.CR1.
+    Parent pom 4.1.0.CR1 for *branch* has been updated to use TP 4.30.5.CR1.
 
-    Meaning we are now using the final relase of Kepler!
+    All jobs in jenkins for *master* have been updated to use TP 4.30.5.CR2-SNAPSHOT.
+    Parent pom 4.2.0.Alpha1-SNAPSHOT for *master* has been updated to use TP 4.30.5.CR2-SNAPSHOT.
 
     Download
     ========
 
-    Zip: http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.30.5.Beta1/jbosstoolstarget-4.30.5.Beta1.zip
-    p2 site: http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.30.5.Beta1/REPO/
+    Zip: http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.30.5.CR1/jbosstoolstarget-4.30.5.Beta1.zip
+    p2 site: http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.30.5.CR1/REPO/
 
     Testing/Development
     ===================
 
     You can try it out and use it directly like this:
 
-        $ mvn clean verify -Dtpc.version=4.30.5.Beta1
+        $ mvn clean verify -Dtpc.version=4.30.5.CR1
 
     If you want to build it locally to get a TP with source bundles included, do this:
 
         $ git clone https://github.com/jbosstools/jbosstools-target-platforms.git
         $ cd jbosstools-target-platforms
-        $ git co 4.30.5.Beta1
+        $ git co 4.30.5.CR1
         $ mvn clean verify -Dmirror-target-to-repo.includeSources=true
 
- 16. Bump target-platform version and add it a -SNAPSHOT to start working on future version.
+16. Bump target-platform version and add it a -SNAPSHOT to start working on future version.
 
         $ mvn -Dtycho.mode=maven versions:set -DnewVersion=x.y.z.qualifier-SNAPSHOT
         $ git add pom.xml */pom.xml */*/pom.xml
         $ git commit -m "Bump to x.y.z.qualifier-SNAPSHOT"
         $ git push origin <branch>
 
-  17. Update target-platform job on Jenkins to build the new SNAPSHOT (eg: 4.30.0.Alpha1 -> 4.30.0-Alpha2-SNAPSHOT)
+17. Update target-platform job on Jenkins to build the new SNAPSHOT (eg: 4.30.0.Alpha1 -> 4.30.0-Alpha2-SNAPSHOT)
+
