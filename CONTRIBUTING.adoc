@@ -8,7 +8,7 @@ The layout of the current documentation is the following:
 - link:building[]  - how to build JBoss Tools and its eclipse plugins
 - link:debugging[] - tips'n'tricks on how to best debug
 - link:issues[] - how to use issue tracker, shared queries etc.
-- <your topic here> - if you feel an overall issue are missing, do PR and suggest one
+- <your topic here> - if you feel an overall issue are missing, create a pull request (PR) and suggest one
 
 To contribute content simply edit live on http://github.com[github] webui or clone the repository and submit a pull-request.
 
