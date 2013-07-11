@@ -14,11 +14,13 @@ Looking for how to build our documentation? See
 https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/build_documentation.md[Building JBoss Tools
 Documentation].
 
+
 Environment Setup
 ~~~~~~~~~~~~~~~~~
 
+
 Prerequisistes
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 1.  Java 1.6 SDK
 2.  Maven 3.0.3
@@ -28,8 +30,9 @@ access*
 4.  subversion client 1.6.X (should work with lower version as well, but
 newer versions may not work as expected)
 
+
 Maven and Java
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 Make sure your maven 3 is available by default and Java 1.6 is used.
 
@@ -43,8 +46,9 @@ should print out something like
   Java home: /usr/java/jdk1.6.0_25/jreDefault locale: en_US, platform encoding: UTF-8
   OS name: "linux", version: "2.6.42.3-2.fc15.x86_64", arch: "amd64", family: "unix"
 
+
 Maven settings
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 Follow https://community.jboss.org/docs/DOC-15170[these instructions] to
 add reference to JBoss Repositories into your settings.xml. You'll also
@@ -53,43 +57,44 @@ should see in your ~/.m2/settings.xml
 
 ----
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-  <profiles>
-    <profile>
-      <id>jboss-default</id>
-      <repositories>
-      	<repository>
-	       <id>jboss-public-repository-group</id>
-	       <name>JBoss Public Repository Group</name>
-	       <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-     	 </repository>
-	      <repository>
-	       <id>jboss-snapshots-repository</id>
-	        <name>JBoss Snapshots Repository</name>
-	        <url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
-	      </repository>
-      </repositories>
-      <pluginRepositories>
-	      <pluginRepository>
-	       <id>jboss-public-repository-group</id>
-	       <name>JBoss Public Repository Group</name>
-	       <url>http://repository.jboss.org/nexus/content/groups/public/</url>
-	      </pluginRepository>
-	      <pluginRepository>
-	       <id>jboss-snapshots-repository</id>
-	       <name>JBoss Snapshots Repository</name>
-	       <url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
-	      </pluginRepository>
-     </pluginRepositories>
-    </profile>
-  </profiles>
-  <activeProfiles>
-    <activeProfile>jboss-default</activeProfile>
-  </activeProfiles>
+	<profiles>
+		<profile>
+		<id>jboss-default</id>
+		<repositories>
+			<repository>
+				<id>jboss-public-repository-group</id>
+				<name>JBoss Public Repository Group</name>
+				<url>http://repository.jboss.org/nexus/content/groups/public/</url>
+			</repository>
+			<repository>
+				<id>jboss-snapshots-repository</id>
+				<name>JBoss Snapshots Repository</name>
+				<url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>   
+			</repository>
+		</repositories>
+		<pluginRepositories>
+			<pluginRepository>
+				<id>jboss-public-repository-group</id>
+				<name>JBoss Public Repository Group</name>
+				<url>http://repository.jboss.org/nexus/content/groups/public/</url>   
+			</pluginRepository>
+			<pluginRepository>
+				<id>jboss-snapshots-repository</id>
+				<name>JBoss Snapshots Repository</name>
+				<url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>   
+			</pluginRepository>
+		</pluginRepositories>
+		</profile>
+	</profiles>
+	<activeProfiles>
+		<activeProfile>jboss-default</activeProfile>
+	</activeProfiles>
 </settings>
 ----
 
+
 Maven & Java Memory Configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To configure the amount of memory used by Maven, you can define MVN_OPTS
 as follows, either in the mvn / mvn.bat script you use to run Maven, or
@@ -102,6 +107,7 @@ http://www.digitaledgesw.com/node/31[OSX].
 ----
 set MAVEN_OPTS=-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m
 ----
+
 
 Verify or Install?
 ~~~~~~~~~~~~~~~~~~
@@ -126,10 +132,11 @@ There are
 http://wiki.eclipse.org/Tycho/Target_Platform#Locally_built_artifacts[two
 approaches] that work here:
 
-\a) override temporarily when building, using
+a) override temporarily when building, using
 `-Dtycho.localArtifacts=ignore`
 
-\b) delete `~/.m2/repository/.meta/p2-local-metadata.properties`
+b) delete `~/.m2/repository/.meta/p2-local-metadata.properties`
+
 
 About Target Platform and related profiles
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -142,36 +149,39 @@ Platform is managed by JBoss Tools people, and only dependencies from
 this TP are allowed to be used in code.
 
 If you need a new dependency in the TP, feel free to
-https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=10020&summary=Add%20[YOUR%20REQ]%20to%20Target%20Platform&components=12310540&issuetype=13&Create=Create[open
+https://issues.jboss.org/secure/CreateIssueDetails!init.jspa?pid=10020&summary=Please%20add%20....%20to%20JBT%20/%20JBDS%20Target%20Platforms&components=12315342&issuetype=13&Create=Create[open
 a ticket to request it].
 
 Here are several ways to build locally using this target platform. It's
 up to you to choose the one that match your needs:
 
+
 Using published Target Platform definition (Recommended)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 unified.target refers to the dependency as published in the Target
 Platform repository.
 
-Pros:
+* Pros:
+** No step required than simply invoking Maven
+** Always up-to-date
 
-* No additional thing to do than invoking Maven
-* Always up-to-date
-
-Cons: Speed - (to evaluate)
+* Cons: 
+** Evaluation is slower than when using a local target platform
 
 Consume it by adding*-Punified.target*to you Maven invocation
 command-line
 
-Or, getting a local copy of the Target Platform
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Pros: Speed +++
-* Cons: Step to be repeated whenever
-https://github.com/jbosstools/jbosstools-build/tree/master/target-platforms[target
-platforms] change
+Or, get a local copy of the Target Platform
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* Pros:
+** Faster to use than a remote one
+
+* Cons: 
+** Must re-fetch every time remote SNAPSHOT https://github.com/jbosstools/jbosstools-build/tree/master/target-platforms[target platforms] are updated, or a new one is released
+ 
 Get it
 ++++++
 
@@ -202,7 +212,6 @@ OR, use Maven to build it
 See link:#maven-nexus-resolution-problems[Building Parent Pom & Target
 Platforms Locally]
 
-link:#maven-nexus-resolution-problems[]
 
 Use it as a Maven mirror
 ++++++++++++++++++++++++
@@ -218,8 +227,20 @@ definition of the repositories to mirror: (replace
 repository actuaaly stands)
 
 ----
-{code:xml}<settings>     <mirrors><!-- IMPORTANT: Sites in target platforms: must not have trailing slash! -->        <mirror>            <id>jenkins.jbosstools-JunoSR0c</id>            <mirrorOf>http://download.jboss.org/jbosstools/updates/juno/SR0c/REPO</mirrorOf>            <url>file:///home/hudson/static_build_env/jbds/target-platform_4.0.juno.SR0c/e420-wtp340.target/</url>            <layout>p2</layout>            <mirrorOfLayouts>p2</mirrorOfLayouts>        </mirror>        <mirror>            <id>jenkins.jbosstools-JunoSR1a</id>            <mirrorOf>http://download.jboss.org/jbosstools/updates/juno/SR1a/REPO</mirrorOf>            <url>file:///home/hudson/static_build_env/jbds/target-platform_4.0.juno.SR1a/e421-wtp341.target/</url>            <layout>p2</layout>            <mirrorOfLayouts>p2</mirrorOfLayouts>        </mirror>        <mirror>            <id>jenkins.jbdevstudio-JunoSR0c</id>            <mirrorOf>http://www.qa.jboss.com/binaries/RHDS/updates/jbds-target-platform_4.0.juno.SR0c/REPO</mirrorOf>            <url>file:///home/hudson/static_build_env/jbds/jbds-target-platform_4.0.juno.SR0c/jbds600-e420-wtp340.target/</url>            <layout>p2</layout>            <mirrorOfLayouts>p2</mirrorOfLayouts>        </mirror>        <mirror>            <id>jenkins.jbdevstudio-JunoSR1a</id>            <mirrorOf>http://www.qa.jboss.com/binaries/RHDS/updates/jbds-target-platform_4.0.juno.SR1a/REPO</mirrorOf>            <url>file:///home/hudson/static_build_env/jbds/jbds-target-platform_4.0.juno.SR1a/jbds600-e421-wtp341.target/</url>            <layout>p2</layout>            <mirrorOfLayouts>p2</mirrorOfLayouts>        </mirror>    </mirrors></settings>
+<!-- IMPORTANT: Sites in target platforms: must not have trailing slash! -->        
+<settings>
+  <mirrors>
+    <mirror>
+      <id>jbosstools-target-platform-4.30.5.CR1</id>
+      <mirrorOf>http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.30.5.CR1/REPO</mirrorOf>            
+      <url>file:///path/to/jbosstools-target-platforms/jbosstools/multiple/target/jbosstools-multiple.target.repo/</url>            
+      <layout>p2</layout>
+      <mirrorOfLayouts>p2</mirrorOfLayouts>        
+      </mirror>
+  </mirrors>
+</settings>
 ----
+
 
 (Optional) Build parent and target platform
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -241,106 +262,96 @@ contribute a fix. To work around resolution problems, just build
 locally:
 
 ----
-{code}cd /tmp; git clone git clone git://github.com/jbosstools/jbosstools-maven-plugins.gitcd /tmp; git clone git clone git://github.com/jbosstools/jbosstools-build.gitcd jbosstools-maven-plugins/tycho-plugins; mvn install; cd -cd jbosstools-build/parent;  mvn install; cd -cd jbosstools-build/target-platforms; mvn install -Pjbosstools-minimum,jbosstools-maximum{code}
+cd /tmp; git clone git clone git://github.com/jbosstools/jbosstools-maven-plugins.git
+cd /tmp; git clone git clone git://github.com/jbosstools/jbosstools-build.git
+cd jbosstools-maven-plugins/tycho-plugins; mvn install; cd -
+cd jbosstools-build/parent;  mvn install; cd -
+cd jbosstools-build/target-platforms; mvn install -Pjbosstools-minimum,jbosstools-maximum
 ----
 
 
 Building Individual Components Locally Via Commandline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+
 Build a component resolving to a recent aggregation build for other JBT
-dependencies (Recommanded)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+dependencies (Recommended)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Pros:
+* Pros:
+** You build only your component
+** You only need source for your component
+** Speed to resolve deps is greater
+** You get generally the latest build for you component
 
-* You build only your component
-* You only need source for your component
-* Speed to resolve deps: +
-* You get generally the latest build for you component
-
-Cons:
-
-* Takes some time to resolve dependencies on other component
-* Can sometimes be out of sync if no build occured recently for a
+* Cons:
+** Takes some time to resolve dependencies on other component
+** Can sometimes be out of sync if no build occured recently for a
 component you rely on and had some important change. More risk to get
 out of sync than with the staging site.
 
 Tracked by
 https://issues.jboss.org/browse/JBIDE-11516[https://issues.jboss.org/browse/JBIDE-11516]
 
-example:
+Example:
 
-*cd jbosstools-server*
+----
+cd jbosstools-server
+mvn verify -P unified.target -Pjbosstools-staging-aggregate
+----
 
-mvn verify -P unified.target *-Pjbosstools-staging-aggregate*
 
 Build a component resolving to the latest CI builds for other JBT
 dependencies
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Pros:
+* Pros:
+** You build only your component
+** You only need source for your component
+** You get generally the latest build for you component
 
-* You build only your component
-* You only need source for your component
-* You get generally the latest build for you component
-
-Cons
-
-* Takes some time to resolve dependencies on other component
-* Can sometimes be out of sync if no build occured recently for a
+* Cons:
+** Takes some time to resolve dependencies on other component
+** Can sometimes be out of sync if no build occured recently for a
 component you rely on and had some important change
-* Speed to resolve deps: -
+** Speed to resolve deps is worse
 
 This profile is the one use for CI builds on Hudson.
 
-*cd jbosstools-server*
+Example:
 
-mvn verify -P unified.target *-Pjbosstools-nightly-staging-composite*
+----
+cd jbosstools-server
+mvn verify -P unified.target -Pjbosstools-nightly-staging-composite
+----
 
-Build a component along with all its dependencies from sources
-("bootstrap" build)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This will build exactly what you have locally
-
-Pros:
-
-* You are sure of the version of sources that is used for your JBT
-dependencies
-* You don't loose time in resolving your JBT deps
-
-Cons:
-
-* You need sources for your dependencies too
-* You often build more stuff that what you really want to test
-
-cd ~/trunk/jbosstools-server
-
-mvn verify -P unified.target -*Pbootstrap*
 
 Building Everything In One Build Locally Via Commandline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *LINUX / MAC USERS*
 
+----
 cd jbosstools-build
-
 mvn clean install -gs ~/.m2/settings.xml | tee build.all.log.txt
+----
 
 (tee is a program that pipes console output to BOTH console and a file
 so you can watch the build AND keep a log.)
 
 *WINDOWS USERS*
 
+----
 cd c:\trunk\jbosstools-build
-
 mvn3 clean verify -gs file:///$\{user.home}/.m2/settings.xml
+----
 
 or
 
+----
 mvn3 clean verify -gs file:///$\{user.home}/.m2/settings.xml >
 build.all.log.txt
+----
 
 Remember to adjust your link:#settings.xml[settings.xml] file to specify
 where you have your local target platform mirror built (or where you
@@ -348,6 +359,7 @@ downloaded & unpacked a target platform zip. Windows users, if you don't
 have a .m2 folder, see
 http://stackoverflow.com/questions/6081617/missing-maven-m2-folder[this
 article].
+
 
 Building Locally In Eclipse
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -379,7 +391,9 @@ First, on the *Main* tab, set a *Name*, *Goals*, *Profile*(s), and add a
 *Parameter*. Or, if you prefer, put everything in the *Goals* field for
 simplicity:
 
+----
 clean install -B -fae -e
+----
 
 Be sure to check *Resolve Workspace artifacts*, and, if you have a newer
 version of Maven installed, point your build at that *Maven Runtime*
@@ -426,18 +440,18 @@ jbosstools-base, you will also need to provide a URL from which Eclipse
 can resolve these missing dependencies. In order of freshness, you can
 use:
 
-1. 
-http://download.jboss.org/jbosstools/updates/nightly/core/trunk/[http://download.jboss.org/jbosstools/updates/nightly/core/trunk/]
+1. http://download.jboss.org/jbosstools/updates/nightly/core/trunk/[http://download.jboss.org/jbosstools/updates/nightly/core/trunk/]
 (Nightly Trunk Site - updated every few hours or at least daily -
 *bleeding edge*)
-2. 
-http://download.jboss.org/jbosstools/builds/staging/_composite_/core/trunk/[http://download.jboss.org/jbosstools/builds/staging/_composite_/core/trunk/]
+
+2. http://download.jboss.org/jbosstools/builds/staging/_composite_/core/trunk/[http://download.jboss.org/jbosstools/builds/staging/_composite_/core/trunk/]
 (Composite Staging Site - updated every time a component respins -
 *bleedinger edge*)
-3. 
-http://anonsvn.jboss.org/repos/jbosstools/trunk/build/aggregate/local-site/[http://anonsvn.jboss.org/repos/jbosstools/trunk/build/aggregate/local-site/]
+
+3. http://anonsvn.jboss.org/repos/jbosstools/trunk/build/aggregate/local-site/[http://anonsvn.jboss.org/repos/jbosstools/trunk/build/aggregate/local-site/]
 (see the README.txt for how to use this site to refer to things you
 built locally - *bleedingest edge*)
+
 
 Adding a new feature or plugin to an existing component
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -445,11 +459,13 @@ Adding a new feature or plugin to an existing component
 Need to tweak a component to add a new plugin or feature? See
 https://community.jboss.org/docs/DOC-18373[https://community.jboss.org/wiki/AddingAPluginandorFeatureToAnExistingComponent].
 
+
 Dealing with timeouts for tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 (To be rewritten soon...)
 http://lists.jboss.org/pipermail/jbosstools-dev/2012-September/005835.html[http://lists.jboss.org/pipermail/jbosstools-dev/2012-September/005835.html]
+
 
 Tips and tricks for making BOTH PDE UI and headless Maven builds happy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -458,9 +474,9 @@ It's fairly common to have plugins compiling in eclipse while tycho
 would not work. Basically you could say that tycho is far more picky
 compared to Eclipse PDE.
 
- +
+
 Check your build.properties
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Check build.properties in your plugin. If it has warnings in Eclipse,
 you'll most likely end with tycho failing to compile your sources.
@@ -471,9 +487,6 @@ and *output..*-- these are needed to
 *http://wiki.eclipse.org/Minerva#Source[generate source plugins and
 features]*.
 
-* +
-*
-
 ----
 source.. = src/
 output.. = bin/
@@ -482,8 +495,9 @@ src.excludes = src
 bin.includes = files,to,include,in the jar
 ----
 
+
 Check your manifest.mf dependencies
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A new issue when building against juno shows that all compilation
 dependencies MUST be EXPLICITLY mentioned in your manifest.mf list of
@@ -504,3 +518,4 @@ depended on org.eclipse.ui.views.
 Resolving nested dependencies no longer seems to be guaranteed, and so
 anything you have a compilation dependency on must now be explicitly
 declared in your manifest.mf
+
