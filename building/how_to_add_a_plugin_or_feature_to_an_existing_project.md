@@ -14,7 +14,7 @@ https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/how_to_buil
 * If your new feature needs to be in BOTH offerings, please be sure to explain WHY when contacting the above mailing list.
 
 
-### Adding a new plugin or feature to JBoss Tools
+### Add a new plugin or feature to JBoss Tools
 
 Now that you can build the project, you can easily add a new plugin to that project. Here's how.
 
@@ -56,26 +56,25 @@ You can use m2eclipse to help w/ this if you have it installed; otherwise copy f
 	    vim /features/pom.xml
 
 
-#### Verifying your new feature/plugin can be built and installed:
+#### Verify your new feature/plugin can be built and installed:
 
 8. Next, ensure that the feature appears in all appropriate JBoss Tools update sites:
 
 	    vi ~/git/jbosstools-server/site/category.xml # (the project's update site)
 
-	      and one of the following
+and one of the following:
 
 	    vi ~/jbosstools-build-sites/aggregate/site/category.xml # (the JBoss Tools aggregate update site)
 
 	    vi ~/jbosstools-build-sites/aggregate/coretests-site/category.xml # (the JBoss Tools aggregate update site for test plugins)
 
-	      or one of these two sites:
+or one of these two sites:
 
 	    vi ~/jbosstools-build-sites/aggregate/soa-site/category.xml # (the JBoss Tools aggregate update site for SOA Tooling)
 
 	    vi ~/jbosstools-build-sites/aggregate/soatests-site/category.xml # (the JBoss Tools aggregate update site for SOA Tooling test plugins)
 
-	      Note: for jbosstools-server, and any DEPENDENCIES of jbosstools-server, you MAY want to 
-	      add your new feature to this site too, if and only if AS Tools makes use of that plugin / feature:
+Note: for jbosstools-server, and any DEPENDENCIES of jbosstools-server, you MAY want to add your new feature to this site too, if and only if AS Tools makes use of that plugin / feature:
 
 	    vi ~/jbosstools-build-sites/aggregate/webtools-site/category.xml # (the JBoss Tools aggregate update site for WTP adapters)
 
@@ -86,7 +85,7 @@ You can use m2eclipse to help w/ this if you have it installed; otherwise copy f
 	    cd ~/git/jbosstools-build-site/aggregate/site; mvn clean verify; # then point Eclipse at ~/git/jbosstools-build-site/aggregate/site/target/site/
 
 
-#### Adding a new plugin or feature to JBoss Developer Studio
+### Add a new plugin or feature to JBoss Developer Studio
 
 10. Next, ensure that the feature appears in all appropriate JBoss Developer Studio update site:
 
@@ -97,7 +96,7 @@ You can use m2eclipse to help w/ this if you have it installed; otherwise copy f
 	    vi ~/git/jbdevstudio-product/features/com.jboss.jbds.product.feature/feature.xml
 
 
-### Verifying your new feature/plugin can be built and installed:
+#### Verify your new feature/plugin can be built and installed:
 
 12. Finally, build the sites locally to ensure the XML is valid and the contents appear correctly. You can then install the new feature from the sites into Eclipse or JBDS to verify it runs as expected (no missing dependencies which prevent the plugin from being activated, no missing metadata such as description, provider, license or copyright while installing, etc.)
 
