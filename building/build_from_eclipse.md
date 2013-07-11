@@ -1,3 +1,5 @@
+###  Building Locally In Eclipse
+
 First, you must have installed m2eclipse into your Eclipse (or JBDS). You can install the currently supported version from this update site: http://download.jboss.org/jbosstools/updates/juno/
 
 Next, start up Eclipse or JBDS and do First, you must have installed m2eclipse into your Eclipse (or JBDS). You can install the currently supported version from this update site: http://download.jboss.org/jbosstools/updates/juno/
