@@ -51,8 +51,6 @@ add reference to JBoss Repositories into your settings.xml. You'll also
 probably need access to the SNAPSHOT repository. So here is what you
 should see in your ~/.m2/settings.xml
 
-[code,xml]
-settings.xml
 ----
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
   <profiles>
@@ -101,10 +99,9 @@ https://help.ubuntu.com/community/EnvironmentVariables[Ubuntu],
 http://forums.techarena.in/windows-xp-support/1152405.htm[Windows],
 http://www.digitaledgesw.com/node/31[OSX].
 
-code,jive_text_macro,jive_macro_wiki------------------------------------------------------------------------------------
-code,jive_text_macro,jive_macro_wiki
-{code}set MAVEN_OPTS=-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m{code}
-------------------------------------------------------------------------------------
+----
+set MAVEN_OPTS=-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m
+----
 
 Verify or Install?
 ~~~~~~~~~~~~~~~~~~
@@ -196,10 +193,9 @@ http://download.jboss.org/jbosstools/updates/juno/SR1a/[http://download.jboss.or
 
 and then unzip it :
 
-code,jive_text_macro,jive_macro_code--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-code,jive_text_macro,jive_macro_code
+----
 unzip *.target.zip -d /path/to/jbosstools-build/target-platforms/jbosstools-JunoSR0c/multiple/target/multiple.target.repo/  orunzip *.target.zip -d /path/to/jbosstools-build/target-platforms/jbosstools-JunoSR1a/multiple/target/multiple.target.repo/
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----
 
 OR, use Maven to build it
 
@@ -221,10 +217,9 @@ definition of the repositories to mirror: (replace
 /home/hudson/static_build_env/jbds/.... by a path where your local
 repository actuaaly stands)
 
-code,jive_text_macro,jive_macro_wiki---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-code,jive_text_macro,jive_macro_wiki
-{code:xml}<settings>     <mirrors><!-- IMPORTANT: Sites in target platforms: must not have trailing slash! -->        <mirror>            <id>jenkins.jbosstools-JunoSR0c</id>            <mirrorOf>http://download.jboss.org/jbosstools/updates/juno/SR0c/REPO</mirrorOf>            <url>file:///home/hudson/static_build_env/jbds/target-platform_4.0.juno.SR0c/e420-wtp340.target/</url>            <layout>p2</layout>            <mirrorOfLayouts>p2</mirrorOfLayouts>        </mirror>        <mirror>            <id>jenkins.jbosstools-JunoSR1a</id>            <mirrorOf>http://download.jboss.org/jbosstools/updates/juno/SR1a/REPO</mirrorOf>            <url>file:///home/hudson/static_build_env/jbds/target-platform_4.0.juno.SR1a/e421-wtp341.target/</url>            <layout>p2</layout>            <mirrorOfLayouts>p2</mirrorOfLayouts>        </mirror>        <mirror>            <id>jenkins.jbdevstudio-JunoSR0c</id>            <mirrorOf>http://www.qa.jboss.com/binaries/RHDS/updates/jbds-target-platform_4.0.juno.SR0c/REPO</mirrorOf>            <url>file:///home/hudson/static_build_env/jbds/jbds-target-platform_4.0.juno.SR0c/jbds600-e420-wtp340.target/</url>            <layout>p2</layout>            <mirrorOfLayouts>p2</mirrorOfLayouts>        </mirror>        <mirror>            <id>jenkins.jbdevstudio-JunoSR1a</id>            <mirrorOf>http://www.qa.jboss.com/binaries/RHDS/updates/jbds-target-platform_4.0.juno.SR1a/REPO</mirrorOf>            <url>file:///home/hudson/static_build_env/jbds/jbds-target-platform_4.0.juno.SR1a/jbds600-e421-wtp341.target/</url>            <layout>p2</layout>            <mirrorOfLayouts>p2</mirrorOfLayouts>        </mirror>    </mirrors></settings>{code}
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----
+{code:xml}<settings>     <mirrors><!-- IMPORTANT: Sites in target platforms: must not have trailing slash! -->        <mirror>            <id>jenkins.jbosstools-JunoSR0c</id>            <mirrorOf>http://download.jboss.org/jbosstools/updates/juno/SR0c/REPO</mirrorOf>            <url>file:///home/hudson/static_build_env/jbds/target-platform_4.0.juno.SR0c/e420-wtp340.target/</url>            <layout>p2</layout>            <mirrorOfLayouts>p2</mirrorOfLayouts>        </mirror>        <mirror>            <id>jenkins.jbosstools-JunoSR1a</id>            <mirrorOf>http://download.jboss.org/jbosstools/updates/juno/SR1a/REPO</mirrorOf>            <url>file:///home/hudson/static_build_env/jbds/target-platform_4.0.juno.SR1a/e421-wtp341.target/</url>            <layout>p2</layout>            <mirrorOfLayouts>p2</mirrorOfLayouts>        </mirror>        <mirror>            <id>jenkins.jbdevstudio-JunoSR0c</id>            <mirrorOf>http://www.qa.jboss.com/binaries/RHDS/updates/jbds-target-platform_4.0.juno.SR0c/REPO</mirrorOf>            <url>file:///home/hudson/static_build_env/jbds/jbds-target-platform_4.0.juno.SR0c/jbds600-e420-wtp340.target/</url>            <layout>p2</layout>            <mirrorOfLayouts>p2</mirrorOfLayouts>        </mirror>        <mirror>            <id>jenkins.jbdevstudio-JunoSR1a</id>            <mirrorOf>http://www.qa.jboss.com/binaries/RHDS/updates/jbds-target-platform_4.0.juno.SR1a/REPO</mirrorOf>            <url>file:///home/hudson/static_build_env/jbds/jbds-target-platform_4.0.juno.SR1a/jbds600-e421-wtp341.target/</url>            <layout>p2</layout>            <mirrorOfLayouts>p2</mirrorOfLayouts>        </mirror>    </mirrors></settings>
+----
 
 (Optional) Build parent and target platform
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -245,10 +240,10 @@ to build them locally in order to see how Tycho builds them, or
 contribute a fix. To work around resolution problems, just build
 locally:
 
-code,jive_text_macro,jive_macro_wiki---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-code,jive_text_macro,jive_macro_wiki
+----
 {code}cd /tmp; git clone git clone git://github.com/jbosstools/jbosstools-maven-plugins.gitcd /tmp; git clone git clone git://github.com/jbosstools/jbosstools-build.gitcd jbosstools-maven-plugins/tycho-plugins; mvn install; cd -cd jbosstools-build/parent;  mvn install; cd -cd jbosstools-build/target-platforms; mvn install -Pjbosstools-minimum,jbosstools-maximum{code}
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+----
+
 
 Building Individual Components Locally Via Commandline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -479,10 +474,13 @@ features]*.
 * +
 *
 
-code,jive_text_macro,jive_macro_code-----------------------------------------------------------------------------------------------------------------------------------------------
-code,jive_text_macro,jive_macro_code
-source.. = src/output.. = bin/src.includes = *src.excludes = srcbin.includes = <your own,\    list of,\    files for inclusion,\    in the jar>
------------------------------------------------------------------------------------------------------------------------------------------------
+----
+source.. = src/
+output.. = bin/
+src.includes = *
+src.excludes = src
+bin.includes = files,to,include,in the jar
+----
 
 Check your manifest.mf dependencies
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
