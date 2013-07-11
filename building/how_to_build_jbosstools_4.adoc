@@ -272,9 +272,8 @@ Building Individual Components Locally Via Commandline
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-Build a component resolving to a recent aggregation build for other JBT
-dependencies (Recommended)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Build a component resolving to a recent aggregation build for other JBT dependencies (Recommended)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 * Pros:
 ** You build only your component
@@ -299,9 +298,8 @@ mvn verify -P unified.target -Pjbosstools-staging-aggregate
 ----
 
 
-Build a component resolving to the latest CI builds for other JBT
-dependencies
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Build a component resolving to the latest CI builds for other JBT dependencies
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 * Pros:
 ** You build only your component
