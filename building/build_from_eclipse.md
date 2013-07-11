@@ -2,12 +2,9 @@ First, you must have installed m2eclipse into your Eclipse (or JBDS). You can in
 
 Next, start up Eclipse or JBDS and do First, you must have installed m2eclipse into your Eclipse (or JBDS). You can install the currently supported version from this update site: http://download.jboss.org/jbosstools/updates/juno/
 
- 
-
 Next, start up Eclipse or JBDS and do _File > Import_ to import the project(s) you already checked out from SVN above into your workspace.
 
 ![Screenshot](images/Screenshot.png)
-
  
 Browse to where you have the project(s) checked out, and select a folder to import pom projects. In this case, I'm importing the parent pom (which refers to the target platform pom). Optionally, you can add these new projects to a working set to collect them in your Package Explorer view.
 
