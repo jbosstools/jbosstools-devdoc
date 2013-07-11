@@ -195,16 +195,16 @@ unpacked it.
 You can get it with a browser or a command line tool such as wget or
 curl at the following url:
 
-http://download.jboss.org/jbosstools/updates/juno/SR0c/[http://download.jboss.org/jbosstools/updates/juno/SR0c/]http://download.jboss.org/jbosstools/updates/juno/SR0c/e420-wtp340.target.zip[e420-wtp340.target.zip]
-(current minimum TP)
+* current minimum Juno TP: http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.20.6.Final-SNAPSHOT/jbosstoolstarget-4.20.6.Final-SNAPSHOT.zip[jbosstoolstarget-4.20.6.Final-SNAPSHOT.zip]
 
-http://download.jboss.org/jbosstools/updates/juno/SR1a/[http://download.jboss.org/jbosstools/updates/juno/SR1a/]http://download.jboss.org/jbosstools/updates/juno/SR1a/e421-wtp341.target.zip[e421-wtp341.target.zip]
-(current maximum TP)
+* current maximum Juno TP: http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.22.2.Final-SNAPSHOT/jbosstoolstarget-4.22.2.Final-SNAPSHOT.zip[jbosstoolstarget-4.22.2.Final-SNAPSHOT.zip]
 
-and then unzip it :
+* latest Kepler TP: http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.30.5.CR2-SNAPSHOT/jbosstoolstarget-4.30.5.CR2-SNAPSHOT.zip[jbosstoolstarget-4.30.5.CR2-SNAPSHOT.zip]
+
+Then unzip the zip:
 
 ----
-unzip *.target.zip -d /path/to/jbosstools-build/target-platforms/jbosstools-JunoSR0c/multiple/target/multiple.target.repo/  orunzip *.target.zip -d /path/to/jbosstools-build/target-platforms/jbosstools-JunoSR1a/multiple/target/multiple.target.repo/
+unzip *.target.zip -d /path/to/jbosstools-target-platforms/jbosstools/multiple/target/jbosstools-multiple.target.repo/
 ----
 
 OR, use Maven to build it
