@@ -168,7 +168,39 @@ See Building JBoss Tools Documentation.
 ## What profiles do I need to build? What Maven properties are useful when building?
 
 Most of the time, you don't need any profiles or -D properties. Here are some profiles and properties you might want to use in special cases.
+
 * `-Pmaximum` : selects the default maximum target platform version instead of the default minimum one. Useful when running tests to verify that your code works against a newer target platform (eg., Eclipse 4.2.2 instead of 4.2.0)
 * `-DTARGET_PLATFORM_VERSION` : allows you to pick a specific target platform version from those available in Nexus. 
 
-See also 'How to I skip running  tests? How do I make tests not fail? Or only fail after ALL tests run?' above for test-related properties.
+See also 'How to I skip running tests? How do I make tests not fail? Or only fail after ALL tests run?' above for test-related properties.
+
+## How do I see what's happening on a remote slave running Xvfb?
+
+First, you will need VPN access.
+
+Then, look in the build log for 2 lines like these - you need to determine the slave name, screen number (probably 0), and framebuffer directory (a path ending in xvfb):
+
+        Building remotely on ${SLAVE_NAME} in workspace /mnt/hudson/workspace/${JOB_NAME}
+        Xvfb starting$ Xvfb :1 -screen ${SCREEN_NUM} 1024x768x24 -fbdir ${FBDIR}
+
+Get the Xvfb_screen0 file from the remote server. If necessary, you might have to use the server's FQDN instead of the slave name that appears in the log:
+
+        rsync -Pzrlt --rsh=ssh --protocol=28 ${USER}@${SLAVE_NAME}:${FBDIR}/Xvfb_screen${SCREEN_NUM} /tmp/
+
+View the screen w/ xwud:
+
+        xwud /tmp/Xvfb_screen${SCREEN_NUM}
+
+## How do I see what's happening on a remote slave running Xvnc?
+
+First, you will need VPN access.
+
+Then, look in the build log for a line near the top like this:
+
+        Starting xvnc
+        ...
+        New 'vmg18....redhat.com:13 (hudson)' desktop is vmg18....redhat.com:13
+
+Next, using vinagre or any VNC client, connect to the server:
+
+       vinagre vmg18....redhat.com:5913
