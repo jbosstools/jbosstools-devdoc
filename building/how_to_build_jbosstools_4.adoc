@@ -1,17 +1,19 @@
-image:https://community.jboss.org/4.5.6/images/tiny_mce3/plugins/jiveemoticons/images/spacer.gif[image]
+Building JBoss Tools 4
+~~~~~~~~~~~~~~~~~~~~~~
 
-*This article is a replacement for its precursor,
-https://community.jboss.org/docs/DOC-16604[How to Build JBoss Tools 3.3
-with Maven 3].*
+A simplified version of this document exists for JBoss Tools 4.1:
 
-*Note that this article only discusses building from trunk. To work with
-another branch, see
-http://learn.github.com/p/branching.html[Learn.GitHub - Branching and
-Merging].*
+https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/faq.md[JBoss Tools 4.1 Build FAQ]
 
-*Looking for how to build our documentation? See
-https://community.jboss.org/docs/DOC-13341[Building JBoss Tools
-Documentation].*
+----
+
+Note that this article only discusses building from master (trunk). To work with
+another branch, see http://learn.github.com/p/branching.html[Learn.GitHub - Branching and
+Merging].
+
+Looking for how to build our documentation? See 
+https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/build_documentation.md[Building JBoss Tools
+Documentation].
 
 Environment Setup
 ~~~~~~~~~~~~~~~~~
