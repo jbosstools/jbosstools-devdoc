@@ -7,11 +7,11 @@
 https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/faq.md
 https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/how_to_build_jbosstools_4.adoc
 
-* Before adding a complete new feature to JBoss Tools announce the addition on jbosstools-dev <a href="mailto:jbosstools-dev@lists.jboss.org">jbosstools-dev@lists.jboss.org</a> with reasons WHY a new feature is needed and what new (if any) dependencies it will bring in. New dependencies need to be added to the target platforms, and thus should be reported in JIRA for tracking and task assignment purposes.
+2. Before adding a complete new feature to JBoss Tools announce the addition on jbosstools-dev <a href="mailto:jbosstools-dev@lists.jboss.org">jbosstools-dev@lists.jboss.org</a> with reasons WHY a new feature is needed and what new (if any) dependencies it will bring in. New dependencies need to be added to the target platforms, and thus should be reported in JIRA for tracking and task assignment purposes.
 
-1. Note too that new features will often start in JBoss Tools but NOT be included in JBoss Developer Studio until they have had time to mature. 
+3. Note too that new features will often start in JBoss Tools but *NOT* be included in JBoss Developer Studio until they have had time to mature. 
 
-1. If your new feature needs to be in BOTH offerings, please be sure to explain WHY when contacting the above mailing list.
+4. If your new feature needs to be in *BOTH* offerings, please be sure to explain WHY when contacting the above mailing list.
 
 
 ### Add a new plugin or feature to JBoss Tools
