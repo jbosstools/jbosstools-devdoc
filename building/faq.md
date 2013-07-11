@@ -1,3 +1,5 @@
+# JBoss Tools 4.1 Build FAQ
+
 ## How do I configure my settings.xml?
 
 Follow these instructions to add reference to JBoss Repositories into your settings.xml. You'll also probably need access to the SNAPSHOT repository. So here is what you should see in your `~/.m2/settings.xml`
