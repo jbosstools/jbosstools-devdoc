@@ -73,7 +73,7 @@ To be written
 
 ## How do I build a single project?
 
-Generally, you need only fetch the sources, and run `mvn verify`. See 'How do I build via commandline?' or 'How do I build in Eclipse (with m2e)?' above.
+Generally, you need only fetch the sources, and run `mvn verify`. See '<a href="#how-do-i-build-via-commandline">How do I build via commandline?</a>' or 'How do I build in Eclipse (with m2e)?' above.
 
 ## How do I build a series of projects (eg., Base, Server, Webservices) ?
 
@@ -137,11 +137,11 @@ Every time we make changes to the target platform, either to add/remove somethin
 
 In order to verify we can build against the oldest version of a target platform (eg., one based on Eclipse 4.2.0, or "minimum" target platform) but also run tests against the latest for that stream (eg., based on Eclipse 4.2.2, or "maximum" target platform), we need to maintain multiple versions.
 
-By default, your build will use the default "minimum" target platform specified in the JBoss Tools parent pom. To easily build against the default "maximum", use -Pmaximum. See also 'What profiles do I need to build? What Maven properties are useful when building?'
+By default, your build will use the default "minimum" target platform specified in the JBoss Tools parent pom. To easily build against the default "maximum", use -Pmaximum. See also '<a href="#what-profiles-do-i-need-to-build-what-maven-properties-are-useful-when-building">What profiles do I need to build? What Maven properties are useful when building?</a>'
 
 ## How do I specify which target platform to use when building?
 
-See 'What profiles do I need to build? What Maven properties are useful when building?'
+See '<a href="#what-profiles-do-i-need-to-build-what-maven-properties-are-useful-when-building">What profiles do I need to build? What Maven properties are useful when building?</a>'
 
 ## How to I skip running  tests? How do I make tests not fail? Or only fail after ALL tests run?
 
@@ -159,11 +159,11 @@ You can also cause test failures to result in JUnit output without failing the b
 
 ## How can I debug tests in Eclipse when run from Tycho (with Surefire)?
 
-See http://www.jboss.org/tools/docs/testing.html
+See <a href="http://www.jboss.org/tools/docs/testing.html">http://www.jboss.org/tools/docs/testing.html</a>
 
 ## How do I build docs?
 
-See Building JBoss Tools Documentation.
+<a href="../build_documentation.adoc">See Building JBoss Tools Documentation</a>.
 
 ## What profiles do I need to build? What Maven properties are useful when building?
 
@@ -172,7 +172,7 @@ Most of the time, you don't need any profiles or -D properties. Here are some pr
 * `-Pmaximum` : selects the default maximum target platform version instead of the default minimum one. Useful when running tests to verify that your code works against a newer target platform (eg., Eclipse 4.2.2 instead of 4.2.0)
 * `-DTARGET_PLATFORM_VERSION` : allows you to pick a specific target platform version from those available in Nexus. 
 
-See also 'How to I skip running tests? How do I make tests not fail? Or only fail after ALL tests run?' above for test-related properties.
+See also '<a href="#how-to-i-skip-running--tests-how-do-i-make-tests-not-fail-or-only-fail-after-all-tests-run">How to I skip running tests? How do I make tests not fail? Or only fail after ALL tests run?</a>' above for test-related properties.
 
 ## How do I see what's happening on a remote slave running Xvfb?
 
