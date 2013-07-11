@@ -5,7 +5,6 @@ A simplified version of this document exists for JBoss Tools 4.1:
 
 https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/faq.md[JBoss Tools 4.1 Build FAQ]
 
-----
 
 Note that this article only discusses building from master (trunk). To work with
 another branch, see http://learn.github.com/p/branching.html[Learn.GitHub - Branching and
