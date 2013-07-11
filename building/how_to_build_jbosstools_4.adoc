@@ -209,8 +209,7 @@ unzip *.target.zip -d /path/to/jbosstools-target-platforms/jbosstools/multiple/t
 
 OR, use Maven to build it
 
-See link:#maven-nexus-resolution-problems[Building Parent Pom & Target
-Platforms Locally]
+See link:#optional-build-parent-and-target-platform[(Optional) Build parent and target platform]
 
 
 Use it as a Maven mirror
@@ -251,8 +250,7 @@ will simply retrieve parent and TP definitions from
 *https://repository.jboss.org/nexus/content/repositories/snapshots/org/jboss/tools/[JBoss
 Nexus]* to perform your build.
 
-See link:#maven-nexus-resolution-problems[Building Parent Pom & Target
-Platforms Locally]
+See link:#optional-build-parent-and-target-platform[(Optional) Build parent and target platform]
 
 Sometimes, Maven can't find the upstream artifacts - parent pom, tycho
 plugins, minimum (Juno SR0) or maximum (Juno SR1 or later) target
