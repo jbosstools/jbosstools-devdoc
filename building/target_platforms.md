@@ -120,11 +120,12 @@ Here is the suggested process:
 8. Commit it, tag it; push tag and commit to the right branch: 
     
         $ git add pom.xml pom.xml */*/pom.xml
-        $ git commit -m "Version x.y.z.qualifier"
-        $ git tag x.y.z.qualifier 
-        $ git push origin x.y.z.qualifier
+        $ git commit -m "Version 4.30.5.CR2"
+        $ git tag 4.30.5.CR2
+        $ git push origin 4.30.5.CR2
+        $ git push origin HEAD:4.30.x
     
-        (where x.yz.qualifier has to be replaced by the actual version)
+        (where 4.30.5.CR2 has to be replaced by the actual version, and 4.30.x with the actual branch)
 
 9. Update [jbosstoolstargetplatforms-matrix](https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatforms-matrix/) job to build new SNAPSHOTless version (and therefore produce new update site folders) (eg., 4.30.4-SNAPSHOT -> 4.30.4)  (TODO: make this a parameter)
 10. Run the CI job to publish new versions.
