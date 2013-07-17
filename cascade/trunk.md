@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Build Job Cascade + Results</title>
 <style>
-@import url("../../web/site.css");
+@import url("http://download.jboss.org/jbosstools/web/site.css");
 </style>
 <script type="text/javascript">
 <!--
@@ -13,7 +13,7 @@ function toggle()
   theImg=document.getElementById('screenshot');
   if (theImg.src.indexOf("_th.png")>0)
   {
-    theImg.src=theImg.src.replace("HowWeBuild_Diagram_Cascade_th.png","HowWeBuild_Diagram_Cascade.png");
+    theImg.src=theImg.src.replace("HowWeBuild_Diagram_Cascade_JBT4_th.png","HowWeBuild_Diagram_Cascade_JBT4.png");
     theImg.style.zIndex="1";
     theImg.style.position="absolute";
     theImg.style.top="0px";
@@ -21,7 +21,7 @@ function toggle()
   }
   else
   {
-    theImg.src=theImg.src.replace("HowWeBuild_Diagram_Cascade.png","HowWeBuild_Diagram_Cascade_th.png");
+    theImg.src=theImg.src.replace("HowWeBuild_Diagram_Cascade_JBT4.png","HowWeBuild_Diagram_Cascade_JBT4_th.png");
     theImg.style.zIndex="0";
     theImg.style.position="relative";
     theImg.style.top="0px";
@@ -32,9 +32,9 @@ function toggle()
 </script>
 </head>
 <!--
-  s#_trunk#_stable_branch#g
-  s#_Trunk#_Stable_Branch#g
-  s#/trunk#/4.0_stable_branch#g
+  s#_Trunk#_7.0.kepler#g
+  s#/(jbosstools.*)_master#/\1_41#g
+  s#/(devstudio.*)_master#/\1_70#g
 -->
 <body>
 <body marginheight="0" marginwidth="0" leftmargin="0" topmargin="0">
@@ -50,9 +50,9 @@ function toggle()
   </tr>
   <tr>
     <td class="bodyText">&#160;&#160;</td>
-    <td class="bodyText"><h2 class="title">JBoss Tools 4.1.x <b style="color:black">/</b> <b style="color:red">JBoss Developer Studio 7.x</b> (Kepler) <b style="color:black">[master / trunk]</b></h2>
+    <td class="bodyText"><h2 class="title">JBoss Tools 4.2.x <b style="color:black">/</b> <b style="color:red">JBoss Developer Studio 7.1.x</b> (Kepler? Luna?) <b style="color:black">[master]</b></h2>
 
-  <p align=""><a href="javascript:toggle()"><img border="0" id="screenshot" src="../../images/HowWeBuild_Diagram_Cascade_th.png"/><br/><small>Click to enlarge</small></a></p>    
+  <p align=""><a href="javascript:toggle()"><img border="0" id="screenshot" src="images/HowWeBuild_Diagram_Cascade_JBT4_th.png"/><br/><small>Click to enlarge</small></a></p>    
     </td>
   </tr>
   <tr>
@@ -71,7 +71,7 @@ function toggle()
         <li><a style="color: red"
           href="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-buildflow_master">Build Flow</a> (once a week, all the projects' jobs are 
           built in order) 
-          - <a href=swimlanes.html>Interdependencies between jobs &amp; job order, aka "swimlanes"</a></li>
+          - <a href=swimlanes.md>Interdependencies between jobs &amp; job order, aka "swimlanes"</a></li>
         <li><a style="color: red"
           href="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_Trunk/">All projects' jobs, overall test results, unstable jobs</a></li>
         <ul>
@@ -124,9 +124,9 @@ function toggle()
             <hr />
             <ul>
               <li><b><a style="color: red"
-                href="http://www.qa.jboss.com/binaries/RHDS/builds/staging/devstudio.product_trunk/installer/">JBDS Installer</a></b> :: 
+                href="http://www.qa.jboss.com/binaries/RHDS/builds/staging/devstudio.product_master/installer/">JBDS Installer</a></b> :: 
                 <b><a style="color: red"
-                href="http://www.qa.jboss.com/binaries/RHDS/builds/staging/devstudio.product_trunk/all/repo/">Update Site</a></b>
+                href="http://www.qa.jboss.com/binaries/RHDS/builds/staging/devstudio.product_master/all/repo/">Update Site</a></b>
               </li>
             </ul>
           </ul>
@@ -148,7 +148,7 @@ function toggle()
   </tr>
 </table>
 <p align="right"><i><small>Last updated 2013-04-07</small></i>
-<br/><small><a href=trunk.html>trunk</a> :: <a href=4.1.kepler.html>4.1.x / 7.x (Kepler)</a> :: <a href=4.0.juno.html>4.0.x / 6.x (Juno)</a> :: <a href=3.3.indigo.html>3.3.x / 5.x (Indigo)</a> :: <a href=3.2.helios.html>3.2.x / 4.x (Helios)</a></small>
+<br/><small><a href=trunk.md>trunk</a> :: <a href=4.1.kepler.md>4.1.x / 7.x (Kepler)</a> :: <a href=4.0.juno.md>4.0.x / 6.x (Juno)</a> :: <a href=3.3.indigo.md>3.3.x / 5.x (Indigo)</a> :: <a href=3.2.helios.md>3.2.x / 4.x (Helios)</a></small>
 </p>
 
 </body>

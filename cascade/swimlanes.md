@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Build Job Swimlanes</title>
 <style>
-@import url("../../web/site.css");
+@import url("http://download.jboss.org/jbosstools/web/site.css");
 </style>
 <body>
 <p align="center"><table width="860" align="center">
