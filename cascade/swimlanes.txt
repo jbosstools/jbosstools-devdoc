@@ -1,0 +1,93 @@
+Revised swimlanes, as implemented for 3.2.x, 3.3.x, 4.0.x jobs
+
+Last updated 2012/10/22
+
+------------------------
+
+New in 4.0 (Core):
+
+New component hierarchy/organization (after migration to git):
+
+https://issues.jboss.org/secure/attachment/12357087/12357087_max_suggestio.png
+
+* migration to git: https://issues.jboss.org/browse/JBIDE-12475
+
+* deltacloud [removed]
+
+* runtime no longer depends on as, seam
+
+New in 4.0 (SOA Tooling):
+
+* Flow/jbpm4/jpdl4 removed. See https://issues.jboss.org/browse/JBIDE-12631
+
+After migration, job flows will be:
+
+1. CME {central/maven/examples} -> JavaEE {seam, jsf, cdi, struts} -> jst, vpe, xulrunner, Server, Base 
+2. BIRT -> Hibernate, Server, gwt, forge, freemarker  -> Base
+3. webservices (ws), openshift -> Server {jmx, as, archives}  -> Base {common, runtime, tests, usage}
+	(both ws and openshift depend on Server, which depends on Base)
+	(Server is composed of as depending on archives and on jmx)
+	(Base is composed of common, runtime, tests, and usage)
+
+------------------------
+
+New in 3.3 (Core):
+
+tptp [REMOVED]
+forge -> [NONE]
+(all but common and tests) -> usage
+
+jmx -> tests, common, usage
+examples -> portlet, jst, runtime, as, archives, jmx, hibernate, xulrunner, vpe, jsf, seam
+portlet -> seam, as, tests, usage
+seam -> hibernate, jsf 
+central -> examples, portlet, seam, as, archives, jmx, jsf, vpe, jst, hibernate, freemarker, runtime, common, tests, maven, cdi, usage
+runtime -> common, tests, jmx, as, seam
+cdi -> jst
+usage -> common, tests
+ws -> common
+maven -> examples
+openshift -> as, jmx, archives, common, tests
+birt -> hibernatetools
+xulrunner, gwt, freemarker -> usage
+gwt -> xulrunner
+
+------------------------
+
+New in 3.3 (SOA Tooling):
+
+smooks [REMOVED]
+
+bpel -> as, archives, jmx, common, tests
+esb -> as, jst, common, tests
+jbpm -> flow, common -> tests 
+runtime-soa -> runtime, jbpm, flow, esb, as (also needs drools as binary upstream; resolve from staging composite site)
+teiid, modeshape -> tests
+
+(also includes SwitchYard, Drools, Savara)
+
+----------------------------------------
+
+In 3.2 / 3.3:
+
+maven   -> cdi  -> jst -> common -> tests
+	-> seam  -> jst -> common -> tests
+    	-> seam -> as -> archives, jmx -> tests
+        -> hibernate -> freemarker -> tests
+        -> jsf -> vpe -> jst -> common -> tests
+
+struts -> vpe -> xulrunner
+
+examples -> portlet
+
+birt, portlet, modeshape, profiler, smooks, tptp -> tests
+
+ws, deltacloud -> as -> archives, jmx -> tests
+
+bpel -> archives
+
+jbpm -> flow, common -> tests 
+
+esb -> jst -> common -> tests
+
+runtime, tests, usage, drools, pi4soa, savara, teiid -> [NONE]
