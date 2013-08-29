@@ -188,3 +188,15 @@ Template:
 
 17. Update target-platform job on Jenkins to build the new SNAPSHOT (eg: 4.30.0.Alpha1 -> 4.30.0-Alpha2-SNAPSHOT)
 
+**Releasing the Target Platform update sites to the community**:
+
+If the target platform is to be used by a recently released development milestone or stable release, 
+these composite site pointers need to be updated to point at this new released target platform:
+ 
+    * http://download.jboss.org/jbosstools/targetplatforms/jbosstools/kepler/
+    * http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/kepler/
+    * http://download.jboss.org/jbosstools/targetplatforms/jbtistarget/kepler/
+    * http://download.jboss.org/jbosstools/targetplatforms/jbdsistarget/kepler/
+    * etc.
+    
+
