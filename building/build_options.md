@@ -14,7 +14,7 @@ Most user-oriented JBoss Tools profiles are meant to give you control on the dep
 Some profiles and properties allow to control which versions of 3rd-party (Eclipse, GWT, Atlassian...) dependencies to use
 * `-P minimum` (default) will use the minimum version of Eclipse and other dependency we want JBoss Tools to be compatible with
 * `-P maximum` will use the highest version of dependency JBoss Tools must be compatible with. These versions will be the one provided along with JBoss Developer Studio RCP application.
-* `-DTARGET_PLATFORM_VERSION=...` allows you to select a specific version for the target platform for this build. This can be used to test older targets than the minimal one, or some experimental target platfroms.
+* `-Dtpc.version=...` allows you to select a specific version for the target platform for this build. This can be used to test older targets than the minimal one, or some experimental target platfroms.
 
 Sone profiles allows to select the place from where 3rd-party dependencies will be fetched
 * `-P multiple.target` will use a target platform which references multiple sites for the multiple dependencies.

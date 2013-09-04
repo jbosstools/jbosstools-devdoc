@@ -22,15 +22,15 @@ Suggestion:
   In case of urgency build + one project lead is considered ok, but should be the exception.
 . Apply the pull-request
 
-== Create Jira outlining the request 
+== Create Jira outlining the request
 
 Use https://jira.jboss.org/jira/browse/JBIDE to open the issue.
 
-*Type of bug*: 
-    
+*Type of bug*:
+
 _Feature-Request_ if this change is introducing or removing a new feature/set of plugins
-    
-_Bug_ if this is just to fix/update existing plugins 
+
+_Bug_ if this is just to fix/update existing plugins
 
 *Component*: _target-platform_ + releated components if applicable (i.e. _gwt_, and none if global used dependency)
 
@@ -42,15 +42,15 @@ _Bug_ if this is just to fix/update existing plugins
 
 Template:
 
-  Reason: 
-  License and owner: 
+  Reason:
+  License and owner:
   Original repository: http://
   JBoss Mirrored repository: http://downloads.jboss.org/jbosstools/updates/requirements/propername
   Source:
   Affected projects:
   Required in devstudio: Yes|No
   Type of dependency: testing|central-only|distribution
-  List of bundles added/removed: 
+  List of bundles added/removed:
 
 Provide enough detail for those checking the issue and those wanting to try out the suggested changes have enough info to do so
 without navigating too many jiras/repos etc. If you do not know the answer to these put "Unknown" as answer and if not applicable put "N/A"
@@ -65,7 +65,7 @@ _JBoss Mirrored repository_: Which repository on http://downloads.jboss.org/jbos
 
 _Source bundle availability_: Does the repository include source bundles for these or are the source code available elsewhere ?
 
-_Affected projects_: Which projects are this known to effect ? Inside and outside of JBoss Tools core. 
+_Affected projects_: Which projects are this known to effect ? Inside and outside of JBoss Tools core.
 
 _Required in devstudio_: If the plugin is only needed in JBoss Tools for an incubation like feature it should not be in devstudio target platform.
 
@@ -106,7 +106,7 @@ Edit `jbosstools-multiple-target`, update an existing location or add as necessa
     </location>
 ----
 
-Note: 
+Note:
 If you do not have a mirrored download.jboss.org location use the direct url - importance is to get a .target file that can be easily tested.
 
 
@@ -119,7 +119,7 @@ but if have built or used the target platform before you should be done within i
 
 Once this is built you can test it in your component build by running:
 
- $ mvn verify -Dtpc.targetKind=multiple -Dtpc.version=4.30.5.Alpha3-SNAPSHOT 
+ $ mvn verify -Dtpc.targetKind=multiple -Dtpc.version=4.30.5.Alpha3-SNAPSHOT
 
 where the `tpc.version` is the version listed in the `pom.xml` file of the target platform and 'tpc.targetKind' is set to 'multiple' since the default ('unified') will not work when the target platform is not yet built and published publically.
 
@@ -146,14 +146,14 @@ Please review this PR and yell if there is anything shocking. You can use the fo
   jbosstools-target-platforms$ cd jbosstools/multiple
   multiple$ mvn clean install -P \!multiple2repo
   multiple$ cd /path/to/your/component
-  component$ mvn clean verify -DTARGET_PLATFORM_VERSION=4.31.0.Alpha1-SNAPSHOT -Pmultiple
+  component$ mvn clean verify -Dtpc.version=4.31.0.Alpha1-SNAPSHOT -Pmultiple
 
 As this will be the TP which we'll use to build upcoming JBT 4.2.0.Alpha1 by the end of next week, I HIGHLY recommend you to give a try to the few previous lines to anticipate unexpected changes.
 
 Cheers,
 ----
 
-== Await feedback 
+== Await feedback
 
 TBD: how/when/criteria to put into master.
 

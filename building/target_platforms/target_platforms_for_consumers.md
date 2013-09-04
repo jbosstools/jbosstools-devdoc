@@ -38,7 +38,7 @@ Then import the `jbosstools/multiple` project into Eclipse, double-click on _mul
 
 ### In Maven build
 
-JBoss Tools component Maven builds are configured to consume the right target platform from Nexus. But you can override the version to use by specifying `-DTARGET_PLATFORM_VERSION=4.30.5` to the build command; then Maven will use the specified version of the target platform and will use it to resolve dependencies
+JBoss Tools component Maven builds are configured to consume the right target platform from Nexus. But you can override the version to use by specifying `-Dtpc.version=4.30.5` to the build command; then Maven will use the specified version of the target platform and will use it to resolve dependencies
 
 ## Building target platforms locally
 

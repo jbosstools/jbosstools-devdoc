@@ -47,7 +47,7 @@ Follow these instructions to add reference to JBoss Repositories into your setti
     </activeProfiles>
 </settings>
 ```
- 
+
 ## My build is failing due to OutOfMemory or PermGen issues! How do I give Maven more memory?
 
 To configure the amount of memory used by Maven, you can define MVN_OPTS as follows, either in the mvn / mvn.bat script you use to run Maven, or set as global environment variables. Here's how to do so for Fedora, Ubuntu, Windows, OSX.
@@ -55,9 +55,9 @@ To configure the amount of memory used by Maven, you can define MVN_OPTS as foll
 ```bash
 set MAVEN_OPTS=-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m
 ```
- 
+
 ##  How do I build via commandline?
- 
+
 1. Fetch code from github
 2. Run `mvn`
 3. Repeat for other projects
@@ -108,7 +108,7 @@ Use `verify` to build, but NOT install anything into your `~/.m2` folder.
 
 ## How do I clean out artifacts I might have installed to my ~/.m2/repo ?
 
- 
+
 
 ## What if I've already built something locally, but I want to build against the server version instead of my local repo?
 
@@ -135,7 +135,7 @@ cd ~/jbosstools/jbosstools-target-platforms/jbosstools/multiple/target/jbosstool
 
 ## Why is there more than one target platform?
 
-Every time we make changes to the target platform, either to add/remove something, or to change the included version, we release a new version. 
+Every time we make changes to the target platform, either to add/remove something, or to change the included version, we release a new version.
 
 In order to verify we can build against the oldest version of a target platform (eg., one based on Eclipse 4.2.0, or "minimum" target platform) but also run tests against the latest for that stream (eg., based on Eclipse 4.2.2, or "maximum" target platform), we need to maintain multiple versions.
 
@@ -172,7 +172,7 @@ See <a href="http://www.jboss.org/tools/docs/testing.html">http://www.jboss.org/
 Most of the time, you don't need any profiles or -D properties. Here are some profiles and properties you might want to use in special cases.
 
 * `-Pmaximum` : selects the default maximum target platform version instead of the default minimum one. Useful when running tests to verify that your code works against a newer target platform (eg., Eclipse 4.2.2 instead of 4.2.0)
-* `-DTARGET_PLATFORM_VERSION` : allows you to pick a specific target platform version from those available in Nexus. 
+* `-Dtpc.version` : allows you to pick a specific target platform version from those available in Nexus.
 
 See also '<a href="#how-to-i-skip-running--tests-how-do-i-make-tests-not-fail-or-only-fail-after-all-tests-run">How to I skip running tests? How do I make tests not fail? Or only fail after ALL tests run?</a>' above for test-related properties.
 
