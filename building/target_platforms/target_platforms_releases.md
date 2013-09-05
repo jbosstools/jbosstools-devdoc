@@ -106,12 +106,7 @@ Template:
 
         $ mvn clean verify -Dtpc.version=4.30.5.CR1
 
-    If you want to build it locally to get a TP with source bundles included, do this:
-
-        $ git clone https://github.com/jbosstools/jbosstools-target-platforms.git
-        $ cd jbosstools-target-platforms
-        $ git co 4.30.5.CR1
-        $ mvn clean verify -Dmirror-target-to-repo.includeSources=true
+    For advanced usage and help (using in IDE, building a mirror locally, using a zip...), plese read https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/target_platforms/target_platforms_for_consumers.md
 
 16. Bump target-platform version and add it a -SNAPSHOT to start working on future version.
 
