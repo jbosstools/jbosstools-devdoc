@@ -27,7 +27,7 @@ Depending on the version of JBoss Tools you are targetting, you can use one targ
 
 ### Load in IDE
 
-Checkout the branch of that tag of the target platform. As an example, if you want to access the target-platforms target Eclipse 4._3_.**0**, you'll be interested in checking out branch 4._3_**0**.x
+Checkout the branch of that tag of the target platform. As an example, if you want to access the target-platforms target Eclipse 4.<em>3</em>.<b>0</b>, you'll be interested in checking out branch 4.<em>3</em><b>0</b>.x
 ```bash
 git clone git@github.com:jbosstools/jbosstools-target-platforms.git
 cd jbosstools-target-platforms
@@ -42,14 +42,14 @@ JBoss Tools component Maven builds are configured to consume the right target pl
 
 ## Building target platforms locally
 
-### Why?
-
-Building target-platforms locally is a way to save some time. It's mainly useful when you plan to use the same target-platform on multiple Eclipse workspaces, as it allows to resolve the target-platform only once instead of once per workspace.
-
 ### Why not?
 
 Just for building the plugins, it's better to directly consume the target platform definition files as explained earlier, but if you want the source for the plugins you currently need to build the target platforms locally to get the sources.
 In case you'll only need this target-platform in a single Eclipse workspace, this approach is overhead. Instead, just enable the multiple.target in your Eclipse using PDE (takes ~1 hours).
+
+### Why?
+
+Building target-platforms locally is a way to save some time. It's mainly useful when you plan to use the same target-platform on multiple Eclipse workspaces, as it allows to resolve the target-platform only once instead of once per workspace.
 
 ### How?
 
