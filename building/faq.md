@@ -112,9 +112,15 @@ Use `verify` to build, but NOT install anything into your `~/.m2` folder.
 
 ## What if I've already built something locally, but I want to build against the server version instead of my local repo?
 
-There are two approaches that work here:
-* override temporarily when building, using -Dtycho.localArtifacts=ignore, or
-* delete ~/.m2/repository/.meta/p2-local-metadata.properties
+You can use `-Dtycho.localArtifacts=ignore` to force Tycho to ignore any locally available built artifacts that are not part of the project you build.
+
+Thus if you just built `jbosstools-server` locally, then go to `jbosstools-openshift` normally this build would pick up its `server` dependencies from the artifacts you just built from `jbosstools-server`.
+With `-Dtycho.localArtifacts=ignore` the local `jbosstools-server` artifacts will be ignored but all in `jbosstools-openshift` will be honored since that is part of your build.
+
+If that does not give the result you expect you can do `rm ~/.m2/repository/.meta/p2-local-metadata.properties`.
+
+This will remove all knowledge about locally built plugins - including things you might don't want to have lost.
+Thus try `-Dtycho.localArtifacts=ignore` first, unless you know you don't want to reuse any local built plugins.
 
 ## How do I build a target platform?
 Currently, you should not need to build a target platform locally if you're building w/ maven via commandline. But if you'd like to materialize a target platform for use in Eclipse, you can do so like this:
