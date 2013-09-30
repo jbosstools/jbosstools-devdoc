@@ -107,6 +107,12 @@ Template:
         $ mvn clean verify -Dtpc.version=4.30.5.CR1
 
     For advanced usage and help (using in IDE, building a mirror locally, using a zip...), plese read https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/target_platforms/target_platforms_for_consumers.md
+    
+    
+    What's next?
+    ============
+
+    Branch 4.30.x for target platform has been prepared for potential upgrades, and it's version is now 4.30.5.CR2-SNAPSHOT.
 
 16. Bump target-platform version and add it a -SNAPSHOT to start working on future version.
 
