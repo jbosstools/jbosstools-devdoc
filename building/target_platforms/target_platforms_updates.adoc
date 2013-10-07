@@ -140,15 +140,19 @@ It consists in the following changes:
 ** most projects have contributed a RC1 build
 ** some projects (Orbit, EGit) already contributed a RC2 build
 
-Please review this PR and yell if there is anything shocking. You can use the following stuff to try to build your component against this suggested PR:
-  jbosstools-target-platforms$ git fetch mistria JBIDE-15382
-  jbosstools-target-platforms$ git checkout FETCH_HEAD
-  jbosstools-target-platforms$ cd jbosstools/multiple
-  multiple$ mvn clean install -P \!multiple2repo
-  multiple$ cd /path/to/your/component
-  component$ mvn clean verify -Dtpc.version=4.31.0.Alpha1-SNAPSHOT -Pmultiple
+Please review this PR and yell if there is anything shocking. You can use the following stuff to try to build build the TP locally and try out against your component:
+  
+Build target-platform:
 
-As this will be the TP which we'll use to build upcoming JBT 4.2.0.Alpha1 by the end of next week, I HIGHLY recommend you to give a try to the few previous lines to anticipate unexpected changes.
+  $ cd jbosstools-target-platforms
+  $ git fetch mistria JBIDE-15382
+  $ git checkout FETCH_HEAD
+  $ cd jbosstools/multiple
+  $ mvn clean install -P \!multiple2repo
+  
+Try with just built target-platform:
+  $ cd /path/to/your/component
+  $ mvn clean verify -Dtpc.version=4.31.0.Alpha1-SNAPSHOT -Pmultiple
 
 Cheers,
 ----
