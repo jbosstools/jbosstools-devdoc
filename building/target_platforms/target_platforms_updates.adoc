@@ -152,7 +152,7 @@ Build target-platform:
   
 Try with just built target-platform:
   $ cd /path/to/your/component
-  $ mvn clean verify -Dtpc.version=4.31.0.Alpha1-SNAPSHOT -Pmultiple
+  $ mvn clean verify -Dtpc.version=4.31.0.Alpha1-SNAPSHOT -Pmultiple.target
 
 Cheers,
 ----
