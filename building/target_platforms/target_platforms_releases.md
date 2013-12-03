@@ -87,8 +87,8 @@ Template:
     =====
     Beta1 is what JBoss Tools 4.1.0.CR1 will use.
 
-    All jobs in jenkins for *branch* have been updated to use TP 4.30.5.CR1.
-    Parent pom 4.1.0.CR1 for *branch* has been updated to use TP 4.30.5.CR1.
+    All jobs in jenkins for branch jbosstools-4.1.x have been updated to use TP 4.30.5.CR1.
+    Parent pom 4.1.0.CR1 for branch jbosstools-4.1.x has been updated to use TP 4.30.5.CR1.
 
     All jobs in jenkins for *master* have been updated to use TP 4.30.5.CR2-SNAPSHOT.
     Parent pom 4.2.0.Alpha1-SNAPSHOT for *master* has been updated to use TP 4.30.5.CR2-SNAPSHOT.
@@ -98,6 +98,7 @@ Template:
 
     Zip: http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.30.5.CR1/jbosstoolstarget-4.30.5.Beta1.zip
     p2 site: http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.30.5.CR1/REPO/
+    Git tag: https://github.com/jbosstools/jbosstools-target-platforms/tree/4.30.6.CR1
 
     Testing/Development
     ===================
