@@ -10,6 +10,6 @@ This will gets  the dependencies from the latest aggregate snapshots from contin
 ## Tell me more
 
 * [FAQ/Troubleshooting](faq.md)
-* [Detailed documentation](details.md)
+* [Detailed documentation](how_to_build_jbosstools_4.adoc)
 * [Build options](build_options.md)
 * [Build from inside Eclipse](build_from_eclipse.md)
