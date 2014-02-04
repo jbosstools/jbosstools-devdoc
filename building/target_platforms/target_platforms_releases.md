@@ -71,7 +71,15 @@ download.jboss.org & www.qa
 
 13. Update affected jobs to point explicitly to the new target platform versions (ref: [JBIDE-13673](https://issues.jboss.org/browse/JBIDE-13673))
 14. Update relevant SNAPSHOT of parent pom so this new target becomes a default where we want it to be default
-15. Announce on jbosstools-dev@lists.jboss.org that the target-platform is released and how to get it from Git tag (for IDE usage) and how to use it at build-time (either by setting `-Dtpc.version=<released-version>` or by using the new SNAPSHOT of the parent pom which directly references it)
+15. Bump target-platform version and add it a -SNAPSHOT to start working on future version.
+
+        $ mvn -Dtycho.mode=maven versions:set -DnewVersion=x.y.z.qualifier-SNAPSHOT
+        $ git add pom.xml */pom.xml */*/pom.xml
+        $ git commit -m "Bump to x.y.z.qualifier-SNAPSHOT"
+        $ git push origin <branch>
+
+16. Update target-platform job on Jenkins to build the new SNAPSHOT (eg: 4.30.0.Alpha1 -> 4.30.0-Alpha2-SNAPSHOT)
+17. Announce on jbosstools-dev@lists.jboss.org that the target-platform is released and how to get it from Git tag (for IDE usage) and how to use it at build-time (either by setting `-Dtpc.version=<released-version>` or by using the new SNAPSHOT of the parent pom which directly references it)
 
 Template:
 
@@ -115,14 +123,6 @@ Template:
 
     Branch 4.30.x for target platform has been prepared for potential upgrades, and it's version is now 4.30.5.CR2-SNAPSHOT.
 
-16. Bump target-platform version and add it a -SNAPSHOT to start working on future version.
-
-        $ mvn -Dtycho.mode=maven versions:set -DnewVersion=x.y.z.qualifier-SNAPSHOT
-        $ git add pom.xml */pom.xml */*/pom.xml
-        $ git commit -m "Bump to x.y.z.qualifier-SNAPSHOT"
-        $ git push origin <branch>
-
-17. Update target-platform job on Jenkins to build the new SNAPSHOT (eg: 4.30.0.Alpha1 -> 4.30.0-Alpha2-SNAPSHOT)
 
 **Releasing the Target Platform update sites to the community**:
 
