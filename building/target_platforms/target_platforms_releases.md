@@ -111,6 +111,8 @@ Template:
     Testing/Development
     ===================
 
+    
+    This should be used by default if you're using the latest SNAPSHOT of parent pom on master, so a simple "mvn clean verify"     should be enough to build against this new target platform.
     You can try it out and use it directly like this:
 
         $ mvn clean verify -Dtpc.version=4.30.5.CR1
