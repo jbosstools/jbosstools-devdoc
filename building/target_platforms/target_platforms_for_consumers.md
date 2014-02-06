@@ -34,7 +34,7 @@ cd jbosstools-target-platforms
 git checkout 4.30.x
 ```
 
-Then import the `jbosstools/multiple` project into Eclipse, double-click on _multiple.target_ and click _Set as target platform_ in the target platform editor. **Beware**, this is a ~1 hour operation blocking your IDE.
+Then import the `jbosstools/multiple` project into Eclipse. When done, go to _Preference/Plug-in Development/Target Platforms_, select the recent _multiple.target_ and click _Apply_ (or _Reload_ in case of updates only). **Beware**, this is a long operation (can take between a few minutes and 1 hour depending on your connection) blocking your IDE.
 
 ### In Maven build
 
