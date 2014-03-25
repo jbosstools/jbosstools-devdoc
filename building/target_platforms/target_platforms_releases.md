@@ -72,7 +72,7 @@ download.jboss.org & www.qa
 14. Update affected jobs to point explicitly to the new target platform versions (ref: [JBIDE-13673](https://issues.jboss.org/browse/JBIDE-13673))
 15. Update relevant SNAPSHOT of parent pom so this new target becomes a default where we want it to be default (most likely on next branch for milestone if already available)
 16. If the target platform is to be used by a recently released development milestone or stable release, these composite site pointers need to be updated to point at this new released target platform. Example:
-  * http://download.jboss.org/jbosstools/targetplatforms/jbosstools/luna/ composite*.xml files get updated to point to ../4.40.0.Beta1
+  * http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/luna/ composite*.xml files get updated to point to ../4.40.0.Beta1
   * http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/luna/  (same thing)
   * http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/luna/  (same thing)
   * etc.
@@ -103,14 +103,11 @@ Template:
     All jobs in jenkins for branch jbosstools-4.1.x have been updated to use TP 4.30.5.CR1.
     Parent pom 4.1.0.CR1 for branch jbosstools-4.1.x has been updated to use TP 4.30.5.CR1.
 
-    All jobs in jenkins for *master* have been updated to use TP 4.30.5.CR2-SNAPSHOT.
-    Parent pom 4.2.0.Alpha1-SNAPSHOT for *master* has been updated to use TP 4.30.5.CR2-SNAPSHOT.
 
+    The following p2 repositories have been modified to point to this new target platform:
 
-    The following URLs have been modified to point to this new target platform:
-
-    * http://download.jboss.org/jbosstools/targetplatforms/jbosstools/luna/
-    * http://download.jboss.org/jbosstools/targetplatforms/jbdevstudio/luna/
+    * http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/luna/
+    * http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/luna/
     * http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/luna/
 
     Download
@@ -136,5 +133,6 @@ Template:
     ============
 
     Branch 4.30.x for target platform has been prepared for potential upgrades, and it's version is now 4.30.5.CR2-SNAPSHOT.
-
+    All jobs in jenkins for *master* have been updated to use TP 4.30.5.CR2-SNAPSHOT.
+    Parent pom 4.2.0.Alpha1-SNAPSHOT for *master* has been updated to use TP 4.30.5.CR2-SNAPSHOT.
 
