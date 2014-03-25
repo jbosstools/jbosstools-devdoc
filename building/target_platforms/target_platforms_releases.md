@@ -61,25 +61,30 @@ Here is the suggested process:
         (where 4.30.5.CR2 has to be replaced by the actual version, and 4.30.x with the actual branch)
 
 9. Repeat the 2 previous steps for jbosstools-discovery component to update and tag its target-platform.
-9. Update [jbosstoolstargetplatforms-matrix](https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatforms-matrix/) job to build new SNAPSHOTless version (and therefore produce new update site folders) (eg., 4.30.4-SNAPSHOT -> 4.30.4)  (TODO: make this a parameter)
-10. Run the CI jobs to publish new versions.
-11. Verify everything is correct on staging repo, plus published JBT/JBDS target platform update sites on
+10. Update [jbosstoolstargetplatforms-matrix](https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatforms-matrix/) job to build new SNAPSHOTless version (and therefore produce new update site folders) (eg., 4.30.4-SNAPSHOT -> 4.30.4)  (TODO: make this a parameter)
+11. Run the CI jobs to publish new versions.
+12. Verify everything is correct on staging repo, plus published JBT/JBDS target platform update sites on
 download.jboss.org & www.qa
-11. Go to [http://repository.jboss.org/nexus](Nexus) and promote the target-platforms as release. (See https://community.jboss.org/wiki/MavenDeployingARelease)
+13. Go to [http://repository.jboss.org/nexus](Nexus) and promote the target-platforms as release. (See https://community.jboss.org/wiki/MavenDeployingARelease)
 
 **After** the release:
 
-13. Update affected jobs to point explicitly to the new target platform versions (ref: [JBIDE-13673](https://issues.jboss.org/browse/JBIDE-13673))
-14. Update relevant SNAPSHOT of parent pom so this new target becomes a default where we want it to be default
-15. Bump target-platform version and add it a -SNAPSHOT to start working on future version.
+14. Update affected jobs to point explicitly to the new target platform versions (ref: [JBIDE-13673](https://issues.jboss.org/browse/JBIDE-13673))
+15. Update relevant SNAPSHOT of parent pom so this new target becomes a default where we want it to be default (most likely on next branch for milestone if already available)
+16. If the target platform is to be used by a recently released development milestone or stable release, these composite site pointers need to be updated to point at this new released target platform. Example:
+  * http://download.jboss.org/jbosstools/targetplatforms/jbosstools/luna/ composite*.xml files get updated to point to ../4.40.0.Beta1
+  * http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/luna/  (same thing)
+  * http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/luna/  (same thing)
+  * etc.
+17. Bump target-platform version and add it a -SNAPSHOT to start working on future version.
 
         $ mvn -Dtycho.mode=maven versions:set -DnewVersion=x.y.z.qualifier-SNAPSHOT
         $ git add pom.xml */pom.xml */*/pom.xml
         $ git commit -m "Bump to x.y.z.qualifier-SNAPSHOT"
         $ git push origin <branch>
 
-16. Update target-platform job on Jenkins to build the new SNAPSHOT (eg: 4.30.0.Alpha1 -> 4.30.0-Alpha2-SNAPSHOT)
-17. Announce on jbosstools-dev@lists.jboss.org that the target-platform is released and how to get it from Git tag (for IDE usage) and how to use it at build-time (either by setting `-Dtpc.version=<released-version>` or by using the new SNAPSHOT of the parent pom which directly references it)
+18. Update target-platform job on Jenkins to build the new SNAPSHOT (eg: 4.30.0.Alpha1 -> 4.30.0-Alpha2-SNAPSHOT)
+19. Announce on jbosstools-dev@lists.jboss.org that the target-platform is released and how to get it from Git tag (for IDE usage) and how to use it at build-time (either by setting `-Dtpc.version=<released-version>` or by using the new SNAPSHOT of the parent pom which directly references it)
 
 Template:
 
@@ -100,6 +105,13 @@ Template:
 
     All jobs in jenkins for *master* have been updated to use TP 4.30.5.CR2-SNAPSHOT.
     Parent pom 4.2.0.Alpha1-SNAPSHOT for *master* has been updated to use TP 4.30.5.CR2-SNAPSHOT.
+
+
+    The following URLs have been modified to point to this new target platform:
+
+    * http://download.jboss.org/jbosstools/targetplatforms/jbosstools/luna/
+    * http://download.jboss.org/jbosstools/targetplatforms/jbdevstudio/luna/
+    * http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/luna/
 
     Download
     ========
@@ -124,17 +136,5 @@ Template:
     ============
 
     Branch 4.30.x for target platform has been prepared for potential upgrades, and it's version is now 4.30.5.CR2-SNAPSHOT.
-
-
-**Releasing the Target Platform update sites to the community**:
-
-If the target platform is to be used by a recently released development milestone or stable release,
-these composite site pointers need to be updated to point at this new released target platform:
-
-    * http://download.jboss.org/jbosstools/targetplatforms/jbosstools/kepler/
-    * http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/kepler/
-    * http://download.jboss.org/jbosstools/targetplatforms/jbtistarget/kepler/
-    * http://download.jboss.org/jbosstools/targetplatforms/jbdsistarget/kepler/
-    * etc.
 
 
