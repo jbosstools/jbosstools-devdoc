@@ -1,164 +1,234 @@
 = Process for updates to targetplatforms
 
-We need to be careful about our targetplatform not growing or change
-too uncontrollable. Below is a suggestion for a process that attempts
-to find middleground between being able to add anything by developers
-for testing and exploration but once it goes into the master repo it
-should have gone through a sanity check that goes beyond just "can it
-compile".
+Target platforms should not grow or change unexpectedly. 
 
-Goals for the process is to:
+Below is the process to follow for sanely changing the target platform to empower developers and keep churn to a minimum.
 
-. Avoid unnecessary churn in failed builds because of target platform changes
-. Avoid adding dependencies to the target platform that are bad or unnecessary
-. Be able to trace why and when changes were made to the target platform
+Goals:
 
-The Process:
+. Avoid unnecessary churn (failed builds)
+. Avoid adding unnecessary or incomplete dependencies
+. Document why and when changes occur
 
-. <<create-jira-outlining-the-request,Create jira>>
-. <<create-pull-request-and-test,Create Pull-request with changes, test it locally add link to jira>>
-. Send email to jbosstools-dev@lists.jboss.org requesting feedback
-. Await approvals from build, affected team leads and project lead(s).
-  In case of urgency build + one project lead is considered ok, but should be the exception.
+Process:
+
+. <<create-jira-outlining-the-request,Create JIRA outlining the request>>
+. <<create-pull-request,Create pull-request with changes>>
+. <<validate-local-changes,Validate local changes>>
+. <<test-local-target-platform-use,Test local target platform use>>
+. Optionally, produce a https://github.com/irbull/p2diff[p2diff] report to include in JIRA and/or email
+. <<send-mail-for-feedback,Send email>> to jbosstools-dev@lists.jboss.org requesting feedback. State expected feedback window (usually 1 week).
+. <<await-feedback,Await feedback>> from build, affected team leads and project lead(s). For urgent changes, 1 project lead is OK.
 . Apply the pull-request
 
-== Create Jira outlining the request
+== Create JIRA outlining the request
 
 Use https://jira.jboss.org/jira/browse/JBIDE to open the issue.
 
 *Type of bug*:
 
-_Feature-Request_ if this change is introducing or removing a new feature/set of plugins
+* _Feature Request_ if this change is introducing or removing a new feature/set of plugins
 
-_Bug_ if this is just to fix/update existing plugins
+* _Bug_ if this is just to fix/update existing plugins
 
-*Component*: _target-platform_ + releated components if applicable (i.e. _gwt_, and none if global used dependency)
+*Component*: _target-platform_ + releated components if applicable (i.e. _gwt_)
 
-*Assignee*: Leave it to its default setting
+*Assignee*: (default)
 
-*Fix version*: Set it to the corresponding JBoss Tools release or set of releases this is needed/intended for.
+*Fix version*: Set it to the corresponding JBoss Tools release
 
 *Description*:
 
-Template:
+Template (copy into JIRA):
 
-  Reason:
-  License and owner:
-  Original repository: http://
-  JBoss Mirrored repository: http://downloads.jboss.org/jbosstools/updates/requirements/propername
-  Source:
+----
+  Reason: 
+  
+  License and owner: 
+  
+  Original repo: http://third-party-vendor.com/path/to/updates-site/
+
+  JBoss mirror: http://downloads.jboss.org/jbosstools/updates/requirements/<projectName>
+
+  Sources:
+
   Affected projects:
-  Required in devstudio: Yes|No
+
+  Include in JBDS: Yes|No
+
   Type of dependency: testing|central-only|distribution
+
   List of bundles added/removed:
 
-Provide enough detail for those checking the issue and those wanting to try out the suggested changes have enough info to do so
-without navigating too many jiras/repos etc. If you do not know the answer to these put "Unknown" as answer and if not applicable put "N/A"
+  If applicable:
 
-_Reason_: Why is the request needed, typical reasons are: "Required by new feature described in JBIDE-xyz", "Eclipse releasetrain update from Kepler M5 to M6" or "Removal because it conflicts with JBTIS and give bug describe at JBIDE-xyz"
+    non-p2 repository:
+  
+    non-p2 ids:
 
-_License and owner_: Which license are these features available under and who are the maintainer ? i.e. EPL, Google.
+----
 
-_Owner and Original repository_: which repository are the plugins/features from ? i.e. http://dl.google.com/eclipse/plugin/4.2
+Provide enough detail to explain why the change is needed, and what is required to verify. If you do not know the answer use "Unknown"; if not applicable, use "N/A".
 
-_JBoss Mirrored repository_: Which repository on http://downloads.jboss.org/jbosstools/updates/requirements/ are the original repostiory mirrored to or should be mirrored to, i.e. http://downloads.jboss.org/jbosstools/updates/requirements/gwt/3.1.0.v201208080121-rel-r42/
+* _Reason_: Why is the request needed, typical reasons are: "Required by new feature described in JBIDE-xyz", "Eclipse releasetrain update from Kepler M5 to M6" or "Removal because it conflicts with JBTIS and give bug describe at JBIDE-xyz"
 
-_Source bundle availability_: Does the repository include source bundles for these or are the source code available elsewhere ?
+* _License and owner_: Which license are these features available under and who are the maintainer? i.e. EPL, Google.
 
-_Affected projects_: Which projects are this known to effect ? Inside and outside of JBoss Tools core.
+* _Original repo_: which repository are the plugins/features from? eg., http://dl.google.com/eclipse/plugin/4.2
 
-_Required in devstudio_: If the plugin is only needed in JBoss Tools for an incubation like feature it should not be in devstudio target platform.
+* _JBoss mirror_: mirror URL to use, eg. http://downloads.jboss.org/jbosstools/updates/requirements/gwt/3.1.0.v201208080121-rel-r42/
 
-_Type of dependency_: is this just for testing (incl. in TP, but not in distribution), central-only (incl. on central but not to be used by our components directly), distribution (incl. in installer/associated updatesite)
+* _Sources_: Are source bundles included in the mirror, or are sources available elsewhere? Use "included" or explain.
 
-_List of bundles added/removed_: Can be a link to a pull-request or pasted diff for .target; if not available list the plugins in sorted order so easier to browse/compare.
+* _Affected projects_: Which projects are this known to affect, both inside and outside JBoss Tools core.
 
-=== Requirements that are not available in a p2 repository
+* _Include in JBDS_: Incubating (unstable) features should only be included in JBoss Tools.
 
-In case your requirement is not available in a p2 repository (i.e. only available as maven artifacts since it is not a p2 nor osgi artifact) we'll need at bit more details
-added.
+* _Type of dependency_: is this just for testing (incl. in TP, but not in distribution), central-only (incl. in Central ONLY, not in the JBoss Tools or JBDS target platform), distribution (incl. in installer & update sites)
 
-_non-p2 repository_: which repository are they located in (i.e. Maven central or jboss repository - please include the exact url you want them from)
-_non-p2 id's_: what are the id's from this repository, in case of Maven it is the GAV (Group, Artefact, Version)
+* _List of bundles added/removed_: https://github.com/irbull/p2diff[p2diff] report or pull-request preferred; if not available, please list features/plugins in alpha-sorted order
 
-   non-p2 repository:
-   non-p2 id's:
+If your requirement is not available in an update site (p2 repository), eg. only available as maven artifact, please include more info:
 
-At the moment of writing we don't have an "orbit" to put these in - awaiting the first TP request to work out those details.
+* _non-p2 repository_: the exact repository URL (eg., Maven central or jboss repository) where the artifact exists
 
-== Create Pull request and test
+* _non-p2 ids_: list the exact ids, eg., for Maven state GAV (Group, Artifact, Version)
+
+Non-p2 artifacts will be added to https://github.com/jbosstools/jbosstools-locus[JBoss Tools Locus] as p2 artifacts, so they can be included in the target platform.
+
+== Create pull request
 
 Following instructions cover the minimal edits needed for a review (a final Pull request needs updates to both jbosstools and devstudio target platform as needed)
 
  $ git clone git@github.com:jbosstools/jbosstools-target-platforms.git
  $ cd jbosstools-target-platforms
  $ git checkout <relevant version.x>
- $ cd jbosstools/multiple
-
-Edit `jbosstools-multiple-target`, update an existing location or add as necessary, for example:
+ 
+Edit `jbosstools/multiple/jbosstools-multiple-target`. You may update an existing location or add a new one:
 
 [source,xml]
 ----
- <location includeAllPlatforms="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-      <unit id="com.android.ide.eclipse.ddms.feature.group" version="21.1.0.v201302060044-569685"/>
-      <unit id="com.android.ide.eclipse.adt.feature.group" version="21.1.0.v201302060044-569685"/>
-      <repository location="https://dl-ssl.google.com/android/eclipse"/>
+    <location includeAllPlatforms="false" includeMode="slicer" type="InstallableUnit" includeSource="true">
+      <repository location="http://download.jboss.org/jbosstools/updates/requirements/atlassian/3.2.2.v20130909/"/>
+      <unit id="com.atlassian.connector.eclipse.jira.feature.group" version="3.2.2.v20130909"/>
+      <unit id="com.thoughtworks.xstream" version="1.3.0.v20100826-1640"/>
+      <unit id="org.joda.time" version="1.6.0.v20081202-0100"/>
     </location>
 ----
 
-Note:
-If you do not have a mirrored download.jboss.org location use the direct url - importance is to get a .target file that can be easily tested.
+If your change affects JBDS too, edit `jbdevstudio/multiple/jbdevstudio-multiple-target` as well.
+
+[NOTE]
+If you do not have a mirrored download.jboss.org location use the vendor's URL, so that the .target file can be easily tested.
 
 
-Now build the target platform:
+== Validate local changes
 
- $ mvn install
+Now build and validate the target platform. 
 
-If this is the first time you build the target platform it will take a while (can be hours dependening on your network connection),
-but if have built or used the target platform before you should be done within in minutes.
+The latest instructions can be found in the https://github.com/jbosstools/jbosstools-target-platforms/blob/master/README.md#updating-versions-of-ius-in-target-files[README]
+
+== Test local target platform use
 
 Once this is built you can test it in your component build by running:
 
- $ mvn verify -Dtpc.targetKind=multiple -Dtpc.version=4.30.5.Alpha3-SNAPSHOT
+ $ mvn verify -Dtpc.targetKind=multiple -Dtpc.version=4.40.0.Beta2-SNAPSHOT
 
 where the `tpc.version` is the version listed in the `pom.xml` file of the target platform and 'tpc.targetKind' is set to 'multiple' since the default ('unified') will not work when the target platform is not yet built and published publically.
 
-If everything is building and it is possible to use the functionallity needed by the fix go ahead and open a pull request.
+If everything builds OK, can be installed (see validation steps in https://github.com/jbosstools/jbosstools-target-platforms/blob/master/README.md#updating-versions-of-ius-in-target-files[README]), and you can use the new functionallity needed by the change, open a pull request for your update.
 
 == Send mail for feedback
 
-Send email to jbosstools-dev@lists.jboss.org requesting feedback.
+Send feedback request email to jbosstools-dev@lists.jboss.org, listing the PR, JIRA link(s), steps to use, and additional info if desired.
 
-Have the mail list PR and Jira and link/text on how to try it out. See the following template.
+Past examples:
+
+* http://lists.jboss.org/pipermail/jbosstools-dev/2014-April/008765.html[For 4.40.0.Beta2: Remove GPE/GWT, fix Atlassian]
+* http://lists.jboss.org/pipermail/jbosstools-dev/2014-March/008683.html[For 4.40.0.Beta1: Add Sapphire] 
+
+[info]
+Using the template below will get you started, but you will still need to fill in these details:
+
+* PR # and JIRA(s)
+* https://github.com/irbull/p2diff[p2diff] report
+
+Template:
+[source,bash]
 ----
-Hi all,
 
-Here is a proposal for a new 4.31.0.Alpha1-SNAPSHOT target platform: https://github.com/jbosstools/jbosstools-target-platforms/pull/19
+# configure these to generate the email body
+TARGET_PLATFORM_VERSION=4.40.0.Beta2-SNAPSHOT
+TOPIC_BRANCH=JBIDE-12345 # use 4.40.x or similar branch if PR is already applied
+GITHUB_USER=mickaelistra # or nickboldt, etc. Use "origin" if PR is already applied
+DEADLINE="7 days" # or "2 days" or "24 hours"
+
+echo "
+Subject:
+
+Proposed change to JBT ${TARGET_PLATFORM_VERSION} target platform:
+
+Body:
+
+Here is a proposal for a change to the JBoss Tools ${TARGET_PLATFORM_VERSION} target platform: 
+
+https://github.com/jbosstools/jbosstools-target-platforms/pull/FIXME
+
 It consists in the following changes:
-* JBIDE-15382 (Move to Kepler SR1 RC1/RC2)
-** some projects are still using same version that we had for Kepler release (Birt, jetty, SWTBot)
-** most projects have contributed a RC1 build
-** some projects (Orbit, EGit) already contributed a RC2 build
 
-Please review this PR and yell if there is anything shocking. You can use the following stuff to try to build build the TP locally and try out against your component:
-  
+* JBIDE-FIXME (Description of change goes here)
+
+--
+
+p2diff report:
+
+
+
+--
+
+Please review the above PR(s), as it will be applied in the next *${DEADLINE}*.
+
+You can use the following to build & test the TP locally against your component(s).
+
 Build target-platform:
 
   $ cd jbosstools-target-platforms
-  $ git fetch mistria JBIDE-15382
+  $ git fetch ${GITHUB_USER} ${TOPIC_BRANCH}
   $ git checkout FETCH_HEAD
   $ cd jbosstools/multiple
   $ mvn clean install -P \!multiple2repo
   
 Try with just built target-platform:
-  $ cd /path/to/your/component
-  $ mvn clean verify -Dtpc.version=4.31.0.Alpha1-SNAPSHOT -Pmultiple.target
 
-Cheers,
+  $ cd /path/to/your/component
+  $ mvn clean verify -Dtpc.version=${TARGET_PLATFORM_VERSION} -Pmultiple.target
+
+--
+
+If you want to perform a scripted install of the entire target platform 
+into your local Eclipse or JBDS instance, you can now do so with this 
+script:
+
+https://github.com/jbosstools/jbosstools-build-ci/blob/master/util/installFromTarget.sh
+
+Usage is documented in the above script, and in this README:
+
+https://github.com/jbosstools/jbosstools-target-platforms/tree/master#updating-versions-of-ius-in-target-files
+
+--
+
+More info:
+
+  (if applicable)
+"
+
 ----
 
 == Await feedback
 
-TBD: how/when/criteria to put into master.
+Generally, developers should have 7 days to review a proposed change. 
 
+However, for more urgent changes (such as to fix a broken contribution from a previous PR or to remove something on which no projects still depend), *1 or 2 days* may be sufficient. 
+
+Be sure to state the deadline in the email so devs & project leads know the urgency.
 
