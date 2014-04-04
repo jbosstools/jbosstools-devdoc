@@ -16,7 +16,7 @@ Process:
 . <<create-pull-request,Create pull-request with changes>>
 . <<validate-local-changes,Validate local changes>>
 . <<test-local-target-platform-use,Test local target platform use>>
-. Optionally, produce a https://github.com/irbull/p2diff[p2diff] report to include in JIRA and/or email
+. <<produce-a-p2diff-report,Produce a p2diff report>> to include in JIRA and/or email
 . <<send-mail-for-feedback,Send email>> to jbosstools-dev@lists.jboss.org requesting feedback. State expected feedback window (usually 1 week).
 . <<await-feedback,Await feedback>> from build, affected team leads and project lead(s). For urgent changes, 1 project lead is OK.
 . Apply the pull-request
@@ -86,7 +86,7 @@ Provide enough detail to explain why the change is needed, and what is required 
 
 * _Type of dependency_: is this just for testing (incl. in TP, but not in distribution), central-only (incl. in Central ONLY, not in the JBoss Tools or JBDS target platform), distribution (incl. in installer & update sites)
 
-* _List of bundles added/removed_: https://github.com/irbull/p2diff[p2diff] report or pull-request preferred; if not available, please list features/plugins in alpha-sorted order
+* _List of bundles added/removed_: https://github.com/nickboldt/p2diff[p2diff] report or pull-request preferred; if not available, please list features/plugins in alpha-sorted order
 
 If your requirement is not available in an update site (p2 repository), eg. only available as maven artifact, please include more info:
 
@@ -138,6 +138,34 @@ where the `tpc.version` is the version listed in the `pom.xml` file of the targe
 
 If everything builds OK, can be installed (see validation steps in https://github.com/jbosstools/jbosstools-target-platforms/blob/master/README.md#updating-versions-of-ius-in-target-files[README]), and you can use the new functionallity needed by the change, open a pull request for your update.
 
+== Produce a p2diff report
+
+Optionally, you can create a https://github.com/nickboldt/p2diff[p2diff] report to clarify what IUs will change if your PR is applied. For example:
+
+[source,bash]
+----
+git clone https://github.com/nickboldt/p2diff.git
+pushd p2diff/org.eclipse.equinox.p2.example.p2diff.releng/ && mvn install && popd
+pushd p2diff/org.eclipse.equinox.p2.example.p2diff.packaging/target/products/org.eclipse.equinox.p2.example.p2diff.product
+cd linux/gtk/x86_64 # or your preferred platform
+./p2diff \
+ file://${HOME}/tru/jbosstools-target-platforms/jbosstools/multiple/target_with_com.google/jbosstools-multiple.target.repo/ \
+ file://${HOME}/tru/jbosstools-target-platforms/jbosstools/multiple/target/jbosstools-multiple.target.repo/
+popd
+
+< com.google.gwt.eclipse.sdkbundle.feature.feature.group [2.5.1] 
+< com.google.gwt.eclipse.core [3.4.2.v201310081834-rel-r43] 
+< com.google.gdt.eclipse.core [3.4.2.v201310081834-rel-r43] 
+< com.google.gdt.eclipse.platform [3.4.2.v201310081834-rel-r43] 
+< com.google.gwt.eclipse.sdkbundle.feature.feature.jar [2.5.1] 
+< com.google.gwt.eclipse.oophm [3.4.2.v201310081834-rel-r43] 
+< com.google.gwt.eclipse.sdkbundle [2.5.1] 
+=== Summary ===
+file:///${HOME}/tru/jbosstools-target-platforms/jbosstools/multiple/target_with_com.google/jbosstools-multiple.target.repo/ contains 7 unique IUs
+
+----
+
+
 == Send mail for feedback
 
 Send feedback request email to jbosstools-dev@lists.jboss.org, listing the PR, JIRA link(s), steps to use, and additional info if desired.
@@ -151,7 +179,7 @@ Past examples:
 Using the template below will get you started, but you will still need to fill in these details:
 
 * PR # and JIRA(s)
-* https://github.com/irbull/p2diff[p2diff] report
+* https://github.com/nickboldt/p2diff[p2diff] report
 
 Template:
 [source,bash]
