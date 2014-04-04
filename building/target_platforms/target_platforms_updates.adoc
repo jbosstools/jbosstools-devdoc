@@ -13,7 +13,7 @@ Goals for the process is to:
 . Avoid adding dependencies to the target platform that are bad or unnecessary
 . Be able to trace why and when changes were made to the target platform
 
-Suggestion:
+The Process:
 
 . <<create-jira-outlining-the-request,Create jira>>
 . <<create-pull-request-and-test,Create Pull-request with changes, test it locally add link to jira>>
