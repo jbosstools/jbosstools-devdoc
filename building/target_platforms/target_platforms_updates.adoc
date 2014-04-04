@@ -1,4 +1,4 @@
-= Proposal for updates to targetplatforms
+= Process for updates to targetplatforms
 
 We need to be careful about our targetplatform not growing or change
 too uncontrollable. Below is a suggestion for a process that attempts
