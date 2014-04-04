@@ -1,4 +1,4 @@
-= Process for updates to targetplatforms
+= Process for updates to target platforms
 
 Target platforms should not grow or change unexpectedly. 
 
