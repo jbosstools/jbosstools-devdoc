@@ -57,7 +57,7 @@ Building target-platforms locally is a way to save some time. It's mainly useful
 git clone git@github.com:jbosstools/jbosstools-target-platforms.git
 cd jbosstools-target-platforms
 git checkout 4.30.x
-mvn install
+mvn clean install -Pmultiple2repo
 ```
 
 This will also generate you the `unified.target` which is a target-platform mggregating multiple components in a single site. That is the one we use in Maven builds just in order to improve performances. **Beware**, this takes about ~1h to proceed mvn execution.
