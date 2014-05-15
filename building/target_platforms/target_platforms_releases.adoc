@@ -64,7 +64,7 @@ Here is the suggested process:
 10. Update https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatforms-matrix/[jbosstoolstargetplatforms-matrix] job to build new SNAPSHOTless version (and therefore produce new update site folders) (eg., 4.40.0.Beta2-SNAPSHOT -> 4.40.0.Beta2)  
 
 [NOTE]
-**(TODO: make this a parameter)**
+**(TODO: Try to make the version a job parameter to change it more easily)**
 
 11. Run the CI jobs to publish new versions.
 12. Verify everything is correct on staging repo, plus published JBT/JBDS target platform update sites on
@@ -88,7 +88,26 @@ download.jboss.org & www.qa
         $ git push origin <branch>
 
 18. Update target-platform job on Jenkins to build the new SNAPSHOT (eg: 4.30.0.Alpha1 -> 4.30.0-Alpha2-SNAPSHOT)
-19. Announce on jbosstools-dev@lists.jboss.org that the target-platform is released and how to get it from Git tag (for IDE usage) and how to use it at build-time (either by setting `-Dtpc.version=<released-version>` or by using the new SNAPSHOT of the parent pom which directly references it)
+
+== Leverage Akamai for better download perforance
+
+In order to improve the installation time for a user, it's recommended to move the aggregated repository for a RELEASED (ie not SNAPSHOT) target-platform to Akamai.
+Akamai is enabled in the 'static' folder of download.jboss.org/tools, so publishing to Akamai is mainly a matter of moving stuff around.
+
+From download.jboss.org:
+
+* Move new TP folder from 'tools/targetplatforms' to 'tools/static/targetplatforms', keep the name ("jbosstoolstarget") and version segments. Eg
+  
+  echo "rename targetplatforms/jbtcentraltarget/4.32.0.Final static/targetplatforms/jbtcentraltarget/4.32.0.Final" > sftp tools@filemgmt.jboss.org:downloads_htdocs/tools
+
+* Put at the previous location of TP the necessary p2 composite*.xml files pointing to the new location. For example
+** change the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.32.0.Final/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/4.32.0.Final'
+** change the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.32.0.Final/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbdevstudiotarget/4.32.0.Final'
+** change the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.32.0.Final/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/4.32.0.Final'
+
+Then, check with Eclipse or p2diff or whatever p2 tool that location http://download.jboss.org/jbosstools/targetplatforms/${name}/#{version}/ can resolve TP contents.
+
+NOTE: the public URLs for a release train (such as 'http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/kepler/') are updated later, while releasing a new version of JBoss Tools and JBoss Developer Studio.
 
 == Announce release
 
