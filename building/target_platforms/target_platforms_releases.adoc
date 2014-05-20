@@ -98,12 +98,15 @@ From download.jboss.org:
 
 * Move new TP folder from 'tools/targetplatforms' to 'tools/static/targetplatforms', keep the name ("jbosstoolstarget") and version segments. Eg
   
-  echo "rename targetplatforms/jbtcentraltarget/4.32.0.Final static/targetplatforms/jbtcentraltarget/4.32.0.Final" > sftp tools@filemgmt.jboss.org:downloads_htdocs/tools
+  echo "rename targetplatforms/jbtcentraltarget/4.32.0.Final static/targetplatforms/jbtcentraltarget/4.40.0.Beta2" > sftp tools@filemgmt.jboss.org:downloads_htdocs/tools
 
 * Put at the previous location of TP the necessary p2 composite*.xml files pointing to the new location. For example
-** change the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.32.0.Final/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/4.32.0.Final'
-** change the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.32.0.Final/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbdevstudiotarget/4.32.0.Final'
-** change the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.32.0.Final/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/4.32.0.Final'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.40.0.Beta2/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/4.40.0.Beta2'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.40.0.Beta2/REPO' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/4.40.0.Beta2'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.Beta2/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbdevstudiotarget/4.40.0.Beta2'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.Beta2/REPO' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbdevstudiotarget/4.40.0.Beta2'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Beta2/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/4.40.0.Beta2'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Beta2/REPO' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/4.40.0.Beta2'
 
 Then, check with Eclipse or p2diff or whatever p2 tool that location http://download.jboss.org/jbosstools/targetplatforms/${name}/#{version}/ can resolve TP contents.
 
