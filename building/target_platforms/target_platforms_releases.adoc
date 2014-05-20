@@ -196,7 +196,12 @@ For advanced usage and help (using in IDE, building a mirror locally, using a zi
 What's next?
 ============
 
-jbosstools-target-platforms project branch 4.40.x has been prepared for potential upgrades, and its version is now ${TARGET_PLATFORM_VERSION_NEXT}.
+jbosstools-target-platforms project branch 4.40.x has been prepared for potential upgrades, and its version is now ${TARGET_PLATFORM_VERSION_NEXT}.  We can at least expect for Beta3:
+* [[ Examples of highly probably changes, update them ]]
+* Move to Luna release/R/SR0
+* Re-introduction of a compatible version of Birt
+* Shall you need anything else, please follow those instructions to request a change ASAP: https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/target_platforms/target_platforms_updates.adoc
+
 
 All Jenkins jobs for *master* and parent pom ${JBOSSTOOLS_VERSION_NEXT}-SNAPSHOT
 have been updated to use target platform ${TARGET_PLATFORM_VERSION_NEXT}.
