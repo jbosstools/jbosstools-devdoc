@@ -204,6 +204,7 @@ jbosstools-target-platforms project branch 4.40.x has been prepared for potentia
 * Move to Luna release/R/SR0
 * Re-introduction of a compatible version of Birt
 * Shall you need anything else, please follow those instructions to request a change ASAP: https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/target_platforms/target_platforms_updates.adoc
+ Deadline for changes in target platform 4.40.0.Beta4-SNAPSHOT is *Monday, June 30th*
 
 
 All Jenkins jobs for *master* and parent pom ${JBOSSTOOLS_VERSION_NEXT}-SNAPSHOT
