@@ -13,10 +13,7 @@ Goals:
 Process:
 
 . <<create-jira-outlining-the-request,Create JIRA outlining the request>>
-. <<create-pull-request,Create pull-request with changes>>
-. <<validate-local-changes,Validate local changes>>
-. <<test-local-target-platform-use,Test local target platform use>>
-. <<produce-a-p2diff-report,Produce a p2diff report>> to include in JIRA and/or email
+. <<create-a-pull-request-with-your-changes,Create a pull request with your changes>>
 . <<send-mail-for-feedback,Send email>> to jbosstools-dev@lists.jboss.org requesting feedback. State expected feedback window (usually 1 week).
 . <<await-feedback,Await feedback>> from build, affected team leads and project lead(s). For urgent changes, 1 project lead is OK.
 . Apply the pull-request
@@ -86,7 +83,7 @@ Provide enough detail to explain why the change is needed, and what is required 
 
 * _Type of dependency_: is this just for testing (incl. in TP, but not in distribution), central-only (incl. in Central ONLY, not in the JBoss Tools or JBDS target platform), distribution (incl. in installer & update sites)
 
-* _List of bundles added/removed_: https://github.com/nickboldt/p2diff[p2diff] report or pull-request preferred; if not available, please list features/plugins in alpha-sorted order
+* _List of bundles added/removed_: https://github.com/irbull/p2diff[p2diff] report or pull-request preferred; if not available, please list features/plugins in alpha-sorted order
 
 If your requirement is not available in an update site (p2 repository), eg. only available as maven artifact, please include more info:
 
@@ -96,14 +93,47 @@ If your requirement is not available in an update site (p2 repository), eg. only
 
 Non-p2 artifacts will be added to https://github.com/jbosstools/jbosstools-locus[JBoss Tools Locus] as p2 artifacts, so they can be included in the target platform.
 
-== Create pull request
+== Create a pull request with your changes
+
+=== Fetch sources
 
 Following instructions cover the minimal edits needed for a review (a final Pull request needs updates to both jbosstools and devstudio target platform as needed)
 
  $ git clone git@github.com:jbosstools/jbosstools-target-platforms.git
  $ cd jbosstools-target-platforms
  $ git checkout <relevant version.x>
- 
+
+=== Build target platform(s) locally
+
+To build, you require specific versions of Java and Maven. Also, there is some Maven setup. 
+The https://community.jboss.org/wiki/HowToBuildJBossToolsWithMaven3[How to Build JBoss Tools with Maven 3]
+document will guide you through that setup.
+
+This command will run the build, but will NOT download the contents of the target platform to disk:
+
+    $ mvn clean verify
+
+If you want to download the contents of the target platform to disk, do this:
+
+    $ mvn clean verify -Pmultiple2repo
+
+If you want to run the build and fetch source bundles at the same time as other bundles are being resolved, do this:
+
+    $ mvn clean verify -Pmultiple2repo -Dmirror-target-to-repo.includeSources=true
+
+If you want to run the build and not fail if there's a problem w/ validation, do this:
+
+    $ mvn clean verify -Pmultiple2repo -Dvalidate-target-platform.failOnError=false
+
+If you just want to check if things compiles/builds you can run:
+
+    $ mvn clean verify -Pmultiple2repo -DskipTest=true
+
+But *do not* push changes without having the new and existing unit tests pass!
+
+
+=== Update the *.target file(s)
+
 Edit `jbosstools/multiple/jbosstools-multiple-target`. You may update an existing location or add a new one:
 
 [source,xml]
@@ -121,30 +151,50 @@ If your change affects JBDS too, edit `jbdevstudio/multiple/jbdevstudio-multiple
 [NOTE]
 If you do not have a mirrored download.jboss.org location use the vendor's URL, so that the .target file can be easily tested.
 
+Now build and validate the changed target platform. 
 
-== Validate local changes
 
-Now build and validate the target platform. 
+=== Update versions of IUs in the .target files
 
-The latest instructions can be found in the https://github.com/jbosstools/jbosstools-target-platforms/blob/master/README.md#updating-versions-of-ius-in-target-files[README]
+When moving from one version of the target to another, the steps are:
 
-== Test local target platform use
+. If this is a new target platform (rather than changes to an existing SNAPSHOT) increment the target platform versions contained in all 5 pom.xml and 2 *.target files.
 
-Once this is built you can test it in your component build by running:
+. Manually update the URLs contained in the *.target files (as noted above).
 
- $ mvn verify -Dtpc.targetKind=multiple -Dtpc.version=4.40.0.Beta2-SNAPSHOT
+. Validate the target platform. https://github.com/jbosstools/jbosstools-build-ci/tree/master/util/verifyTarget.sh[You can use a script to automate these next 4 steps].
++
+[CAUTION]
+====
+. Regenerate the IU versions, using https://github.com/jbosstools/jbosstools-maven-plugins/wiki[org.jboss.tools.tycho-plugins:target-platform-utils], and validate the results
+* `mvn -U org.jboss.tools.tycho-plugins:target-platform-utils:0.19.0-SNAPSHOT:fix-versions -DtargetFile=/path/to/some.target`
 
-where the `tpc.version` is the version listed in the `pom.xml` file of the target platform and 'tpc.targetKind' is set to 'multiple' since the default ('unified') will not work when the target platform is not yet built and published publically.
+. Resolve & verify the new target platform, including sources
+* `mvn (clean) install -Pmultiple2repo -Dmirror-target-to-repo.includeSources=true`
 
-If everything builds OK, can be installed (see validation steps in https://github.com/jbosstools/jbosstools-target-platforms/blob/master/README.md#updating-versions-of-ius-in-target-files[README]), and you can use the new functionallity needed by the change, open a pull request for your update.
+. https://github.com/jbosstools/jbosstools-build-ci/blob/master/util/installFromTarget.sh[Install the new target platform] into a clean Eclipse JEE bundle to verify that everything can be installed, using http://download.jboss.org/jbosstools/updates/scripted-installation/director.xml[a headless p2.director script]. http://download.jboss.org/jbosstools/updates/scripted-installation/[More info]
 
-== Produce a p2diff report
+. Produce a https://github.com/irbull/p2diff[p2diff] report
+====
 
-Optionally, you can create a https://github.com/nickboldt/p2diff[p2diff] report to clarify what IUs will change if your PR is applied. For example:
+. If applicable, test your locally built target platform in another build.
+
+* `mvn verify -Dtpc.targetKind=multiple -Dtpc.version=<version-you-built>`
+.. Note that `tpc.version` is the version listed in the `pom.xml` file of the target platform ( eg., `4.40.0.Beta4-SNAPSHOT`) and `tpc.targetKind` is set to `multiple` since the default (`unified`) will not work before the target platform (.target and site) are published to Nexus and http://download.jboss.org/jbosstools/targetplatforms/[download.jboss.org]
+.. If everything builds OK, can be installed (see install validation step in <<updating-versions-of-ius-in-target-files,Update versions of IUs in the .target files>>), and you can use the new functionallity needed by the change, commit your change to a topic branch and submit a pull request for your update.
+
+. Follow the https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/target_platforms/target_platforms_updates.adoc[release guidelines] for how to commit to a topic branch, and announce target platform changes.
+
+. Check in updated target files &amp; push to the branch.
+
+
+==== Produce a p2diff report
+
+As noted above, you can create a https://github.com/irbull/p2diff[p2diff] report to clarify what IUs will change if your PR is applied. For example:
 
 [source,bash]
 ----
-git clone https://github.com/nickboldt/p2diff.git
+git clone https://github.com/irbull/p2diff.git
 pushd p2diff/org.eclipse.equinox.p2.example.p2diff.releng/ && mvn install && popd
 pushd p2diff/org.eclipse.equinox.p2.example.p2diff.packaging/target/products/org.eclipse.equinox.p2.example.p2diff.product
 cd linux/gtk/x86_64 # or your preferred platform
@@ -179,7 +229,7 @@ Past examples:
 Using the template below will get you started, but you will still need to fill in these details:
 
 * PR # and JIRA(s)
-* https://github.com/nickboldt/p2diff[p2diff] report
+* https://github.com/irbull/p2diff[p2diff] report
 
 Template:
 [source,bash]
