@@ -14,6 +14,10 @@ Process:
 
 . <<create-jira-outlining-the-request,Create JIRA outlining the request>>
 . <<create-a-pull-request-with-your-changes,Create a pull request with your changes>>
+.. <<fetch-sources,Fetch sources>> & <<build-target-platforms-locally,build locally>>
+.. <<update-the-target-files,Update .target files>> & <<update-versions-of-ius-in-the-target-files,versions of IUs in .target files>>
+.. <<update-versions-of-ius-in-the-target-files,Validate changes & test the new target platform>>
+.. <<produce-a-p2diff-report,Produce a p2diff report>>
 . <<send-mail-for-feedback,Send email>> to jbosstools-dev@lists.jboss.org requesting feedback. State expected feedback window (usually 1 week).
 . <<await-feedback,Await feedback>> from build, affected team leads and project lead(s). For urgent changes, 1 project lead is OK.
 . Apply the pull-request
@@ -103,6 +107,18 @@ Following instructions cover the minimal edits needed for a review (a final Pull
  $ cd jbosstools-target-platforms
  $ git checkout <relevant version.x>
 
+For Central:
+
+ $ git clone git@github.com:jbosstools/jbosstools-discovery.git
+ $ cd jbosstools-discovery
+ $ git checkout <relevant version.x or master>
+
+For the Integration Stack:
+
+ $ git clone git@github.com:jbosstools/jbosstools-integration-stack.git
+ $ cd jbosstools-integration-stack
+ $ git checkout <relevant version.x or master>
+
 === Build target platform(s) locally
 
 To build, you require specific versions of Java and Maven. Also, there is some Maven setup. 
@@ -121,6 +137,12 @@ If you want to run the build and fetch source bundles at the same time as other 
 
     $ mvn clean verify -Pmultiple2repo -Dmirror-target-to-repo.includeSources=true
 
+[CAUTION]
+====
+Partial target platforms such as those for JBoss Central cannot be materialized with their sources included.
+If you require sources, you must use a complete (merged) target platform which includes ALL upstream dependencies, but bear in mind this will produce a MUCH larger p2 repo, including all upstream dependencies and those dependencies' sources, too.
+====
+
 If you want to run the build and not fail if there's a problem w/ validation, do this:
 
     $ mvn clean verify -Pmultiple2repo -Dvalidate-target-platform.failOnError=false
@@ -131,10 +153,9 @@ If you just want to check if things compiles/builds you can run:
 
 But *do not* push changes without having the new and existing unit tests pass!
 
-
 === Update the *.target file(s)
 
-Edit `jbosstools/multiple/jbosstools-multiple-target`. You may update an existing location or add a new one:
+Edit `jbosstools/multiple/jbosstools-multiple.target`. You may update an existing location or add a new one:
 
 [source,xml]
 ----
@@ -146,7 +167,11 @@ Edit `jbosstools/multiple/jbosstools-multiple-target`. You may update an existin
     </location>
 ----
 
-If your change affects JBDS too, edit `jbdevstudio/multiple/jbdevstudio-multiple-target` as well.
+If your change affects JBDS too, edit `jbdevstudio/multiple/jbdevstudio-multiple-target` as well. 
+
+For https://github.com/jbosstools/jbosstools-discovery/[JBoss Central], edit `jbtcentraltarget/multiple/jbtcentral-multiple.target` and/or `jbtearlyaccesstarget/multiple/jbtearlyaccess-multiple.target`.
+
+For the https://github.com/jbosstools/jbosstools-integration-stack/tree/master/target-platform[Integration Stack], edit the applicable .target files in `target-platform/`.
 
 [NOTE]
 If you do not have a mirrored download.jboss.org location use the vendor's URL, so that the .target file can be easily tested.
@@ -158,7 +183,7 @@ Now build and validate the changed target platform.
 
 When moving from one version of the target to another, the steps are:
 
-. If this is a new target platform (rather than changes to an existing SNAPSHOT) increment the target platform versions contained in all 5 pom.xml and 2 *.target files.
+. If this is a new target platform (rather than changes to an existing SNAPSHOT) increment the target platform versions contained in all the pom.xml and *.target files.
 
 . Manually update the URLs contained in the *.target files (as noted above).
 
@@ -166,15 +191,17 @@ When moving from one version of the target to another, the steps are:
 +
 [CAUTION]
 ====
-. Regenerate the IU versions, using https://github.com/jbosstools/jbosstools-maven-plugins/wiki[org.jboss.tools.tycho-plugins:target-platform-utils], and validate the results
+. Regenerate the IU versions, using https://github.com/jbosstools/jbosstools-maven-plugins/wiki[org.jboss.tools.tycho-plugins:target-platform-utils], and validate the results.
 * `mvn -U org.jboss.tools.tycho-plugins:target-platform-utils:0.19.0-SNAPSHOT:fix-versions -DtargetFile=/path/to/some.target`
 
-. Resolve & verify the new target platform, including sources
+. Resolve & verify the new target platform, optionally including sources (which will produce a MUCH larger on-disk footprint).
+* `mvn (clean) install -Pmultiple2repo`
+or
 * `mvn (clean) install -Pmultiple2repo -Dmirror-target-to-repo.includeSources=true`
 
-. https://github.com/jbosstools/jbosstools-build-ci/blob/master/util/installFromTarget.sh[Install the new target platform] into a clean Eclipse JEE bundle to verify that everything can be installed, using http://download.jboss.org/jbosstools/updates/scripted-installation/director.xml[a headless p2.director script]. http://download.jboss.org/jbosstools/updates/scripted-installation/[More info]
+. https://github.com/jbosstools/jbosstools-build-ci/blob/master/util/installFromTarget.sh[Install the new target platform] into a clean Eclipse JEE bundle to verify that everything can be installed, using http://download.jboss.org/jbosstools/updates/scripted-installation/director.xml[a headless p2.director script]. http://download.jboss.org/jbosstools/updates/scripted-installation/[More info].
 
-. Produce a https://github.com/irbull/p2diff[p2diff] report
+. Produce a https://github.com/irbull/p2diff[p2diff] report.
 ====
 
 . If applicable, test your locally built target platform in another build.
