@@ -1,0 +1,22 @@
+= JBoss Tools Community Acceptance Testing guide
+
+This document contains information needed for managing JBoss Tools CAT, e.g. what
+processes to follow, what email templates to use etc.
+
+== Resources
+http://tools.jboss.org/cat
+https://lists.jboss.org/mailman/listinfo/jbosstools-cat
+
+== New user sings up ==
+
+* They will show up in the Google Doc
+* Add them to jbosstools-cat JIRA group (send email to help@jboss.org, cc others)
+	- first check if the jira username exists and matches the name entered - 
+		if it does not, mail the person asking for clarificaiton
+* Check they signed up for the mailing list, if not, add them
+
+== New build for testing
+
+* Send email to jbosstools-cat including links for download
+  - Link to email template to be added later
+* Add a schedule item to tools.jboss.org/cat including a link to the email in archive (when available)
