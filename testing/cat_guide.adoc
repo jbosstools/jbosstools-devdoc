@@ -7,16 +7,26 @@ processes to follow, what email templates to use etc.
 http://tools.jboss.org/cat
 https://lists.jboss.org/mailman/listinfo/jbosstools-cat
 
-== New user sings up ==
+== New user signs up ==
 
-* They will show up in the Google Doc
+* They will show up in the https://docs.google.com/spreadsheet/ccc?key=tCCSAN7idYNU6gtRnYVd2Og#gid=1[Google Doc]
 * Add them to jbosstools-cat JIRA group (send email to help@jboss.org, cc others)
-	- first check if the jira username exists and matches the name entered - 
-		if it does not, mail the person asking for clarificaiton
-* Check they signed up for the mailing list, if not, add them
+	- first check if the jira username exists and matches the name entered
+		 - https://issues.jboss.org/secure/ViewProfile.jspa?name= 
+		 - if it does not, mail the person asking for clarificaiton
+* Check they signed up for the https://lists.jboss.org/mailman/listinfo/jbosstools-cat[mailing list], if not, add them
 
 == New build for testing
 
 * Send email to jbosstools-cat including links for download
   - Link to email template to be added later
 * Add a schedule item to tools.jboss.org/cat including a link to the email in archive (when available)
+
+== JBT CAT -- Daily Tasks:
+* Web: http://tools.jboss.org/cat/
+* Mailing List: ttps://lists.jboss.org/mailman/listinfo/jbosstools-cat
+* Google Forms: https://docs.google.com/forms/d/17zIZCwwNYQC7ZpOlqf6A-Wo1RghdLxcILjKq2Pp6mPc
+* JIRA: https://issues.jboss.org/secure/Dashboard.jspa?selectPageId=12316999
+  - Send email to help@jboss.org (and Max) to register new users to JIRA group
+  - Review all new JIRAs
+
