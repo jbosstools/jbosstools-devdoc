@@ -13,7 +13,9 @@ https://lists.jboss.org/mailman/listinfo/jbosstools-cat
 * Add them to jbosstools-cat JIRA group (send email to help@jboss.org, cc others)
 	- first check if the jira username exists and matches the name entered
 		 - https://issues.jboss.org/secure/ViewProfile.jspa?name= 
-		 - if it does not, mail the person asking for clarificaiton
+		 - if it does not, mail the person asking for clarification
+        - if you have jira admin rights you can run 'sh addusertocat.sh <username> <password> <usertoadd>'
+
 * Check they signed up for the https://lists.jboss.org/mailman/listinfo/jbosstools-cat[mailing list], if not, add them
 
 == New build for testing
