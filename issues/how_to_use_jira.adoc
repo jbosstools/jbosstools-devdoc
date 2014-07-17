@@ -1,7 +1,16 @@
-JBoss Tools jira is located at
-https://jira.jboss.org/jira/browse/JBIDE[https://jira.jboss.org/jira/browse/JBIDE]
-and its related project JBoss Developer Studio has a jira at
-https://jira.jboss.org/jira/browse/JBDS[https://jira.jboss.org/jira/browse/JBDS]
+
+JBoss Tools and Developer Studio consists of many components and thus covered in many issue tracking systems.
+
+The three primary ones are:
+
+JBoss Tools jira - https://jira.jboss.org/jira/browse/JBIDE[JBIDE]
+JBoss Developer Studio - https://jira.jboss.org/jira/browse/JBDS[JBDS]
+JBoss Tools Integration Stack - https://jira.jboss.org/jira/browse/JBTIS[JBTIS]
+
+Other specific components are:
+Mobile Tools: https://bugs.eclipse.org/bugs/enter_bug.cgi?product=Thym[Eclipse Thym]
+
+The following lifecycle primarly apply to JBoss Tools, Developer Studio and Integration Stack jiras:
 
 == Lifecycle of an issue
 
