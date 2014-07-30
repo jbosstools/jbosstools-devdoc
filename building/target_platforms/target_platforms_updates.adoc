@@ -277,34 +277,37 @@ Body:
 
 Here is a proposal for a change to the JBoss Tools ${TARGET_PLATFORM_VERSION} target platform: 
 
-https://github.com/jbosstools/jbosstools-target-platforms/pull/FIXME
+https://github.com/jbosstools/jbosstools-target-platforms/pull/FIXME_PR_NUMBER
 
 It consists in the following changes:
 
-* JBIDE-FIXME (Description of change goes here)
-
---
-
-p2diff report:
+* JBIDE-FIXME: Description of change
+* JBIDE-FIXME_TOO: Description of other change
 
 
+p2diff reports are attached to the related JIRA(s).
 
---
-
-Please review the above PR(s), as it will be applied in the next *${DEADLINE}*.
-
-You can use the following to build & test the TP locally against your component(s).
+Please review the above PR(s), as it will be applied ASAP.
+You can use the following to build & test the target-platform locally against your component(s).
 
 Build target-platform:
-
   $ cd jbosstools-target-platforms
-  $ git fetch ${GITHUB_USER} ${TOPIC_BRANCH}
+  $ git fetch origin pull/FIXME_PR_NUMBER/head
   $ git checkout FETCH_HEAD
   $ cd jbosstools/multiple
-  $ mvn clean install -P \!multiple2repo
+  $ mvn clean install
+
+Try with just built target-platform:
+  $ cd /path/to/your/component
+  $ mvn clean verify -Dtpc.version=4.40.0.CR1-SNAPSHOT -Pmultiple.target
+Build target-platform:
+  $ cd jbosstools-target-platforms
+  $ git fetch origin pull/FIXME/head
+  $ git checkout FETCH_HEAD
+  $ cd jbosstools/multiple
+  $ mvn clean install
   
 Try with just built target-platform:
-
   $ cd /path/to/your/component
   $ mvn clean verify -Dtpc.version=${TARGET_PLATFORM_VERSION} -Pmultiple.target
 
