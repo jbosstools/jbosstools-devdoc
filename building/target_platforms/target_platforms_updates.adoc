@@ -43,30 +43,24 @@ Use https://jira.jboss.org/jira/browse/JBIDE to open the issue.
 Template (copy into JIRA):
 
 ----
-  Reason: 
-  
-  License and owner: 
-  
-  Original repo: http://third-party-vendor.com/path/to/updates-site/
+*Reason:* ...
+*Project page/sources:* ...
+*Version:* ....
+*License and owner:* ...
+*Original p2 repo:* http://third-party-vendor.com/path/to/updates-site/
+*JBoss mirror:* http://downloads.jboss.org/jbosstools/updates/requirements/<projectName>
+*Include Sources:* Yes|No
+*Affected projects:*
+*Include in JBDS:* Yes|No
+*Type of dependency:* testing|central-only|distribution
+*List of bundles added/removed:*
+{code}
+suggested diff on the .target files
+{code}
 
-  JBoss mirror: http://downloads.jboss.org/jbosstools/updates/requirements/<projectName>
-
-  Sources:
-
-  Affected projects:
-
-  Include in JBDS: Yes|No
-
-  Type of dependency: testing|central-only|distribution
-
-  List of bundles added/removed:
-
-  If applicable:
-
-    non-p2 repository:
-  
-    non-p2 ids:
-
+If applicable:
+*non-p2 repository:* ...
+*non-p2 ids:* ...
 ----
 
 Provide enough detail to explain why the change is needed, and what is required to verify. If you do not know the answer use "Unknown"; if not applicable, use "N/A".
@@ -75,11 +69,11 @@ Provide enough detail to explain why the change is needed, and what is required 
 
 * _License and owner_: Which license are these features available under and who are the maintainer? i.e. EPL, Google.
 
-* _Original repo_: which repository are the plugins/features from? eg., http://dl.google.com/eclipse/plugin/4.2
+* _Original p2 repo_: which repository are the plugins/features from? eg., http://dl.google.com/eclipse/plugin/4.2
 
 * _JBoss mirror_: mirror URL to use, eg. http://downloads.jboss.org/jbosstools/updates/requirements/gwt/3.1.0.v201208080121-rel-r42/
 
-* _Sources_: Are source bundles included in the mirror, or are sources available elsewhere? Use "included" or explain.
+* _Include Sources_: Are source bundles included in the mirror, or are sources available elsewhere? Use "included" or explain.
 
 * _Affected projects_: Which projects are this known to affect, both inside and outside JBoss Tools core.
 
@@ -299,18 +293,7 @@ Build target-platform:
 
 Try with just built target-platform:
   $ cd /path/to/your/component
-  $ mvn clean verify -Dtpc.version=4.40.0.CR1-SNAPSHOT -Pmultiple.target
-Build target-platform:
-  $ cd jbosstools-target-platforms
-  $ git fetch origin pull/FIXME/head
-  $ git checkout FETCH_HEAD
-  $ cd jbosstools/multiple
-  $ mvn clean install
-  
-Try with just built target-platform:
-  $ cd /path/to/your/component
   $ mvn clean verify -Dtpc.version=${TARGET_PLATFORM_VERSION} -Pmultiple.target
-
 --
 
 If you want to perform a scripted install of the entire target platform 
