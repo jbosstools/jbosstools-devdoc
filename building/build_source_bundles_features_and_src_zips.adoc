@@ -1,0 +1,51 @@
+There are two ways to produce sources.
+
+If you want sources you can use in your IDE (eg., Eclipse or JBDS), you want source features.
+
+If you want sources you can build offline, you will want a src zip.
+
+== Source Bundles & Features
+
+=== Enable Maven/Tycho to build source bundles and features (org.foo.feature.source_*.jar, org.foo.plugin.source_*.jar):
+
+See http://wiki.eclipse.org/Minerva#Source
+
+=== Aggregate features (and plugins) into an update site
+
+Next, aggregate these source features and plugins into an update site, so that they can be installed into your IDE and accessed directly when writing Java code:
+
+See https://github.com/jbosstools/jbosstools-build-sites/blob/master/aggregate/site/category.xml#L248-L262
+
+
+== Src Zip
+
+If you also want to produce a zip of *actual source files*  (*.java) as pulled from github, there are three approaches, each producing different results.
+
+=== Produce a zip of the contents of your product build
+
+This is to enable people can build it offline. Does NOT include upstream project sources.
+
+See https://github.com/jbdevstudio/jbdevstudio-product/tree/master/sources
+
+Result: http://www.qa.jboss.com/binaries/RHDS/builds/staging/devstudio.product_master/all/devstudio.product_master-SNAPSHOT-src.zip (2.4M)
+
+
+=== Fetch sources directly from github
+
+Using `Eclipse-SourceReferences` in the specified plugins' MANIFEST.MF files, this mojo collates those sources into a single zip.
+
+See:
+
+* https://github.com/jbosstools/jbosstools-build-sites/blob/master/aggregate/site/pom.xml#L123-L164 and 
+* https://github.com/jbosstools/jbosstools-maven-plugins/blob/master/tycho-plugins/repository-utils/src/main/java/org/jboss/tools/tycho/sitegenerator/FetchSourcesFromManifests.java#L86-L108
+
+Result: http://download.jboss.org/jbosstools/builds/nightly/core/master/latest/all/jbosstools-build-sites.aggregate.site_master-SNAPSHOT-src.zip (35M) 
+
+
+=== Produce a zip of upstream sources (using upstream project zips) 
+
+Note that pulling a collection of previously-built zips doesn't guarantee you'll getting the correct version AND it requires that the upstream projects all produce their own src zips. 
+
+_Not recommended if you can simply fetch sources from github (as above)._
+
+See https://github.com/jbosstools/jbosstools-build-ci/blob/master/publish/publish.sh#L464-L500
