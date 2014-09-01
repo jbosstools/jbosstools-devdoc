@@ -146,6 +146,24 @@ If the issue is not completed then
 * *Reopen* the issue
 * *Comment* what is not working
 
+== Using Jira Smart Commits
+
+The jira feature named https://confluence.atlassian.com/display/FISHEYE/Using+smart+commits["Smart Commits"] is enabled on all the repositories under http://github.com/jbosstools.
+
+This means that you can do operations on jira from the git commit messages such as commenting and resolving jiras.
+
+Example that will resolve JBIDE-1234, resolve it while putting a comment: 
+
+   JBIDE-1234 Add more efficient sorting of column 'owner'
+   JBIDE-1234 #resolve #comment Used binary sort for 'owner' instead of naive bubble sort.
+
+The full syntax are documented at https://confluence.atlassian.com/display/FISHEYE/Using+smart+commits[Atlassian].
+
+A few limitations:
+
+# You need to have the email you use for jira.jboss.org registered and verified as email on your github.com.
+# The comments are only 'executed' when you do a push (a commit or PR is not sufficient)
+
 == What is jiralint and why does it complain ?
 
 The intent of the job is to catch jiras that somehow are in a wrong state.
