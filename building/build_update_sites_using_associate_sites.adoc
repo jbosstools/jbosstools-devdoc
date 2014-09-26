@@ -1,0 +1,41 @@
+== Using Associate Sites in Update Site Metadata
+
+To create an update site which refers to upstream sites (in order to resolve upstream dependencies, eg., from a target platform update site), you can use the JBoss Tools Tycho plugin https://github.com/jbosstools/jbosstools-maven-plugins/tree/master/tycho-plugins/repository-utils[repository-utils].
+
+Here are some examples of how to use it:
+
+* https://github.com/Teiid-Designer/teiid-designer/blob/8.6.x.luna/site/pom.xml#L39-40[Teiid Designer]
+* https://github.com/fusesource/fuseide/blob/master/site/pom.xml#L43-L45[FuseIDE]
+
+Then, when you aggregate this content into a larger update site, the above Tycho plugin will automatically remove these references.
+
+=== Override Associate Sites
+
+You can then optionally https://github.com/jbosstools/jbosstools-integration-stack/blob/master/jbosstools/site/pom.xml#L236-L237[add in new ones], such as:
+
+1. http://download.jboss.org/jbosstools/updates/development/luna/ and 
+1. http://download.jboss.org/jbosstools/targetplatforms/jbtistarget/luna/ 
+
+as seen in http://download.jboss.org/jbosstools/builds/staging/JBTIS-aggregate-disc/all/repo/content.jar[JBT IS update site content.jar]
+
+=== Exclude Associate Sites
+
+Or you can simply https://github.com/jbosstools/jbosstools-integration-stack/blob/master/devstudio/site/pom.xml[exclude them to produce an update site with NO external references].
+
+as seen in http://www.qa.jboss.com/binaries/RHDS/builds/staging/jbdsis-8.0.0.Alpha2-updatesite/aggregate/content.jar[JBDS IS update site content.jar], which needs to refer to its target platform and to the upstream JBoss Tools content to enable easier installation from a single URL.
+
+In this case, the reason for excluding any external references is twofold:
+
+1. the JBDS IS update site contains both the JBDS IS content and its target platform, co-located in the same zip or folder, so no external references are needed
+1. the JBDS IS udpate site needs to work for offline installs, so having it require upstream URLs would not work
+
+== Verification
+
+To verify this process of inclusion and removal/replacement continues to work, simply:
+
+* add more associateSites to the upstream projects' site/pom.xml files, and build those sites, then
+* aggregate them into JBTIS and JBDSIS, and check for <references> in the content.jar!/content.xml files.
+
+In the examples above, you should only see <references> in the JBTIS content.jar, as defined by the https://github.com/jbosstools/jbosstools-integration-stack/blob/master/jbosstools/site/pom.xml#L236-L237[site/pom.xml] file. 
+
+For the JBDSIS content.jar, there should be no <references>, as the https://github.com/jbosstools/jbosstools-integration-stack/blob/master/devstudio/site/pom.xml[site/pom.xml] defines NO associateSites.
