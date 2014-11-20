@@ -1,0 +1,49 @@
+= How to add (proxy) wizards to JBoss Central
+
+== About proxy wizards
+JBoss Central now displays wizards for plugins that may not have been installed yet. for instance, it will display the OpenShift Application link even if you don't have the JBoss OpenShift tooling installed. Clicking on that link will ask you to install the required OpenShift features.
+
+So what is really displayed is a sort of lightweight wizard, aka proxy wizard, that looks like an actual wizard (it uses the same icon), references the actual wizard by its wizardId, and lists all the connectors that needs to be installed if the real wizard is missing.
+
+== Format
+The proxy wizard extension point schema is defined https://github.com/jbosstools/jbosstools-central/blob/master/central/plugins/org.jboss.tools.central/schemas/org.jboss.tools.central.proxyWizard.exsd[here]. To sum up, the proxy wizard model has the following attributes :
+
+* id : the proxy wizard id
+* label : the proxy wizard label shown in JBoss Central
+* wizardId : the real wizard id used by Central to open the wizard dialog
+* iconPath : the path to the wizard icon (local to this plugin)
+* description : the description shown in Central when hovering over the wizard link
+* requiredConnectorIds : the connector ids to install if the real wizard is not available
+* priority : order in which the wizard is displayed in JBoss Central. Lower value has higher priority.
+
+Be aware a connector id is not a feature id. Connectors are groups of installation units (iu) and are defined in plugin.xml of discovery plugins.
+See :
+
+- https://github.com/jbosstools/jbosstools-discovery/blob/master/jbosstools/org.jboss.tools.central.discovery/plugin.xml[JBoss Tools]
+- https://github.com/jbosstools/jbosstools-discovery/blob/master/jbosstools/org.jboss.tools.central.discovery.earlyaccess/plugin.xml[JBoss Tools Early Access]
+- https://github.com/jbosstools/jbosstools-discovery/blob/master/jbdevstudio/com.jboss.jbds.central.discovery/plugin.xml[JBDS]
+- https://github.com/jbosstools/jbosstools-discovery/blob/master/jbdevstudio/com.jboss.jbds.central.discovery.earlyaccess/plugin.xml[JBDS Early Access]
+
+== How to test new proxy wizards
+
+. make sure connectors are defined in the discovery catalog(s)
+. add a <proxyWizard> to the plugin.xml of your discovery catalog (in https://github.com/jbosstools/jbosstools-discovery)
+. copy the icon of the target wizard (16x16) in the `wizards` folder of your plugin and have the `iconPath` attribute reference it
+. build the catalog plugin locally
+. create a local discovery.xml file containing :
+
+    <directory xmlns="http://www.eclipse.org/mylyn/discovery/directory/">
+      <entry url="file:/path/to/local/build/org.jboss.tools.central.discovery.earlyaccess/target/org.jboss.tools.central.discovery.earlyaccess-4.2.0-SNAPSHOT.jar" permitCategories="true"/>
+      <entry url="file:/path/to/local/build/jbosstools/org.jboss.tools.central.discovery/target/org.jboss.tools.central.discovery-4.2.0-SNAPSHOT.jar" permitCategories="true"/>
+    </directory>
+
+alternatively, you can reference existing remote catalogs and your local build :
+
+    <directory xmlns="http://www.eclipse.org/mylyn/discovery/directory/">
+      <entry url="http://download.jboss.org/jbosstools/updates/stable/luna/plugins/org.jboss.tools.central.discovery.earlyaccess_4.2.0.Final-v20141017-0422-B363.jar" permitCategories="true"/>
+      <entry url="http://download.jboss.org/jbosstools/updates/stable/luna/plugins/org.jboss.tools.central.discovery_4.2.0.Final-v20141017-0422-B363.jar" permitCategories="true"/>
+      <!--  JBTIS  -->
+      <entry url="file:/path/to/local/build/org.jboss.tools.central.discovery.integration-stack.earlyaccess_4.2.0.....jar" permitCategories="true"/>
+    </directory>
+
+. start your IDE with -Djboss.discovery.directory.url=file:/path/to/discovery.xml as a VM argument
