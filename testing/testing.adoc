@@ -1,8 +1,6 @@
-Testing
-=======
+= Testing
 
-On existing RCP application
----------------------------
+== On existing RCP application
 
 With Tycho 0.19.0, we could fix the long-standing issue https://issues.jboss.org/browse/JBIDE-13869[JBIDE-13869] (see https://github.com/jbosstools/jbosstools-build/commit/74b4acbeaeacaf4edd657bed6164da468fb39ca3[change in parent pom]). This will allow you to run your test with Maven against an RCP application which is available in your filesystem.
 You can do it by simply running for example:
@@ -23,3 +21,113 @@ mvn clean verify -Dtest.installPath=/home/me/jbdevstudio-8.0.0.Alpha1-SNAPSHOT/s
 ----
 
 Except a few exceptions, other surefire parameters, such as the very cool +debugPort+ parameter, can be used together with this mechanism. 
+
+== Integration or other slow running tests
+
+Some components has a need for tests that test more than just basic unit test. For example tests that need to download additional runtimes to
+do integration testing or have large number of test-combinations or simply tests that do testing via UI operations and thus tend to be slower than low level tests.
+
+First of - the *best* thing to do is to do what one can to avoid the tests being slow to run in the first place. Test smart, have good testable API's,
+use mocks etc. is generally better than having to rely on really heavy test runs. 
+
+If that is not feasible then the following structure/layout is recommended.
+
+In addition to a `tests` folder you createa `itests` folder (*i*tests as in "integration tests") and this folder follows the same layout
+as the `tests` folder containing test bundles with the slight difference that their bundle and package name are now `itests` instead of just `tests`.
+
+Thus before you would have the following in your component root:
+
+```
+pom.xml
+plugins/
+tests/
+features/
+site/
+```
+
+you will now have:
+
+```
+pom.xml
+plugins/
+tests/
+itests/
+features/
+site/
+```
+
+=== Setup 
+
+Within the `itests` folder there are a few minor differences that unfortunately cannot be shared in a parent pom thus it will have to be repeated for each component.
+
+==== pom.xml and all-tests/pom.xml
+
+You need to make sure `itests` are included into the various maven reactor poms that already includes `tests`.
+
+This is done by simply adding the following line:
+
+```
+  <module>itests</module>
+```
+
+into the existing `<modules>` section just after the `tests` module.
+
+In a default setup you should then have something like:
+
+```
+...
+<project>
+ <modules>
+  <module>plugins</module>
+  <module>tests</module>
+  <module>itests</module>
+  <module>features</module>
+  <module>site</module>
+</project>
+```
+
+==== itests/pom.xml
+
+You will need as a minimum to configure `tycho-surefire-plugin` to use `${skiptITests}` and `${surefire.itests.timeout}` properties
+instead of the default ones.
+
+```
+<build>
+...
+ <plugins>
+  <plugin>
+   <groupId>org.eclipse.tycho</groupId>
+   <artifactId>tycho-surefire-plugin</artifactId>
+  <configuration>
+   <skip>${skipITests}</skip>
+   <timeout>${surefire.itests.timeout}</timeout>
+  </configuration> 
+</plugin>
+...
+```
+
+What this does is do allow you to skip integration tests by simply passing `-DskiptITests` into your build locally or on the CI server (i.e. jenkins).
+
+== Usage
+
+By default Maven runs all tests, but you can skip them by using `-DskipTests`.
+The same rule is applied for our `itests` but it is now called `-DskipITests` instead.
+
+Meaning:
+
+`mvn clean verify` runs all tests.
+`mvn clean verify -DskipTests` skips *all* tests (including integration tests)
+`mvn clean verify -DskipITests` skips *only* itests
+
+=== Custom configuration
+
+If your `itests` need custom configuration (and your existing `tests` pom.xml probably already have some) this can now be put in the `itests/pom.xml` file instead.
+
+== Background and Examples
+
+The initial implementation of the above was done in https://github.com/jbosstools/jbosstools-server/pull/304
+
+Thus at time of writing `jbosstools-server` is the only repository that contains examples of this approach.
+
+
+
