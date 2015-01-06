@@ -4,16 +4,16 @@ This repository contains documentation for building and developing JBoss Tools.
 
 It is meant to replace the articles related to development at jboss.org wiki found at https://community.jboss.org/wiki/JBossTools
 
-See link:CONTRIBUTING.adoc[Contributing] for how to write/add to these docs.
+See link:building/CONTRIBUTING.adoc[Contributing] for how to write/add to these docs.
 
 In general it is to be a wiki all developers can push docs to, external contributors can do pull-requests or report issues
 to get things clarified/documented better.
 
 == Table of Contents
 
-=== Setting up an environment
+=== Setting up a development environment
 
-See link::building/setup_development_environment.adoc[Setting up an environment]. 
+See link:building/setup_development_environment.adoc[Setting up an environment]. 
 
 === Setting up the target platform
 ** Importing TP file (letting eclipse fetch)
@@ -23,52 +23,9 @@ See link::building/setup_development_environment.adoc[Setting up an environment]
 ** set the tp in eclipse / how to switch tp in Eclipse / reload TP etc.
 ** Old doc: https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/target_platforms/target_platforms_for_consumers.md 
 
-=== Configuring Git Workflow
+=== Configuring git workflow
 
-** Initialization
-** how to setup git locally
-** useful aliases for the ~/.gitconfig
-** useful bash scripts or git configurations
-** show git branch in bash prompt when in a git folder
-[source,bash] 
-----
-# add to your .bashrc: 
-
-# returns the branch name
-__git_ps1 ()
-{
-  local b="$(git symbolic-ref HEAD 2>/dev/null)";
-  if [ -n "$b" ]; then
-    printf " (%s)" "${b##refs/heads/}";
-  fi
-}
-export PS1='[\u@\h \W] $(__git_ps1 "(%s)")$'
-
-# this may also be required for your distro
-PROMPT_COMMAND=__git_ps1
-----
-
-** Now when in a git folder, prompt will look as follows:
-
-[source,bash] 
-----
-[rob@localhost jbosstools-server]  (master) $
-----
-
-** Sources
-*** how to clone a repo to fetch sources
-*** how to import projects into Eclipse  (SOME projects require building BEFORE they can be imported)
-*** setting Maven nature in a project to ensure it's built w/ Maven/Tycho instead of PDE
-*** how to add upstream repo to your own fork
-** Submitting Patches (Contributors)
-*** how to do patches (patch branches)
-*** guidelines for submitting a pull request / patch  (has to be in sync with upstream branch and contain jira issue number)
-** Accepting Patches (Maintainers)
-*** how to merge a pull request correctly
-*** Best practices
-**** When to use Merge commits
-**** When to Squash
-**** how to keep you local git clean (deleting local patch branches after merging)
+See link:building/configuring_git_workflow.adoc[Configuring git workflow]. 
 
 === Using The Runtime Workbench For Live Testing
 ** How to configure Eclipse to enable you to test code before you start making/breaking stuff
@@ -84,7 +41,7 @@ PROMPT_COMMAND=__git_ps1
 
 ** could be from jbosstools-submodules repo _if we move to using before-build-tagging like Max wants_
 
-=== Testing a Build
+=== Testing a build
 
 ** Create new clean install
 ** Install from local build's update site
@@ -124,6 +81,6 @@ PROMPT_COMMAND=__git_ps1
 *** https://developer.jboss.org/en/tools/
 ** CAT - http://tools.jboss.org/cat/
 
-=== Additional Community Doc
+=== Additional community doc
 
 ** How To Guides - http://tools.jboss.org/documentation/howto/

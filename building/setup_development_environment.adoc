@@ -185,4 +185,4 @@ The http://marketplace.eclipse.org/content/eclemma-java-code-coverage[EclEmma pl
 
 == Conclusion
 
-Now that you're all done here, you'll want to learn all about target platforms. Please go back to link:../README.adoc[the index] to move forward with setting up your environment. 
+Now that you're all done here, you'll want to learn all about target platforms. Please go back to link:../README.adoc#setting-up-the-target-platform[the index] to move forward with setting up your target platform. 
