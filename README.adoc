@@ -1,4 +1,4 @@
-== JBoss Tools Developer Documentation
+= JBoss Tools Developer Documentation
 
 This repository contains documentation for building and developing JBoss Tools.
 
@@ -11,15 +11,11 @@ to get things clarified/documented better.
 
 == Table of Contents
 
+=== Setting up an environment
 
-1. Setting up an environment
-** base installation
-** extra plugins for productivity
-** import eclipse settings? (codestyle, templates, etc)
-** ~/.m2/settings.xml
-** Old doc:  https://github.com/jbosstools/jbosstools-devdoc/blob/master/setup_development_environment.md
+See link::building/setup_development_environment.adoc[Setting up an environment]. 
 
-2.  Setting up the target platform
+=== Setting up the target platform
 ** Importing TP file (letting eclipse fetch)
 ** Building Locally and pointing to folder
 ** include-sources ?
@@ -27,7 +23,7 @@ to get things clarified/documented better.
 ** set the tp in eclipse / how to switch tp in Eclipse / reload TP etc.
 ** Old doc: https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/target_platforms/target_platforms_for_consumers.md 
 
-3.  Configuring Git Workflow
+=== Configuring Git Workflow
 
 ** Initialization
 ** how to setup git locally
@@ -74,14 +70,12 @@ PROMPT_COMMAND=__git_ps1
 **** When to Squash
 **** how to keep you local git clean (deleting local patch branches after merging)
 
--
-[start=4]
-4. Using The Runtime Workbench For Live Testing
+=== Using The Runtime Workbench For Live Testing
 ** How to configure Eclipse to enable you to test code before you start making/breaking stuff
 ** breakpoints, Debug mode, JDT use
 
 
-5. Building a module/component/project
+=== Building a module/component/project
 ** Simple export plugin from eclipse for quick-and-dirty tests
 ** Build from command line
 *** All about Tycho / release notes / latest changes
@@ -90,14 +84,14 @@ PROMPT_COMMAND=__git_ps1
 
 ** could be from jbosstools-submodules repo _if we move to using before-build-tagging like Max wants_
 
-6. Testing a Build
+=== Testing a Build
 
 ** Create new clean install
 ** Install from local build's update site
 ** Enable Tracing
 ** Debugging a local build via second instance (remote debugging)
 
-7. Source & project management
+=== Source & project management
 
 ** Adding a new module/component/project to github
 ** Adding a new plugin
@@ -116,7 +110,7 @@ PROMPT_COMMAND=__git_ps1
 ** Release guidelines, tools (promote.sh, new promote mojo)
 ** How to Tag & branch your code
 
-8. Community contribution / involvement
+=== Community contribution / involvement
 
 ** JIRA
 *** Filters
@@ -130,6 +124,6 @@ PROMPT_COMMAND=__git_ps1
 *** https://developer.jboss.org/en/tools/
 ** CAT - http://tools.jboss.org/cat/
 
-9. Additional Community Doc
+=== Additional Community Doc
 
 ** How To Guides - http://tools.jboss.org/documentation/howto/
