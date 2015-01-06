@@ -1,0 +1,37 @@
+= How to Export a plugin from Eclipse
+
+Exporting a plugin from inside eclipse is the 'quick and dirty' method to get an output binary for quick local tests. It does not generate an update site, and so this mechanism is only really suitable for local smoke-testing. 
+
+To export a plugin, you have the choice of exporting to a specific local directory, or to install in the eclipse instance you are currently running. 
+
+== Exporting to a folder
+
+To export to a folder, you can follow this short guide on link:http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.pde.doc.user%2Fguide%2Ftools%2Fexport_wizards%2Fexport_plugins.htm[Exporting Plugins].  Once this action is complete, you should have your deployable units in the folder you selected. The units can then be placed into your `${eclipse.home}/dropins` folder. 
+
+The danger with this is that it will not install any dependencies. If you are installing low-level plugins such as `foundation`, this shouldn't be a problem. Otherwise, you'll have to install all of your dependencies into the instance. The two easiest ways to achieve this are to either link:http://tools.jboss.org/downloads/installation.html[install JBoss Tools] or to link:../debugging/target_platforms/target_platforms_for_consumers.adoc#installing-a-target-platform-into-eclipse[install our Target Platform]. 
+
+If you're having problems determining what dependencies are missing, you can open your OSGi console `Window -> Show View -> Console` and browse to your OSGi Console. In the OSGi Console, you can attempt to start your plugin as follows:
+
+```
+osgi> ss myplugin
+"Framework is launched."
+
+
+id	State       Bundle
+198	RESOLVED    org.myplugin.core_1.0.0.v20140602-1527
+osgi> start 198
+osgi>
+```
+
+If there are any specific errors in resolving dependencies, it will tell you here. 
+
+This link:http://stackoverflow.com/questions/12624603/how-to-export-an-eclipse-plugin-with-dependencies[stackoverflow article] indicates some of the problems with this method. 
+
+== Exporting into the current eclipse
+
+link:http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.pde.doc.user%2Ftasks%2Fui_export_install_into_host.htm[This guide] explains how to export your plugins into your currently-running eclipse instance. 
+
+This method will attempt dependency resolution only to verify that the plugin *can* be installed. If some dependencies are missing, this method will refuse to install your plugin, and will indicate what dependencies are missing. This can lead to a situation where your plugin is compiling properly because you have your Target Platform configured in Eclipse, but it cannot install. 
+
+If this happens, you may consider installing all of your dependencies into the instance. The two easiest ways to achieve this are to either link:http://tools.jboss.org/downloads/installation.html[install JBoss Tools] or to link:../debugging/target_platforms/target_platforms_for_consumers.adoc#installing-a-target-platform-into-eclipse[install our Target Platform]. 
+

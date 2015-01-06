@@ -1,0 +1,185 @@
+# JBoss Tools Build FAQ
+
+This document has been updated for JBoss Tools 4.3, but should also be valid for JBoss Tools 4.1 and 4.2.
+
+
+## How do I configure my settings.xml?
+
+See link:building/setup_development_environment.adoc#maven-settings[Configuring Maven Settings]
+
+
+##  How do I build via commandline?
+
+See link:build_from_commandline.adoc[Building locally via commandline].
+
+## How do I build in Eclipse (with m2e)?
+
+See link:build_from_eclipse.adoc[Building locally in Eclipse].
+
+## How do I build a single project?
+
+Generally, you need only fetch the sources, and run `mvn verify`. See <<how-do-I-build-via-commandline,How do I build via commandline>> or <<how-do-I-build-in-eclipse-with-m2e,How do I build in Eclipse (with m2e)>> above.
+
+## How do I build a series of projects (eg., Base, Server, Webservices) ?
+
+Assuming your goal is to change sources in multiple projects, then build them all to verify everything still compiles, you will need to fetch sources, then build the projects in dependency order.
+
+This workflow is useful when you're looking to change framework code in an upstream project like Base on which Webservices or Server depends, and verify that API changes don't break the downstream project's code.
+
+```bash
+cd ~/jbosstools
+git clone https://github.com/jbosstools/jbosstools-base
+git clone https://github.com/jbosstools/jbosstools-server
+git clone https://github.com/jbosstools/jbosstools-webservices
+```
+
+Then, publish the results of each build into your local `~/.m2` repo, use `mvn install` instead of `mvn verify`.
+
+Thus downstream builds will use YOUR locally-built content, rather than looking to remote repositories for the latest published upstream dependencies.
+
+```bash
+cd ~/jbosstools/jbosstools-base; mvn install
+cd ~/jbosstools/jbosstools-server; mvn install
+cd ~/jbosstools/jbosstools-webservices; mvn verify
+```
+
+## Which is better - `mvn clean install` or `mvn verify` ?
+
+Use `mvn install` to publish artifacts to your `~/.m2` folder. These will be checked when building anything which depends on those artifacts (in addition to checking the internet). This is also useful for doing subsequent offline builds with the `-o` or `--offline` flag, or chaining a series of builds together as noted in the previous question.
+
+Use `mvn verify` to build, but NOT install anything into your `~/.m2` folder.
+
+## How do I clean out artifacts I might have installed to my ~/.m2/repo ?
+
+To delete, do `rm ~/.m2/repository/.meta/p2-local-metadata.properties`. Or you can simply ignore those artifacts with `mvn verify -Dtycho.localArtifacts=ignore`
+
+## What if I've already built something locally, but I want to build against the server version instead of my local repo?
+
+You can use `-Dtycho.localArtifacts=ignore` to force Tycho to ignore any locally available built artifacts that are not part of the project you build.
+
+Thus if you just built `jbosstools-server` locally, then go to `jbosstools-openshift` normally this build would pick up its `server` dependencies from the artifacts you just built from `jbosstools-server`.
+With `-Dtycho.localArtifacts=ignore` the local `jbosstools-server` artifacts will be ignored but all in `jbosstools-openshift` will be honored since that is part of your build.
+
+If that does not give the result you expect you can do `rm ~/.m2/repository/.meta/p2-local-metadata.properties`.
+
+This will remove all knowledge about locally built plugins - including things you might don't want to have lost.
+Thus try `-Dtycho.localArtifacts=ignore` first, unless you know you don't want to reuse any local built plugins.
+
+## How do I build a target platform?
+
+See link:target_platforms/target_platforms_for_consumers.adoc[Using target platforms] or 
+link:target_platforms/target_platforms_updates.adoc[Target platform updates].
+
+## Why is there more than one target platform?
+
+Every time we make changes to the target platform, either to add/remove something, or to change the included version, we release a new version.
+
+In order to verify we can build against the oldest version of a target platform (eg., one based on Eclipse 4.4.0, or "minimum" target platform) but also run tests against the latest for that stream (eg., based on Eclipse 4.4.2, or "maximum" target platform), we need to maintain multiple versions.
+
+By default, your build will use the default "minimum" target platform specified in the JBoss Tools parent pom. To easily build against the default "maximum", use -Pmaximum. See also link:build_options.adoc[Maven commandline parameters].
+
+## How do I specify which target platform to use when building?
+
+Use `-Dtpc.version=4.41.0.Final` or similar. See link:build_options.adoc[Maven commandline parameters].
+
+## How to I skip running tests? How do I make tests not fail? Or only fail after ALL tests run?
+
+To skip running tests, you can use these Maven flags:
+
+* `-Dmaven.test.skip=true` (also skip compilation)
+* `-DskipTests` (recommended)
+
+If your reason for skipping tests is to see if everything can run without being stuck on the first test failure, you might also like these flags:
+
+* `-fae`, `--fail-at-end` : Fail at end of build only
+* `-fn`, `--fail-never` : Never fail the build regardless of result
+
+You can also cause test failures to result in JUnit output without failing the build using these flags:
+
+* `-Dmaven.test.error.ignore=true`
+* `-Dmaven.test.failure.ignore=true`
+
+See also link:build_options.adoc[Maven commandline parameters].
+
+## How can I debug tests in Eclipse when run from Tycho (with Surefire)?
+
+See link:../debugging/debug_tycho_tests.adoc[Debugging Surefire tests].
+
+## How do I build docs?
+
+See link:build_documentation.adoc[Building documentation].
+
+## What profiles do I need to build? What Maven properties are useful when building?
+
+Most of the time, you don't need any profiles or -D properties. Here are some profiles and properties you might want to use in special cases.
+
+* `-Pmaximum` : selects the default maximum target platform version instead of the default minimum one. Useful when running tests to verify that your code works against a newer target platform (eg., Eclipse 4.4.2 instead of 4.4.0)
+* `-Dtpc.version` : allows you to pick a specific target platform version from those available in Nexus.
+
+See also link:build_options.adoc[Maven commandline parameters].
+
+
+## My build is failing due to OutOfMemory or PermGen issues! How do I give Maven more memory?
+
+To configure the amount of memory used by Maven, you can define MVN_OPTS as follows, either in the mvn / mvn.bat script you use to run Maven, or set as global environment variables. Here's how to do so for Fedora, Ubuntu, Windows, OSX.
+
+```bash
+set MAVEN_OPTS=-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m
+```
+
+Note: support for `-XX:PermSize` and `-XX:MaxPermSize` was removed in JDK 8.0
+
+
+## How do I see what's happening on a remote slave running Xvfb?
+
+First, you will need VPN access.
+
+Then, look in the build log for 2 lines like these - you need to determine the slave name, screen number (probably 0), and framebuffer directory (a path ending in xvfb):
+
+        Building remotely on ${SLAVE_NAME} in workspace /mnt/hudson/workspace/${JOB_NAME}
+        Xvfb starting$ Xvfb :1 -screen ${SCREEN_NUM} 1024x768x24 -fbdir ${FBDIR}
+
+Get the Xvfb_screen0 file from the remote server. If necessary, you might have to use the server's FQDN instead of the slave name that appears in the log:
+
+        rsync -Pzrlt --rsh=ssh --protocol=28 ${USER}@${SLAVE_NAME}:${FBDIR}/Xvfb_screen${SCREEN_NUM} /tmp/
+
+View the screen w/ xwud:
+
+        xwud /tmp/Xvfb_screen${SCREEN_NUM}
+
+## How do I see what's happening on a remote slave running Xvnc?
+
+First, you will need VPN access.
+
+Then, look in the build log for a line near the top like this:
+
+        Starting xvnc
+        ...
+        New 'vmg18....redhat.com:13 (hudson)' desktop is vmg18....redhat.com:13
+
+Next, using vinagre or any VNC client, connect to the server:
+
+       vinagre vmg18....redhat.com:5913
+
+
+## My build is failing due to UnsatisfiedLinkError or a missing .so file! 
+
+If you're seeing an error like this:
+
+```bash
+java.lang.UnsatisfiedLinkError: Could not load SWT library. Reasons: 
+ /home/rob/code/jbtools/github/jbosstools-server/archives/tests/org.jboss.ide.eclipse.archives.test/target/work/configuration/org.eclipse.osgi/136/0/.cp/libswt-pi-gtk-4509.so: libgtk-x11-2.0.so.0: cannot open shared object file: No such file or directory
+```
+
+When running a 64-bit OS, you need to install BOTH the 32- and 64-bit version of GTK2.
+
+Thus, as root:
+
+```bash
+yum provides "*/libgtk-x11-2.0.so.0*"
+# should get something like gtk2-2.24.24-2.fc20.x86_64
+# but you need the .i686 version too
+yum install gtk2.i686
+
+```
+

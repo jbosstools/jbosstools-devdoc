@@ -1,0 +1,47 @@
+= Community contribution and involvement
+
+== JIRA usage
+
+See link:how_to_use_jira.adoc[How To Use JIRA]
+
+=== JIRA Filters
+
+To facilitate sharing of consistent JIRA queries, we now have this:
+
+https://github.com/maxandersen/jiralint/blob/filter_prototype/filters.json
+
+(Work in progress...)
+
+== Release schedule
+
+For the latest announced milestone release schedule, see https://issues.jboss.org/browse/JBIDE/?selectedTab=com.atlassian.jira.jira-projects-plugin:versions-panel[JBIDE versions].
+
+=== Release Guide
+
+The release guide for JBoss Tools and Red Hat JBoss Developer Studio is located here: https://github.com/jbdevstudio/jbdevstudio-devdoc[jbdevstudio-devdoc]. 
+
+If not authorized, or you get a 404, please submit a PR to get your github username added to https://github.com/jbdevstudio/github-teams/blob/master/jbdevstudio-teams/jbdevstudio-devdoc.team[jbdevstudio-devdoc.team].
+
+== Forums
+
+There are a number of forums into which you can submit questions that may later become JIRAs, or just ask for advice.
+
+* https://developer.jboss.org/en/products/devstudio
+* https://developer.jboss.org/en/tools/dev
+* https://developer.jboss.org/en/tools/
+
+
+== Community Acceptance Testing
+
+JBoss Tools CAT is an effort to obtain feedback from the JBoss Tools and JBoss Developer Studio users that the features in early builds are working fine. This will help us asses the quality of the final release.
+
+The goal of the JBoss Tools CAT is to get as much feedback on our Alpha, Beta and pre-GA builds as possible. We are looking for feedback on usability, stability, quality and performance for new features. Reports on any regression for any existing features that are already used is very important.
+
+See http://tools.jboss.org/cat/
+
+=== Additional community doc
+
+Since JBoss Tools 4.2, we now have a collection of How To Guides.
+
+See http://tools.jboss.org/documentation/howto/
+

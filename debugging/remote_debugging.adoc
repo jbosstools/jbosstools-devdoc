@@ -1,0 +1,11 @@
+= Remote Debugging
+
+If you need to attach an Eclipse instance to a running Maven build, you can do so easily.
+
+```
+mvn verify -DdebugPort=8000
+```
+
+Then launch Eclipse, browse to the project in your workspace, and create a new Remote Java Application from the Debug Configurations menu. This will allow you to set breakpoints in your Eclipse workspace project and step through them as the maven build runs on the debug port.
+
+For more details, see: link:debug_tycho_tests.adoc[Debugging Surefire Tests].

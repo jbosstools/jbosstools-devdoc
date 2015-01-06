@@ -194,7 +194,7 @@ If you're using a different parent pom, use this:
 
 For advanced usage and help (using in IDE, building a mirror locally, using a zip), see:
 
-* https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/target_platforms/target_platforms_for_consumers.md
+* link:target_platforms/target_platforms_for_consumers.adoc[Using Target Platforms]
 
 
 What's next?

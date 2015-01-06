@@ -1,0 +1,20 @@
+= Build cascade & results
+
+--
+
+WARNING: This document is old and needs to be updated.
+
+--
+
+Each year our process for building the component projects in JBoss Tools evolves and improves, 
+so each year our process documentation is by necessity also evolving.
+
+For the latest, see: 
+
+http://download.jboss.org/jbosstools/builds/cascade/[http://download.jboss.org/jbosstools/builds/cascade/]
+
+For the relationships between component projects, see: 
+
+http://download.jboss.org/jbosstools/builds/cascade/swimlanes.html[http://download.jboss.org/jbosstools/builds/cascade/swimlanes.html]
+
+ 

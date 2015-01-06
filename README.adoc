@@ -1,4 +1,4 @@
-== JBoss Tools Developer Documentation
+= JBoss Tools Developer Documentation 
 
 This repository contains documentation for building and developing JBoss Tools.
 
@@ -6,6 +6,61 @@ It is meant to replace the articles related to development at jboss.org wiki fou
 
 See link:CONTRIBUTING.adoc[Contributing] for how to write/add to these docs.
 
-In general it is to be a wiki all developers can push docs to, external contributors can do pull-requests or report issues
-to get things clarified/documented better.
+This repo should be considered a wiki, into which all developers can push docs. External contributors can do pull requests or report issues to improve the quality, clarity, and breadth of this documentation.
+
+== Table of Contents
+* Getting Started
+** link:building/setup_development_environment.adoc[Setting up the eclipse development environment].
+** link:building/configuring_git_workflow.adoc[Configuring your git workflow]. 
+** link:building/target_platforms/target_platforms_for_consumers.adoc[Using target platforms in eclipse]
+* Target Platforms
+** link:building/target_platforms/target_platforms_for_consumers.adoc[Using target platforms in eclipse]
+** link:building/target_platforms/target_platforms_updates.adoc[Target platform update process]
+** link:building/target_platforms/target_platforms_releases.adoc[Target platform release process]
+** link:building/target_platforms/target_platforms_updates.adoc[Requesting Target Platform Updates]
+* Building a project (also called module or component)
+** link:building/how_to_build_jbosstools_faq.adoc[JBoss Tools Build FAQ]
+** link:building/build_from_commandline.adoc[Building from the command line]
+*** link:building/build_options.adoc[Build options & flags]
+** link:building/build_from_eclipse.adoc[Building with Eclipse (using m2e)]
+** link:source/build_source_bundles_features_and_src_zips.adoc[How to build source bundles, features, and source zips]
+** link:building/export_plugin_from_eclipse.adoc[Exporting plugins from eclipse]
+** link:building/tycho.adoc[All about Tycho]
+*** link:building/how_to_test_tycho.adoc[How to test new versions of Tycho]
+* Testing & Debugging
+** link:debugging/runtime_workbench.adoc[Debugging via Runtime Workbench]
+** link:debugging/install_a_local_build.adoc[Installing a local build]
+** link:debugging/how_to_test_a_build.adoc[Testing an installed build]
+** link:debugging/remote_debugging.adoc#Using-the-Eclipse-debugger[Debugging Surefire Tests w/ Eclipse Remote Debugger]
+* Source and Project Management
+** link:source/new_project_process.adoc[Adding a new module / repository to JBoss Tools or JBDS]
+** link:source/how_to_add_a_plugin_or_feature_to_an_existing_project.adoc[Adding a new plugin or feature to an existing JBoss Tools 4.x module]
+** link:source/how_to_add_a_test_plugin_or_feature.adoc[Adding a new unit or integration test and test feature]
+** link:building/target_platforms/target_platforms_updates.adoc[Requesting Target Platform Updates]
+** link:source/how_to_add_an_update_site.adoc[Adding an update site] or link:source/build_update_sites_using_associate_sites.adoc[associate site]
+** link:source/publishing_features_downstream.adoc[Publishing features to JBoss Tools, Red Hat JBoss Developer Studio, JBoss Central, Early Access, and Eclipse Marketplace]
+** link:source/third_party.adoc[Bundling Third Party Library Dependencies]
+** link:source/versioning.adoc[Versioning rules] 
+** link:https://developer.jboss.org/en/tools/blog/2011/09/17/coping-with-versions-in-large-multi-module-osgi-projects[Updating Versions for Components]
+* Process and Protocol
+** link:community/how_to_use_jira.adoc[How to use JIRA]
+** link:community/code_freezes.adoc[Code freezes]
+** link:community/release_guidelines.adoc[Release guidelines]
+** link:source/tagging_branching.adoc[Tagging & branching]
+* API
+** link:api/exposing_api.adoc[Exposing And Migrating API]
+** Common APIs You May Need
+*** link:api/foundation/foundation_api.adoc[Foundation - Base Classes for Every Plugin]
+*** link:api/usage/usage_api.adoc[Usage tracking]
+*** link:api/central/how-to-add-proxy-wizards.adoc[Proxy Wizards]
+* link:community/README.adoc[Community contribution and involvement]
+
+=== Other documents
+
+Many of these docs are old and need to be updated, or to be moved to better categories.
+
+* link:building/build_documentation.adoc[How to build JBoss Tools 4.x documentation]
+* link:building/build_job_cascade_and_where_to_find_build_results.adoc[Build cascade & results]
+* link:building/how_to_build_jbosstools_4.adoc[How to build JBoss Tools 4.0]
+
 

@@ -1,0 +1,207 @@
+= Using Target Platforms
+
+This document explains how to consume target platforms in Eclipse.
+
+== What is a target platform?
+
+A target platform, in abstract terms, is a set of external dependencies that your features, plugins, and tests will use and on which their development and installation will depend. For JBoss Tools, these dependencies come from various Eclipse.org projects and other providers. Our target platforms can be used inside Eclipse to:
+
+* provide the right set of dependencies with which to debug, test, and develop;
+* provide the right set of dependencies at build time; and
+* provide a site containing all dependencies to end-users at install time. 
+
+In concrete terms, a target platform can take two forms: a `target platform definition file` and a `target platform update site`. 
+
+A `target platform definition file` is a custom Eclipse file, with a `.target` suffix, for use by Eclipse's Plug-in Development Environment (PDE) tools. The file lists  the versions of installable units (IUs) to be used as dependencies, as well as the repositories from which those dependencies can be found. The contained IUs are generally features, but can also be invididual plugins.
+
+A `target platform update site` is the result of `resolving` the target platform definition file, which is the process of downloading all the IUs, and thier contained IUs, to one's local disk. It includes the full set of jars for all dependencies our project may depend on, as well as the required Eclipse metadata to act as an update site. An update site, in Eclipse, is a mechanism used to install new (or update existing) software into Eclipse. Because of this, you could probably install the entire target platform into your Eclipse using such an update site. 
+
+See these slides for more about target platforms: http://www.slideshare.net/mickaelistria/a-journey-with-target-platforms.
+
+== Where is the target platform for JBoss Tools?
+
+JBoss Tools' `target platform definition files` are stored in github:
+
+* https://github.com/jbosstools/jbosstools-target-platforms[JBoss Tools & Red Hat JBoss Developer Studio Target Platforms]
+* https://github.com/jbosstools/jbosstools-discovery[JBoss Tools Central Target Platforms]
+* https://github.com/jbosstools/jbosstools-integration-stack[Integration Stack Target Platforms]
+
+JBoss Tools' `target platform update sites` are located here, in both unpacked and packed (zipped) format. They do *not* contain sources or SDK features.
+
+* http://download.jboss.org/jbosstools/targetplatforms/ (SNAPSHOTS and milestones)
+* http://download.jboss.org/jbosstools/static/targetplatforms/ (released versions)
+
+## Exploring the JBoss Tools target platform repository
+
+Inside the JBoss Tools Target Platform repository, the two top level folders are `jbdevstudio` and `jbosstools`.  Both of these folders contain two sub-folders: `multiple` and `unified`. 
+
+### Multiple vs unified target platforms
+
+**Multiple** target platform definition files reference several different update sites, most of which are mirrors located on http://download.jboss.org/jbosstools/. Use this .target file in Eclipse, since it can include sources when built with the proper flags.
+
+**Unified** target platform definition files are generated from the multiple ones, and are then used to produce the target platform update sites. As this file references only a single mirror, it is faster to use in Eclipse but cannot include sources, since it points at the generated target platform update site, which does not include sources.
+
+### Versioning rules
+
+JBoss Tools has a semi-intuitive versioning scheme for our target platforms. 
+
+The first 3 digits are the version of Eclipse included in the target platform, such as 4.41 (Luna SR1) or 4.50 (Mars R).
+
+The next digit signifies the sequence of target platforms, starting with 0. Should there be multiple JBoss Tools releases on the same Eclipse version, this allows us to have different target platforms using the same baseline, such as 4.42.0, 4.42.1, 4.42.2.
+
+After that, the milestone of JBoss Tools that uses the target platform is suffixed, which also defines the quality/stability of the target platform (Alpha1, Alpha2, Beta1, Beta2, CR1, Final). 
+
+Finally, the target platform version will have a `-SNAPSHOT` suffix if it has not yet been released to Nexus. Once released, the `-SNAPSHOT` suffix is removed and the target platform update site is moved to http://download.jboss.org/jbosstools/static/targetplatforms/. 
+
+### Choosing the appropriate target platform.
+
+Use the latest target platform for the version of Eclipse your development environment requires. For example, if you are building code for Mars, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.50.x[4.50.x] target platform. If building for Luna SR1 or SR2, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.41.x[4.41.x] or 4.42.x target platform.
+
+
+## Using a target platform in Eclipse
+
+There are several different options you can use when attempting to configure your Eclipse workspace with a target platform. Each method has its own advantages and disadvantages. 
+
+:frame: all
+:grid: all
+:halign: left
+:valign: top
+
+[cols="5a,8a,10a", options="header"]
+|===
+|Method
+|Advantages/Disadvantages
+|Steps
+
+| *Import target platform zip*
+| 
+
+* Fast
+* Requires very little setup
+* Do not need to check out jbosstools-target-platforms 
+* Easily reused for an unlimited number of workspaces
+
+But...
+
+* Zips do not contain sources
+
+|
+
+* Browse to http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/ or http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/
+* Select the folder for the version you want such as `4.41.1.Final`
+* Select the zip file and save it to disk
+* Unzip it to a location you desire
+* Inside Eclipse, browse to `Window -> Preferences -> Target Platform` and click _Add..._
+* Click _Next>_
+* On the locations tab, click _Add..._
+* Select _Directory_ and click _Next>_
+* _Browse_ to your unzipped target platform folder
+* Click _Finish_, and _Finish_ again. 
+* Check your new target platform and watch it load very quickly
+
+| *Import .target file*
+|
+* By far the easiest method. 
+* Can fetch source bundles so you can trace into the source of dependencies
+ 
+But...
+
+* May take in excess of an hour each time
+* Must be done once per workspace 
+* Eclipse will cache bundles in hard-to-find locations
+* If your workspace gets corrupted often, this will be time consuming
+* Eclipse resolution may be a bit slower than building a target platform site on the command line
+* Blocks Eclipse, during which time you can't use it for other work
+|
+* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.5.0, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.50.x[4.50.x] branch.
+	
+```bash
+git clone git@github.com:jbosstools/jbosstools-target-platforms.git
+cd jbosstools-target-platforms
+git checkout 4.50.x
+```
+
+* Next, import the `jbosstools/multiple` project into Eclipse. This project must be imported as a maven project. To import this project, select `File -> Import -> Existing Maven Project` and browse to the jbosstools/multiple project location. 
+
+* When done, go to `Window -> Preference -> Plug-in Development -> Target Platforms`, select the recent _multiple.target_ entry which should be visible in the preference page, and click _Apply_ (or _Reload_ in case of updates only). 
+
+* **Beware**, this is a long operation that can take up to an hour, depending on your internet connection, during which time Eclipse can't be used for anything else.
+
+| *Build target platform*
+|
+* Fast
+* Flexible
+* Can include sources
+* Easily reused for an unlimited number of workspaces
+
+But...
+
+* More complicated
+|
+* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.5.0, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.50.x[4.50.x] branch.
+	
+```bash
+git clone git@github.com:jbosstools/jbosstools-target-platforms.git
+cd jbosstools-target-platforms
+git checkout 4.50.x
+```
+
+* If you do not require source bundles, you should then type: 
+
+```bash
+mvn clean install -Pmultiple2repo
+```
+
+* If you DO require source bundles, you should then type: 
+
+```bash
+mvn clean install -Pmultiple2repo -Dmirror-target-to-repo.includeSources=true
+```
+
+* Both of the above builds are long-running, and may take upwards of an hour. 
+
+Next:
+
+* Inside Eclipse, browse to `Window -> Preferences -> Target Platform` and click _Add..._
+* Click _Next>_
+* On the locations tab, click _Add..._
+* Select _Directory_ and click _Next>_
+* _Browse_ to `jbosstools-target-platforms/jbosstools/multiple/target/jbosstools-multiple.target.repo/plugins
+* Click _Finish_, and _Finish_ again. 
+* Check your new target platform and watch it load very quickly
+|===
+
+
+## Installing a target platform into eclipse
+
+Up until this point, we've only been referencing *using* a target platform in eclipse to resolve dependencies. 
+When simply using a target platform, it is not 'installed' into your eclipse, but rather all the units are 
+stored locally and then resolved and referenced for compilation and run-time resolution. 
+
+Under some circumstances, users may wish to actually install the target platform (or some subset of it) into their
+running eclipse installation. This is very useful when testing local builds, for example. 
+
+With this in mind, if you have a local copy of the target platform unzipped on your disk, or if you wish to 
+simply install from our web urls, you can perform the following to install it into your actual eclipse application:
+
+* Select `Window -> Install New Software` 
+* Click `Add...`
+* Provide a name 
+* Browse to the location of your local target platform, or paste a target platform URL such as http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.50.0.Alpha1-SNAPSHOT/
+* Uncheck `Group item by category`
+* Click `Select All`
+* Click `Next>` and continue until you can `Finish`
+* Install all of the items. 
+
+If this is a task you intend to perform often, you will find it very useful to have a local target platform folder, rather than continuously download and install from a remote location. 
+
+
+After installing the target platform, you should restart your eclipse. You will find you have all dependencies locally installed and running, 
+rather than being used only for plug-in dependency resolution. 
+
+## Using a target platform in a maven build
+
+JBoss Tools modules use Maven to build and are configured to consume the latest target platform from Nexus, based on what's set in the https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L109-L112[parent pom]. 
+
+If you want to use a newer version, simply build with `mvn verify -Dtpc.version=4.42.1.Final`.
+

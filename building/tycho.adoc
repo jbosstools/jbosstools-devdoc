@@ -1,0 +1,13 @@
+# Tycho
+
+Tycho is a set of Maven plugins and extensions for building Eclipse plugins and OSGi bundles with Maven.
+
+Tycho is focused on a Maven-centric, manifest-first approach to building Eclipse plug-ins, features, update sites, RCP applications and OSGi bundles. Eclipse plugins and OSGi bundles have their own metadata for expressing dependencies, source folder locations, etc. that are normally found in a Maven POM. 
+
+Tycho uses native metadata for Eclipse plugins and OSGi bundles and uses the POM to configure and drive the build. Tycho supports bundles, fragments, features, update site projects and RCP applications. Tycho also knows how to run JUnit test plugins using OSGi runtime and there is also support for sharing build results using Maven artifact repositories. Tycho plugins introduce new packaging types and the corresponding lifecycle bindings that allow Maven to use OSGi and Eclipse metadata during a Maven build.
+
+To use Tycho, simply run a Maven 3 build using Tycho plugins. The https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L136-L283[JBoss Tools parent pom] shows an example of how to configure Tycho plugins for a Maven 3 build.
+
+For the latest release notes, see https://wiki.eclipse.org/Tycho/Release_Notes
+
+For more about Tycho, see https://eclipse.org/tycho/

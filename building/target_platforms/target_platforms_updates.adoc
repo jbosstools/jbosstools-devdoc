@@ -71,7 +71,11 @@ Provide enough detail to explain why the change is needed, and what is required 
 
 * _Original p2 repo_: which repository are the plugins/features from? eg., http://dl.google.com/eclipse/plugin/4.2
 
-* _JBoss mirror_: mirror URL to use, eg. http://downloads.jboss.org/jbosstools/updates/requirements/gwt/3.1.0.v201208080121-rel-r42/
+* _JBoss mirror_: mirror URL to use, eg. http://downloads.jboss.org/jbosstools/updates/requirements/tern/0.7.0.201412012159/
+
+** If no mirror yet exists, look in https://github.com/nickboldt/jbosstools-download.jboss.org/tree/master/jbosstools/updates/requirements[updates/requirements/] for your requirement's folder. In that folder should be a build.xml file showing the URL and version to mirror. Please submit a pull request to update the URL or version, as applicable. 
+** If no build.xml file exists for your requirement, please submit a pull request to create one.
+** Once the PR is pushed, the build.xml script can then be run via https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-requirements/[this Jenkins job] (if you have VPN access).
 
 * _Include Sources_: Are source bundles included in the mirror, or are sources available elsewhere? Use "included" or explain.
 

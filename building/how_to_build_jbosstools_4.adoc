@@ -1,26 +1,23 @@
-Building JBoss Tools 4
-~~~~~~~~~~~~~~~~~~~~~~
+# Building JBoss Tools 4
 
-A simplified version of this document exists for JBoss Tools 4.1:
+--
 
-https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/faq.md[JBoss Tools 4.1 Build FAQ]
+WARNING: This document is old and has been replaced by link:how_to_build_jbosstools_faq.adoc[JBoss Tools Build FAQ]
 
 
 Note that this article only discusses building from master (trunk). To work with
 another branch, see http://learn.github.com/p/branching.html[Learn.GitHub - Branching and
 Merging].
 
-Looking for how to build our documentation? See 
-https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/build_documentation.md[Building JBoss Tools
+Looking for how to build our documentation? See link:build_documentation.adoc[Building JBoss Tools
 Documentation].
 
+--
 
-Environment Setup
-~~~~~~~~~~~~~~~~~
+== Environment Setup
 
 
-Prerequisistes
-~~~~~~~~~~~~~~
+=== Prereqs
 
 1.  Java 1.6 SDK
 2.  Maven 3.0.3
@@ -30,8 +27,7 @@ access*
 4.  Git client
 
 
-Maven and Java
-~~~~~~~~~~~~~~
+=== Maven and Java
 
 Make sure your maven 3 is available by default and Java 1.6 is used.
 
@@ -46,8 +42,7 @@ should print out something like
     Default locale: en_US, platform encoding: UTF-8
     OS name: "linux", version: "3.8.3-203.fc18.x86_64", arch: "amd64", family: "unix"
 
-Maven settings
-~~~~~~~~~~~~~~
+=== Maven settings
 
 See https://community.jboss.org/wiki/MavenGettingStarted-Developers[Maven Getting Started - Developers] to
 add a reference to the JBoss Repositories into your settings.xml. You'll also
@@ -94,9 +89,7 @@ should see in your ~/.m2/settings.xml
 </settings>
 ----
 
-
-Maven & Java Memory Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Maven & Java Memory Configuration
 
 To configure the amount of memory used by Maven, you can define MVN_OPTS
 as follows, either in the mvn / mvn.bat script you use to run Maven, or
@@ -111,8 +104,7 @@ set MAVEN_OPTS=-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m
 ----
 
 
-Verify or Install?
-~~~~~~~~~~~~~~~~~~
+== Verify or Install?
 
 mvn verify will perform all build and test steps, but it won't install
 the bundles in your local repository. mvn install does install in you
@@ -127,8 +119,8 @@ In this page, we'll encourage people to use *mvn verify* as much as
 possible to ensure *isolation*; but you can mvn install the same way if
 your use-case requires it.
 
-_*What if I've already built something locally, but I want to build
-against the server version instead of my local repo?*_
+*_What if I've already built something locally, but I want to build
+against the server version instead of my local repo?_*
 
 There are
 http://wiki.eclipse.org/Tycho/Target_Platform#Locally_built_artifacts[two
@@ -140,8 +132,7 @@ a) override temporarily when building, using
 b) delete `~/.m2/repository/.meta/p2-local-metadata.properties`
 
 
-About Target Platform and related profiles
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+== About Target Platform and related profiles
 
 The target platform (TP) lists all dependencies (coming from Eclipse.or
 and other 3rd-party update sites) that are used by JBoss Tools. This
@@ -158,8 +149,7 @@ Here are several ways to build locally using this target platform. It's
 up to you to choose the one that match your needs:
 
 
-Using published Target Platform definition (Recommended, Default)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Using published Target Platform definition (Recommended, Default)
 
 unified.target refers to the dependency as published in the Target
 Platform repository.
@@ -174,8 +164,7 @@ Platform repository.
 Consume it by adding `-Punified.target`to your Maven command line
 
 
-Or, get a local copy of the Target Platform
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Or,  get a local copy of the Target Platform
 
 * Pros:
 ** Faster to use than a remote one
@@ -183,8 +172,7 @@ Or, get a local copy of the Target Platform
 * Cons: 
 ** Must re-fetch every time remote SNAPSHOT https://github.com/jbosstools/jbosstools-build/tree/master/target-platforms[target platforms] are updated, or a new one is released
  
-Get it
-++++++
+==== Get it
 
 Download TP as a zip and install it by yourself
 
@@ -212,8 +200,7 @@ OR, use Maven to build it
 See link:#optional-build-parent-and-target-platform[(Optional) Build parent and target platform]
 
 
-Use it as a Maven mirror
-++++++++++++++++++++++++
+==== Use it as a Maven mirror
 
 Once you get the target platform available locally, you can use it
 instead of the remote sites to save time. For this, we can simply use
@@ -241,8 +228,7 @@ repository actuaaly stands)
 ----
 
 
-(Optional) Build parent and target platform
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== (Optional)  Build parent and target platform
 
 This step is only useful if you are actually working on the parent or
 the target platforms and want to test local changes. Otherwise, Maven
@@ -268,12 +254,10 @@ cd jbosstools-build/target-platforms; mvn install -Pjbosstools-minimum,jbosstool
 ----
 
 
-Building Individual Components Locally Via Commandline
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Building Individual Components Locally Via Commandline
 
 
-Build a component resolving to a recent aggregation build for other JBT dependencies (Recommended)
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+==== Build a component resolving to a recent aggregation build for other JBT dependencies (Recommended)
 
 * Pros:
 ** You build only your component
@@ -298,8 +282,7 @@ mvn verify -P unified.target -Pjbosstools-staging-aggregate
 ----
 
 
-Build a component resolving to the latest CI builds for other JBT dependencies
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+==== Build a component resolving to the latest CI builds for other JBT dependencies
 
 * Pros:
 ** You build only your component
@@ -322,8 +305,7 @@ mvn verify -P unified.target -Pjbosstools-nightly-staging-composite
 ----
 
 
-Building Everything In One Build Locally Via Commandline
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Building Everything In One Build Locally Via Commandline
 
 *LINUX / MAC USERS*
 
@@ -357,14 +339,12 @@ http://stackoverflow.com/questions/6081617/missing-maven-m2-folder[this
 article].
 
 
-Building Locally In Eclipse
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Building Locally In Eclipse
 
-See https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/build_from_eclipse.md
+See link:build_from_eclipse.adoc[Building locally in Eclipse]
 
 
-Installation Testing - making sure your stuff can be installed
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Installation Testing -  making sure your stuff can be installed
 
 Each component, when built, produces a update site zip and an unpacked
 update site which can be used to install your freshly-built features and
@@ -393,30 +373,26 @@ use:
 built locally - *bleedingest edge*)
 
 
-Adding a new feature or plugin to an existing component
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Adding a new feature or plugin to an existing component
 
 Need to tweak a component to add a new plugin or feature? See
-https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/how_to_add_a_plugin_or_feature_to_an_existing_project.md[ How To Add A New Plugin Or Feature To An Existing JBoss Tools 4.x Project].
+link:how_to_add_a_plugin_or_feature_to_an_existing_project.adoc[How to add a new plugin or feature to an existing JBoss Tools 4.x project].
 
 
-Dealing with timeouts for tests
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Dealing with timeouts for tests
 
 (To be rewritten soon...)
 http://lists.jboss.org/pipermail/jbosstools-dev/2012-September/005835.html[http://lists.jboss.org/pipermail/jbosstools-dev/2012-September/005835.html]
 
 
-Tips and tricks for making BOTH PDE UI and headless Maven builds happy
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Tips and tricks for making BOTH PDE UI and headless Maven builds happy
 
 It's fairly common to have plugins compiling in eclipse while tycho
 would not work. Basically you could say that tycho is far more picky
 compared to Eclipse PDE.
 
 
-Check your build.properties
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Check your build.properties
 
 Check build.properties in your plugin. If it has warnings in Eclipse,
 you'll most likely end with tycho failing to compile your sources.
@@ -436,8 +412,7 @@ bin.includes = your own,files to include,in the jar
 ----
 
 
-Check your manifest.mf dependencies
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Check your manifest.mf dependencies
 
 A new issue when building against juno shows that all compilation
 dependencies MUST be EXPLICITLY mentioned in your manifest.mf list of

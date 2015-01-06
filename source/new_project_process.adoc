@@ -1,0 +1,62 @@
+= Adding a new module/component/project to github
+
+This document outlines how to create a new repository for inclusion in JBoss Tools or JBDS. 
+
+== Consensus on Requirements
+
+First, write and submit a proposal to mailto:max.andersen@redhat.com[max.andersen@redhat.com] for review, explaining why your proposed project should stand alone, rather than being part of an existing JBoss Tools project. Alternatively, you can send the proposal to mailto:jbosstools-dev@lists.jboss.org[jbosstools-dev@lists.jboss.org] for wider distribution and discussion. 
+
+
+== Create your own repository
+
+Your first step is to create your own repository on github to hold your new component. Please see link:https://help.github.com/articles/creating-a-new-repository/[GitHub's Documentation] for more information. 
+
+== Layout
+
+The layout for repositories included in JBossTools can vary depending on whether your repository is intended to hold only one component, like the link:https://github.com/jbosstools/jbosstools-openshift/[jbosstools-openshift] repository, or if it will hold multiple different components, such as how link:https://github.com/jbosstools/jbosstools-base/[jbosstools-base] includes foundation, common, runtime, stacks, and usage. 
+
+=== Simple project layout
+
+A repository holding only one component should have the following folder structure and files:
+
+```
+pom.xml   - Your root pom for your component
+README.md - A document outlining how users can get involved, the purpose of the project, etc
+plugins   - A folder containing a folder for each plugin, and a pom.xml
+tests     - A folder containing a folder for each unit test plugin, and a pom.xml
+itests    - A folder containing a folder for each integration test plugin, and a pom.xml
+features  - A folder containing a folder for each feature, and a pom.xml. 
+site      - A folder containing a category.xml nad a pom.xml for generating update sites
+```
+
+=== Complex project layout
+
+A repository holding several components should have the following folder structure and files:
+
+```
+pom.xml        - Your root pom for your repository
+README.md      - A document outlining how users can get involved, the purpose of the repository, etc
+componentName1 - A containing folder for your first component
+  componentName1/pom.xml
+  componentName1/plugins
+  componentName1/tests
+  componentName1/itests
+  componentName1/features
+componentName2 - A containing folder for your first component
+  componentName2/pom.xml
+  componentName2/plugins
+  componentName2/tests
+  componentName2/itests
+  componentName2/features
+site      - A folder containing a category.xml nad a pom.xml for generating update sites
+```
+
+= Next steps
+
+Once you have a repository set up, you'll want to perform one of the following actions:
+
+** link:how_to_add_a_plugin_or_feature_to_an_existing_project.adoc[Adding a new plugin or feature to an existing JBoss Tools 4.x project]
+** link:how_to_add_a_test_plugin_or_feature.adoc[Adding a new unit or integration test and test feature]
+** link:../building/target_platforms/target_platforms_updates.adoc[Requesting Target Platform Updates]
+** TODO Adding an update site / category.xml
+** TODO Adding features to JBoss Tools, Central, Early Access, Eclipse Marketplace, JBDS Installer

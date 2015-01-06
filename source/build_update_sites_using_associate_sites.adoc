@@ -1,7 +1,10 @@
+= Using associate sites in update site metadata
 
-*Note* the info in this page should *not* be applied to updatesites that participate in a build, ie. individual component update sites like hibernate, freemarker, drools, fuse etc. should have *zero* associated sites.
-
-== Using Associate Sites in Update Site Metadata
+[cols="a", options="header"]
+|===
+|
+NOTE: The info in this page should *not* be applied to updatesites that participate in a build, ie. individual component update sites like hibernate, freemarker, drools, fuse etc. should have *zero* associated sites.
+|===
 
 To create an update site which refers to upstream sites (in order to resolve upstream dependencies, eg., from a target platform update site), you can use the JBoss Tools Tycho plugin https://github.com/jbosstools/jbosstools-maven-plugins/tree/master/tycho-plugins/repository-utils[repository-utils].
 

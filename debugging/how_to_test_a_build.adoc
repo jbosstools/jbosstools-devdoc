@@ -1,0 +1,109 @@
+= How to test a build of JBoss Tools components
+
+If you haven't yet gotten your local build installed, please see link:install_a_local_build.adoc[How to Install a Local Build].
+
+== Everything's Installed, Now what? 
+
+Once you have either downloaded a full build of JBoss Tools, installed from an update site, or otherwise installed the pieces you want to test, you can run your eclipse and begin testing. When running in this fashion, there's no easy debugging capability, and so you are basically limited to usability testing and replicating bugs. 
+
+There are, however, three options you have to get more information:
+
+* Checking Logs
+* Tracing
+* Debugging via a second eclipse instance
+
+=== Logs
+
+When using eclipse the main place to look for logging is in the workspace log file located at `<workspace>/.metadata/.log`.
+
+==== How to gather eclipse log and other in JBoss Tools
+
+If you have JBoss Tools installed the simplest way to gather logs and system configuration is to go to: 
+
+   Help > Report Problem
+   
+This will open up a dialog where you can put in a name and description.
+
+When pressing Finish a .zip file is created that you open or share with others (for example in Jira)
+
+=== Tracing
+
+Eclipse comes with a tracing mechanism to allow various messages to be displayed in the console's output based on what tracing flags you pass in. This does require some knowledge of what tracing flags individual plugins expose, and you can usually discover this by browsing through the plugin's source code to see what they expose. 
+
+To enable tracing, two things are required:
+
+* A .options file must live in your eclipse base directory
+* You must run your eclipse with the -debug flag. 
+
+An example of a .options file, for org.jboss.ide.eclipse.as.server.core would look something like:
+
+```
+org.jboss.ide.eclipse.as.core/debug=true
+org.jboss.ide.eclipse.as.core/config=true
+org.jboss.ide.eclipse.as.core/info=true
+org.jboss.ide.eclipse.as.core/warning=true
+org.jboss.ide.eclipse.as.core/severe=true
+org.jboss.ide.eclipse.as.core/finer=true
+org.jboss.ide.eclipse.as.core/finest=true
+org.jboss.ide.eclipse.as.core/resources=true
+org.jboss.ide.eclipse.as.core/extension_point=true
+org.jboss.ide.eclipse.as.core/listeners=true
+org.jboss.ide.eclipse.as.core/runtime_target=true
+org.jboss.ide.eclipse.as.core/performance=true
+org.jboss.ide.eclipse.as.core/publishing=true
+```
+
+Each plugin can declare its own trace keys specific to their needs. To discover what trace options are available for a given plugin, 
+you can look for a file named 'Trace.java' or similar. For example, in the `jbosstools-server` repository, you may look at 
+`jbosstools-server/as/plugins/org.jboss.ide.eclipse.as.core/jbosscore/org/jboss/ide/eclipse/as/core/Trace.java`
+
+
+== Debugging via a second eclipse instance
+
+After installing and running your locally built units and all dependencies, you can start up that eclipse instance to 
+test the primary features. If you encounter a bug and cannot discover the cause, you may opt to run this instance in debug
+mode, and use a second eclipse instance (with your source code in the workspace) to connect to the first. 
+
+=== Modifying eclipse.ini of target
+
+You'll first need to modify the `eclipse.ini` of your target eclipse. The target eclipse is the instance
+you have installed the various plugins you are testing. You can do this by adding the following after `-vmargs`:
+
+```
+-Xdebug
+-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=1044
+```
+
+=== Run Your Target Eclipse
+
+When running your target eclipse installation, you should now see the following:
+
+```
+[rob@rawbdor e2]$ ./eclipse 
+Listening for transport dt_socket at address: 1044
+```
+
+Eclipse is now waiting for a second instance to connect to it. 
+
+=== Connecting from Developer Workspace
+
+At this point, you will need to connect to the running eclipse instance via `Remote Debugging` from your
+development environment, which is the eclipse installation you were using to write your code changes. 
+This workspace should have all of the projects you wish to trace through already in the workspace. 
+
+To begin, click on `Run -> Debug Configurations...`
+
+image::../images/remote_Debugging_1.PNG[Remote Debugging 1]
+
+Right click on `Remote Java Application` and select `New`
+
+image::../images/remote_Debugging_2.PNG[Remote Debugging 1]
+
+Set the port to `1044`
+
+image::../images/remote_Debugging_3.PNG[Remote Debugging 1]
+
+You are then free to launch this remote debugging configuration immediately, set breakpoints in your various source files, 
+and trace through the code to find the source of the problem. 
+
+

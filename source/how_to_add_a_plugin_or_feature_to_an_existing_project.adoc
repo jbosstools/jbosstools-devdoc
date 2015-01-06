@@ -1,13 +1,13 @@
-## How To Add A New Plugin Or Feature To An Existing JBoss Tools 4.x Project
+# How to add a new plugin or feature to an existing JBoss Tools 4.x project
 
 ### IMPORTANT PREREQUISITES
 
 1. First, read these documents to learn how to build JBoss Tools project(s) locally: 
+* link:build_from_commandline.adoc[How to build JBoss Tools 4.3 via commandline]
+* link:how_to_build_jbosstools_faq.adoc[JBoss Tools Build FAQ]
+* link:how_to_build_jbosstools_4.adoc[How to build JBoss Tools 4.0]
 
-https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/faq.md
-https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/how_to_build_jbosstools_4.adoc
-
-2. Before adding a complete new feature to JBoss Tools announce the addition on jbosstools-dev <a href="mailto:jbosstools-dev@lists.jboss.org">jbosstools-dev@lists.jboss.org</a> with reasons WHY a new feature is needed and what new (if any) dependencies it will bring in. New dependencies need to be added to the target platforms, and thus should be reported in JIRA for tracking and task assignment purposes.
+2. Before adding a complete new feature to JBoss Tools announce the addition on mailto:jbosstools-dev@lists.jboss.org[jbosstools-dev@lists.jboss.org] with reasons WHY a new feature is needed and what new (if any) dependencies it will bring in. New dependencies need to be added to the target platforms, and thus should be reported in JIRA for tracking and task assignment purposes.
 
 3. Note too that new features will often start in JBoss Tools but *NOT* be included in JBoss Developer Studio until they have had time to mature. 
 
@@ -18,7 +18,7 @@ https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/how_to_buil
 
 Now that you can build the project, you can easily add a new plugin to that project. Here's how.
 
-0. Make sure your new plugin compiles in your workspace. Ensure your MANIFEST.MF contains all references/includes/requirements you need. Be sure to set the correct Bundle-RequireExecutionEnvironment (eg., JDK5 or JDK6).
+0. Make sure your new plugin compiles in your workspace. Ensure your MANIFEST.MF contains all references/includes/requirements you need. Be sure to set the correct Bundle-RequireExecutionEnvironment (eg., JDK7 or JDK8).
 
 1. When you are satisfied, you can commit your new plugin project to Git.
 
@@ -67,12 +67,6 @@ and one of the following:
 	    vi ~/jbosstools-build-sites/aggregate/site/category.xml # (the JBoss Tools aggregate update site)
 
 	    vi ~/jbosstools-build-sites/aggregate/coretests-site/category.xml # (the JBoss Tools aggregate update site for test plugins)
-
-or one of these two sites:
-
-	    vi ~/jbosstools-build-sites/aggregate/soa-site/category.xml # (the JBoss Tools aggregate update site for SOA Tooling)
-
-	    vi ~/jbosstools-build-sites/aggregate/soatests-site/category.xml # (the JBoss Tools aggregate update site for SOA Tooling test plugins)
 
 Note: for jbosstools-server, and any DEPENDENCIES of jbosstools-server, you MAY want to add your new feature to this site too, if and only if AS Tools makes use of that plugin / feature:
 

@@ -1,0 +1,53 @@
+= Exposing API
+
+When designing a new plugin, it is very important to decide what code will be exposed for other clients to call, and what code will remain internal. If you do not do this properly when first designing your plugin, it is very likely that clients will make use of this code, and you will be forced to support it. 
+
+== Package Names
+
+All packages that are meant to hold internal code should have a segment in the package name that reads `internal`. All packages that lack this segment are assumed to be public, and open for anyone to make use of. 
+
+== Exposing your API packages
+
+In the `Runtime` tab of your `plugin.xml` editor in Eclipse, you can choose which packages to export. You should export only those packages which you intend others to use. Typically, you would export all packages that do not have .internal in the package name. You may find reason not to expose other packages, as well, but you should consider if perhaps those packages should have `internal` added to them. 
+
+== But my test cases need the internal code!
+
+The `Runtime` tab of the `plugin.xml` editor actually persists its changes in the `Manifest.mf` file. When looking at this file, you may see the following:
+
+```
+Export-Package: org.jboss.ide.eclipse.archives.core,
+ org.jboss.ide.eclipse.archives.core.model.internal,
+ org.jboss.ide.eclipse.archives.core.model.internal.xb,
+```
+
+To expose a package to only your test plugins, you can change this as follows:
+```
+Export-Package: org.jboss.ide.eclipse.archives.core,
+ org.jboss.ide.eclipse.archives.core.model.internal;x-friends:="org.jboss.ide.eclipse.archives.test",
+ org.jboss.ide.eclipse.archives.core.model.internal.xb;x-friends:="org.jboss.ide.eclipse.archives.test",
+```
+
+This will limit which downstream consumers have access to the classes and may make use of them. 
+
+== I accidentally made a package public and others are using it!
+
+In this case, you have a few tasks that need to be done. You are required to maintain the code as API for at least one major release, but you will want to discourage new consumers from using the package. You should mark the package as internal in the following way:
+
+```
+Export-Package: org.jboss.ide.eclipse.archives.core,
+ org.jboss.ide.eclipse.archives.core.asf,
+ org.jboss.ide.eclipse.archives.core.model.oopsprivate;x-internal:=true,
+```
+
+This will discourage new consumers from using this package, but will not prevent it. 
+
+At this point, you will need to discover any and all consumers who are using this package, and provide them suitable API replacement in packages that are to be exposed for consumption.
+
+After waiting for a full major release, you may be able to migrate the oopsprivate package into an internal one, after fully announcing your intentions to mailto:jbosstools-dev@list.jboss.org[bosstools-dev@list.jboss.org] and ensuring that there are no consumers who indicate an issue with the change. 
+
+
+= Evolving APIs
+
+Changing API is always something that should be done very carefully. Changes generally must be source-compatible AND binary compatible. Changing method signatures, class heirarchy, visibility of fields, all have the potential to break binary compatibility. 
+
+For more information on this topic, please consult Eclipse's guide link:https://wiki.eclipse.org/Evolving_Java-based_APIs_2[Evolving Java-based APIs] for a comprehensive list of compatibility for various changes. 
