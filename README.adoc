@@ -9,3 +9,128 @@ See link:CONTRIBUTING.adoc[Contributing] for how to write/add to these docs.
 In general it is to be a wiki all developers can push docs to, external contributors can do pull-requests or report issues
 to get things clarified/documented better.
 
+== Table of Contents
+
+
+1. Setting up an environment
+** base installation
+** extra plugins for productivity
+** target platform -- see #2 below
+** import eclipse settings? (codestyle, templates, etc)
+** ~/.m2/settings.xml
+** All about Tycho / release notes / latest changes
+** Old doc:  https://github.com/jbosstools/jbosstools-devdoc/blob/master/setup_development_environment.md
+
+2.  Setting up the target platform
+** Importing TP file (letting eclipse fetch)
+** Building Locally and pointing to folder
+** include-sources ?
+** mirror tp (with / without SDKs)
+** set the tp in eclipse / how to switch tp in Eclipse / reload TP etc.
+** Old doc: https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/target_platforms/target_platforms_for_consumers.md 
+
+3.  Configuring Git Workflow
+
+** Initialization
+** how to setup git locally
+** useful aliases for the ~/.gitconfig
+** useful bash scripts or git configurations
+** show git branch in bash prompt when in a git folder
+[source,bash] 
+----
+# add to your .bashrc: 
+
+# returns the branch name
+__git_ps1 ()
+{
+  local b="$(git symbolic-ref HEAD 2>/dev/null)";
+  if [ -n "$b" ]; then
+    printf " (%s)" "${b##refs/heads/}";
+  fi
+}
+export PS1='[\u@\h \W] $(__git_ps1 "(%s)")$'
+
+# this may also be required for your distro
+PROMPT_COMMAND=__git_ps1
+----
+
+** Now when in a git folder, prompt will look as follows:
+
+[source,bash] 
+----
+[rob@localhost jbosstools-server]  (master) $
+----
+
+** Sources
+*** how to clone a repo to fetch sources
+*** how to import projects into Eclipse  (SOME projects require building BEFORE they can be imported)
+*** setting Maven nature in a project to ensure it's built w/ Maven/Tycho instead of PDE
+*** how to add upstream repo to your own fork
+** Submitting Patches (Contributors)
+*** how to do patches (patch branches)
+*** guidelines for submitting a pull request / patch  (has to be in sync with upstream branch and contain jira issue number)
+** Accepting Patches (Maintainers)
+*** how to merge a pull request correctly
+*** Best practices
+**** When to use Merge commits
+**** When to Squash
+**** how to keep you local git clean (deleting local patch branches after merging)
+
+-
+[start=4]
+4. Using The Runtime Workbench For Live Testing
+** How to configure Eclipse to enable you to test code before you start making/breaking stuff
+** breakpoints, Debug mode, JDT use
+
+
+5. Building a module/component/project
+** Simple export plugin from eclipse for quick-and-dirty tests
+** Build from command line
+** Common flags, using only local, cleaning out m2 repo, etc
+** Full Build via m2eclipse** https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/build_from_eclipse.md
+
+** could be from jbosstools-submodules repo _if we move to using before-build-tagging like Max wants_
+
+6. Testing a Build
+
+** Create new clean install
+** Install from local build's update site
+** Enable Tracing
+** Debugging a local build via second instance (remote debugging)
+
+7. Source & project management
+
+** Adding a new module/component/project to github
+** Adding a new plugin
+** Using Foundation APIs
+** Enabling Usage tracking
+** Exposing API
+** Adding a new feature
+** Requesting TP updates/additions: https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/target_platforms/target_platforms_updates.adoc
+** Adding a new test + test feature
+** Adding a new integration test + itest feature
+** Adding an update site / category.xml
+** Adding features to Central, Early Access, Eclipse Marketplace, JBDS Installer
+** Documenting API
+** Versioning rules  - https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/versioning.adoc
+** Code Freezes
+** Release guidelines, tools (promote.sh, new promote mojo)
+** How to Tag & branch your code
+
+8. Community contribution / involvement
+
+** JIRA
+*** Filters
+** Release schedule
+** JBDS docs - jbdevstudio-devdoc
+** https://github.com/jbdevstudio/jbdevstudio-devdoc
+** requesting access if not authorized / 404'd
+** Forum
+*** https://developer.jboss.org/en/products/devstudio
+*** https://developer.jboss.org/en/tools/dev
+*** https://developer.jboss.org/en/tools/
+** CAT - http://tools.jboss.org/cat/
+
+9. Additional Community Doc
+
+** How To Guides - http://tools.jboss.org/documentation/howto/
