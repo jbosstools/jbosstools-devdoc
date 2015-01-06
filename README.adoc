@@ -15,10 +15,8 @@ to get things clarified/documented better.
 1. Setting up an environment
 ** base installation
 ** extra plugins for productivity
-** target platform -- see #2 below
 ** import eclipse settings? (codestyle, templates, etc)
 ** ~/.m2/settings.xml
-** All about Tycho / release notes / latest changes
 ** Old doc:  https://github.com/jbosstools/jbosstools-devdoc/blob/master/setup_development_environment.md
 
 2.  Setting up the target platform
@@ -86,6 +84,7 @@ PROMPT_COMMAND=__git_ps1
 5. Building a module/component/project
 ** Simple export plugin from eclipse for quick-and-dirty tests
 ** Build from command line
+*** All about Tycho / release notes / latest changes
 ** Common flags, using only local, cleaning out m2 repo, etc
 ** Full Build via m2eclipse** https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/build_from_eclipse.md
 
@@ -127,7 +126,7 @@ PROMPT_COMMAND=__git_ps1
 ** requesting access if not authorized / 404'd
 ** Forum
 *** https://developer.jboss.org/en/products/devstudio
-*** https://developer.jboss.org/en/tools/dev
+*** https://developer.jboss.org/en/tools/devt
 *** https://developer.jboss.org/en/tools/
 ** CAT - http://tools.jboss.org/cat/
 
