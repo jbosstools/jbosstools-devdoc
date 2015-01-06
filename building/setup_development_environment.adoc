@@ -38,7 +38,8 @@ information on installing new plugins, please see http://help.eclipse.org/luna/i
 === Git and EGit
 
 Git is the chosen version control system used by JBoss Tools. To be able to checkout (or clone) our source code, you'll first need to install git. 
-The instructions for installing Git vary depending on your operating system. Please consult http://git-scm.com/book/en/v2/Getting-Started-Installing-Git[the Git website] for more information. 
+The instructions for installing Git vary depending on your operating system. 
+You'll probably want to check our guide on getting started with git link:configuring_git_workflow.adoc[here]. 
 
 Once the Git command line tools are installed, you'll want to install EGit, which are tools that allow you to easily use Git from inside Eclipse. 
 To see if your chosen  distribution comes with EGit, you can check http://www.eclipse.org/downloads/compare.php?release=luna[here]. 
