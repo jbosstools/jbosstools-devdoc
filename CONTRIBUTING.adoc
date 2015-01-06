@@ -10,41 +10,41 @@ The layout of the current documentation is the following:
 - link:issues[] - how to use issue tracker, shared queries etc.
 - <your topic here> - if you feel an overall issue are missing, create a pull request (PR) and suggest one
 
-To contribute content simply edit live on http://github.com[github] webui or clone the repository and submit a pull-request.
+To contribute content, you can clone the repository and submit a pull request, or, you can click on the "pencil" icon to make changes directly. 
 
 Content guidelines
 ==================
 
-* Content should be for how to develop and/or contribute to JBoss Tools
-* Should not contain user guides for plugins functionallity unless that guide is needed for debugging/tracing/exploring the plugin. User guides are in each plugin or at http://github.com/jbosstools/jbosstools-documentation
-* Use asciidoc (.adoc) wherever possible, see http://asciidoctor.org/docs/asciidoc-quick-reference[Asciidoc quick reference] since it is more portable and has better features than Markdown. MarkDown is also ok if must be.
-* If you got existing content you want to convert to asciidoc http://johnmacfarlane.net/pandoc/[Pandoc] works great for almost any reasonable format (especially with https://github.com/jgm/pandoc/pull/868[this patch] applied)
-* use lowercase with _'s for space in filenames. (i.e. `how_to_contribute.adoc` is Good, 'How-To-Contribute.adoc' or 'howtocontribute.adoc' is Bad)
+* Content should be for how to contribute to or develop JBoss Tools
+* Should not contain user guides for individual plugin functionallity unless that guide is likely to be used or extended by many other components.  User guides for specific plugins should be placed in each plugin's documentation folder, or at http://github.com/jbosstools/jbosstools-documentation
+* Use asciidoc (.adoc).  See http://asciidoctor.org/docs/asciidoc-quick-reference[Asciidoc quick reference] as a guide to get up to speed with the syntax. 
+* If you have existing content that you want to convert to asciidoc, http://johnmacfarlane.net/pandoc/[Pandoc] works great for almost any reasonable format (especially with https://github.com/jgm/pandoc/pull/868[this patch] applied)
+* use lowercase filenames with underscores in place of a space character. (i.e. `how_to_contribute.adoc` is good, `How-To-Contribute.adoc` or `howtocontribute.adoc` is bad)
 
 GitHub Web vs local/git
 =======================
 
-There are two recommended ways to contribute to the documentation:
+There are two recommended ways to contribute to this documentation:
 
 - using the github web ui
 - offline local editing by cloning the repository. 
 
-You can do almost everything in both places, the main limitations of github web ui is that they currently do not support upload of images.
-The table below outlines the various options/workflows:
+Almost all features are available in both locations. The main limitation of github's Web UI is that they currently do not support upload of images.
+The table below outlines several workflows:
 
 [options="header"]
 |=========================
 | *Task* | local/offline | github.com/online 
 | *Create text file* | git add + commit + push |  Click the '+' icon, name the file and submit 
 | *Add image/binary* | git add + commit + push | N/A
-| *Edit content* | git commit + push | Click the 'Edit' button, edit and submit
-| *Delete content* | git rm + commit + push | Use the new 'Delete' button on the file. http://prose.io/ is an alternative UI that also allows deletes
+| *Edit content* | git commit + push | Click the 'Edit' button (appears as a pencil), edit the content, and submit
+| *Delete content* | git rm + commit + push | Click the 'Delete' button on the file (appears as a garbage can). http://prose.io/ is an alternative UI that also allows deletes
 | *Notifications* | N/A | click 'Watch' repository and you can control the amount of notifications you get 
 | *Comments* | N/A | use the github issue tracker to ask for clarifications or simply submit suggestions as a pull-request
 |=========================
 
-Note: *Everyone* can contribute to the documentation, JBoss Tools committers all have push access and any non-committers can 
-edit and they will be turned into pull-requests which a committer can then apply. Even if the edits are not applied directly 
-your edits are visible in your fork.
+Note: *Everyone* can contribute to the documentation, JBoss Tools committers all have push access to this repository. Any non-committers can 
+make edits, which will become pull-requests that any committer can then apply. Even if the edits are not applied directly,
+your edits will be visible in your fork.
 
 
