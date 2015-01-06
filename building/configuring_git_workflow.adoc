@@ -4,18 +4,38 @@
 
 See http://git-scm.com/book/en/v2/Getting-Started-Installing-Git[Getting Started Installing Git]
 
-=== Useful aliases for the ~/.gitconfig
+=== Setting up your ~/.gitconfig 
 
-* Here are some aliases you can add to your `~/.gitconfig` file, in the `[alias]` section:
+In order to have patches accepted, you should first declare your identity by 
+modifying your `~/.gitconfig` file to add the following:
+
+[source,bash]
+----
+[user]
+        name = Your Name
+        email = yourname@example.com
+----
+
+==== Useful aliases for the ~/.gitconfig
+
+Here are some aliases you can add to your `~/.gitconfig` file, in the `[alias]` section. 
+
+The first two aliases (`lg` and `lg1`) assist you in browsing the commit log. 
+After adding them to your .gitconfig file, you can test them out by typing `git lg 5`, 
+which means show the past 5 commits in a nice pretty format. 
+
+The third alias, `ch`, allows you to rebase the last `n` commits, and to either 
+modify the commit messages, squash the entries, re-order entries, and other functions native to git. 
 
 [source,bash]
 ----
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %C(blue)%aE%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   lgl = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s \n\t\t\t%C(blue)%aN %aE, %cN %cE%Creset %Cgreen(%cD - %cr)%Creset' --abbrev-commit --date=relative
+  ch = "!sh -c 'git rebase -i HEAD~$1' -"
 ----
 
-* You can also configure default diff and merge editors. In the example below, Sublime Text is selected as the diff/merge editor, and Beyond Compare is used for performing graphical comparisons, eg., with `git difftool` or `git mergetool`.
+You can also configure default diff and merge editors. In the example below, Sublime Text is selected as the diff/merge editor, and Beyond Compare is used for performing graphical comparisons, eg., with `git difftool` or `git mergetool`.
 
 [source,bash]
 ----
@@ -30,7 +50,9 @@ See http://git-scm.com/book/en/v2/Getting-Started-Installing-Git[Getting Started
 
 === Useful bash scripts
 
-* Here's how to show the current git branch in your bash prompt when in a git folder. Open a text editor to edit your ~/.bashrc file, then add this to the end of the file:
+The following bash function will help you quickly identify when you are inside a folder
+that is recognized as a git repository.  It will customize your bash prompt to include 
+the repository name and the current branch. 
 
 [source,bash] 
 ----
@@ -48,11 +70,11 @@ export PS1='[\u@\h \W] $(__git_ps1 "(%s)")$'
 PROMPT_COMMAND=__git_ps1
 ----
 
-* Now when in a git folder, prompt will look as follows:
+Now when in a git folder, your bash prompt will look as follows:
 
 [source,bash] 
 ----
-[rob@localhost jbosstools-server]  (master) $
+[user@localhost jbosstools-server]  (master) $
 ----
 
 == Sources
@@ -70,7 +92,8 @@ cd jbosstools-base
 
 See also http://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository#Cloning-an-Existing-Repository[Cloning an Existing Repository]
 
-Then, if you plan to contribute a pull request, you will need your own fork. To fork the repo, browse to the repo on github, and click the `Fork` button in the top-right corner.
+Then, if you plan to contribute a pull request, you will need your own fork. To fork the repo, 
+browse to the repo on github, and click the `Fork` button in the top-right corner.
 
 image::../images/fork-a-repo.png[Fork a github repo]
 
