@@ -1,0 +1,5 @@
+
+link:how_to_use_jira.adoc[How to use Jira]
+
+link:jira_filters.adoc[Standard filters for JBoss Tools and Developer Studio]
+
