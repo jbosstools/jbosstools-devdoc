@@ -73,21 +73,22 @@ download.jboss.org & www.qa
 
 **After** the release:
 
-14. Update affected jobs to point explicitly to the new target platform versions (ref: https://issues.jboss.org/browse/JBIDE-13673[JBIDE-13673])
-15. Update relevant SNAPSHOT of parent pom so this new target becomes a default where we want it to be default (most likely on next branch for milestone if already available)
-16. If the target platform is to be used by a recently released development milestone or stable release, these composite site pointers need to be updated to point at this new released target platform. Example:
+14. Update affected pom files to point to the new release of target-platform (for stable branch) or the new snapshots (for master). Example of affected pom files are `jbdevstudio-product/pom.xml` (for central zip location), 
+15. Update affected jobs to point explicitly to the new target platform versions (ref: https://issues.jboss.org/browse/JBIDE-13673[JBIDE-13673])
+16. Update relevant SNAPSHOT of parent pom so this new target becomes a default where we want it to be default (most likely on next branch for milestone if already available)
+17. If the target platform is to be used by a recently released development milestone or stable release, these composite site pointers need to be updated to point at this new released target platform. Example:
   * http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/luna/ composite*.xml files get updated to point to ../4.40.0.Beta1
   * http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/luna/  (same thing)
   * http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/luna/  (same thing)
   * etc.
-17. Bump target-platform version and add it a -SNAPSHOT to start working on future version.
+18. Bump target-platform version and add it a -SNAPSHOT to start working on future version.
 
         $ mvn -Dtycho.mode=maven versions:set -DnewVersion=x.y.z.qualifier-SNAPSHOT
         $ git add pom.xml */pom.xml */*/pom.xml
         $ git commit -m "Bump to x.y.z.qualifier-SNAPSHOT"
         $ git push origin <branch>
 
-18. Update target-platform job on Jenkins to build the new SNAPSHOT (eg: 4.30.0.Alpha1 -> 4.30.0-Alpha2-SNAPSHOT)
+19. Update target-platform job on Jenkins to build the new SNAPSHOT (eg: 4.30.0.Alpha1 -> 4.30.0-Alpha2-SNAPSHOT)
 
 == Leverage Akamai for better download perforance
 
