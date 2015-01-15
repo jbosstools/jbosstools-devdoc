@@ -23,7 +23,7 @@ i.e. https://issues.jboss.org/issues/?jql=filter%3Dds_freeze%20and%20filter%3Dds
 [options="header"]
 .Jira Filters
 |===
-|Name| URL| Description| Query
+|Name| Description| Query
 | https://issues.jboss.org/issues/?filter=12323056[ds_next_maint] | Issues for next development in maintenance or master| ((project = JBIDE AND fixVersion in (  %(jbide_next_maint_versions)s )) OR (project = JBDS AND fixVersion in ( %(jbds_next_maint_versions)s )))
 | https://issues.jboss.org/issues/?filter=12323057[ds_next_master] | Issues for next development in maintenance or master| ((project = JBIDE AND fixVersion in (  %(jbide_next_maint_versions)s )) OR (project = JBDS AND fixVersion in ( %(jbds_next_maint_versions)s )))
 | https://issues.jboss.org/issues/?filter=12323016[ds_cdwtriage] | Issues are New and have no target release set| project = JBDS AND status = New AND ('Target Release' is EMPTY OR 'CDW release' in ('?'))
