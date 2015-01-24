@@ -71,11 +71,11 @@ mvn verify
 
 ## How do I build in Eclipse (with m2e)?
 
-To be written
+See [Building Locally In Eclipse](https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/build_from_eclipse.md)
 
 ## How do I build a single project?
 
-Generally, you need only fetch the sources, and run `mvn verify`. See '<a href="#how-do-i-build-via-commandline">How do I build via commandline?</a>' or 'How do I build in Eclipse (with m2e)?' above.
+Generally, you need only fetch the sources, and run `mvn verify`. See '<a href="#how-do-i-build-via-commandline">How do I build via commandline?</a>' or '[Building Locally In Eclipse](https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/build_from_eclipse.md)'.
 
 ## How do I build a series of projects (eg., Base, Server, Webservices) ?
 
