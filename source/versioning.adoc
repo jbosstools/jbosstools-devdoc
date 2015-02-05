@@ -153,15 +153,22 @@ JBoss Tools 4.2/Developer Studio 8.0 and a new major development starts
 for JBoss Tools 4.3/Developer Studio 9.0 - what do you do with the component
 versioned at 2.4.0 ?
 
-The current default is to bump the minor version to 2.5.0.
+The *general* rule is as follows:
+
+When it's time to branch between maintenance (eg., 4.2.x) and master branch, you should upversion your features & plugins:
+
+    * in the maintenance stream to x.y.z+1 (eg., 4.2.1, 4.2.2), and
+    * in the master stream to x.y+1.0 (eg., 4.3.0) or, if you can guarantee your master branch stuff works w/ the previous version of Eclipse, then x.y.10z (eg., 4.2.100, 4.2.101)
+
+Thus given the example above you have choice between bumping the minor (y) or micro with +100, but the current default is to bump the minor version to get 2.5.0 to avoid promising something we are not actually verifying.
 
 The question often asked is why not just rely on bump to 2.4.1 or 2.4.100 as
 done in some Eclipse.org projects ?
 
 The main reasons for this is:
 
-* if bumping to 2.4.1 in the new branch, the old branch can no longer do maintanence updates (bad)
-* if bumping to 2.5.100 that is solved and is definitely a good model to strive for, but 
+* if bumping to 2.4.1 in the new branch, the old branch can no longer do maintenence updates (bad)
+* if bumping to 2.4.100 that is solved and is definitely a good model to strive for, but 
 since we are in a new development stream moving from i.e. Kepler to Luna you are changing
 the build and test dependencies and are you then confident enough to say your component still works on Kepler ? 
 (it should since you haven't bumped the major version)
