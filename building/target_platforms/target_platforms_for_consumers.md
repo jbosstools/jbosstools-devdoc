@@ -53,6 +53,14 @@ Building target-platforms locally is a way to save some time. It's mainly useful
 
 ### How?
 
+#### From IDE
+
+Open the `.target` file with the Target Definition editor. On the top-right corner, you'll see an `Export` button. Click it and select a destination directory.
+
+Using this mechanism seems to also mirror sources, so it's convenient for development as well.
+
+#### From command-line
+
 ```bash
 git clone git@github.com:jbosstools/jbosstools-target-platforms.git
 cd jbosstools-target-platforms
@@ -60,6 +68,6 @@ git checkout 4.30.x
 mvn clean install -Pmultiple2repo
 ```
 
-This will also generate you the `unified.target` which is a target-platform mggregating multiple components in a single site. That is the one we use in Maven builds just in order to improve performances. **Beware**, this takes about ~1h to proceed mvn execution.
+This will also generate you the `unified.target` which is a target-platform mggregating multiple components in a single site. That is the one we use in Maven builds just in order to improve performances, but it's not the one developers/adopters who need a TP to write code against will want, since *it doesn't have references to source bundles*. **Beware**, this takes about ~1h to proceed mvn execution.
 
 If you need a repository containing both your bundles from target-platform and the sources, you can use `mvn install -Dmirror-target-to-repo.includeSources=true`. The output repo will be in _jbosstools/unified/target/multiple.target.repo_ . Then you can use it in your IDE as a local repository or Eclipse installation.
