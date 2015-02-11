@@ -191,3 +191,21 @@ Thus if you do not bump `common` it will A) have done different binary releases 
 
 Thus the policy is that if a module gets rereleased all bundles/components withint it needs to *at least* bump the micro version no matter if they had changes or not.
 
+== This stuff is too complicated, can't we automate this ?
+
+It is unfortunately not yet possible to predict what API changes we will make to know what the right version will be, but what we can do is to detect what definitely looks like a wrong version. In https://issues.jboss.org/browse/JBIDE-19056 we enabled explicit version checking against the latest public release of JBoss Tools.
+
+Now if a plugin have been part of a release and you build locally using a non-bumped version you will get an error like this:
+
+```
+[INFO] org.jboss.tools.openshift.egit.core ............... FAILURE [9.173s]
+
+[ERROR] Failed to execute goal org.jboss.tools.tycho-plugins:repository-utils:0.22.1-SNAPSHOT:compare-version-with-baselines (default) 
+
+on project org.jboss.tools.openshift.egit.core: Version of 'org.jboss.tools.openshift.egit.core/2.6.0.Alpha1-v20150128-1932) must be bigger than baseline one (2.6.1.Final-v20141209-0337-B67) -> [Help 1]
+```
+
+Explaining that there is a problem with the versioning string which can then be handled.
+
+
+
