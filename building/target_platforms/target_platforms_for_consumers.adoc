@@ -39,7 +39,7 @@ Inside the JBoss Tools Target Platform repository, the two top level folders are
 
 **Multiple** target platform definition files reference several different update sites, most of which are mirrors located on http://download.jboss.org/jbosstools/. Use this .target file in Eclipse, since it can include sources when built with the proper flags.
 
-**Unified** target platform definition files are generated from the multiple ones, and are then used to produce the target platform update sites. As this file references only a single mirror, it is faster to use in Eclipse but cannot include sources, since it points at the generated target platform update site, which does not include sources.
+**Unified** target platform definition files are generated from the multiple ones, and are then used to produce the target platform update sites. As this file references only a single mirror, it is faster to use in Eclipse but cannot include sources, since it points at the _generated target platform update site_, which does **not include sources**. If you are a developer or adopter, do not choose this definition file - it should only used by end-users at installation time.
 
 ### Versioning rules
 
@@ -125,7 +125,16 @@ git checkout 4.50.x
 
 * When done, go to `Window -> Preference -> Plug-in Development -> Target Platforms`, select the recent _multiple.target_ entry which should be visible in the preference page, and click _Apply_ (or _Reload_ in case of updates only). 
 
-* **Beware**, this is a long operation that can take up to an hour, depending on your internet connection, during which time Eclipse can't be used for anything else.
+[NOTE]
+====
+_Rather than importing, you can simply open a `.target` file with the Target Definition editor._
+
+_In the top-right corner, click the `Export` button and select a destination directory._
+
+_If you selected a `.target` file with source references, such as `jbosstools-multiple.target`, you will also resolve sources - convenient for development work._
+====
+
+* **Beware**, in both cases this is a long operation that can take up to an hour, depending on your internet connection, during which time Eclipse can't be used for anything else.
 
 | *Build target platform*
 |
