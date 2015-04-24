@@ -1,6 +1,6 @@
 == Foundation
 
-The `jbosstools-base` repository includes our `foundation` module, which is our lowest level module and is used for setting up boiler-plate infrastructure for
+The link:https://github.com/jbosstools/jbosstools-base/[`jbosstools-base`] repository includes our link:https://github.com/jbosstools/jbosstools-base/blob/master/foundation/[`foundation`] module, which is our lowest level module and is used for setting up boiler-plate infrastructure for
 your plugin to make use of. This module contains  several base classes that are extremely useful for setting up your new plugin. These classes are in the
 `org.jboss.tools.foundation.core` and `org.jboss.tools.foundation.ui` plugins. They help plugin developers quickly gain access to:
 
@@ -54,6 +54,8 @@ In `foundation`, however, we provide a base class `AbstractTrace` which you shou
 At a minimum, your Trace class should look as follows:
 
 ```
+import org.jboss.tools.foundation.core.plugin.AbstractTrace;
+
 public class Trace extends AbstractTrace implements DebugOptionsListener {
 	private static Trace instance = null;
 	public Trace(StacksCoreActivator p) {
@@ -75,7 +77,9 @@ This allows very concise call methods later, where you can simply call
 
     Trace.trace(Trace.STRING_EXTENSION_POINT, "Loading some ext. pt");
 
-The abstract super class includes several useful pre-defined trace levels:
+The abstract super class includes several useful pre-defined trace levels: `finest`, `finer`, `info`, `warning`, and `severe`. These are simply `levels`, as opposed to `categories`. Developers should trace using `finest` for the absolute greatest detail, `finer` for things one step higher, `info` for things more notable, `warning` for things that may cause problems, and `severe` for big or unexpected problems.
+
+Anything traced with `severe` will automatically be added to the error log. 
 
 ```
 	public final static String STRING_CONFIG = "/config"; //$NON-NLS-1$

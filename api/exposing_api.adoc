@@ -43,7 +43,7 @@ This will discourage new consumers from using this package, but will not prevent
 
 At this point, you will need to discover any and all consumers who are using this package, and provide them suitable API replacement in packages that are to be exposed for consumption.
 
-After waiting for a full major release, you may be able to migrate the oopsprivate package into an internal one, after fully announcing your intentions to mailto:jbosstools-dev@list.jboss.org[bosstools-dev@list.jboss.org] and ensuring that there are no consumers who indicate an issue with the change. 
+After waiting for a full major release, you may be able to migrate the `oopsprivate` package into an internal one, after fully announcing your intentions to mailto:jbosstools-dev@list.jboss.org[bosstools-dev@list.jboss.org] and ensuring that there are no consumers who indicate an issue with the change. 
 
 
 = Evolving APIs

@@ -16,22 +16,20 @@ modifying your `~/.gitconfig` file to add the following:
         email = yourname@example.com
 ----
 
-==== Useful aliases for the ~/.gitconfig
+==== Useful aliases for ~/.gitconfig
 
-Here are some aliases you can add to your `~/.gitconfig` file, in the `[alias]` section. 
+Here are some aliases you can optionally add to your `~/.gitconfig` file, in the `[alias]` section. 
 
-The first two aliases (`lg` and `lg1`) assist you in browsing the commit log. 
-After adding them to your .gitconfig file, you can test them out by typing `git lg 5`, 
-which means show the past 5 commits in a nice pretty format. 
+The first alias, `lg`, assists you in browsing the commit log. 
+After adding it to your .gitconfig file, try `git lg 5` to show the last 5 commits. 
 
-The third alias, `ch`, allows you to rebase the last `n` commits, and to either 
-modify the commit messages, squash the entries, re-order entries, and other functions native to git. 
+The second alias, `ch`, allows you to rebase the last `n` commits, modify commit messages, squash (combine) commits or re-order commits. 
+Try `git ch 3` to work with your last 3 commits.
 
 [source,bash]
 ----
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %C(blue)%aE%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-  lgl = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s \n\t\t\t%C(blue)%aN %aE, %cN %cE%Creset %Cgreen(%cD - %cr)%Creset' --abbrev-commit --date=relative
   ch = "!sh -c 'git rebase -i HEAD~$1' -"
 ----
 
@@ -97,24 +95,17 @@ browse to the repo on github, and click the `Fork` button in the top-right corne
 
 image::../images/fork-a-repo.png[Fork a github repo]
 
+Alternatively, if you use `hub` (see details below under <<How to add forks to your local clone>>), then you can fork the original project (referenced by "origin" remote) on GitHub and add a new remote for it under your username in one step:
+
+[source,bash]
+----
+cd jbosstools-base
+hub fork
+----
+
 === How to import projects into Eclipse
 
-Launch Eclipse, then select `File -> Import -> Maven -> Existing Maven Projects`
-
-image::../images/import-maven-project.png[]
-
-Browse for where you cloned the repo with which you want to work.
-
-image::../images/import-maven-project-2.png[]
-
-Some projects require a full Maven build before they will compile properly in Eclipse with PDE. To solve this problem, you can either build using Maven via the commandline, or configure Eclipse to use m2e and Tycho to build the project instead of PDE. The import wizard will do this for you automatically.
-
-image::../images/import-maven-project-3-tycho.png[]
-image::../images/import-maven-project-4-tycho.png[]
-
-Note that the Tycho configurator also includes PDE, so that it can be installed even if you're using a version of Eclipse which doesn't already include it.
-
-image::../images/import-maven-project-5-tycho-pde.png[]
+See link:build_from_eclipse.adoc[Building in Eclipse].
 
 === How to add forks to your local clone
 
@@ -124,6 +115,8 @@ If you use https://hub.github.com/[hub], you can simply add a fork like this:
 ----
 cd ~/my-github-stuff/jbosstools-base
 git remote add -p ${gituser}
+# or just this
+git fork
 ----
 
 Or, without https://hub.github.com/[hub], do this:
@@ -138,7 +131,7 @@ Then to check which forks you have attached:
 
 [source,bash]
 ----
-git remove -v
+git remote -v
 
 nickboldt   git@github.com:nickboldt/jbosstools-devdoc.git (fetch)
 nickboldt   git@github.com:nickboldt/jbosstools-devdoc.git (push)
@@ -187,6 +180,8 @@ git push ${gituser} ${topic}
 
 # create pull request
 # if you use hub (see `Submitting Patches` above), you can create a pull request via commandline:
+hub pull-request
+# or, to generate a commit message and set both branch and head do something like this:
 parentProject=`git remote -v | grep origin | grep push | sed "s/.\+github.com\(:\|\/\)\(.\+\)\/.\+/\2/"`
 hub pull-request -o -f -m "`git log -1 --pretty=%B` >> ${branch}" -b ${parentProject}:${branch} -h ${gituser}:${topic}
 ----
@@ -207,10 +202,18 @@ cd jbosstools-server
 git remote add exampleuser git@github.com:exampleuser/jbosstools-server.git
 git fetch exampleuser
 git checkout prtopicbranch
-```  
+``` 
 
-At this point, the maintainer should either run the modified source in the Eclipse Runtime Workbench (link TODO) or 
-run the build via command line (link TODO) to verify the unit tests all pass. 
+Or, when using hub:
+
+```bash
+cd jbosstools-server
+git co https://github.com/jbosstools/jbosstools-server/pull/999
+```
+
+At this point, the maintainer should build the modified source link:build_from_commandline.adoc[via the commandline] to verify the unit (and integration tests) all pass. 
+
+Should a closer inspection be required one can also link:build_from_eclipse.adoc[build in Eclipse].
 
 Once the patch is verified as correct and acceptable, the committer should then merge the pull request in 
 a neat and orderly fashion, which is the topic we will cover next. 
@@ -237,6 +240,9 @@ git rebase master     # This ensures all interim commits are placed before us
 
 # This allows us to squash, re-order, or otherwise modify our commits during the rebase, squash the last 3 commits into the first
 git rebase -i HEAD~5  
+
+# WARNING: you should NEVER rebase a master or release branch, only your own feature or topic branches!
+
 # Modify the commit message to be as clear as possible and remove crud or irrelevent / outdated comments
 # Complete the squash by changing 'pick' to 'squash' for the bottom 3 commits
 

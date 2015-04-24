@@ -43,7 +43,7 @@ Inside the JBoss Tools Target Platform repository, the two top level folders are
 
 ### Versioning rules
 
-JBoss Tools has a semi-intuitive versioning scheme for our target platforms. 
+JBoss Tools uses a well-defined versioning scheme for our target platforms. 
 
 The first 3 digits are the version of Eclipse included in the target platform, such as 4.41 (Luna SR1) or 4.50 (Mars R).
 
@@ -56,6 +56,20 @@ Finally, the target platform version will have a `-SNAPSHOT` suffix if it has no
 ### Choosing the appropriate target platform.
 
 Use the latest target platform for the version of Eclipse your development environment requires. For example, if you are building code for Mars, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.50.x[4.50.x] target platform. If building for Luna SR1 or SR2, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.41.x[4.41.x] or 4.42.x target platform.
+
+If you use the https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L104-L115[latest parent pom], chances are good you'll automatically build with the latest appropriate target platform too.
+
+However, this will default to use the latest *minimum* target platform based on the initial R release of the annual Eclipse release train, not the SR1 or SR2 updates. To quickly switch to building with the latest *maximum* target platform (eg., the SR2 version), use this profile:
+
+```
+mvn install -P maximum
+```
+
+Should you want to build using a *specific* target platform, perhaps because you're testing a new, unreleased one, you could build like this:
+
+```
+mvn install -Dtpc.version=4.50.0.Beta1-SNAPSHOT
+```
 
 
 ## Using a target platform in Eclipse
