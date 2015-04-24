@@ -23,14 +23,14 @@ Here are some aliases you can optionally add to your `~/.gitconfig` file, in the
 The first alias, `lg`, assists you in browsing the commit log. 
 After adding it to your .gitconfig file, try `git lg 5` to show the last 5 commits. 
 
-The second alias, `ch`, allows you to rebase the last `n` commits, modify commit messages, squash (combine) commits or re-order commits. 
-Try `git ch 3` to work with your last 3 commits.
+The second alias, `rb`, allows you to rebase the last `n` commits, modify commit messages, squash (combine) commits or re-order commits. 
+Try `git rb 3` to work with your last 3 commits. NOTE: This is an advanced concept and requires more knowledge of git to perform properly, but it is a handy shortcut once you know what you're doing. 
 
 [source,bash]
 ----
 [alias]
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %C(blue)%aE%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-  ch = "!sh -c 'git rebase -i HEAD~$1' -"
+  rb = "!sh -c 'git rebase -i HEAD~$1' -"
 ----
 
 You can also configure default diff and merge editors. In the example below, Sublime Text is selected as the diff/merge editor, and Beyond Compare is used for performing graphical comparisons, eg., with `git difftool` or `git mergetool`.
@@ -160,8 +160,8 @@ The rules are simple:
 # checkout the topic branch and origin branch, and link them
 # ${topic} = topic branch in your fork
 # ${branch} = branch in the origin
-git checkout origin/${branch} -b ${topic}
-git checkout ${topic}
+git checkout origin/${branch}
+git checkout -b ${topic}
 
 # commit changes
 git commit -m "JBIDE-12345 fix that thing that was broken" somefile
@@ -213,7 +213,7 @@ git co https://github.com/jbosstools/jbosstools-server/pull/999
 
 At this point, the maintainer should build the modified source link:build_from_commandline.adoc[via the commandline] to verify the unit (and integration tests) all pass. 
 
-Should a closer inspection be required one can also link:build_from_eclipse.adoc[build in Eclipse].
+Should a closer inspection be required one can also link:build_from_eclipse.adoc[build in the Eclipse Runtime Workbench].
 
 Once the patch is verified as correct and acceptable, the committer should then merge the pull request in 
 a neat and orderly fashion, which is the topic we will cover next. 

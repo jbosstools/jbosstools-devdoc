@@ -54,11 +54,14 @@ In `foundation`, however, we provide a base class `AbstractTrace` which you shou
 At a minimum, your Trace class should look as follows:
 
 ```
+import org.eclipse.osgi.service.debug.DebugOptions;
+import org.eclipse.osgi.service.debug.DebugOptionsListener;
 import org.jboss.tools.foundation.core.plugin.AbstractTrace;
+import org.jboss.tools.your.plugin.YourPluginActivator;
 
 public class Trace extends AbstractTrace implements DebugOptionsListener {
 	private static Trace instance = null;
-	public Trace(StacksCoreActivator p) {
+	public Trace(YourPluginActivator p) {
 		super(p);
 		instance = this;
 	}
@@ -77,7 +80,7 @@ This allows very concise call methods later, where you can simply call
 
     Trace.trace(Trace.STRING_EXTENSION_POINT, "Loading some ext. pt");
 
-The abstract super class includes several useful pre-defined trace levels: `finest`, `finer`, `info`, `warning`, and `severe`. These are simply `levels`, as opposed to `categories`. Developers should trace using `finest` for the absolute greatest detail, `finer` for things one step higher, `info` for things more notable, `warning` for things that may cause problems, and `severe` for big or unexpected problems.
+The abstract super class includes several useful pre-defined trace constants: `finest`, `finer`, `info`, `warning`, and `severe`. These are simply `levels`, as opposed to `categories`. Developers should trace using `finest` for the absolute greatest detail, `finer` for things one step higher, `info` for things more notable, `warning` for things that may cause problems, and `severe` for big or unexpected problems.
 
 Anything traced with `severe` will automatically be added to the error log. 
 
@@ -93,7 +96,11 @@ Anything traced with `severe` will automatically be added to the error log.
 	public final static String STRING_LISTENERS = "/listeners"; //$NON-NLS-1$
 ```
 
-To add your own category named "remote", you can add the following logic:
+These constants come in two forms. One form is your typical logging levels. These levels would be used in most of your codebase. Depending on how much detail you wish to log, you would trace using one of `severe`, `warning`, `info`, `finer`, and `finest`.
+
+The second form used in constants are more like categories. You would use these logging levels for what are essentially logging categories; things like listeners, extension points, or access to workspace resources.
+
+To add your own constant for a category named `remote`, you can add the following logic:
 
 ```
 	public static final String STRING_REMOTE_CALL = "/remote"; //$NON-NLS-1$
@@ -109,8 +116,49 @@ To add your own category named "remote", you can add the following logic:
 	}
 ```
 
-Once performing these tasks, your new trace type should be available to be used either in a `.options` file or via Eclipse UI. 
+=== The .options file
 
+To expose all your constants so that the Eclipse launch framework can see them, your plugin will also need a `.options` file placed in the root of your plugin. Depending on what constants you declare, it would look something like this:
+
+```
+# Debugging options for the org.jboss.ide.eclipse.as.core plugin
+
+# Turn on general debugging
+org.jboss.ide.eclipse.as.core/debug=true
+
+# Tracing options
+org.jboss.ide.eclipse.as.core/config=false
+org.jboss.ide.eclipse.as.core/info=false
+org.jboss.ide.eclipse.as.core/warning=false
+org.jboss.ide.eclipse.as.core/severe=false
+org.jboss.ide.eclipse.as.core/finest=false
+org.jboss.ide.eclipse.as.core/finer=false
+
+# Tracking of server resources
+org.jboss.ide.eclipse.as.core/resources=false
+
+# Loading of extension points
+org.jboss.ide.eclipse.as.core/extension_point=false
+
+# Server listeners
+org.jboss.ide.eclipse.as.core/listeners=false
+
+# runtime targets
+org.jboss.ide.eclipse.as.core/runtime_target=false
+
+# Performance of loading and calling delegates
+org.jboss.ide.eclipse.as.core/performance=false
+
+# Publishing
+org.jboss.ide.eclipse.as.core/publishing=false
+
+```
+
+To verify that these are all now visible in Eclipse UI when launching your plugin in runtime workbench, you should open your debug launch configuration, and go to the `Tracing` tab. You'll see something similar to this:
+
+image::../../images/tracingUI.png[]
+
+Once performing these tasks, your new trace type should be available to be used either in another `.options` file when running eclipse, or via Eclipse UI for launching via Runtime Workbench. 
 
 == Shared Images
 

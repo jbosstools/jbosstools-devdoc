@@ -127,7 +127,7 @@ To configure the amount of memory used by Maven, you can define MVN_OPTS as foll
 set MAVEN_OPTS=-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m
 ```
 
-Note: support for `-XX:PermSize` and `-XX:MaxPermSize` was removed in JDK 8.0
+Note: support for `-XX:PermSize` and `-XX:MaxPermSize` was removed in JDK 8.0, as the link:http://stackoverflow.com/questions/18339707/permgen-elimination-in-jdk-8[flags are no longer necessary]. 
 
 
 ## How do I see what's happening on a remote slave running Xvfb?

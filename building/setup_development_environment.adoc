@@ -135,12 +135,9 @@ Tycho, to build our tools. To see if your chosen  distribution comes with m2e, y
 If your chosen Eclipse installation does not come with m2e, you'll want to follow the above instructions to install m2e, using the update site
 url found at m2e's http://download.eclipse.org/technology/m2e/releases/[download page]. 
 
-
-Once m2e is installed, we recommend that you also install *m2e-tycho* and *m2e-EGit* connector from `Window -> Preferences -> Maven -> Discovery -> Open Catalog`.
+Once m2e is installed, we recommend that you also install *m2e-tycho* and *m2e-EGit* connectors, if they were not automatically installed upon import, from `Window -> Preferences -> Maven -> Discovery -> Open Catalog`.
 
 image::images/m2e-tycho.png[]
-
-However, Eclipse may prompt you to do so automatically if it detects you will need these connectors.
 
 
 == Tips for productivity and quality

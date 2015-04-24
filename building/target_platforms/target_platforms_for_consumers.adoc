@@ -55,7 +55,9 @@ Finally, the target platform version will have a `-SNAPSHOT` suffix if it has no
 
 ### Choosing the appropriate target platform.
 
-Use the latest target platform for the version of Eclipse your development environment requires. For example, if you are building code for Mars, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.50.x[4.50.x] target platform. If building for Luna SR1 or SR2, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.41.x[4.41.x] or 4.42.x target platform.
+Normally, each project uses a parent pom that will default to the right target platform, but in case you need to update to, or test against, a different target platform, this section will be useful for you.
+
+In general, we use the latest target platform for the version of Eclipse your development environment requires. For example, if you are building code for Mars, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.50.x[4.50.x] target platform. If building for Luna SR1 or SR2, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.41.x[4.41.x] or 4.42.x target platform.
 
 If you use the https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L104-L115[latest parent pom], chances are good you'll automatically build with the latest appropriate target platform too.
 
