@@ -1,0 +1,49 @@
+== Projects in JBoss Tools 
+
+Below is a table listing the projects in http://tools.jboss.org/downloads/overview.html[JBoss Tools], with links to their source repos, builds, update sites, & jobs. 
+
+You can also see which projects are mature enough to be included in http://www.jboss.org/products/devstudio/download/[Red Hat JBoss Developer Studio], JBoss Central, or available from Early Access within Central.
+
+.JBoss Tools Projects - 4.3 branch
+|===
+|Name |Repo|Job|Build |Update Site|Maturity 
+
+|aerogear
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-aerogear/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-aerogear_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-aerogear_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-aerogear_4.3.mars/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-aerogear_4.3.mars/all/repo/"]
+image:images/gear.png[title="zip", alt="zip", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-aerogear_4.3.mars/all/jbosstools-aerogear_4.3.mars-SNAPSHOT-updatesite.zip"]
+|Stable
+
+|arquillian
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-arquillian/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-arquillian_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-arquillian_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-arquillian_4.3.mars/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-arquillian_4.3.mars/all/repo/"]
+image:images/gear.png[title="zip", alt="zip", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-arquillian_4.3.mars/all/jbosstools-arquillian_4.3.mars-SNAPSHOT-updatesite.zip"]
+|Tools, JBDS Early Access
+
+|base
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-base/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-base_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-base_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-base_4.3.mars/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-base_4.3.mars/all/repo/"]
+image:images/gear.png[title="zip", alt="zip", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-base_4.3.mars/all/jbosstools-base_4.3.mars-SNAPSHOT-updatesite.zip"]
+|Stable
+
+|birt
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-birt/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-birt_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-birt_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-birt_4.3.mars/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-birt_4.3.mars/all/repo/"]
+image:images/gear.png[title="zip", alt="zip", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-birt_4.3.mars/all/jbosstools-birt_4.3.mars-SNAPSHOT-updatesite.zip"]
+|Tools Only
+
+|===
+
+ (more stuff to be added here) ...

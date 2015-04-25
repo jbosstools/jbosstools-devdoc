@@ -114,7 +114,7 @@ should see in your ~/.m2/settings.xml
 Maven & Java Memory Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To configure the amount of memory used by Maven, you can define MVN_OPTS
+To configure the amount of memory used by Maven, you can define MAVEN_OPTS
 as follows, either in the mvn / mvn.bat script you use to run Maven, or
 set as global environment variables. Here's how to do so for
 http://forums.fedoraforum.org/showthread.php?t=262465[Fedora],
@@ -135,8 +135,7 @@ Tycho, to build our tools. To see if your chosen  distribution comes with m2e, y
 If your chosen Eclipse installation does not come with m2e, you'll want to follow the above instructions to install m2e, using the update site
 url found at m2e's http://download.eclipse.org/technology/m2e/releases/[download page]. 
 
-
-Once m2e is installed, we recommend that you also install *m2e-tycho* and *m2e-EGit* connector from `Window -> Preferences -> Maven -> Discovery -> Open Catalog`.
+Once m2e is installed, we recommend that you also install *m2e-tycho* and *m2e-EGit* connectors, if they were not automatically installed upon import, from `Window -> Preferences -> Maven -> Discovery -> Open Catalog`.
 
 image::images/m2e-tycho.png[]
 

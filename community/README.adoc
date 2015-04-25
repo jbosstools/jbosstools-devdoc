@@ -8,7 +8,7 @@ See link:how_to_use_jira.adoc[How To Use JIRA]
 
 To facilitate sharing of consistent JIRA queries, we now have this:
 
-https://github.com/maxandersen/jiralint/blob/filter_prototype/filters.json
+https://github.com/maxandersen/jiralint/blob/master/filters.json
 
 (Work in progress...)
 

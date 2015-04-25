@@ -1,5 +1,8 @@
 #  Building locally in Eclipse
 
+Building in Eclipse is an optional alternative approach to link:build_from_commandline.adoc[building via commandline].
+
+
 First, fetch the sources of the project you want to build from Github. For details, see link:configuring_git_workflow.adoc#Sources[Configuring Git Workflow - Sources].
 
 Launch Eclipse, then select `File -> Import -> Maven -> Existing Maven Projects`
@@ -51,6 +54,6 @@ Now you can repeat the above step to build any other component or plugin or feat
 
 ## More info
 
-To build on the commandline, see link:build_from_commandline.adoc[Building locally via commandline]
+To build on the commandline, see link:build_from_commandline.adoc[Building locally via commandline].
 
 See also link:build_options.adoc[build options]. 

@@ -39,11 +39,11 @@ Inside the JBoss Tools Target Platform repository, the two top level folders are
 
 **Multiple** target platform definition files reference several different update sites, most of which are mirrors located on http://download.jboss.org/jbosstools/. Use this .target file in Eclipse, since it can include sources when built with the proper flags.
 
-**Unified** target platform definition files are generated from the multiple ones, and are then used to produce the target platform update sites. As this file references only a single mirror, it is faster to use in Eclipse but cannot include sources, since it points at the generated target platform update site, which does not include sources.
+**Unified** target platform definition files are generated from the multiple ones, and are then used to produce the target platform update sites. As this file references only a single mirror, it is faster to use in Eclipse but cannot include sources, since it points at the _generated target platform update site_, which does **not include sources**. If you are a developer or adopter, do not choose this definition file - it should only used by end-users at installation time.
 
 ### Versioning rules
 
-JBoss Tools has a semi-intuitive versioning scheme for our target platforms. 
+JBoss Tools uses a well-defined versioning scheme for our target platforms. 
 
 The first 3 digits are the version of Eclipse included in the target platform, such as 4.41 (Luna SR1) or 4.50 (Mars R).
 
@@ -55,7 +55,23 @@ Finally, the target platform version will have a `-SNAPSHOT` suffix if it has no
 
 ### Choosing the appropriate target platform.
 
-Use the latest target platform for the version of Eclipse your development environment requires. For example, if you are building code for Mars, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.50.x[4.50.x] target platform. If building for Luna SR1 or SR2, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.41.x[4.41.x] or 4.42.x target platform.
+Normally, each project uses a parent pom that will default to the right target platform, but in case you need to update to, or test against, a different target platform, this section will be useful for you.
+
+In general, we use the latest target platform for the version of Eclipse your development environment requires. For example, if you are building code for Mars, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.50.x[4.50.x] target platform. If building for Luna SR1 or SR2, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.41.x[4.41.x] or 4.42.x target platform.
+
+If you use the https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L104-L115[latest parent pom], chances are good you'll automatically build with the latest appropriate target platform too.
+
+However, this will default to use the latest *minimum* target platform based on the initial R release of the annual Eclipse release train, not the SR1 or SR2 updates. To quickly switch to building with the latest *maximum* target platform (eg., the SR2 version), use this profile:
+
+```
+mvn install -P maximum
+```
+
+Should you want to build using a *specific* target platform, perhaps because you're testing a new, unreleased one, you could build like this:
+
+```
+mvn install -Dtpc.version=4.50.0.Beta1-SNAPSHOT
+```
 
 
 ## Using a target platform in Eclipse
@@ -125,7 +141,16 @@ git checkout 4.50.x
 
 * When done, go to `Window -> Preference -> Plug-in Development -> Target Platforms`, select the recent _multiple.target_ entry which should be visible in the preference page, and click _Apply_ (or _Reload_ in case of updates only). 
 
-* **Beware**, this is a long operation that can take up to an hour, depending on your internet connection, during which time Eclipse can't be used for anything else.
+[NOTE]
+====
+_Rather than importing, you can simply open a `.target` file with the Target Definition editor._
+
+_In the top-right corner, click the `Export` button and select a destination directory._
+
+_If you selected a `.target` file with source references, such as `jbosstools-multiple.target`, you will also resolve sources - convenient for development work._
+====
+
+* **Beware**, in both cases this is a long operation that can take up to an hour, depending on your internet connection, during which time Eclipse can't be used for anything else.
 
 | *Build target platform*
 |

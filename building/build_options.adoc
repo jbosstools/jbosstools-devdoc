@@ -2,7 +2,7 @@
 
 ## Maven options
 
-Here are the options we use for JBoss Tools builds:
+Here are the options we recommend to learn (& use as needed) when running JBoss Tools builds:
 
 * `-e` or `--errors` if the build should fail, produce execution error messages (stack trace) to help determine what happened.
 
@@ -24,28 +24,29 @@ For the complete list of options, see http://www.sonatype.com/books/mvnref-book/
 
 ## JBoss Tools profiles
 
-Most user-oriented JBoss Tools profiles are meant to give you control on the dependency resolution.
+The profiles listed below give you control of the dependency resolution.
 
 ### Target Platform
 
-Some profiles and properties allow to control which versions of 3rd-party (Eclipse, GWT, Atlassian...) dependencies to use
+These profiles and properties control which versions of 3rd-party dependencies to use (eg., from Eclipse), by selecting which target platform to use.
 
 * `-P maximum` will use the highest version of dependency JBoss Tools must be compatible with. These versions will be the one provided along with JBoss Developer Studio RCP application.
 * `-Dtpc.version=...` allows you to select a specific version for the target platform for this build. This can be used to test older targets than the minimal one, or some experimental target platforms.
 
-Some profiles allows to select the place from where 3rd-party dependencies will be fetched
-
 * `-P unified.target` (Default) will resolve all dependencies from a single *unified* site on download.jboss.org. This site does not contain sources. Its performance are better than using _multiple.target_.
 
-* `-P multiple.target` will use a target platform which references *multiple* sites.
-
-* `-P multiple.target -Dmirror-target-to-repo.includeSources=true` will use a target platform which references multiple sites *and include sources*. This is the slowest option.
+* `-P multiple.target` will use a target platform which references *multiple* sites. This is mainly used if trying to build with a custom target platform that does not yet have a published `unified.target` in Nexus. Useful when doing pull requests to link:target_platforms/target_platforms_updates.adoc[update a target platform].
 
 * `-Dno-target-platform=true` will disable target-platform resolution
 
-For the complete list of profiles and flags, see https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L464[JBoss Tools parent pom.xml].
+For the complete list of profiles and flags, see https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L464[JBoss Tools parent pom.xml]. 
 
-## Mojo optons
+[Note]
+====
+Trying to build a target platform locally and want it to *include sources*? See link:target_platforms/target_platforms_for_consumers.adoc[Using Target Platforms].
+====
+
+## Mojo options
 
 Each mojo can have some options. You can list them with `mvn help:describe groupId:artifactId:version:mojo`. This will give details about the mojo, and you'll notice the _expression_ on some paramters. _expression_ tells you the system property that can be used to set the value.
 If the mojo parameter was configured directly in pom.xml, then setting the _expression_ for this parameter will be ignore.
