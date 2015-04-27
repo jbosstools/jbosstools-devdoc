@@ -1,0 +1,12 @@
+# How to add a new test plugin or feature to an existing JBoss Tools 4.x project
+
+The process is the same as link:how_to_add_a_plugin_or_feature_to_an_existing_project.adoc[adding a new plugin or feature to an existing JBoss Tools 4.x project], but with *two differences*:
+
+1. Instead of putting new test plugins in the project's `plugins/` folder, use a `tests/` folder. If your test plugin contains *_integration tests_*, rather than *_unit tests_*, please use an `itests/` folder. 
+
+Test and ITest features should still go into `features/`.
+
+As with regular plugins, please ensure you add your test feature to the project's site/category.xml so it's available to be published to downstream consumers. But until regular plugins, you need to add your feature to a different aggregate site:
+
+[start=2]
+2. Instead of `jbosstools-build-sites/aggregate/site/category.xml`, submit a pull request against the `jbosstools-build-sites/aggregate/coretests-site/category.xml` site.

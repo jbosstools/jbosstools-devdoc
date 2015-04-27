@@ -71,7 +71,11 @@ Provide enough detail to explain why the change is needed, and what is required 
 
 * _Original p2 repo_: which repository are the plugins/features from? eg., http://dl.google.com/eclipse/plugin/4.2
 
-* _JBoss mirror_: mirror URL to use, eg. http://downloads.jboss.org/jbosstools/updates/requirements/gwt/3.1.0.v201208080121-rel-r42/
+* _JBoss mirror_: mirror URL to use, eg. http://downloads.jboss.org/jbosstools/updates/requirements/tern/0.7.0.201412012159/
+
+** If no mirror yet exists, look in https://github.com/nickboldt/jbosstools-download.jboss.org/tree/master/jbosstools/updates/requirements[updates/requirements/] for your requirement's folder. In that folder should be a <<What does a build.xml script look like?,build.xml>> file showing the URL and version to mirror. Please submit a pull request to update the URL or version, as applicable. 
+** If no build.xml file exists for your requirement, please submit a pull request to create one.
+** Once the PR is pushed, the build.xml script can then be run via https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-requirements/[this Jenkins job] (if you have VPN access).
 
 * _Include Sources_: Are source bundles included in the mirror, or are sources available elsewhere? Use "included" or explain.
 
@@ -90,6 +94,15 @@ If your requirement is not available in an update site (p2 repository), eg. only
 * _non-p2 ids_: list the exact ids, eg., for Maven state GAV (Group, Artifact, Version)
 
 Non-p2 artifacts will be added to https://github.com/jbosstools/jbosstools-locus[JBoss Tools Locus] as p2 artifacts, so they can be included in the target platform.
+
+=== What does a build.xml script look like?
+
+It's a simple script that uses the `<p2.mirror>` https://wiki.eclipse.org/Equinox/p2/Ant_Tasks#Mirror_Task[ant task] to produce a mirror of one or more update sites, optionally selecting which IUs to mirror, and then removing references to any third-party update sites so that the resulting mirror is self-contained.
+
+For example, here's how we mirror Thym:
+
+* http://download.jboss.org/jbosstools/updates/requirements/thym/build.xml
+* http://download.jboss.org/jbosstools/updates/requirements/generic/build.xml
 
 == Create a pull request with your changes
 

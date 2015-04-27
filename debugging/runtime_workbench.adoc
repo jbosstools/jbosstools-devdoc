@@ -1,0 +1,11 @@
+= Debugging your code via Runtime Workbench
+
+It is assumed at this point that you have properly imported the source code for your project, link:../building/target_platforms/target_platforms_for_consumers.adoc[Configured your target platforms] in eclipse, and have a workspace free of errors. 
+
+== Running the plug-in
+
+To launch a runtime workbench, you can right-click on your project and select `Debug -> Debug As...` This dialog will show you all the different kinds of ways you can launch a program. Choose Eclipse Application, click New and accept all of the default settings. This will cause another instance of the Eclipse workbench, the runtime workbench, to start. 
+
+The launch configuration will automatically connect to the runtime workbench for the purposes of debugging. You can now go ahead and set breakpoints in your source code, just as you would for any normal Java project you launch from Eclipse. link:http://www.vogella.com/tutorials/EclipseDebugging/article.html[This] tutorial outlines most of the functions of Eclipse JDT for debugging purposes. 
+
+You may also consider looking at the Plug-in Development Environment's link:http://wiki.eclipse.org/PDE/FAQ[FAQ] for further questions. 

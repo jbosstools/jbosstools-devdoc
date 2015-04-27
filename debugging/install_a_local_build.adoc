@@ -1,0 +1,65 @@
+= How to install a local build of JBoss Tools components
+
+If you've already built a component, such as `jbosstools-base` or `jbosstools-server`, you may want to 
+install it into a new clean eclipse to test it out properly. It is highly suggested to do this
+once in a while, since some bugs may not be caught during development time in the Runtime Workbench, 
+or at build time while running the unit test suites. 
+
+The process to install and test your locally-built units is:
+
+* Create an eclipse installation which has all required dependencies
+* Run the eclipse with a new workspace
+* Install the locally built units into eclipse. 
+
+== Installing All Dependencies Into Eclipse
+
+Each component in JBoss Tools has dependencies on other installable units. These units should all be either:
+
+* Provided in the eclipse installation
+* Provided by our target platform
+* Other modules of JBoss Tools
+
+If you are installing a very low-level JBoss Tools module such as `foundation`, the odds are very good that 
+no matter what eclipse release you will be installing into will already contain all dependencies you need.  
+If you're installing a locally-built top-level module such as `central` or `javaee`, you will need to install
+many dependencies before being able to install your locally built unit. 
+
+There are two primary ways to get all of these dependencies:
+
+* Installing a recent JBoss Tools release or nightly build, or
+* Installing our entire target platform, and also locally building and installing all dependencies that are part of JBoss Tools. 
+
+If you are building a top-level element like `central`, though, and also have requirements on new API you have added
+in another module such as `foundation` which has not yet made it into our nightly builds, you will need to install
+such dependencies manually or from one of the public update sites. 
+
+=== Installing a JBoss Tools release
+
+Please see http://tools.jboss.org/downloads/installation.html
+
+=== Manual Dependency Installation
+
+To install the target platform portion, you'll want to see link:target_platforms/target_platforms_for_consumers.adoc#installing-a-target-platform-into-eclipse[Installing a target platform into Eclipse]. If you intend to often test local builds, you may find it beneficial to have a local folder with our entire target platform. 
+
+Once this is done, you will need to discover all the dependencies of the component you are trying to install. While this is a harder task, you may be able to discover a bit more by looking at our JBoss Tools link:http://download.jboss.org/jbosstools/builds/cascade/swimlanes_42.html[swimlanes] which is a pretty close approximation as to what modules depend on what. 
+
+After this, you'll either need to install those dependencies from our JBoss Tools update site, or, build them locally and also install them.
+
+=== Installing a module or component from a locally built update site
+
+To install a component such as `jbosstools-base` or `jbosstools-server` into your eclipse installation:
+
+* Select `Window -> Install New Software` 
+* Click `Add...`
+* Provide a name 
+* Browse to the location of your locally built unit's update site, such as ~/jbosstools-server/site/target/repository/
+* Click `Select All`
+* Click `Next>` and continue until you can `Finish`
+* Install all of the items. 
+
+If you experience errors, it is very likely you are missing some dependency. You may find it easier to install a full release of JBoss Tools from a nightly or release update site, and the only install those locally built units that you have changed yourself.  Please refer back to the Swimlanes to see what you are missing, or ask for feedback on our forums. You may need to repeat this task several times with various components until you have locally built all dependencies and they have all been installed. 
+
+== Everything's Installed, Now what? 
+
+At this point you'll want to move forward to link:how_to_test_a_build.adoc[How to Test a Build]
+

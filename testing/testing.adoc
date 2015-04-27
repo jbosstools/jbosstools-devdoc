@@ -8,7 +8,7 @@ You can do it by simply running for example:
 [sources,bash]
 ----
 cd tests/my.test.bundle
-mvn clean verify -Dtest.profileName=epp.package.jee -Dtest.installPath=/home/me/eclipse-4.4.M2
+mvn clean verify -Dtest.profileName=epp.package.jee -Dtest.installPath=/home/me/eclipse-4.4.2
 ----
 
 If +test.installPath+ is not set, you get the default surefire behaviour which is to generate a simple minimal installation to run the tests in +target/work+.
@@ -17,7 +17,7 @@ More info about the profileName can be found in http://wiki.eclipse.org/Tycho/Te
 It's configured it so that by default, it is JBDS-friendly and set the jbds profileName. So to test on JBDS, you can omit the profile name and simply use:
 [source,bash]
 ----
-mvn clean verify -Dtest.installPath=/home/me/jbdevstudio-8.0.0.Alpha1-SNAPSHOT/studio
+mvn clean verify -Dtest.installPath=/home/me/jbdevstudio-8.1.0.Beta1-SNAPSHOT/studio
 ----
 
 Except a few exceptions, other surefire parameters, such as the very cool +debugPort+ parameter, can be used together with this mechanism. 
@@ -130,4 +130,6 @@ The initial implementation of the above was done in https://github.com/jbosstool
 Thus at time of writing `jbosstools-server` is the only repository that contains examples of this approach.
 
 
+== Remote Debugging
 
+If you need to attach the Eclipse Debugger to your itests as they run in a console, you can do so with `-DdebugPort=8000`. For details, see link:../debugging/debug_tycho_tests.adoc[Debugging Surefire Tests].

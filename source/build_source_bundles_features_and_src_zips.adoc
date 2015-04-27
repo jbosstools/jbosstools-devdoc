@@ -1,3 +1,5 @@
+= How to build source bundles, features, and source zips
+
 There are two ways to produce sources.
 
 If you want sources you can use in your IDE (eg., Eclipse or JBDS), you want source features.

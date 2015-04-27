@@ -1,3 +1,4 @@
+= How To Use JIRA
 
 JBoss Tools and Developer Studio consists of many components and thus covered in many issue tracking systems.
 
