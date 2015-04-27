@@ -1,0 +1,5 @@
+= Release Guidelines
+
+The release process for JBoss Tools and Red Hat JBoss Developer Studio is an evolving process.
+
+Documentation can be found here: https://github.com/jbdevstudio/jbdevstudio-devdoc/tree/master/release_guide[jbdevstudio-product] footnote:[Don't have permission to view the repo? You can https://github.com/jbdevstudio/github-teams/blob/master/jbdevstudio-teams/README.adoc#guide-for-users[request access here].]: 

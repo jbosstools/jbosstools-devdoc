@@ -1,0 +1,30 @@
+= Code Freezes
+
+Before https://issues.jboss.org/browse/JBIDE?selectedTab=com.atlassian.jira.jira-projects-plugin%3Aversions-panel[every milestone], a code freeze is declared. This is to ensure that everyone has time to perform the following steps:
+
+1. Cleanup *unresolved JIRAs* set for the upcoming milestone
+2. *Upversion* their plugins and features, if they haven't already done so
+3. Build their latest code with the most *recent parent pom*, updating their *root pom* if necessary
+4. Build their latest code with the most *recent target platform*(s)
+5. *Run tests* using the most recent target platform(s)
+6. *Branch (or tag)* their code so there's a stable version of the code to feed into the Jenkins job cascade
+7. *Communicate readiness* to the mailing list or via JIRA so that program management and release engineering is aware
+
+== How do I remember all that?
+
+Generally these steps are provided within a *Task* JIRA, sent to all project leads the night before the Code Freeze date.
+
+Here are some examples from https://issues.jboss.org/issues/?jql=project%20in%20%28JBDS%2C%20JBIDE%29%20AND%20labels%20%3D%20task%20ORDER%20BY%20key%20DESC%2C%20fixVersion%20ASC[past freezes]:
+
+* https://issues.jboss.org/browse/JBIDE-19124[JBT 4.2.3.Beta1]
+* https://issues.jboss.org/browse/JBIDE-19017[JBT 4.2.2.Final]
+* https://issues.jboss.org/browse/JBIDE-18759[JBT 4.2.1.CR1]
+* https://issues.jboss.org/browse/JBIDE-16671[JBT 4.1.2.CR1]
+
+Task JIRAs are generated using the https://github.com/jbdevstudio/jbdevstudio-ci/blob/master/bin/createTaskJIRAs.py[createTaskJIRAs.py script] footnote:[Don't have permission to view the script? You can https://github.com/jbdevstudio/github-teams/blob/master/jbdevstudio-teams/README.adoc#guide-for-users[request access here].]. The script can be used for https://github.com/jbdevstudio/jbdevstudio-ci/blob/master/bin/createTaskJIRAs.py.examples.txt[all kinds of Task JIRAs].
+
+
+== When is the next Code Freeze?
+
+See https://issues.jboss.org/browse/JBIDE?selectedTab=com.atlassian.jira.jira-projects-plugin%3Aversions-panel[JBoss Tools JIRA Schedule].
+

@@ -1,12 +1,13 @@
-== How to test new versions of Tycho 
+= How to test new versions of Tycho 
+
 
 Once in a while the tycho team post a request to test new versions of Tycho.
 
 If the Tycho version is already released you can try it out by running mvn with appropriate `tychoVersion` flag set, i.e.:
 
-   $ mvn -DtychoVersion=0.42.0 clean install
+   $ mvn -DtychoVersion=0.21.0 clean install
    
-Will run with Tycho version 0.42.
+Will run with Tycho version 0.21.0.
 
 == How to test staged, not yet released versions of Tycho
 
@@ -22,7 +23,7 @@ To do this add the following to your `~/.m2/settings.xml` in a `<profiles>` sett
     <profile>
       <id>tycho-staging</id>
       <properties>
-           <tycho.staging.repo>https://oss.sonatype.org/content/repositories/orgeclipsetycho-240</tycho.staging.repo>
+           <tycho.staging.repo>https://oss.sonatype.org/content/repositories/orgeclipsetycho-999</tycho.staging.repo>
       </properties>
       <pluginRepositories>
         <pluginRepository>
@@ -39,14 +40,14 @@ WARNING: Don't put this profile in activeProfiles. Only enable it when using for
 
 Now you can without changing any of your pom's just run:
 
-   $ mvn -P tycho-staging -DtychoVersion=0.18.0 clean install
+   $ mvn -P tycho-staging -DtychoVersion=0.21.0 clean install
 
 And next time you want to test a new staging version of tycho you just go to your ~/.m2/settings.xml
 and update the url.
 
 Because of the defined property you can also be even more explicit and do:
 
-   $ mvn -P tycho-staging -DtychoVersion=0.18.0 -Dtycho.staging.repo=https://oss.sonatype.org/content/repositories/orgeclipsetycho-242 clean install
+   $ mvn -P tycho-staging -DtychoVersion=0.21.0 -Dtycho.staging.repo=https://oss.sonatype.org/content/repositories/orgeclipsetycho-999 clean install
 
 With this in place you only have to run that line assuming you have the version and staging.repo url available.
 

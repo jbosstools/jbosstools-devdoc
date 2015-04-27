@@ -1,0 +1,26 @@
+= Branching and Tagging
+
+Before a major or minor release, component leads are required to branch their repository. After any release is completed (whether major, minor, or service), component leads are required to tag their repository. 
+
+== Branching
+
+Branching is typically performed only before major or minor releases. Service releases do not typically branch. Branching is a major event, and because of that, a JIRA will be opened listing in-depth steps that must be taken to comply with the branch. 
+
+Please see link:https://issues.jboss.org/browse/JBIDE-18155[https://issues.jboss.org/browse/JBIDE-18155] for an example of such steps. 
+
+
+== Tagging
+
+After a release has been complete, an email will be sent out to mailto:jbosstools-dev@lists.jboss.org[jbosstools-dev@lists.jboss.org] with the following or similar content:
+
+```
+Component leads, please tag your repositories!
+
+$ git fetch jbosstools jbosstools-4.2.x #assuming remote is called 
+jbosstools, also often called origin
+$ git checkout FETCH_HEAD
+$ git tag jbosstools-4.2.0.Final
+$ git push jbosstools jbosstools-4.2.0.Final
+```
+
+Component leads should ensure that there have been no NEW commits after the release but before tagging. The goal is to make sure the proper SHA / commit is tagged with what is in the release. 

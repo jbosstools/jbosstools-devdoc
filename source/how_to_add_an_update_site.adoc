@@ -1,0 +1,60 @@
+= Adding an update site
+
+== Basic reqirements
+
+To create an update site, you need two files:
+
+* pom.xml, which defines the packaging type to build:
+
+```xml
+	<packaging>eclipse-repository</packaging>
+```
+
+You can get more features in the update site (like a generated index.html page listing the features in the site) by using the JBoss Tools parent pom:
+
+```xml
+	<parent>
+		<groupId>org.jboss.tools</groupId>
+		<artifactId>parent</artifactId>
+		<version>4.2.3.Beta1-SNAPSHOT</version>
+	</parent>
+```
+
+* category.xml, which lists the features and/or bundles to include on the site, and how to categorize (or not categorize) them. Be sure to include source features and test features.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+	<description> ... </description>
+	<category-def label="Site" name="AllFeatures"><description>All features</description></category-def>
+	<category-def label="Site" name="AllSources"><description>All source features</description></category-def>
+
+	<feature id="org.jboss.tools.some.feature"><category name="AllFeatures"/></feature>
+	<feature id="org.jboss.tools.some.feature.source"><category name="AllSources"/></feature>
+
+	<feature id="org.jboss.tools.some.test.feature"><category name="AllFeatures"/></feature>
+	<feature id="org.jboss.tools.some.test.feature.source"><category name="AllSources"/></feature>
+
+	<feature id="org.jboss.tools.some.uncategorized.feature"/>
+	...
+</site>
+```
+
+== Including plugins (optional)
+
+If you want to explicitly add a plugin (bundle) instead of a feature, do so like this. You can choose to categorize or not categorize the plugin, as you can with features.
+
+```xml
+	<bundle id="org.jboss.tools.some.important.plugin"><category name="AllFeatures"/></bundle>
+	<bundle id="org.jboss.tools.some.uncategorized.bundle"/>
+```
+
+== Associate sites
+
+Should your site's contents require a lot of upstream dependencies at install time, you might consider link:build_update_sites_using_associate_sites.adoc[using an associate site].
+
+== Complex examples
+
+For more complex examples, see:
+
+https://github.com/jbosstools/jbosstools-build-sites/tree/master/aggregate

@@ -1,0 +1,40 @@
+#  Building locally via commandline
+
+First, fetch the sources of the project you want to build from Github. For details, see link:configuring_git_workflow.adoc#Sources[Configuring Git Workflow - Sources].
+
+Then, switch into the directory where you checked out the sources, and run this:
+
+
+[source,bash]
+----
+cd ~/my-github-stuff/jbosstools-base
+
+# build everything and run all tests
+mvn clean install
+ 
+# or, if you don't want to install built artifacts into your ~/.m2 repo,
+mvn clean verify
+
+# or, if you only want to build your tests, but not run them,
+mvn clean verify -DskipTests
+
+# or, if you want to build your tests, but only run the unit tests, not integration tests
+mvn clean verify -DskipITests
+
+----
+
+[NOTE]
+====
+Setting your build to only fail at the end with `mvn verify -fae` is not recommended when building locally for development, as you will have to wait to the end of the whole maven reactor to see errors. 
+
+Use of `-fae` *is* recommended for CI builds, multimodule project, or for collecting all errors instead of stopping after the first one.
+
+Use of `-e` is recommended if you want to see a stack trace should something fail.
+
+====
+
+## More info
+
+To build with Eclipse, see link:build_from_eclipse.adoc[Building locally in Eclipse]
+
+See also link:build_options.adoc[build options]. 

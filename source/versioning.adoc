@@ -1,9 +1,18 @@
+= Versioning rules
+
+--
+
+WARNING: This document may need to be updated or grammar-checked.
+
+--
+
+[cols="a", options="header"]
+|===
+|
 DRAFT: This is a draft of how versioning are used in jboss tools
 projects - currently based on current "defacto" and orally agreed on
 versioning used in the related project(s)
-
-[[general-versioning-rules]]
-== General versioning rules
+|===
 
 JBoss projects in general follows the general naming at
 https://community.jboss.org/wiki/JBossProjectVersioning.
@@ -15,21 +24,21 @@ The rest of this document tries to cover what is not specified in these
 two documents and if there are exceptions to it.
 
 Component - generic term used for something that is versioned. Could be
-a plugin, feature, target platform, product, updatesite etc.
+a plugin, feature, target platform, product, project, update site, etc.
 
-Module - A component that includes a set of components, example:
-https://github.com/jbosstools/jbosstools-hibernate/
+Module - A set of components, for example:
+https://github.com/jbosstools/jbosstools-hibernate/ or https://github.com/jbosstools/jbosstools-base
 
-== Naming clarificiations
+== Naming clarifications
 
-Both JBoss and osgi versioning rules say there are four parts to the
+Both JBoss and OSGi versioning rules say there are four parts to the
 versioning scheme.
 
-JBoss name them: major.minor.micro.qualifier
+JBoss refers to these as: major.minor.micro.qualifier
 
-Eclipse names them: major.minor.service.qualifier
+Eclipse & OSGi use: major.minor.service.qualifier
 
-We consider these to be equal, i.e. micro==service.
+We consider these to be equal, i.e. micro == service.
 
 === Always use numerical option
 

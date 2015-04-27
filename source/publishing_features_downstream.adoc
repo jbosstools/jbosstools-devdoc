@@ -1,0 +1,51 @@
+= Publishing features to JBoss Tools, Red Hat JBoss Developer Studio, JBoss Central, Early Access, and Eclipse Marketplace
+
+Once your features are ready for consumption by other projects, you can have them aggregated into a downstream project.
+
+== JBoss Tools
+
+Submit a pull request against the appropriate branch of the https://github.com/jbosstools/jbosstools-build-sites/tree/master/aggregate[jbosstools-build-sites] to get your feature(s) added into 1 or more of these category.xml files:
+
+* https://github.com/jbosstools/jbosstools-build-sites/tree/master/aggregate/site/category.xml[aggregate/site/category.xml] - for all features
+* https://github.com/jbosstools/jbosstools-build-sites/tree/master/aggregate/coretests-site/category.xml[aggregate/coretests-site/category.xml] - for test features
+* https://github.com/jbosstools/jbosstools-build-sites/tree/master/aggregate/hibernatetools-site/category.xml[aggregate/hibernatetools-site/category.xml] - for hibernate tools features ONLY
+* https://github.com/jbosstools/jbosstools-build-sites/tree/master/aggregate/webtools-site/category.xml[aggregate/webtools-site/category.xml] - for features required by `org.eclipse.wst.server.core.serverAdapter` ONLY
+
+== Red Hat JBoss Developer Studio
+
+First, ensure your feature(s) are included in JBoss Tools, as above.
+
+Then, submit a pull request here: https://github.com/jbdevstudio/jbdevstudio-product/[jbdevstudio-product] footnote:[Don't have permission to view the repo? You can https://github.com/jbdevstudio/github-teams/blob/master/jbdevstudio-teams/README.adoc#guide-for-users[request access here].]: 
+
+* https://github.com/jbdevstudio/jbdevstudio-product/blob/master/site/category.xml[site/category.xml] - for all features
+* https://github.com/jbdevstudio/jbdevstudio-product/blob/master/features/com.jboss.devstudio.core.feature/feature.xml[features/com.jboss.devstudio.core.feature/feature.xml] - for features that should be installed automatically when installing JBoss Developer Studio via the installer or Eclipse Marketplace
+
+== JBoss Central
+
+To get a feature (or collection of features) added to JBoss Central, you need to submit a pull request against https://github.com/jbosstools/jbosstools-discovery[jbosstools-discovery].
+
+First, update the target platform to include the new feature(s):
+
+* https://github.com/jbosstools/jbosstools-discovery/blob/master/jbtcentraltarget/multiple/jbtcentral-multiple.target[jbtcentraltarget/multiple/jbtcentral-multiple.target]
+
+Then, add a new connector to the discovery plugin, to expose those feature(s) via the appropriate categor(ies):
+
+* https://github.com/jbosstools/jbosstools-discovery/blob/master/jbosstools/org.jboss.tools.central.discovery/plugin.xml[jbosstools/org.jboss.tools.central.discovery/plugin.xml]
+* https://github.com/jbosstools/jbosstools-discovery/blob/master/jbdevstudio/com.jboss.jbds.central.discovery/plugin.xml[jbdevstudio/com.jboss.jbds.central.discovery/plugin.xml]
+
+== Early Access
+
+To get a feature (or collection of features) added to the Early Access site, you need to submit a pull request against https://github.com/jbosstools/jbosstools-discovery[jbosstools-discovery].
+
+First, update the target platform to include the new feature(s):
+
+* https://github.com/jbosstools/jbosstools-discovery/blob/master/jbtearlyaccesstarget/multiple/jbtearlyaccess-multiple.target[jbtearlyaccesstarget/multiple/jbtearlyaccess-multiple.target]
+
+Then, add a new connector to the discovery plugin, to expose those feature(s) via the appropriate categor(ies):
+
+* https://github.com/jbosstools/jbosstools-discovery/blob/master/jbosstools/org.jboss.tools.central.discovery.earlyaccess/plugin.xml[jbosstools/org.jboss.tools.central.discovery.earlyaccess/plugin.xml]
+* https://github.com/jbosstools/jbosstools-discovery/blob/master/jbdevstudio/com.jboss.jbds.central.discovery.earlyaccess/plugin.xml[jbdevstudio/com.jboss.jbds.central.discovery.earlyaccess/plugin.xml]
+
+== Eclipse Marketplace
+
+To get added to the Eclipse Marketplace, open a https://issues.jboss.org/browse/JBIDE[JIRA] listing the feature(s) to be included in the appropriate JBoss Tools Marketplace connector. These features should already be included in the JBoss Tools update site, above.

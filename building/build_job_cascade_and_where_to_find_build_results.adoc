@@ -1,0 +1,29 @@
+= Build cascade & results
+
+--
+
+WARNING: This document is old and needs to be updated.
+
+--
+
+Each year our process for building the component projects in JBoss Tools evolves and improves, 
+so each year our process documentation is by necessity also evolving.
+
+That said, the basic workflow can be defined as follows:
+
+* For JBoss Tools, first we build all the component builds (base, server, ..., javaee, central, ... ) in their inter-dependency requirement order.
+Then, we build the aggregate update sites.
+
+* For Red Hat JBoss Developer Studio, after the above steps are complete, we build the JBoss Developer Studio update site, then the installers.
+
+Builds also depend on their respective target platforms being built and up to date with the latest upstream dependencies from Eclipse and other third-party vendors.
+
+For the latest, see: 
+
+http://download.jboss.org/jbosstools/builds/cascade/[http://download.jboss.org/jbosstools/builds/cascade/]
+
+For the relationships between component projects, see: 
+
+http://download.jboss.org/jbosstools/builds/cascade/swimlanes.html[http://download.jboss.org/jbosstools/builds/cascade/swimlanes.html]
+
+ 
