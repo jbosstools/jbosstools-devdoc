@@ -160,7 +160,7 @@ If you just want to check if things compiles/builds you can run:
 
 But *do not* push changes without having the new and existing unit tests pass!
 
-=== Update the *.target file(s)
+=== Update the .target file(s)
 
 Edit `jbosstools/multiple/jbosstools-multiple.target`. You may update an existing location or add a new one:
 
@@ -275,39 +275,50 @@ Template:
 ----
 
 # configure these to generate the email body
-TARGET_PLATFORM_VERSION=4.40.0.Beta2-SNAPSHOT
-TOPIC_BRANCH=JBIDE-12345 # use 4.40.x or similar branch if PR is already applied
+TARGET_PLATFORM_VERSION=4.50.0.Beta1-SNAPSHOT
+TOPIC_BRANCH=JBIDE-19776 # use 4.50.x or similar branch if PR is already applied
+JIRA_NUM=JBIDE-19776
 GITHUB_USER=mickaelistra # or nickboldt, etc. Use "origin" if PR is already applied
-DEADLINE="7 days" # or "2 days" or "24 hours"
+DEADLINE="within 7 days" # or "within 2 days" or "within 24 hours" or "as soon as possible"
+PR_NUM=142
+PR_URL=https://github.com/jbosstools/jbosstools-target-platforms/pull/${PR_NUM}/
+P2DIFF="https://issues.jboss.org/secure/attachment/12389427/jbosstools.p2diff.txt
+https://issues.jboss.org/secure/attachment/12389428/jbdevstudio.p2diff.txt"
 
 echo "
 Subject:
 
-Proposed change to JBT ${TARGET_PLATFORM_VERSION} target platform:
+ACTION REQUIRED: Update target platform ${TARGET_PLATFORM_VERSION}
+or
+Proposed change to target platform ${TARGET_PLATFORM_VERSION}
 
 Body:
 
-Here is a proposal for a change to the JBoss Tools ${TARGET_PLATFORM_VERSION} target platform: 
+Here is a proposal for a change to the JBoss Tools and Red Hat JBoss Developer Studio ${TARGET_PLATFORM_VERSION} target platforms. 
 
-https://github.com/jbosstools/jbosstools-target-platforms/pull/FIXME_PR_NUMBER
+${PR_URL}
 
-It consists in the following changes:
+It consists in the following change(s):
 
-* JBIDE-FIXME: Description of change
-* JBIDE-FIXME_TOO: Description of other change
+* ${JIRA_NUM}: Create and use Mars M7 target-platform
 
 
-p2diff reports are attached to the related JIRA(s).
+p2diff reports:
 
-Please review the above PR(s), as it will be applied ASAP.
+${P2DIFF}
+
+Please review the above PR(s), as it will be applied *${DEADLINE}*.
 You can use the following to build & test the target-platform locally against your component(s).
 
 Build target-platform:
-  $ cd jbosstools-target-platforms
-  $ git fetch origin pull/FIXME_PR_NUMBER/head
-  $ git checkout FETCH_HEAD
-  $ cd jbosstools/multiple
-  $ mvn clean install
+  cd jbosstools-target-platforms/jbosstools/multiple
+  git checkout ${PR_URL}
+  mvn clean install
+
+Or, without hub:
+  cd jbosstools-target-platforms/jbosstools/multiple
+  git fetch origin pull/${PR_NUM}/head && git checkout FETCH_HEAD
+  mvn clean install
 
 Try with just built target-platform:
   $ cd /path/to/your/component
