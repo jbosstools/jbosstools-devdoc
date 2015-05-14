@@ -16,15 +16,22 @@ JBoss Tools' Jenkins jobs use Xvnc so it's easy to monitor their progress or see
 
 Assuming you have been given access, here's what you need to do:
 
-1. Go to the job's current build page and look at the top of the console log to get the hostname (such as _vmg39.somewhere.redhat.com_) and DISPLAY variable (such as _12_).
+1. Go to the job's current build page and look at the top of the console log to get the `HOSTNAME` (such as `vmg39.somewhere.redhat.com`) and `DISPLAY` variable (such as `12`).
 
-2. Run `xvncviewer host:port` where:
+2. Run `xvncviewer host:port` 
 
-* *port* is 5900 + DISPLAY
-* host is the fully-qualified server name (or its IP address)
+Where:
+
+* `port` is `5900` + `DISPLAY`
+* `host` is the fully-qualified server name (or its IP address)
 
 Thus, in this example:
 
 `vncviewer -passwd ~/.vnc/passwd_hudson vmg39.somewhere.redhat.com:5912`
+
+Note that slaves named `XXX-virtY` are actually virtual machines hosted on the XXX hypervisor. There is no reason users should have access there. To access the actual slave, navigate to
+$JENKINS_URL/computer/XXX-virtY/systemInfo to find out the actual HOSTNAME, such as `dhcp123-45.somewhere.redhat.com`
+
+Instead of `vncviewer` you can also use a graphical VNC viewer like http://en.wikipedia.org/wiki/Vinagre[Vinagre] if your OS supports it. 
 
 Contact the JBoss Tools release engineering team (Nick, Denis, Mickael, Max) to get the vncserver password for your job. You will also require Red Hat VPN access as the Jenkins servers are firewalled.
