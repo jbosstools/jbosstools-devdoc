@@ -311,18 +311,26 @@ Please review the above PR(s), as it will be applied *${DEADLINE}*.
 You can use the following to build & test the target-platform locally against your component(s).
 
 Build target-platform:
-  cd jbosstools-target-platforms/jbosstools/multiple
+  cd /path/to/jbosstools-target-platforms/jbosstools/multiple
   git checkout ${PR_URL}
   mvn clean install
 
 Or, without hub:
-  cd jbosstools-target-platforms/jbosstools/multiple
+  cd /path/to/jbosstools-target-platforms/jbosstools/multiple
   git fetch origin pull/${PR_NUM}/head && git checkout FETCH_HEAD
   mvn clean install
 
-Try with just built target-platform:
-  $ cd /path/to/your/component
-  $ mvn clean verify -Dtpc.version=${TARGET_PLATFORM_VERSION} -Pmultiple.target
+If you'd like to build the "unified" target platform too:
+  cd /path/to/jbosstools-target-platforms/jbosstools/unified
+  mvn clean install -DtargetRepositoryUrl=file:///path/to/jbosstools-target-platforms/jbosstools/multiple/jbosstools-multiple.target.repo/
+
+Then, to test the new "multiple" target platform against your component's build:
+  cd /path/to/your/jbosstools-component
+  mvn clean verify -Dtpc.version=${TARGET_PLATFORM_VERSION} -Dtpc.targetKind=multiple
+
+Or, to test the new "unified" target platform against your component's build:
+  cd /path/to/your/jbosstools-component
+  mvn clean verify -Dtpc.version=${TARGET_PLATFORM_VERSION}
 --
 
 If you want to perform a scripted install of the entire target platform 
