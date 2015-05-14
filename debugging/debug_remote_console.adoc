@@ -1,0 +1,30 @@
+= Debugging on a remote server
+
+If a UI-based test running on a remote server stalls, it it often useful to be able to see that server's GUI to determine what caused the test to stall or fail.
+
+JBoss Tools' Jenkins jobs will often capture a screenshot of the last thing the slave's GUI saw before the test was terminated, which will appear in the job's workspace. But if this is insufficient, or if you need to interact with the UI, you need to connect directly.
+
+== SSH access (commandline)
+
+In case you need to access something on a Jenkins slave that you can't access through Jenkins itself, you can request ssh access to the Jenkins slaves. This will give you filesystem access as the same user running your job's builds, but will not give you a GUI, only commandline filesystem access.
+
+Contact the JBoss Tools release engineering team (Nick, Denis, Mickael, Max) to learn how to get access. You will also require Red Hat VPN access as the Jenkins servers are firewalled.
+
+== VNC access (GUI)
+
+JBoss Tools' Jenkins jobs use Xvnc so it's easy to monitor their progress or see why a UI test has stalled, using a vncviewer.
+
+Assuming you have been given access, here's what you need to do:
+
+1. Go to the job's current build page and look at the top of the console log to get the hostname (such as _vmg39.somewhere.redhat.com_) and DISPLAY variable (such as _12_).
+
+2. Run `xvncviewer host:port` where:
+
+* *port* is 5900 + DISPLAY
+* host is the fully-qualified server name (or its IP address)
+
+Thus, in this example:
+
+`vncviewer -passwd ~/.vnc/passwd_hudson vmg39.somewhere.redhat.com:5912`
+
+Contact the JBoss Tools release engineering team (Nick, Denis, Mickael, Max) to get the vncserver password for your job. You will also require Red Hat VPN access as the Jenkins servers are firewalled.

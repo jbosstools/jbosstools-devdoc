@@ -1,4 +1,4 @@
-= How to install a local build of JBoss Tools components
+= How to install a JBoss Tools component build
 
 If you've already built a component, such as `jbosstools-base` or `jbosstools-server`, you may want to 
 install it into a new clean eclipse to test it out properly. It is highly suggested to do this

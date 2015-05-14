@@ -1,3 +1,0 @@
-Debugging...
-
-link:tracing_logging.adoc[]

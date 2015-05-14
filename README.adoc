@@ -27,11 +27,18 @@ This repo should be considered a wiki, into which all developers can push docs. 
 ** link:building/export_plugin_from_eclipse.adoc[Exporting plugins from eclipse]
 ** link:building/tycho.adoc[All about Tycho]
 *** link:building/how_to_test_tycho.adoc[How to test new versions of Tycho]
+
 * Testing & Debugging
-** link:debugging/runtime_workbench.adoc[Debugging via Runtime Workbench]
-** link:debugging/install_a_local_build.adoc[Installing a local build]
+** link:debugging/runtime_workbench.adoc[Debugging via Eclipse runtime workbench]
+** link:debugging/how_to_install_a_build.adoc[Installing a local build to Eclipse]
 ** link:debugging/how_to_test_a_build.adoc[Testing an installed build]
-** link:debugging/remote_debugging.adoc#Using-the-Eclipse-debugger[Debugging Surefire Tests w/ Eclipse Remote Debugger]
+** link:debugging/tracing_logging_in_eclipse.adoc[Tracing and logging in Eclipse]
+*** link:tracing_logging_in_eclipse.adoc#How-to-gather-eclipse-logs-and-system-configuration-details[How to gather Eclipse logs and system configuration details]
+*** link:tracing_logging_in_eclipse.adoc#How-to-enable-tracing-in-eclipse[How to enable tracing in Eclipse]
+** link:debugging/remote_debugging.adoc[Using the Eclipse remote debugger]
+** link:debugging/debug_tycho_tests.adoc[Debugging maven (surefire) tests]
+** link:debugging/debug_remote_console.adoc[Debugging on a remote server] (via SSH or VNC)
+
 * Source and Project Management
 ** link:source/new_project_process.adoc[Adding a new module / repository to JBoss Tools or JBDS]
 ** link:source/how_to_add_a_plugin_or_feature_to_an_existing_project.adoc[Adding a new plugin or feature to an existing JBoss Tools 4.x module]

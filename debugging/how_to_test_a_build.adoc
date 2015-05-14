@@ -1,6 +1,6 @@
-= How to test a build of JBoss Tools components
+= How to test a JBoss Tools component build
 
-If you haven't yet gotten your local build installed, please see link:install_a_local_build.adoc[How to Install a Local Build].
+If you haven't yet gotten your local build installed, please see link:how_to_install_a_build.adoc[How to Install a Local Build].
 
 == Everything's Installed, Now what? 
 
@@ -12,50 +12,13 @@ There are, however, three options you have to get more information:
 * Tracing
 * Debugging via a second eclipse instance
 
-=== Logs
+=== Logging
 
-When using eclipse the main place to look for logging is in the workspace log file located at `<workspace>/.metadata/.log`.
-
-==== How to gather eclipse log and other in JBoss Tools
-
-If you have JBoss Tools installed the simplest way to gather logs and system configuration is to go to: 
-
-   Help > Report Problem
-   
-This will open up a dialog where you can put in a name and description.
-
-When pressing Finish a .zip file is created that you open or share with others (for example in Jira)
+See link:tracing_logging_in_eclipse.adoc#How-to-gather-eclipse-logs-and-system-configuration-details[How to gather Eclipse logs and system configuration details]
 
 === Tracing
 
-Eclipse comes with a tracing mechanism to allow various messages to be displayed in the console's output based on what tracing flags you pass in. This does require some knowledge of what tracing flags individual plugins expose, and you can usually discover this by browsing through the plugin's source code to see what they expose. 
-
-To enable tracing, two things are required:
-
-* A .options file must live in your eclipse base directory
-* You must run your eclipse with the -debug flag. 
-
-An example of a .options file, for org.jboss.ide.eclipse.as.server.core would look something like:
-
-```
-org.jboss.ide.eclipse.as.core/debug=true
-org.jboss.ide.eclipse.as.core/config=true
-org.jboss.ide.eclipse.as.core/info=true
-org.jboss.ide.eclipse.as.core/warning=true
-org.jboss.ide.eclipse.as.core/severe=true
-org.jboss.ide.eclipse.as.core/finer=true
-org.jboss.ide.eclipse.as.core/finest=true
-org.jboss.ide.eclipse.as.core/resources=true
-org.jboss.ide.eclipse.as.core/extension_point=true
-org.jboss.ide.eclipse.as.core/listeners=true
-org.jboss.ide.eclipse.as.core/runtime_target=true
-org.jboss.ide.eclipse.as.core/performance=true
-org.jboss.ide.eclipse.as.core/publishing=true
-```
-
-Each plugin can declare its own trace keys specific to their needs. To discover what trace options are available for a given plugin, 
-you can look for a file named 'Trace.java' or similar. For example, in the `jbosstools-server` repository, you may look at 
-`jbosstools-server/as/plugins/org.jboss.ide.eclipse.as.core/jbosscore/org/jboss/ide/eclipse/as/core/Trace.java`
+See link:tracing_logging_in_eclipse.adoc#How-to-enable-tracing-in-eclipse[How to enable tracing in Eclipse]
 
 
 == Debugging via a second eclipse instance
