@@ -11,17 +11,17 @@ The process to install and test your locally-built units is:
 * Run the eclipse with a new workspace
 * Install the locally built units into eclipse. 
 
-== Installing All Dependencies Into Eclipse
+== Installing all dependencies into Eclipse
 
 Each component in JBoss Tools has dependencies on other installable units. These units should all be either:
 
 * Provided in the eclipse installation
 * Provided by our target platform
-* Other modules of JBoss Tools
+* Other JBoss Tools components
 
-If you are installing a very low-level JBoss Tools module such as `foundation`, the odds are very good that 
+If you are installing a very low-level JBoss Tools component such as `base`, the odds are very good that 
 no matter what eclipse release you will be installing into will already contain all dependencies you need.  
-If you're installing a locally-built top-level module such as `central` or `javaee`, you will need to install
+If you're installing a locally-built top-level component such as `central` or `javaee`, you will need to install
 many dependencies before being able to install your locally built unit. 
 
 There are two primary ways to get all of these dependencies:
@@ -30,34 +30,53 @@ There are two primary ways to get all of these dependencies:
 * Installing our entire target platform, and also locally building and installing all dependencies that are part of JBoss Tools. 
 
 If you are building a top-level element like `central`, though, and also have requirements on new API you have added
-in another module such as `foundation` which has not yet made it into our nightly builds, you will need to install
+in another component such as `base` which has not yet made it into our nightly builds, you will need to install
 such dependencies manually or from one of the public update sites. 
 
 === Installing a JBoss Tools release
 
 Please see http://tools.jboss.org/downloads/installation.html
 
-=== Manual Dependency Installation
+=== Manual dependency installation
 
 To install the target platform portion, you'll want to see link:target_platforms/target_platforms_for_consumers.adoc#installing-a-target-platform-into-eclipse[Installing a target platform into Eclipse]. If you intend to often test local builds, you may find it beneficial to have a local folder with our entire target platform. 
 
-Once this is done, you will need to discover all the dependencies of the component you are trying to install. While this is a harder task, you may be able to discover a bit more by looking at our JBoss Tools link:http://download.jboss.org/jbosstools/builds/cascade/swimlanes_42.html[swimlanes] which is a pretty close approximation as to what modules depend on what. 
+Once this is done, you will need to discover all the dependencies of the component you are trying to install. You may find it easier to install a full release of JBoss Tools from a nightly or release update site, and then perform a second install of only those locally built features you changed yourself.  The each project's root pom will list which projects on which it depends. 
+
+[NOTE]
+====
+For example, https://github.com/jbosstools/jbosstools-webservices/blob/master/pom.xml#L25-L36[Webservices] depends on https://github.com/jbosstools/jbosstools-server/blob/master/pom.xml[Server] and https://github.com/jbosstools/jbosstools-base/blob/master/pom.xml[Base]. The URLs that are resolved by default in these root poms can be computed by looking into the https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L75-L82[parent pom].
+====
 
 After this, you'll either need to install those dependencies from our JBoss Tools update site, or, build them locally and also install them.
 
-=== Installing a module or component from a locally built update site
+=== Installing from a locally built update site
 
 To install a component such as `jbosstools-base` or `jbosstools-server` into your eclipse installation:
 
-* Select `Window -> Install New Software` 
+* Select `Help -> Install New Software...` 
 * Click `Add...`
-* Provide a name 
-* Browse to the location of your locally built unit's update site, such as ~/jbosstools-server/site/target/repository/
-* Click `Select All`
-* Click `Next>` and continue until you can `Finish`
-* Install all of the items. 
+* Optionally, provide a name 
+* Browse to the location of your locally built update site, such as `file://${HOME}/jbt/jbosstools-server/site/target/repository/`
+* Click `OK`
+* If you have upstream dependencies, ensure you add those sites too. For example, Server depends on Base, and both depend on the target platform, so be sure to add these:
+** If built locally, where `${HOME}` = `/home/username`:
+*** `file://${HOME}/jbt/jbosstools-base/site/target/repository/`
+*** `file://${HOME}/jbt/jbosstools-target-platforms/jbosstools/multiple/target/jbosstools-multiple.target.repo/`
+** If not built locally:
+*** http://download.jboss.org/jbosstools/builds/nightly/core/master/ (includes all of JBoss Tools and its http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/[target platform])
+* If you're only installing from one component's update site:
+** In the `Work with` field, choose the local site from which you want to install, and click `Select All`
+* If you are installing from across multiple sites:
+** Choose `--All Available Sites --`, then carefully select the feature you want to install
+* Click `Next>`, accept the licences, and continue until you can press `Finish` to complete the install
 
-If you experience errors, it is very likely you are missing some dependency. You may find it easier to install a full release of JBoss Tools from a nightly or release update site, and the only install those locally built units that you have changed yourself.  Please refer back to the Swimlanes to see what you are missing, or ask for feedback on our forums. You may need to repeat this task several times with various components until you have locally built all dependencies and they have all been installed. 
+If you experience errors, it is very likely you are missing some dependency. You may find it easier to install a full release of JBoss Tools from a nightly or release update site, and then perform a second install of only those locally built features you changed yourself.  The each project's root pom will list which projects on which it depends. 
+
+[NOTE]
+====
+For example, https://github.com/jbosstools/jbosstools-webservices/blob/master/pom.xml#L25-L36[Webservices] depends on https://github.com/jbosstools/jbosstools-server/blob/master/pom.xml[Server] and https://github.com/jbosstools/jbosstools-base/blob/master/pom.xml[Base]. The URLs that are resolved by default in these root poms can be computed by looking into the https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L75-L82[parent pom]. 
+====
 
 == Everything's Installed, Now what? 
 
