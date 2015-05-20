@@ -38,21 +38,19 @@ Assuming your goal is to change sources in multiple projects, then build them al
 
 This workflow is useful when you're looking to change framework code in an upstream project like Base on which Webservices or Server depends, and verify that API changes don't break the downstream project's code.
 
-```bash
-cd ~/jbt
-git clone https://github.com/jbosstools/jbosstools-base
-git clone https://github.com/jbosstools/jbosstools-server
-git clone https://github.com/jbosstools/jbosstools-webservices
-```
+```bash cd ~/jbosstools git clone
+https://github.com/jbosstools/jbosstools-base git clone
+https://github.com/jbosstools/jbosstools-server git clone
+https://github.com/jbosstools/jbosstools-webservices ```
 
 Then, publish the results of each build into your local `~/.m2` repo, use `mvn install` instead of `mvn verify`.
 
 Thus downstream builds will use YOUR locally-built content, rather than looking to remote repositories for the latest published upstream dependencies.
 
 ```bash
-cd ~/jbt/jbosstools-base; mvn install
-cd ~/jbt/jbosstools-server; mvn install
-cd ~/jbt/jbosstools-webservices; mvn verify
+cd ~/jbosstools/jbosstools-base; mvn install
+cd ~/jbosstools/jbosstools-server; mvn install
+cd ~/jbosstools/jbosstools-webservices; mvn verify
 ```
 
 ### How do I install a series of projects (eg., Base, Server. Webservices) ?
@@ -62,9 +60,9 @@ You could build all the individual components' update sites, and install from mu
 Or, you can build your local projects into the JBoss Tools aggregate site, and install from that locally built site. This will require using -D flag overrides to ensure that you're building the site based on the above locally built bits. 
 
 ```bash
-cd ~/jbt
+cd ~/jbosstools
 git clone https://github.com/jbosstools/jbosstools-build-sites
-cd ~/jbt/jbosstools-build-sites/aggregate/site; mvn install \
+cd ~/jbosstools/jbosstools-build-sites/aggregate/site; mvn install \
   -Djbosstools-base-site=file://${HOME}/jbt/jbosstools-base/site/target/repository/ \
   -Djbosstools-server-site=file://${HOME}/jbt/jbosstools-server/site/target/repository/ \
   -Djbosstools-webservices-site=file://${HOME}/jbt/jbosstools-webservices/site/target/repository/
