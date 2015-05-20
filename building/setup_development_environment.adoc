@@ -6,7 +6,7 @@ This article explains the different options you have to set up a first-class dev
  
 === Java
 
-JBoss Tools 4.2 requires Java 7 or 8. 
+JBoss Tools 4.3 requires Java 8. JBoss Tools 4.2 required Java 7 or 8. 
 
 For other versions of JBoss Tools or Red Hat JBoss Developer Studio, see:
 
@@ -72,6 +72,15 @@ should see in your ~/.m2/settings.xml
 [source,xml]
 ----
 <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <!-- used by some JBoss Tools projects' tests, such as jbosstools-server -->
+  <properties>
+    <jbosstools.test.jre.5>/path/to/jdk1.7</jbosstools.test.jre.5>
+    <jbosstools.test.jre.6>/path/to/jdk1.7</jbosstools.test.jre.6>
+    <jbosstools.test.jre.7>/path/to/jdk1.7</jbosstools.test.jre.7>
+    <jbosstools.test.jre.8>/path/to/jdk1.8</jbosstools.test.jre.8>
+  </properties>
+
   <profiles>
     <profile>
     <id>jboss-default</id>
