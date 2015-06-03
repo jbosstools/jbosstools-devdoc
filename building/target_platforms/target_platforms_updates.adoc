@@ -48,9 +48,9 @@ Template (copy into JIRA):
 *Version:* ....
 *License and owner:* ...
 *Original p2 repo:* http://third-party-vendor.com/path/to/updates-site/
-*JBoss mirror:* http://downloads.jboss.org/jbosstools/updates/requirements/<projectName>
+*JBoss mirror:* Leave empty
 *Include Sources:* Yes|No
-*Affected projects:*
+*Affected JBoss Tools components:* ... (components that will depend on this change, jbosstools-whatever, discovery/central, JBoss Tools update-site...)
 *Include in JBDS:* Yes|No
 *Type of dependency:* testing|central-only|distribution
 *List of bundles added/removed:*
