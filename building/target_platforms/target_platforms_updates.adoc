@@ -95,7 +95,9 @@ If your requirement is not available in an update site (p2 repository), eg. only
 
 Non-p2 artifacts will be added to https://github.com/jbosstools/jbosstools-locus[JBoss Tools Locus] as p2 artifacts, so they can be included in the target platform.
 
-=== What does a build.xml script look like?
+== Create a build.xml to mirror 3rd-party repository
+
+First, clone the http://github.com/jbosstools/jbosstools-download.jboss.org[jbosstools-download.jboss.org] Git repository. Then browse to the `jbosstools/updates/requirements` folder. That's where you'll create your `build.xml`.
 
 It's a simple script that uses the `<p2.mirror>` https://wiki.eclipse.org/Equinox/p2/Ant_Tasks#Mirror_Task[ant task] to produce a mirror of one or more update sites, optionally selecting which IUs to mirror, and then removing references to any third-party update sites so that the resulting mirror is self-contained.
 
@@ -104,7 +106,11 @@ For example, here's how we mirror Thym:
 * http://download.jboss.org/jbosstools/updates/requirements/thym/build.xml
 * http://download.jboss.org/jbosstools/updates/requirements/generic/build.xml
 
-== Create a pull request with your changes
+Simply copy a `build.xml` from another 3rd-party repo, such as Thym, and adapt the various properties (URL, version...) to match your request. The commit it and submit the change as a pull request. Attach it to the Jira.
+
+An admin of the repo should review it. In case it takes too long, feel free to ping people on the Jira or IRC to make sure they review and apply the change promptly enough.
+
+== Create and submit target-platform change
 
 === Fetch sources
 
