@@ -7,18 +7,51 @@ This document has been updated for JBoss Tools 4.3, but should also be valid for
 
 See link:building/setup_development_environment.adoc#maven-settings[Configuring Maven Settings]
 
-### Java Home provided by the jbosstools.test.jre.7 system property does not exist! 
+### Java Home provided by the jbosstools.test.jre.* system properties does not exist! 
+Some tests require access to specific Java versions following the format:
 
-Some tests require the following paths to Java Home folders be defined via commandline:
+----
+jbosstools.test.jre.<major-version>
+----
 
+These are machine specific and provided either by command line:
+
+----
   mvn verify -Djbosstools.test.jre.7=/path/to/jdk1.7
+----
 
-If not defined, you'll get this error:
+or in `~/.m2/settings.xml` as a profile:
+
+----
+	<profile>
+	  <id>jbosstools-jre</id>
+	  <properties>
+	    <jbosstools.test.jre.9>/Library/Java/JavaVirtualMachines/jdk1.9.0.jdk/Contents/Home/</jbosstools.test.jre.9>
+	    <jbosstools.test.jre.8>/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/</jbosstools.test.jre.8>
+	    <jbosstools.test.jre.7>/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/</jbosstools.test.jre.7>
+	  <jbosstools.test.jre.6>/Library/Java/JavaVirtualMachines/jdk1.6.0_45.jdk/Contents/Home/</jbosstools.test.jre.6>
+	  <jbosstools.test.jre.5>/Library/Java/JavaVirtualMachines/jdk1.5.0.jdk/Contents/Home/</jbosstools.test.jre.5>
+	  </properties>
+	</profile>
+	<activeProfiles>
+	  <activeProfile>jbosstools-jre</activeProfile>
+	</activeProfiles>	
+----
+
+If not defined, you'll erros like:
 
 	junit.framework.AssertionFailedError: Java Home 
 	provided by the jbosstools.test.jre.7 system property does not exist.
 
+or
+
+----
+junit.framework.AssertionFailedError: The JRE5 location is not right
+----
+
 Note that for Jenkins jobs, this is set to a path similar to `/qa/tools/opt/jdk1.7.0_last`.
+
+p.s. if you do not have the right Java version installed you can reuse one of the others. But be aware your tests will not be running the exact same thing as jenkins.
 
 ##  How do I build via commandline?
 
