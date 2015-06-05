@@ -1,4 +1,4 @@
-# How to add a new test plugin or feature to an existing JBoss Tools 4.x project
+= How to add a new test plugin or feature to an existing JBoss Tools 4.x project
 
 The process is the same as link:how_to_add_a_plugin_or_feature_to_an_existing_project.adoc[adding a new plugin or feature to an existing JBoss Tools 4.x project], but with *two differences*:
 
@@ -10,3 +10,139 @@ As with regular plugins, please ensure you add your test feature to the project'
 
 [start=2]
 2. Instead of `jbosstools-build-sites/aggregate/site/category.xml`, submit a pull request against the `jbosstools-build-sites/aggregate/coretests-site/category.xml` site.
+
+
+
+== Integration or other slow running tests
+
+Some components have a need for tests that test more than just basic unit test functionality. Some examples are tests that need to download additional runtimes to
+do integration testing, or tests that have a large number of test-combinations, or simply tests that do testing via UI operations and thus tend to be slower than low level tests.
+
+The *best* thing to do in the above situations is to do your best to avoid the tests being slow in the first place. Test smart, have good testable API's, use mocks etc. are generally better than having to rely on really heavy test runs. 
+
+If that is not feasible, then the following structure/layout is recommended:
+
+In addition to a `tests` folder, you create an `itests` folder (*i*tests as in "integration tests") and this folder follows the same layout
+as the `tests` folder containing test bundles, with the obvious difference that their bundle and package name are now `itests` instead of just `tests`.
+
+While before you would have the following folder structure in your component root:
+
+```
+pom.xml
+plugins/
+tests/
+features/
+site/
+```
+
+you will now have:
+
+```
+pom.xml
+plugins/
+tests/
+itests/
+features/
+site/
+```
+
+=== Setup 
+
+Within the `itests` folder there are a few minor differences that unfortunately cannot be shared in a parent pom thus it will have to be repeated for each component.
+
+==== pom.xml and all-tests/pom.xml
+
+You need to make sure `itests` are included into the various maven reactor poms that already includes `tests`.
+
+This is done by simply adding the following line:
+
+```
+  <module>itests</module>
+```
+
+into the existing `<modules>` section just after the `tests` module.
+
+In a default setup you should then have something like:
+
+```
+...
+<project>
+ <modules>
+  <module>plugins</module>
+  <module>tests</module>
+  <module>itests</module>
+  <module>features</module>
+  <module>site</module>
+</project>
+```
+
+==== itests/pom.xml
+
+You will need as a minimum to configure `tycho-surefire-plugin` to use `${skiptITests}` and `${surefire.itests.timeout}` properties
+instead of the default ones.
+
+```
+<build>
+...
+ <plugins>
+  <plugin>
+   <groupId>org.eclipse.tycho</groupId>
+   <artifactId>tycho-surefire-plugin</artifactId>
+  <configuration>
+   <skip>${skipITests}</skip>
+   <timeout>${surefire.itests.timeout}</timeout>
+  </configuration> 
+</plugin>
+...
+```
+
+What this does is do allow you to skip integration tests by simply passing `-DskiptITests` into your build locally or on the CI server (i.e. jenkins).
+
+==== Fetching large dependencies or runtimes for integration tests
+
+If you're using `download-maven-plugin` to fetch large zips that are only used for integration testing, you'll want to make sure these dependencies are only fetched if you will be running the integration tests.  With this in mind, you'll want to set the `skip` element to a value of `${skipTestsOrITests}`.  This will ensure that whether the user is running `mvn clean verify -DskipTests` or `mvn clean verify -DskipITests`, the integration test dependencies will NOT be fetched.  
+
+Using this flag when fetching large integration test dependencies ensures that new users can fetch your code, contribute changes, and run a simple unit-tested build to verify they didn't break anything, without all the hassle of waiting for integration tests to be run or dependencies to be fetched. 
+
+Example:
+```
+<artifactId>download-maven-plugin</artifactId>
+	<executions>
+		<execution>
+			<id>install-as-3.2.8</id>
+			<phase>pre-integration-test</phase>
+				<goals>
+				<goal>wget</goal>
+			</goals>
+			<configuration>
+				<url>http://repository.jboss.org/sourceforge/jboss-3.2.8.SP1.zip</url>
+				<md5>97147374ee5b048e4462c7ebaf3cccb5</md5>
+				<unpack>true</unpack>
+				<skip>${skipTestsOrITests}</skip>
+			</configuration>
+		</execution>
+
+```
+
+
+== Usage
+
+By default Maven runs all tests, but you can skip them by using `-DskipTests`.
+The same rule is applied for our `itests` but it is now called `-DskipITests` instead.
+
+Meaning:
+
+`mvn clean verify` runs all tests.
+`mvn clean verify -DskipTests` skips *all* tests (including integration tests)
+`mvn clean verify -DskipITests` skips *only* itests
+
+=== Custom configuration
+
+If your `itests` need custom configuration (and your existing `tests` pom.xml probably already have some) this can now be put in the `itests/pom.xml` file instead.
+
+== Background and Examples
+
+The initial implementation of the above was done in https://github.com/jbosstools/jbosstools-server/pull/304
+
+Thus at time of writing `jbosstools-server` is the only repository that contains examples of this approach.
+
