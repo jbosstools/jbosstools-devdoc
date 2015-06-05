@@ -11,16 +11,19 @@ Goals:
 . Document why and when changes occur
 
 Process:
-
 . <<create-jira-outlining-the-request,Create JIRA outlining the request>>
-. <<create-a-pull-request-with-your-changes,Create a pull request with your changes>>
-.. <<fetch-sources,Fetch sources>> & <<build-target-platforms-locally,build locally>>
-.. <<update-the-target-files,Update .target files>> & <<update-versions-of-ius-in-the-target-files,versions of IUs in .target files>>
+. <<determine-if-dependency-is-mirrored,Determine if dependency is mirrored>>
+.. <<create-a-build.xml-to-mirror-3rd-party-repository,Create a build.xml to mirror 3rd-party repository>>
+. <<create-and-submit-target-platform-change,Create and submit target-platform change>>
+.. <<fetch-sources,Fetch sources>> 
+.. <<build-target-platforms-locally,build locally>>
+.. <<update-the-target-files,Update .target files>>
 .. <<update-versions-of-ius-in-the-target-files,Validate changes & test the new target platform>>
 .. <<produce-a-p2diff-report,Produce a p2diff report>>
 . <<send-mail-for-feedback,Send email>> to jbosstools-dev@lists.jboss.org requesting feedback. State expected feedback window (usually 1 week).
 . <<await-feedback,Await feedback>> from build, affected team leads and project lead(s). For urgent changes, 1 project lead is OK.
 . Apply the pull-request
+
 
 == Create JIRA outlining the request
 
@@ -95,26 +98,41 @@ If your requirement is not available in an update site (p2 repository), eg. only
 
 Non-p2 artifacts will be added to https://github.com/jbosstools/jbosstools-locus[JBoss Tools Locus] as p2 artifacts, so they can be included in the target platform.
 
-== Create a build.xml to mirror 3rd-party repository
 
-First, clone the http://github.com/jbosstools/jbosstools-download.jboss.org[jbosstools-download.jboss.org] Git repository. Then browse to the `jbosstools/updates/requirements` folder. That's where you'll create your `build.xml`.
+== Determine if dependency is mirrored
 
-It's a simple script that uses the `<p2.mirror>` https://wiki.eclipse.org/Equinox/p2/Ant_Tasks#Mirror_Task[ant task] to produce a mirror of one or more update sites, optionally selecting which IUs to mirror, and then removing references to any third-party update sites so that the resulting mirror is self-contained.
+The next step to requesting a new bundle be added to the target platform is to determine whether the bundle is already mirrored. JBoss Tools mirrors our requirements at http://download.jboss.org/jbosstools/updates/requirements/
+
+If your dependency is hosted at eclipse.org, there's a good chance that the bits are already mirrored. You will want to look in http://download.jboss.org/jbosstools/updates/requirements/mars or substituting the name of whichever release is currently being targeted in place of mars (luna, mars, neon, etc). 
+
+Some projects hosted at eclipse.org may not be present in this location for any number of reasons, or their versions may not be the version you require. In that case, your requirement may have its own folder in http://download.jboss.org/jbosstools/updates/requirements. One example is the `Targeted Management` plugins, which have their own folder named `tm` in the requirements folder of download.jboss.org.  You may need to be creative while looking for your dependencies if your requirement is a subproject of some other larger project. Unfortunately, there's no easy way to determine this definitively, and you may need to work with the build team to locate your requirement. 
+
+If your requirement is not already mirrored, you will need to create a build.xml to mirror the 3rd-party repository. If your dependency is already mirrored, you can skip this next section, and proceed directly to adding it to the target platform. 
+
+=== Create a build.xml to mirror 3rd-party repository
+
+You've now determined that your requirement is not yet mirrored on jboss.org, and so some extra work must be done to make it available to our target platform. 
+
+First, clone the http://github.com/jbosstools/jbosstools-download.jboss.org[jbosstools-download.jboss.org] Git repository. 
+
+Then browse to the `jbosstools/updates/requirements` folder. This is where you'll create a new folder for your requirement, and place a build.xml inside of it. 
+
+The build.xml you'll create is essentially a wrapper to updates/requirements/generic/build.xml, which does the majority of the work.  The generic build.xml is a script that uses the `<p2.mirror>` https://wiki.eclipse.org/Equinox/p2/Ant_Tasks#Mirror_Task[ant task] to produce a mirror of one or more update sites, optionally selecting which IUs to mirror, and then removing references to any third-party update sites so that the resulting mirror is self-contained.  
 
 For example, here's how we mirror Thym:
 
 * http://download.jboss.org/jbosstools/updates/requirements/thym/build.xml
 * http://download.jboss.org/jbosstools/updates/requirements/generic/build.xml
 
-Simply copy a `build.xml` from another 3rd-party repo, such as Thym, and adapt the various properties (URL, version...) to match your request. The commit it and submit the change as a pull request. Attach it to the Jira.
+The easiest way to get a good `build.xml` is to copy a `build.xml` from another 3rd-party dependency in the requirements folder, such as Thym, and adapt the various properties (URL, version...) to match your request. Then, commit your change and submit the change as a pull request. Don't forget to attach it to the Jira.
 
-An admin of the repo should review it. In case it takes too long, feel free to ping people on the Jira or IRC to make sure they review and apply the change promptly enough.
+An admin of the repository should review it shortly thereafter. In case it takes too long, feel free to ping people on the JIRA, IRC, or the mailing lists, to make sure your change is reviewed and applied promptly.
 
 == Create and submit target-platform change
 
 === Fetch sources
 
-Following instructions cover the minimal edits needed for a review (a final Pull request needs updates to both jbosstools and devstudio target platform as needed)
+The following instructions cover the minimal edits needed for a review (a final Pull request needs updates to both jbosstools and devstudio target platform as needed)
 
  $ git clone git@github.com:jbosstools/jbosstools-target-platforms.git
  $ cd jbosstools-target-platforms
@@ -134,7 +152,7 @@ For the Integration Stack:
 
 === Build target platform(s) locally
 
-To build, you require specific versions of Java and Maven. Also, there is some Maven setup. 
+To build the target platform, you require specific versions of Java and Maven. Also, there is some Maven setup required. 
 The https://community.jboss.org/wiki/HowToBuildJBossToolsWithMaven3[How to Build JBoss Tools with Maven 3]
 document will guide you through that setup.
 
@@ -160,7 +178,7 @@ If you want to run the build and not fail if there's a problem w/ validation, do
 
     $ mvn clean verify -Pmultiple2repo -Dvalidate-target-platform.failOnError=false
 
-If you just want to check if things compiles/builds you can run:
+If you just want to check if things compile and build properly, you can run:
 
     $ mvn clean verify -Pmultiple2repo -DskipTest=true
 
