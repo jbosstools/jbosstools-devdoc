@@ -21,7 +21,6 @@ This repo should be considered a wiki, into which all developers can push docs. 
 * Building a project (also called module or component)
 ** link:building/how_to_build_jbosstools_faq.adoc[JBoss Tools Build FAQ]
 ** link:building/build_from_commandline.adoc[Building from the command line]
-*** link:building/build_options.adoc[Build options & flags]
 ** link:building/build_from_eclipse.adoc[Building with Eclipse (using m2e)]
 ** link:source/build_source_bundles_features_and_src_zips.adoc[How to build source bundles, features, and source zips]
 ** link:building/export_plugin_from_eclipse.adoc[Exporting plugins from eclipse]

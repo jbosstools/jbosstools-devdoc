@@ -145,11 +145,11 @@ Every time we make changes to the target platform, either to add/remove somethin
 
 In order to verify we can build against the oldest version of a target platform (eg., one based on Eclipse 4.4.0, or "minimum" target platform) but also run tests against the latest for that stream (eg., based on Eclipse 4.4.2, or "maximum" target platform), we need to maintain multiple versions.
 
-By default, your build will use the default "minimum" target platform specified in the JBoss Tools parent pom. To easily build against the default "maximum", use -Pmaximum. See also link:build_options.adoc[Maven commandline parameters].
+By default, your build will use the default "minimum" target platform specified in the JBoss Tools parent pom. To easily build against the default "maximum", use -Pmaximum. For a full list of build options and flags, see also link:build_from_commandline.adoc[Command Line Parameters].
 
 ## How do I specify which target platform to use when building?
 
-Use `-Dtpc.version=4.41.0.Final` or similar. See link:build_options.adoc[Maven commandline parameters].
+Use `-Dtpc.version=4.41.0.Final` or similar. For a full list of build options and flags, see also link:build_from_commandline.adoc[Command Line Parameters].
 
 ## How to I skip running tests? How do I make tests not fail? Or only fail after ALL tests run?
 
@@ -168,7 +168,7 @@ You can also cause test failures to result in JUnit output without failing the b
 * `-Dmaven.test.error.ignore=true`
 * `-Dmaven.test.failure.ignore=true`
 
-See also link:build_options.adoc[Maven commandline parameters].
+See also link:build_from_commandline.adoc#maven-options[Maven commandline parameters].
 
 ## How can I debug tests in Eclipse when run from Tycho (with Surefire)?
 
@@ -185,7 +185,7 @@ Most of the time, you don't need any profiles or -D properties. Here are some pr
 * `-Pmaximum` : selects the default maximum target platform version instead of the default minimum one. Useful when running tests to verify that your code works against a newer target platform (eg., Eclipse 4.4.2 instead of 4.4.0)
 * `-Dtpc.version` : allows you to pick a specific target platform version from those available in Nexus.
 
-See also link:build_options.adoc[Maven commandline parameters].
+See also link:build_from_commandline.adoc#target-platform-options[Target Platform's Maven commandline parameters].
 
 
 ## My build is failing due to OutOfMemory or PermGen issues! How do I give Maven more memory?

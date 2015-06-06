@@ -54,6 +54,5 @@ Now you can repeat the above step to build any other component or plugin or feat
 
 ## More info
 
-To build on the commandline, see link:build_from_commandline.adoc[Building locally via commandline].
+For a full list of build options and how to build on the commandline, see link:build_from_commandline.adoc[Building locally via commandline].
 
-See also link:build_options.adoc[build options]. 
