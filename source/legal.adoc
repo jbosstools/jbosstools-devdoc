@@ -1,0 +1,115 @@
+= Legal issues
+
+When dealing with open source code there are two primary areas of concern when it comes to possible legal issues: <<Copyright,copyright>> and <<Trademark,trademark>>.
+
+Copyright is related in context of contributions and use of 3rd party
+dependencies, where Trademark are mainly about use of logos, icons,
+etc. (including JBoss and Red Hat own logos)
+
+This document tries to outline the general approaches to handle issues.
+
+In any doubt contact post on jbosstools-dev@lists.jboss.org or if preferred ping JBoss Tools lead (manderse@redhat.com) directly. 
+
+== Copyright
+
+All source code around JBoss Tools are Open Source and we accept contributions from anyone willing to do so under the license used for the 
+the relevant project.
+
+We prefer to use Eclipse Public License since it allows for the easiest interaction and codesharing with other Eclipse IDE projects.
+
+The table below tries to capture list of licenses used or previously encountered and how it can be used.
+
+WARNING: This is a work in progress. If any questions/concerns contact jbosstools-dev@lists.jboss.org for clarification from project leads.
+
+.License table
+|===
+|License | In Code | As dependency | Distribution | Comments
+
+| EPL
+| Yes
+| Yes
+| Yes
+|
+
+| GPL
+| No
+| No
+| Yes
+| GPL is not possible to use in Eclipse plugins project without severely limiting how it can be distributed.
+  See http://www.gnu.org/licenses/gpl-faq.en.html#GPLAndPlugins[Gnu FAQ]
+
+| GPL + classpath exception
+| Limited
+| Yes
+| ?
+| Notable example here are OpenJDK libraries. Fine as dependency, but problematic to have in our source since
+  we would need ot be extra careful about how and what gets linked to it.
+  
+| ASL
+| Limited
+| Yes
+| Yes
+| Limited for source since it is preferred this is at least dual licensed under EPL
+
+| SAP library license
+| No
+| Limited
+| No
+| For integration with SAP we build against a closed library with limits of distribution. Requires custom handling and
+  we *cannot* ship the binaries. It is *highly* discouraged to use unless absolutely no other way to integrate. 
+
+|===
+
+== Trademark
+
+Trademark in context of JBoss Tools mainly evolve around using projects logos to identify parts of the tooling supports it.
+For example, using a JBoss logo for our JBoss server adapter and more.
+
+In general any logo or image that resembles some trademark needs to be explicitly cleared for usage unless their license are
+crystal clear about it being okey to use.
+
+WARNING: This is a work in progress. If any questions/concerns contact jbosstools-dev@lists.jboss.org for clarification from project leads.
+
+.Icon/logo trademarks
+|===
+| Items | Policy | Usage | Example
+
+| Apache logos
+| http://www.apache.org/foundation/marks/[Apache.org]
+| ?
+| Karaf and service mix
+
+| Red Hat shadowman
+| ?
+| No
+| The Red Hat logo is not allowed to be embedded in projects.
+
+| JBoss logos
+| ?
+| Limited
+| Used for server adapters and JBoss Central. Awaiting result of https://issues.jboss.org/browse/WAY-125
+
+| Microsoft logos
+| ?
+| No
+| 
+
+| Apple logos
+| ?
+| No
+|
+
+| iPhone/Android skins
+| ?
+| Limited
+| Cannot show Apple or Android logo and materials used must be under opens source license. See https://github.com/jbosstools/jbosstools-browsersim/blob/master/plugins/org.jboss.tools.browsersim.ui/about.html#L33[BrowserSim - Third Party content]
+
+
+
+
+
+
+
+
+
+
