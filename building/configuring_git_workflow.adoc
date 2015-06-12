@@ -386,10 +386,13 @@ Then:
     git checkout ${branch}
     git pull origin ${branch}
 
-If you want to associate a local topic branch with a remote branch at the origin you can do this:
+If you want a local topic branch with the same name as upstream:
 
-    git checkout origin/${branch} -b ${topic}
-    git checkout ${topic}
+    git checkout --track origin/${upstreambranchname}
+
+Or, should you want a local branch name different from upstream
+
+    git checkout -b ${localname} origin/${upstreambranchname}
 
 To purge a branch on the origin, you can do this. Note the colon (:) that precedes the name of the branch:
 

@@ -40,8 +40,14 @@ information on installing new plugins, please see http://help.eclipse.org/luna/i
 Git is the chosen version control system used by JBoss Tools. To be able to checkout (or clone) our source code, you'll first need to install git. 
 The instructions for installing Git vary depending on your operating system. Please consult http://git-scm.com/book/en/v2/Getting-Started-Installing-Git[the Git website] for more information. 
 
-Once the Git command line tools are installed, you'll want to install EGit, which are tools that allow you to easily use Git from inside Eclipse. 
-To see if your chosen  distribution comes with EGit, you can check http://www.eclipse.org/downloads/compare.php?release=luna[here]. 
+Once the Git command line tools are installed, you'll want to install Hub. 
+
+Using a utility like `Hub` can help shave a lot of time off dealing with multiple topic branches, pull requests, 
+and other more time-intensive workflows. You can find out more at http://hub.github.com/[http://hub.github.com/].
+
+Next, you'll want to install EGit, to use Git from inside Eclipse. 
+
+To see if your chosen distribution comes with EGit, you can check http://www.eclipse.org/downloads/compare.php?release=luna[here]. 
 If your chosen eclipse installation does not come with EGit, you'll want to follow the above instructions for PDE to install EGit, with some small changes. 
 Specifically, you'll want to paste in the update site url found at Egit's http://eclipse.org/egit/download/[download page]. 
 
@@ -182,14 +188,6 @@ Coverage answers the question "What has been tested?"
 
 JBoss Tools CI builds provide Jacoco reports for coverage by unit tests (file name is jacoco.exec). This file can easily be analyzed inside Eclipse on your Java editor using the EclEmma plugin. 
 The http://marketplace.eclipse.org/content/eclemma-java-code-coverage[EclEmma plugin] can also be installed from Eclipse Marketplace, as in the previous section above. 
-
-== Other Utilities
-
-=== Hub
-
-Using a utility like `Hub` can help shave a lot of time off dealing with multiple topic branches, pull requests, 
-and other more time-intensive workflows. You can find out more http://hub.github.com/[here].
-
 
 == Conclusion
 

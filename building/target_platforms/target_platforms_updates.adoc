@@ -116,21 +116,19 @@ An admin of the repo should review it. In case it takes too long, feel free to p
 
 Following instructions cover the minimal edits needed for a review (a final Pull request needs updates to both jbosstools and devstudio target platform as needed)
 
- $ git clone git@github.com:jbosstools/jbosstools-target-platforms.git
- $ cd jbosstools-target-platforms
- $ git checkout <relevant version.x>
-
-For Central:
-
- $ git clone git@github.com:jbosstools/jbosstools-discovery.git
- $ cd jbosstools-discovery
- $ git checkout <relevant version.x or master>
+```bash
+git clone git://github.com:jbosstools/jbosstools-target-platforms.git # or git clone git@github.com:jbosstools/jbosstools-target-platforms.git
+cd jbosstools-target-platforms
+git checkout <relevant version.x>
+```
 
 For the Integration Stack:
 
- $ git clone git@github.com:jbosstools/jbosstools-integration-stack.git
- $ cd jbosstools-integration-stack
- $ git checkout <relevant version.x or master>
+```bash
+git clone git://github.com:jbosstools/jbosstools-integration-stack.git # or git clone git@github.com:jbosstools/jbosstools-integration-stack.git
+cd jbosstools-integration-stack
+git checkout <relevant version.x or master>
+```
 
 === Build target platform(s) locally
 

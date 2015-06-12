@@ -28,8 +28,7 @@ JBoss Tools' `target platform definition files` are stored in github:
 
 JBoss Tools' `target platform update sites` are located here, in both unpacked and packed (zipped) format. They do *not* contain sources or SDK features.
 
-* http://download.jboss.org/jbosstools/targetplatforms/ (SNAPSHOTS and milestones)
-* http://download.jboss.org/jbosstools/static/targetplatforms/ (released versions)
+* http://download.jboss.org/jbosstools/targetplatforms/ (SNAPSHOTS, milestones, and links to released versions)
 
 ## Exploring the JBoss Tools target platform repository
 
@@ -51,7 +50,7 @@ The next digit signifies the sequence of target platforms, starting with 0. Shou
 
 After that, the milestone of JBoss Tools that uses the target platform is suffixed, which also defines the quality/stability of the target platform (Alpha1, Alpha2, Beta1, Beta2, CR1, Final). 
 
-Finally, the target platform version will have a `-SNAPSHOT` suffix if it has not yet been released to Nexus. Once released, the `-SNAPSHOT` suffix is removed and the target platform update site is moved to http://download.jboss.org/jbosstools/static/targetplatforms/. 
+Finally, the target platform version will have a `-SNAPSHOT` suffix if it has not yet been released to Nexus. Once released, the `-SNAPSHOT` suffix is removed. For .Final versions, the bits are moved to mirrored to the Akamai /static/ folder for better performance.
 
 ### Choosing the appropriate target platform.
 
@@ -103,7 +102,7 @@ But...
 
 |
 
-* Browse to http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/ or http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/
+* Browse to http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/
 * Select the folder for the version you want such as `4.41.1.Final`
 * Select the zip file and save it to disk
 * Unzip it to a location you desire
@@ -132,7 +131,7 @@ But...
 * Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.5.0, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.50.x[4.50.x] branch.
 	
 ```bash
-git clone git@github.com:jbosstools/jbosstools-target-platforms.git
+git clone git://github.com:jbosstools/jbosstools-target-platforms.git # or git clone git@github.com:jbosstools/jbosstools-target-platforms.git
 cd jbosstools-target-platforms
 git checkout 4.50.x
 ```
@@ -166,7 +165,7 @@ But...
 * Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.5.0, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.50.x[4.50.x] branch.
 	
 ```bash
-git clone git@github.com:jbosstools/jbosstools-target-platforms.git
+git clone git://github.com:jbosstools/jbosstools-target-platforms.git # or git clone git@github.com:jbosstools/jbosstools-target-platforms.git
 cd jbosstools-target-platforms
 git checkout 4.50.x
 ```
