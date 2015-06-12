@@ -71,11 +71,12 @@ Provide enough detail to explain why the change is needed, and what is required 
 
 * _Original p2 repo_: which repository are the plugins/features from? eg., http://dl.google.com/eclipse/plugin/4.2
 
-* _JBoss mirror_: mirror URL to use, eg. http://downloads.jboss.org/jbosstools/updates/requirements/tern/0.7.0.201412012159/
+* _JBoss mirror_: URL to use, eg. http://downloads.jboss.org/jbosstools/updates/requirements/mars/201506111000-RC4/
 
-** If no mirror yet exists, look in https://github.com/nickboldt/jbosstools-download.jboss.org/tree/master/jbosstools/updates/requirements[updates/requirements/] for your requirement's folder. In that folder should be a <<What does a build.xml script look like?,build.xml>> file showing the URL and version to mirror. Please submit a pull request to update the URL or version, as applicable. 
-** If no build.xml file exists for your requirement, please submit a pull request to create one.
-** Once the PR is pushed, the build.xml script can then be run via https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-requirements/[this Jenkins job] (if you have VPN access).
+** If no mirror already exists, you can:
+*** leave this blank, or
+*** link:target_platforms_dependency_mirrors.adoc[create one yourself].
+
 
 * _Include Sources_: Are source bundles included in the mirror, or are sources available elsewhere? Use "included" or explain.
 
@@ -95,20 +96,6 @@ If your requirement is not available in an update site (p2 repository), eg. only
 
 Non-p2 artifacts will be added to https://github.com/jbosstools/jbosstools-locus[JBoss Tools Locus] as p2 artifacts, so they can be included in the target platform.
 
-== Create a build.xml to mirror 3rd-party repository
-
-First, clone the http://github.com/jbosstools/jbosstools-download.jboss.org[jbosstools-download.jboss.org] Git repository. Then browse to the `jbosstools/updates/requirements` folder. That's where you'll create your `build.xml`.
-
-It's a simple script that uses the `<p2.mirror>` https://wiki.eclipse.org/Equinox/p2/Ant_Tasks#Mirror_Task[ant task] to produce a mirror of one or more update sites, optionally selecting which IUs to mirror, and then removing references to any third-party update sites so that the resulting mirror is self-contained.
-
-For example, here's how we mirror Thym:
-
-* http://download.jboss.org/jbosstools/updates/requirements/thym/build.xml
-* http://download.jboss.org/jbosstools/updates/requirements/generic/build.xml
-
-Simply copy a `build.xml` from another 3rd-party repo, such as Thym, and adapt the various properties (URL, version...) to match your request. The commit it and submit the change as a pull request. Attach it to the Jira.
-
-An admin of the repo should review it. In case it takes too long, feel free to ping people on the Jira or IRC to make sure they review and apply the change promptly enough.
 
 == Create and submit target-platform change
 
