@@ -131,7 +131,7 @@ But...
 * Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.5.0, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.50.x[4.50.x] branch.
 	
 ```bash
-git clone git://github.com:jbosstools/jbosstools-target-platforms.git # or git clone git@github.com:jbosstools/jbosstools-target-platforms.git
+git clone https://github.com:jbosstools/jbosstools-target-platforms.git 
 cd jbosstools-target-platforms
 git checkout 4.50.x
 ```
@@ -165,7 +165,7 @@ But...
 * Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.5.0, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.50.x[4.50.x] branch.
 	
 ```bash
-git clone git://github.com:jbosstools/jbosstools-target-platforms.git # or git clone git@github.com:jbosstools/jbosstools-target-platforms.git
+git clone https://github.com:jbosstools/jbosstools-target-platforms.git 
 cd jbosstools-target-platforms
 git checkout 4.50.x
 ```

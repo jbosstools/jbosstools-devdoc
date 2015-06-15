@@ -246,8 +246,8 @@ contribute a fix. To work around resolution problems, just build
 locally:
 
 ----
-cd /tmp; git clone git clone git://github.com/jbosstools/jbosstools-maven-plugins.git
-cd /tmp; git clone git clone git://github.com/jbosstools/jbosstools-build.git
+cd /tmp; git clone https://github.com/jbosstools/jbosstools-maven-plugins.git
+cd /tmp; git clone https://github.com/jbosstools/jbosstools-build.git
 cd jbosstools-maven-plugins/tycho-plugins; mvn install; cd -
 cd jbosstools-build/parent;  mvn install; cd -
 cd jbosstools-build/target-platforms; mvn install -Pjbosstools-minimum,jbosstools-maximum

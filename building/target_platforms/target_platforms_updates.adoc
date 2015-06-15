@@ -117,7 +117,7 @@ An admin of the repo should review it. In case it takes too long, feel free to p
 Following instructions cover the minimal edits needed for a review (a final Pull request needs updates to both jbosstools and devstudio target platform as needed)
 
 ```bash
-git clone git://github.com:jbosstools/jbosstools-target-platforms.git # or git clone git@github.com:jbosstools/jbosstools-target-platforms.git
+git clone https://github.com:jbosstools/jbosstools-target-platforms.git
 cd jbosstools-target-platforms
 git checkout <relevant version.x>
 ```
@@ -125,7 +125,7 @@ git checkout <relevant version.x>
 For the Integration Stack:
 
 ```bash
-git clone git://github.com:jbosstools/jbosstools-integration-stack.git # or git clone git@github.com:jbosstools/jbosstools-integration-stack.git
+git clone https://github.com:jbosstools/jbosstools-integration-stack.git
 cd jbosstools-integration-stack
 git checkout <relevant version.x or master>
 ```
