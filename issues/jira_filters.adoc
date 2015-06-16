@@ -23,19 +23,28 @@ i.e. https://issues.jboss.org/issues/?jql=filter%3Dds_freeze%20and%20filter%3Dds
 [options="header"]
 .Jira Filters
 |===
-|Name| Description| Query
-| https://issues.jboss.org/issues/?filter=12323056[ds_next_maint] | Issues for next development in maintenance or master| ((project = JBIDE AND fixVersion in (  %(jbide_next_maint_versions)s )) OR (project = JBDS AND fixVersion in ( %(jbds_next_maint_versions)s )))
-| https://issues.jboss.org/issues/?filter=12323057[ds_next_master] | Issues for next development in maintenance or master| ((project = JBIDE AND fixVersion in (  %(jbide_next_maint_versions)s )) OR (project = JBDS AND fixVersion in ( %(jbds_next_maint_versions)s )))
-| https://issues.jboss.org/issues/?filter=12323016[ds_cdwtriage] | Issues are New and have no target release set| project = JBDS AND status = New AND ('Target Release' is EMPTY OR 'CDW release' in ('?'))
-| https://issues.jboss.org/issues/?filter=12323017[ds_maint] | Current project+versions for JBIDE/JBDS maintenance| ((project = JBIDE AND fixVersion in ( %(jbide_maint_versions)s )) OR (project = JBDS AND fixVersion in ( %(jbds_maint_versions)s )))
-| https://issues.jboss.org/issues/?filter=12323031[ds_freeze] | Issues for next freeze| ((project = JBIDE AND fixVersion in ( %(jbide_freeze_versions)s )) OR (project = JBDS AND fixVersion in ( %(jbds_freeze_versions)s )))
+|Name|  Description| Query
+| https://issues.jboss.org/issues/?filter=12323074[ds_next_master_unresolved] | unresolved work for next version| filter='ds_next_master' and filter='ds_unresolved'
+| https://issues.jboss.org/issues/?filter=12323075[ds_next_maint_unresolved] | unresolved work for next maintanence| filter='ds_next_maint' and filter='ds_unresolved'
 | https://issues.jboss.org/issues/?filter=12323047[ds_lint_nocomponent] | Unresolved issues without components| project in (JBIDE,JBDS) and component is EMPTY AND resolution is EMPTY
-| https://issues.jboss.org/issues/?filter=12323035[ds_my_latertriage] | Stuff in .x or LATER buckets| filter='ds_mystuff' and filter='ds_unresolved' and (project = 'JBIDE' and fixversion in ( %(jbide_bucket_versions)s ) or (project = 'JBDS' and fixversion in ( %(jbds_bucket_versions)s )))
-| https://issues.jboss.org/issues/?filter=12323034[ds_my_needtriage] | Non triaged stuff that I'm assigned or leading| filter='ds_mystuff' and fixVersion is empty and filter='ds_unresolved'
 | https://issues.jboss.org/issues/?filter=12323019[ds_mystuff] | Issues assigned to current user or in a component lead by current user.| assignee = currentUser() or component in (componentsLeadByUser())
-| https://issues.jboss.org/issues/?filter=12323018[ds_needpmack] | Product manager have not yet approved a jira with a target release| 'Target Release' is not EMPTY AND 'CDW pm_ack' = '?' AND resolution = Unresolved
 | https://issues.jboss.org/issues/?filter=12323020[ds_unresolved] | Issues that are unresolved| resolution is EMPTY
-| https://issues.jboss.org/issues/?filter=12323043[ds_my_freeze] | Issues assigned or lead by user that is marked for freeze| filter='ds_mystuff' and filter='ds_freeze' and filter='ds_unresolved'
-| https://issues.jboss.org/issues/?filter=12323048[ds_lint_illegalfixversion] | illegal fix versions| (project = JBIDE AND (fixVersion in ( %(jbide_bucket_versions)s ) OR fixVersion is EMPTY) OR project = JBDS AND (fixVersion in ( %(jbds_bucket_versions)s ) OR fixVersion is EMPTY)) AND resolution = done
+| https://issues.jboss.org/issues/?filter=12323016[ds_cdwtriage] | Issues are New and have no target release set| project = JBDS AND status = New AND ('Target Release' is EMPTY OR 'CDW release' in ('?'))
+| https://issues.jboss.org/issues/?filter=12323034[ds_my_needtriage] | Non triaged stuff that I'm assigned or leading| filter='ds_mystuff' and filter='ds_needtriage'
+| https://issues.jboss.org/issues/?filter=12323043[ds_my_freeze] | Issues assigned or lead by user that is marked for freeze| filter='ds_mystuff' and filter='ds_freeze'
 | https://issues.jboss.org/issues/?filter=12323021[ds_master] | Current project+versions for JBIDE/JBDS master stream| ((project = JBIDE AND fixVersion in ( %(jbide_master_versions)s )) OR (project = JBDS AND fixVersion in ( %(jbds_master_versions)s )))
+| https://issues.jboss.org/issues/?filter=12323974[ds_freeze_unresolved] | Unresolved issues in frozen versions| filter='ds_freeze' and filter='ds_unresolved'
+| https://issues.jboss.org/issues/?filter=12323333[ds_maint_noack] | issues that are missing ack or nack| filter='ds_maint' and 'CDW release' = '?'
+| https://issues.jboss.org/issues/?filter=12323083[ds_my_freeze_unresolved] | Issues assigned or lead by user that is marked for freeze and unresolved| filter='ds_mystuff' and filter='ds_freeze' and filter='ds_unresolved'
+| https://issues.jboss.org/issues/?filter=12323048[ds_lint_illegalfixversion] | illegal fix versions| (project = JBIDE AND (fixVersion in ( %(jbide_bucket_versions)s ) OR fixVersion is EMPTY) OR project = JBDS AND (fixVersion in ( %(jbds_bucket_versions)s ) OR fixVersion is EMPTY)) AND resolution = done
 | https://issues.jboss.org/issues/?filter=12323049[ds_lint_unresolved_in_release] | Unresolved issues in already released versions| project in (JBIDE, JBDS) and fixVersion in releasedVersions() and resolution is empty
+| https://issues.jboss.org/issues/?filter=12323095[ds_needtriage] | Non triaged stuff| fixVersion is empty and filter='ds_unresolved' and project in (JBIDE,JBDS)
+| https://issues.jboss.org/issues/?filter=12323057[ds_next_master] | Issues for next development in maintenance or master| ((project = JBIDE AND fixVersion in (  %(jbide_next_master_versions)s )) OR (project = JBDS AND fixVersion in ( %(jbds_next_master_versions)s )))
+| https://issues.jboss.org/issues/?filter=12323018[ds_needpmack] | Product manager have not yet approved a jira with a target release| 'Target Release' is not EMPTY AND 'CDW pm_ack' = '?' AND resolution = Unresolved
+| https://issues.jboss.org/issues/?filter=12323017[ds_maint] | Current project+versions for JBIDE/JBDS maintenance| ((project = JBIDE AND fixVersion in ( %(jbide_maint_versions)s )) OR (project = JBDS AND fixVersion in ( %(jbds_maint_versions)s )))
+| https://issues.jboss.org/issues/?filter=12323973[ds_respin] | Issues included in a respin (has label containing 'respin-[a-k]')| labels in ('respin-a', 'respin-b', 'respin-c', 'respin-d', 'respin-e', 'respin-f', 'respin-g', 'respin-h','respin-i', 'respin-j')
+| https://issues.jboss.org/issues/?filter=12323031[ds_freeze] | Issues for next freeze| ((project = JBIDE AND fixVersion in ( %(jbide_freeze_versions)s )) OR (project = JBDS AND fixVersion in ( %(jbds_freeze_versions)s )))
+| https://issues.jboss.org/issues/?filter=12323076[ds_my_next_master_unresolved] | my unresolved work for next version| filter='ds_mystuff' and filter='ds_next_master' and filter='ds_unresolved'
+| https://issues.jboss.org/issues/?filter=12323334[ds_master_noack] | issues that are missing ack or nack| filter='ds_master' and 'CDW release' = '?'
+| https://issues.jboss.org/issues/?filter=12323077[ds_my_next_maint_unresolved] | my unresolved work for next maintanence| filter='ds_mystuff' and filter='ds_next_maint' and filter='ds_unresolved'
+| https://issues.jboss.org/issues/?filter=12323035[ds_my_latertriage] | Stuff in .x or LATER buckets| filter='ds_mystuff' and filter='ds_unresolved' and (project = 'JBIDE' and fixversion in ( %(jbide_bucket_versions)s ) or (project = 'JBDS' and fixversion in ( %(jbds_bucket_versions)s )))
