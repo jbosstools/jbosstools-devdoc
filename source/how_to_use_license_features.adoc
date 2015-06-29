@@ -1,0 +1,50 @@
+= License features
+
+License features are a new construct introduced for JBoss Tools 4.3. What happens is that the license text normally copied into all your `feature.properties` or `feature.xml` files, then copied again into `license.html` files in your features, is now contained upstream in the org.jboss.tools.foundation.license.feature:
+
+* https://github.com/jbosstools/jbosstools-base/blob/master/foundation/features/org.jboss.tools.foundation.license.feature/feature.properties#L13-19
+
+To use this in your features, so that license changes are a trivial change instead of requiring the update of all your `feature.properties` or `feature.xml` and `license.html` files, there are a few simple steps:
+
+== How to use license features
+
+* Add this to your feature.xml files:
+
+```
+    license-feature="org.jboss.tools.foundation.license.feature"
+    license-feature-version="0.0.0"
+```
+
+* Remove all license.html files, then remove references to license.html in your build.properties files
+
+* Remove references to `licenseURL` in your `feature.xml` files.
+
+```
+    - <license url="%licenseURL">
+    + <license>
+```
+
+* Remove definition of `license` and `licenseURL` in your `feature.properties` files.
+
+```
+    - licenseURL=license.html     
+    - license=Red Hat, Inc. licenses these features and plugins to you under ...
+```
+
+Examples:
+
+* https://github.com/jbosstools/jbosstools-arquillian/pull/113
+* https://github.com/jbosstools/jbosstools-freemarker/pull/36
+
+
+== Verify your changes worked
+
+1. Rebuild your features (eg., with `mvn clean install -DskipTests`
+
+2. Verify new features in the site/target/repository/features/* folder.
+
+3. link:../debugging/how_to_install_a_build.adoc[Install the newly created features] into Eclipse to verify they look correct and that the correct license is presented.
+
+== See also
+
+See also http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.pde.doc.user%2Ftasks%2Fpde_shared_license.htm
