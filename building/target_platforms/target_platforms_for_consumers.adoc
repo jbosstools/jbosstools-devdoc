@@ -1,4 +1,4 @@
-= Using Target Platforms
+= Using target platforms
 
 This document explains how to consume target platforms in Eclipse.
 
