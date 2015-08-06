@@ -1,4 +1,4 @@
-= Maintaining Target Platforms
+= Maintaining target platforms
 
 == Target-platforms use local mirror of our dependency
 
