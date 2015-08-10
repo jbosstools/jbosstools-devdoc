@@ -15,19 +15,12 @@ To use this in your features, so that license changes are a trivial change inste
     license-feature-version="0.0.0"
 ```
 
-* Remove all license.html files, then remove references to license.html in your build.properties files
+* Remove all license.html files - this file will be recreated at build time from the license feature's version of the file
 
-* Remove references to `licenseURL` in your `feature.xml` files.
-
-```
-    - <license url="%licenseURL">
-    + <license>
-```
-
-* Remove definition of `license` and `licenseURL` in your `feature.properties` files.
+* Remove definition of `license` and ensure `licenseURL` points to a local `license.html` in your `feature.properties` files.
 
 ```
-    - licenseURL=license.html     
+    + licenseURL=license.html     
     - license=Red Hat, Inc. licenses these features and plugins to you under ...
 ```
 
