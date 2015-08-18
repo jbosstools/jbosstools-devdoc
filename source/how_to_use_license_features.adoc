@@ -38,6 +38,8 @@ Examples:
 
 3. link:../debugging/how_to_install_a_build.adoc[Install the newly created features] into Eclipse 
 
+3a.  During the install, verify that the "Review Licenses" Page appears as you would expect. Verify that the features being installed have a visible license with some title text on the left column, and full text on the right column. 
+
 4. Once the workbench is restarted, select Help -> Installation Details
 
 5. On the `Installed Software` tab, select your feature, and click `Properties`
