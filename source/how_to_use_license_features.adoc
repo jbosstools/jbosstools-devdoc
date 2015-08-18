@@ -36,8 +36,19 @@ Examples:
 
 2. Verify new features in the site/target/repository/features/* folder.
 
-3. link:../debugging/how_to_install_a_build.adoc[Install the newly created features] into Eclipse to verify they look correct and that the correct license is presented.
+3. link:../debugging/how_to_install_a_build.adoc[Install the newly created features] into Eclipse 
 
+4. Once the workbench is restarted, select Help -> Installation Details
+
+5. On the `Installed Software` tab, select your feature, and click `Properties`
+
+6. In the Properties dialog, select `License Agreement` and verify there is text there. 
+
+7. Close the Properties dialog.
+
+8. Switch to the `features` tab and select your feature
+
+9. Click the `License` button, and verify your license appears in an external browser
 == See also
 
 See also http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.pde.doc.user%2Ftasks%2Fpde_shared_license.htm
