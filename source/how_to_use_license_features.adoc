@@ -49,6 +49,8 @@ Examples:
 8. Switch to the `features` tab and select your feature
 
 9. Click the `License` button, and verify your license appears in an external browser
+
+
 == See also
 
 See also http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.pde.doc.user%2Ftasks%2Fpde_shared_license.htm
