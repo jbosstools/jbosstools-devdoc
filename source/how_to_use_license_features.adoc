@@ -8,49 +8,59 @@ To use this in your features, so that license changes are a trivial change inste
 
 == How to use license features
 
-* Add this to your feature.xml files:
+* Add this to your `feature.xml` files:
 
 ```
     license-feature="org.jboss.tools.foundation.license.feature"
     license-feature-version="0.0.0"
 ```
 
-* Remove all license.html files - this file will be recreated at build time from the license feature's version of the file
-
-* Remove definition of `license` and ensure `licenseURL` points to a local `license.html` in your `feature.properties` files.
+* If not already there, add this to your `feature.xml` files; add the `url="license.html"` part if not present; this will allow your feature to link to the local license.html file.
 
 ```
-    + licenseURL=license.html     
+   <license url="license.html">
+      %license
+   </license>
+```
+
+* Remove all license.html files - these files will be created at build time from the license feature's version of the file
+
+* Remove definition of `license`
+
+```
     - license=Red Hat, Inc. licenses these features and plugins to you under ...
 ```
 
-Examples:
-
-* https://github.com/jbosstools/jbosstools-arquillian/pull/113
-* https://github.com/jbosstools/jbosstools-freemarker/pull/36
-
-
-== Verify your changes worked
+== Verify your changes
 
 1. Rebuild your features (eg., with `mvn clean install -DskipTests`
 
-2. Verify new features in the site/target/repository/features/* folder.
+2. Verify new features in the `site/target/repository/features/` folder
 
 3. link:../debugging/how_to_install_a_build.adoc[Install the newly created features] into Eclipse 
 
-3a.  During the install, verify that the "Review Licenses" Page appears as you would expect. Verify that the features being installed have a visible license with some title text on the left column, and full text on the right column. 
+4.  During the install, verify that the `Review Licenses` shows the new, updated license. Verify that the features being installed have a visible license with some title text on the left column, and full, new license in the right column.
 
-4. Once the workbench is restarted, select Help -> Installation Details
+* image:images/new-licenses.png[title="Review Licenses", alt="Review Licenses"]
 
-5. On the `Installed Software` tab, select your feature, and click `Properties`
+5. Once the workbench is restarted, select `Help -> Installation Details`
 
-6. In the Properties dialog, select `License Agreement` and verify there is text there. 
+6. On the `Installed Software` tab, select your feature and click `Properties`
 
-7. Close the Properties dialog.
+7. In the Properties dialog, select `License Agreement` and verify the correct text is there
 
-8. Switch to the `features` tab and select your feature
+* image:images/new-licenses2.png[title="License Agreement", alt="License Agreement"]
 
-9. Click the `License` button, and verify your license appears in an external browser
+8. Close the Properties dialog
+
+9. Switch to the `Features` tab and select your feature
+
+* image:images/new-licenses3.png[title="select your feature", alt="select your feature"]
+
+10. Click the `License` button, and verify your license appears in an external browser. The path should be something like `file:///path/to/eclipse/features/org.jboss.tools.runtime.core.feature_3.1.0.CR1-v20150819-1405/license.html`
+
+* image:images/new-licenses4.png[title="license.html", alt="license.html"]
+
 
 
 == See also
