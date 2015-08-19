@@ -18,18 +18,27 @@ To use this in your features, so that license changes are a trivial change inste
 * If not already there, add this to your `feature.xml` files; add the `url="license.html"` part if not present; this will allow your feature to link to the local license.html file.
 
 ```
-   <license url="license.html">
+   <license url="%licenseURL">
       %license
    </license>
 ```
 
 * Remove all license.html files - these files will be created at build time from the license feature's version of the file
 
-* Remove definition of `license`
+* Remove definition of `license` from feature.properties
 
 ```
     - license=Red Hat, Inc. licenses these features and plugins to you under ...
 ```
+
+* Add definition of `licenseURL` to feature.properties (if not already there)
+
+```
+    + licenseURL=license.html
+```
+
+Note: it may seem redundant to use %licenseURL in feature.xml and define it as `licenseURL=license.html`, but this avoids having a non-functional link to `license.html` in `Help -> Installation Details -> Installed Software -> Properties -> License Agreement` (see step 7 below).
+
 
 == Verify your changes
 
