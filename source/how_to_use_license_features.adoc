@@ -61,7 +61,10 @@ To use this in your features, so that license changes are a trivial change inste
 
 * image:images/new-licenses4.png[title="license.html", alt="license.html"]
 
+== Examples
 
+* https://github.com/jbosstools/jbosstools-server/pull/365
+* https://github.com/jbosstools/jbosstools-base/commit/3db3133fd026233daf4e8765410ca52b03330a3f and https://github.com/jbosstools/jbosstools-base/pull/436
 
 == See also
 
