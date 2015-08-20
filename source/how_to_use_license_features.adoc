@@ -15,7 +15,7 @@ To use this in your features, so that license changes are a trivial change inste
     license-feature-version="0.0.0"
 ```
 
-* If not already there, add this to your `feature.xml` files; add the `url="license.html"` part if not present; this will allow your feature to link to the local license.html file.
+* If not already there, add this to your `feature.xml` files; add the `url="%licenseURL"` part if not present; this will allow your feature to link to the local license.html file.
 
 ```
    <license url="%licenseURL">
