@@ -2,48 +2,243 @@
 
 Below is a table listing the projects in http://tools.jboss.org/downloads/overview.html[JBoss Tools], with links to their source repos, builds, update sites, & jobs. 
 
-You can also see which projects are mature enough to be included in http://www.jboss.org/products/devstudio/download/[Red Hat JBoss Developer Studio], JBoss Central, or available from Early Access within Central.
+You can also see which projects are mature enough to be included in http://www.jboss.org/products/devstudio/download/[Red Hat JBoss Developer Studio] (JBDS), JBoss Central, or available from Early Access within Central.
 
 .JBoss Tools Projects - 4.3 branch
 |===
-|Name |Repo|Job|Build |Update Site|Maturity 
+|Name |Repo|Job|Build |Update Site|Available From 
 
 |aerogear
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-aerogear/"]
 |image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-aerogear_4.3.mars/"]
-|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-aerogear_4.3.mars/"]
-image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-aerogear_4.3.mars/logs/BUILDLOG.txt"]
-|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-aerogear_4.3.mars/all/repo/"]
-image:images/gear.png[title="zip", alt="zip", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-aerogear_4.3.mars/all/jbosstools-aerogear_4.3.mars-SNAPSHOT-updatesite.zip"]
-|Stable
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-aerogear_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-aerogear_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-aerogear_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
 
 |arquillian
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-arquillian/"]
 |image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-arquillian_4.3.mars/"]
-|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-arquillian_4.3.mars/"]
-image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-arquillian_4.3.mars/logs/BUILDLOG.txt"]
-|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-arquillian_4.3.mars/all/repo/"]
-image:images/gear.png[title="zip", alt="zip", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-arquillian_4.3.mars/all/jbosstools-arquillian_4.3.mars-SNAPSHOT-updatesite.zip"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-arquillian_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-arquillian_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-arquillian_4.3.mars/latest/all/repo/"]
 |Tools, JBDS Early Access
 
 |base
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-base/"]
 |image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-base_4.3.mars/"]
-|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-base_4.3.mars/"]
-image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-base_4.3.mars/logs/BUILDLOG.txt"]
-|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-base_4.3.mars/all/repo/"]
-image:images/gear.png[title="zip", alt="zip", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-base_4.3.mars/all/jbosstools-base_4.3.mars-SNAPSHOT-updatesite.zip"]
-|Stable
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-base_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-base_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-base_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
 
 |birt
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-birt/"]
 |image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-birt_4.3.mars/"]
-|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-birt_4.3.mars/"]
-image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-birt_4.3.mars/logs/BUILDLOG.txt"]
-|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-birt_4.3.mars/all/repo/"]
-image:images/gear.png[title="zip", alt="zip", link="http://download.jboss.org/jbosstools/builds/staging/jbosstools-birt_4.3.mars/all/jbosstools-birt_4.3.mars-SNAPSHOT-updatesite.zip"]
-|Tools Only
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-birt_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-birt_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-birt_4.3.mars/latest/all/repo/"]
+|Tools
+
+|browsersim
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-browsersim/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-browsersim_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-browsersim_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-browsersim_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-browsersim_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
+
+|central
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-central/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-central_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-central_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-central_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-central_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
+
+|forge
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-forge/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-forge_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-forge_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-forge_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-forge_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
+
+|freemarker
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-freemarker/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-freemarker_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-freemarker_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-freemarker_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-freemarker_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
+
+|hibernate
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-hibernate/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-hibernate_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-hibernate_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-hibernate_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-hibernate_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
+
+|javaee
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-javaee/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-javaee_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-javaee_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-javaee_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-javaee_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
+
+|jst
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-jst/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-jst_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-jst_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-jst_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-jst_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
+
+|livereload
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-livereload/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-livereload_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-livereload_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-livereload_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-livereload_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
+
+|openshift
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-openshift/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-openshift_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-openshift_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-openshift_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-openshift_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
+
+|playground
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-playground/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-playground_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-playground_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-playground_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-playground_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
+
+|portlet
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-portlet/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-portlet_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-portlet_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-portlet_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-portlet_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
+
+|server
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-server/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-server_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-server_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-server_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-server_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
+
+|vpe
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-vpe/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-vpe_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-vpe_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-vpe_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-vpe_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
+
+|webservices
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-webservices/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-webservices_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-webservices_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-webservices_4.3.mars/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-webservices_4.3.mars/latest/all/repo/"]
+|Tools, JBDS
 
 |===
 
- (more stuff to be added here) ...
+.Other Projects
+|===
+|Name |Repo|Job|Build
+
+|build (parent pom)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-build/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build.parent_4.3.mars"]
+|image:images/search.png[title="build", alt="build", link="https://repository.jboss.org/nexus/content/repositories/snapshots/org/jboss/tools/parent/"]
+
+|build-ci (releng/publish tools)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-build-ci/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build-ci_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="https://repository.jboss.org/nexus/content/repositories/snapshots/org/jboss/tools/releng/jbosstools-releng-publish/"]
+
+|build-sites (JBoss Tools Core aggregate site)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-build-sites/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build-sites.aggregate.site_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-build-sites.aggregate.site_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-build-sites.aggregate.site_4.3.mars/latest/logs/BUILDLOG.txt"]
+
+|build-sites (JBoss Tools Core Tests aggregate site)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-build-sites/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build-sites.aggregate.coretests-site_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-build-sites.aggregate.coretests-site_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-build-sites.aggregate.coretests-site_4.3.mars/latest/logs/BUILDLOG.txt"]
+
+|build-sites (JBoss Tools Central aggregate site)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-build-sites/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build-sites.aggregate.child-sites_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-build-sites.aggregate.central-site_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-build-sites.aggregate.central-site_4.3.mars/latest/logs/BUILDLOG.txt"]
+
+|build-sites (JBoss Tools Central Early Access aggregate site)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-build-sites/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build-sites.aggregate.child-sites_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-build-sites.aggregate.earlyaccess-site_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-build-sites.aggregate.earlyaccess-site_4.3.mars/latest/logs/BUILDLOG.txt"]
+
+|discovery.central
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-discovery_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-discovery.central_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-discovery.central_4.3.mars/latest/logs/BUILDLOG.txt"]
+
+|discovery.earlyaccess
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/jbosstools-discovery_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-discovery.earlyaccess_4.3.mars/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-discovery.earlyaccess_4.3.mars/latest/logs/BUILDLOG.txt"]
+
+|locus
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-locus/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-locus.site_master"]
+|image:images/search.png[title="build", alt="build", link="http://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/update.site/"]
+
+|maven-plugins
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-maven-plugins/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_Master/job/jbosstools-maven-plugins.tycho-plugins_master/"]
+|image:images/search.png[title="build", alt="build", link="https://repository.jboss.org/nexus/content/repositories/snapshots/org/jboss/tools/tycho-plugins/"]
+
+|target-platform - JBoss Tools
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-target-platforms/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatforms-matrix/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/"]
+
+|target-platform - JBoss Developer Studio
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-target-platforms/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatforms-matrix/"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/"]
+
+|target platform - Central 
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_Master/job/jbosstools-centraltarget_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/"]
+image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/"]
+
+|target platform - Central Early Access
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_Master/job/jbosstools-centraltarget_4.3.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/"]
+image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/"]
+
+|versionwatch
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-versionwatch/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/devstudio.versionwatch_9.0.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/devstudio.versionwatch_9.0.mars/"]
+
+|===
