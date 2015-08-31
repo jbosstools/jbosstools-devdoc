@@ -25,6 +25,20 @@ To use this in your features, so that license changes are a trivial change inste
 
 * Remove all license.html files - these files will be created at build time from the license feature's version of the file
 
+* Edit your `build.properties` files to remove all *references* to `license.html`. You'd think this would fail the build, but Tycho will ensure the file is created from upstream license feature, so all is well. If you *include* the reference to it, the build *will fail* because `build.properties` is read BEFORE Tycho inserts the `license.html` file.
+
+Your `build.properties` file will may depending on what's in your feature. Here's an example of the change you might make:
+
+```
+bin.includes = feature.xml,\
+-               feature.properties,\
+-               license.html
+bin.includes = feature.xml,\
++               feature.properties
+-src.includes = license.html
++src.includes = *
+```
+
 * Remove definition of `license` from feature.properties
 
 ```
