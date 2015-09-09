@@ -1,29 +1,37 @@
 = Build cascade & results
 
---
+Each year our process for building JBoss Tools & Red Hat JBoss Developer Studio evolves and improves, 
+so each year our process documentation is by necessity also evolving (and hopefully improving, too).
 
-WARNING: This document is old and needs to be updated.
+The basic workflow can be defined as follows:
 
---
+1. For the JBoss Tools component projects:
 
-Each year our process for building the component projects in JBoss Tools evolves and improves, 
-so each year our process documentation is by necessity also evolving.
+* publish a /mars/snapshots/builds/JOB_NAME/BUILD_NUMBER/ for each build, with automated cleanup,
+* publish a composite site in /mars/snapshots/builds/JOB_NAME/ pointing into all the BUILD_NUMBER/all/repo/ folders,
+* publish a /mars/snapshots/builds/JOB_NAME/latest/ symlink to the latest job
+* produce buildinfo.json inside the /all/repo/ folder
 
-That said, the basic workflow can be defined as follows:
+2. For JBoss Tools, we first create a composite site of the above sites, as this is so far the best way to provide a "gatekeeper" build to decide when to rebuild/republish the aggregate sites. Here's where those composite sites exist:
 
-* For JBoss Tools, first we build all the component builds (base, server, ..., javaee, central, ... ) in their inter-dependency requirement order.
-Then, we build the aggregate update sites.
+* http://download.jboss.org/jbosstools/mars/snapshots/builds/_composite_/core/master/compositeArtifacts.xml
 
-* For Red Hat JBoss Developer Studio, after the above steps are complete, we build the JBoss Developer Studio update site, then the installers.
+3. Then, for JBoss Tools, we build a series of aggregate update sites (core, coretests, central, earlyaccess).
 
-Builds also depend on their respective target platforms being built and up to date with the latest upstream dependencies from Eclipse and other third-party vendors.
+4. For Red Hat JBoss Developer Studio, we then we build the JBoss Developer Studio update site, and use that to build the installers.
 
-For the latest, see: 
+All builds depend on their respective target platforms being built and up-to-date with the latest upstream dependencies from Eclipse and other third-party vendors.
 
-http://download.jboss.org/jbosstools/builds/cascade/[http://download.jboss.org/jbosstools/builds/cascade/]
+ * http://download.jboss.org/jbosstools/targetplatforms/
+ * https://devstudio.redhat.com/targetplatforms/
 
-For the relationships between component projects, see: 
+For the latest list of projects & links to their builds, logs & output, see: 
+
+https://github.com/jbosstools/jbosstools-devdoc/blob/master/list_of_projects.adoc
+
+For the relationships between component projects (deprecated), see: 
 
 http://download.jboss.org/jbosstools/builds/cascade/swimlanes.html[http://download.jboss.org/jbosstools/builds/cascade/swimlanes.html]
 
- 
+
+
