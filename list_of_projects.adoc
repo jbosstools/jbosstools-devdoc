@@ -252,11 +252,13 @@ image:images/search.png[title="build", alt="build", link="https://devstudio.redh
 
 .JBoss Developer Studio Projects
 |===
-|Name |Repo|Job|Build
+|Name |Repo|Job|Build|Update Site|Available From 
 
 |Developer Studio - update site, sources, and installer
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbdevstudio/jbdevstudio-product/"]
 |image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/devstudio.product_9.0.mars/"]
-|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/9.0/snapshots/builds/devstudio.product_9.0.mars/latest/all/"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/9.0/snapshots/builds/devstudio.product_9.0.mars/latest/all/"] image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/9.0/snapshots/builds/devstudio.product_9.0.mars/latest/all/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="https://devstudio.redhat.com/9.0/snapshots/builds/devstudio.product_9.0.mars/latest/all/repo/"]
+|JBDS
 
 |===
