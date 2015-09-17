@@ -236,9 +236,27 @@ image:images/search.png[title="build", alt="build", link="https://devstudio.redh
 |image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/"]
 image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/"]
 
+|Developer Studio - update site, sources, and installer
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-versionwatch/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/devstudio.versionwatch_9.0.mars/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/devstudio.versionwatch_9.0.mars/"]
+
 |versionwatch
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-versionwatch/"]
 |image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/devstudio.versionwatch_9.0.mars/"]
 |image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/mars/snapshots/builds/devstudio.versionwatch_9.0.mars/"]
+
+|===
+
+== Projects in Red Hat JBoss Developer Studio
+
+.JBoss Developer Studio Projects
+|===
+|Name |Repo|Job|Build
+
+|Developer Studio - update site, sources, and installer
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbdevstudio/jbdevstudio-product/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_9.0.mars/job/devstudio.product_9.0.mars/"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/9.0/snapshots/builds/devstudio.product_9.0.mars/latest/all/"]
 
 |===
