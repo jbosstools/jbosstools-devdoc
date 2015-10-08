@@ -48,7 +48,9 @@ This repo should be considered a wiki, into which all developers can push docs. 
 ** link:source/how_to_add_an_update_site.adoc[Adding an update site] or link:source/build_update_sites_using_associate_sites.adoc[associate site]
 ** link:source/publishing_features_downstream.adoc[Publishing features to JBoss Tools, Red Hat JBoss Developer Studio, JBoss Central, Early Access, and Eclipse Marketplace]
 ** link:source/third_party.adoc[Bundling Third Party Library Dependencies]
-** link:source/versioning.adoc[Versioning rules] 
+** Versioning Rules
+*** link:source/versioning.adoc[Versioning Rules] (Plugins, features, products, installers, update sites)
+*** link:source/versioning-build-artifacts.adoc[Versioning Rules for Build Artifacts] (Parent pom, foundation.core, core.central, ide-config.properties)
 ** link:https://developer.jboss.org/en/tools/blog/2011/09/17/coping-with-versions-in-large-multi-module-osgi-projects[Updating Versions for Components]
 * Process and Protocol
 ** link:community/how_to_use_jira.adoc[How to use JIRA]

@@ -1,8 +1,6 @@
 = Versioning rules
 
-DRAFT: This is a draft of how versioning are used in jboss tools
-projects - currently based on current "defacto" and orally agreed on
-versioning used in the related project(s)
+This document describes how we handle the versioning of plugins, features, products, installers, and update sites in JBoss Tools and Red Hat JBoss Developer Studio.
 
 :toc: macro
 toc::[]
