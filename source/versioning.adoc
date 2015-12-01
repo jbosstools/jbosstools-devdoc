@@ -1,18 +1,11 @@
 = Versioning rules
 
---
+This document describes how we handle the versioning of plugins, features, products, installers, and update sites in JBoss Tools and Red Hat JBoss Developer Studio.
 
-WARNING: This document may need to be updated or grammar-checked.
+:toc: macro
+toc::[]
 
---
-
-[cols="a", options="header"]
-|===
-|
-DRAFT: This is a draft of how versioning are used in jboss tools
-projects - currently based on current "defacto" and orally agreed on
-versioning used in the related project(s)
-|===
+## General versioning rules
 
 JBoss projects in general follows the general naming at
 https://community.jboss.org/wiki/JBossProjectVersioning.
@@ -40,6 +33,7 @@ Eclipse & OSGi use: major.minor.service.qualifier
 
 We consider these to be equal, i.e. micro == service.
 
+
 === Always use numerical option
 
 JBoss rules state the numeric option on qualifiers are optional, i.e.
@@ -47,6 +41,7 @@ Alpha is ok without a number. We always add the number for consistency
 and that we know we are more than likely to have multiple of them.
 
 The only qualifier that cannot have a numeric is Final. Final is final.
+
 
 == Expected versioning sequence during development
 
@@ -59,19 +54,19 @@ through bumping the qualifier until you reach 2.3.0.Final.
 
 Example:
 
-[cols="",]
-|============
-|2.3.0.Alpha1
-|2.3.0.Alpha2
-|2.3.0.Beta1
-|2.3.0.CR1
-|2.3.0.Final
-|============
+------------
+2.3.0.Alpha1
+2.3.0.Alpha2
+2.3.0.Beta1
+2.3.0.CR1
+2.3.0.Final
+------------
 
 The exact number of alphas/betas/cr's might be planned for but reality
 might kicks in and add/subtract some during development; what is
 important that the qualifier keeps incrementing lexicographically to
 have a deterministic ordering for both humans and machines.
+
 
 == When does a component go from Alpha to Beta to CR ?
 
@@ -94,14 +89,15 @@ higher quality than any of its dependencies. i.e. if you are using a
 dependency that is in Alpha you cannot be in CR1 since the subcomponent
 can/will change.
 
+
 == When does a component go Final ?
 
 The simple rule is that a component goes Final once itself and all its
 subcomponent are Final.
 
 This rule should be uphold and any deviance from it considered bad and
-fixed. If it happens be clearly agreed and documented on which subpart
-has issues.
+fixed. If it happens be clearly agreed and documented on
+which subpart has issues.
 
 == When does a component start increasing its micro ?
 
@@ -109,20 +105,19 @@ Once the release have gone final, i.e. 2.3.0.Final the qualifiers cannot
 "move" more for that micro release. After this the component dependent
 on its development pase and phase do either a full development cycle:
 
-[cols="<",]
-|============
-|2.3.1.Alpha1
-|2.3.1.Alpha2
-|etc.
-|============
+-------------
+2.3.1.Alpha1 
+2.3.1.Alpha2 
+etc.
+-------------
 
 If the changes are pure and simple bugfixes and you got plenty of tests
 to verify this you can directly do
 
-[cols="",]
-|===========
-|2.3.1.Final
-|===========
+-----------
+2.3.1.Final
+-----------
+
 
 == What if I run out of numeric numbers, i.e. Alpha9 > Alpha10
 
@@ -151,56 +146,64 @@ getting the subcomponent fixed without breaking API.
 
 This concerns how we handle versioning conflicts between streams.
 
-Let's say if you have a component versioned 2.4.0 just released as part
-of JBoss Tools 4.2/Developer Studio 8.0 and a new major development
-starts for JBoss Tools 4.3/Developer Studio 9.0 - what do you do with
-the component versioned at 2.4.0 ?
+Let's say if you have a component versioned 2.4.0 just released as part of 
+JBoss Tools 4.2/Developer Studio 8.0 and a new major development starts
+for JBoss Tools 4.3/Developer Studio 9.0 - what do you do with the component
+versioned at 2.4.0 ?
 
-The current default is to bump the minor version to 2.5.0.
+The *general* rule is as follows:
 
-The question often asked is why not just rely on bump to 2.4.1 or
-2.4.100 as done in some Eclipse.org projects ?
+When it's time to branch between maintenance (eg., 4.2.x) and master branch, you should upversion your features & plugins:
+
+    * in the maintenance stream to x.y.z+1 (eg., 4.2.1, 4.2.2), and
+    * in the master stream to x.y+1.0 (eg., 4.3.0) or, if you can guarantee your master branch stuff works w/ the previous version of Eclipse, then x.y.10z (eg., 4.2.100, 4.2.101)
+
+Thus given the example above you have choice between bumping the minor (y) or micro with +100, but the current default is to bump the minor version to get 2.5.0 to avoid promising something we are not actually verifying.
+
+The question often asked is why not just rely on bump to 2.4.1 or 2.4.100 as
+done in some Eclipse.org projects ?
 
 The main reasons for this is:
 
-* if bumping to 2.4.1 in the new branch, the old branch can no longer do
-maintanence updates (bad)
-* if bumping to 2.5.100 that is solved and is definitely a good model to
-strive for, but since we are in a new development stream moving from
-i.e. Kepler to Luna you are changing the build and test dependencies and
-are you then confident enough to say your component still works on
-Kepler ? (it should since you haven't bumped the major version)
+* if bumping to 2.4.1 in the new branch, the old branch can no longer do maintenence updates (bad)
+* if bumping to 2.4.100 that is solved and is definitely a good model to strive for, but 
+since we are in a new development stream moving from i.e. Kepler to Luna you are changing
+the build and test dependencies and are you then confident enough to say your component still works on Kepler ? 
+(it should since you haven't bumped the major version)
 
-Thus historically we've bumped the minor version between development
-streams since then there are no false promises about backwards
-compatability.
+Thus historically we've bumped the minor version between development streams since then there are no false promises
+about backwards compatability.
 
-== Why do I need to bump my module in a bundle that has no code changes
-when another bundle in the bundle changes for a maintanence release ?
+== Why do I need to bump my module in a bundle that has no code changes when another bundle in the bundle changes for a maintanence release ?
 
-This situation occurs when you have multiple components in one module
-(repository).
+This situation occurs when you have multiple components in one module (repository).
 
-For example `base` has both `foundation` and `common` and they were
-released as foundation-1.2.0.Final and common-2.4.0.Final. For a
-maintanence release `foundation` has a bugfix made and according to the
-basic OSGI/JBoss versioning rules above it bumps to at least
-foundation-1.2.1.Final. Now what should common do ?
+For example `base` has both `foundation` and `common` and they were released as foundation-1.2.0.Final and common-2.4.0.Final.
+For a maintanence release `foundation` has a bugfix made and according to the basic OSGI/JBoss versioning rules above it bumps to at least foundation-1.2.1.Final. Now what should common do ? 
 
-Most would say `common` should not need to bump its version since it has
-not changed, but unfortunately that assumes that `common` is not being
-rebuilt either.
+Most would say `common` should not need to bump its version since it has not changed, but unfortunately that assumes that `common` is not being rebuilt either.
 
-In the current setup of JBoss Tools builds the whole repository is
-rebuilt and published as one updatesite, which means `common` _will_ be
-rebuilt and thus will as a minimum get a new timestamp in the qualifier
-(i.e. 2.4.0.Final-v20140912-2255-B61 and 2.4.0.Final-v20141011-2258-B67)
-and that again breaks the basic versioning rules of artifacts.
+In the current setup of JBoss Tools builds the whole repository is rebuilt and published as one updatesite, which means `common` *will* be rebuilt and thus will as a minimum get a new timestamp in the qualifier (i.e. 2.4.0.Final-v20140912-2255-B61 and 2.4.0.Final-v20141011-2258-B67) and that again breaks the basic versioning rules of artifacts.
 
-Thus if you do not bump `common` it will A) have done different binary
-releases of the same version B) still result in updates to the user
-__anyway__.
+Thus if you do not bump `common` it will A) have done different binary releases of the same version B) still result in updates to the user *anyway*.
 
-Thus the policy is that if a module gets rereleased all
-bundles/components withint it needs to _at least_ bump the micro version
-no matter if they had changes or not.
+Thus the policy is that if a module gets rereleased all bundles/components withint it needs to *at least* bump the micro version no matter if they had changes or not.
+
+== This stuff is too complicated, can't we automate this ?
+
+It is unfortunately not yet possible to predict what API changes we will make to know what the right version will be, but what we can do is to detect what definitely looks like a wrong version. In https://issues.jboss.org/browse/JBIDE-19056 we enabled explicit version checking against the latest public release of JBoss Tools.
+
+Now if a plugin have been part of a release and you build locally using a non-bumped version you will get an error like this:
+
+```
+[INFO] org.jboss.tools.openshift.egit.core ............... FAILURE [9.173s]
+
+[ERROR] Failed to execute goal org.jboss.tools.tycho-plugins:repository-utils:0.22.1-SNAPSHOT:compare-version-with-baselines (default) 
+
+on project org.jboss.tools.openshift.egit.core: Version of 'org.jboss.tools.openshift.egit.core/2.6.0.Alpha1-v20150128-1932) must be bigger than baseline one (2.6.1.Final-v20141209-0337-B67) -> [Help 1]
+```
+
+Explaining that there is a problem with the versioning string which can then be handled.
+
+
+
