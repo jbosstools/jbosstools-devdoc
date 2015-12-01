@@ -1,0 +1,374 @@
+== Projects in JBoss Tools 
+
+Below is a table listing the projects in http://tools.jboss.org/downloads/overview.html[JBoss Tools], with links to their source repos, builds, update sites, & jobs. 
+
+You can also see which projects are mature enough to be included in http://www.jboss.org/products/devstudio/download/[Red Hat JBoss Developer Studio] (JBDS), JBoss Central, or available from Early Access within Central.
+
+IMPORTANT: _[blue]#Looking for 4.3.x? See https://github.com/jbosstools/jbosstools-devdoc/blob/jbosstools-4.3.x/list_of_projects.adoc[4.3.x Branch Project List]#_
+
+WARNING: _[red]#Some links may not work yet, as stable branch jobs have not yet been created. See https://github.com/jbosstools/jbosstools-devdoc/blob/master/list_of_projects.adoc[Master Branch Project List]#_
+
+.JBoss Tools - 4.4 branch
+[cols="<3e,^1m,^1m,^1m,^1m",options="header"]
+|===
+|Name |Repo|Job|Build / Log|Update Site
+
+|JBoss Tools Core (aggregate site)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-build-sites/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build-sites.aggregate.site_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-build-sites.aggregate.site_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-build-sites.aggregate.site_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-build-sites.aggregate.site_4.4.neon/latest/all/repo/"]
+
+
+|JBoss Tools Tests (aggregate site)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-build-sites/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build-sites.aggregate.coretests-site_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-build-sites.aggregate.coretests-site_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-build-sites.aggregate.coretests-site_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-build-sites.aggregate.coretests-site_4.4.neon/latest/all/repo/"]
+
+|JBoss Tools Target Platform (3rd party)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-target-platforms/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatforms-matrix/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatforms-matrix/lastBuild/console"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/"]
+
+|===
+
+.JBoss Tools Projects - 4.4 branch
+[cols="e,^m,^m,^m,^m,<",options="header"]
+|===
+|Name |Repo|Job|Build / Log|Update Site|Available From 
+
+|aerogear
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-aerogear/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-aerogear_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-aerogear_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-aerogear_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-aerogear_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|arquillian
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-arquillian/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-arquillian_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-arquillian_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-arquillian_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-arquillian_4.4.neon/latest/all/repo/"]
+|Tools, JBDS Early Access
+
+|base
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-base/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-base_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-base_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-base_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-base_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|birt
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-birt/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-birt_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-birt_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-birt_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-birt_4.4.neon/latest/all/repo/"]
+|Tools
+
+|browsersim
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-browsersim/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-browsersim_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-browsersim_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-browsersim_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-browsersim_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|central
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-central/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-central_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-central_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-central_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-central_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|forge
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-forge/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-forge_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-forge_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-forge_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-forge_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|freemarker
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-freemarker/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-freemarker_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-freemarker_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-freemarker_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-freemarker_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|hibernate
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-hibernate/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-hibernate_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-hibernate_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-hibernate_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-hibernate_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|javaee
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-javaee/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-javaee_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-javaee_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-javaee_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-javaee_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|jst
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-jst/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-jst_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-jst_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-jst_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-jst_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|livereload
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-livereload/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-livereload_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-livereload_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-livereload_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-livereload_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|locus
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-locus/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-locus.site_master"]
+|image:images/search.png[title="build", alt="build", link="http://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/update.site/"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-locus.site_4.4.neon/lastBuild/console"]
+|image:images/gears.png[title="update site", alt="update site", link="https://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/update.site/"]
+image:images/gear.png[title="nexus", alt="nexus", link="https://repository.jboss.org/nexus/content/groups/public/org/jboss/tools/locus/"]
+
+|Tools, JBDS
+
+|openshift
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-openshift/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-openshift_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-openshift_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-openshift_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-openshift_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|playground
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-playground/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-playground_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-playground_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-playground_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-playground_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|portlet
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-portlet/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-portlet_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-portlet_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-portlet_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-portlet_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|server
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-server/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-server_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-server_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-server_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-server_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|vpe
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-vpe/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-vpe_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-vpe_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-vpe_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-vpe_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|webservices
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-webservices/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-webservices_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-webservices_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-webservices_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-webservices_4.4.neon/latest/all/repo/"]
+|Tools, JBDS
+
+|===
+
+.JBoss Tools Central - 4.4.x branch
+[cols="3e,^1m,^1m,1m,^1m,^1m",options="header"]
+|===
+|Name |Repo|Job|Build / Log|Update Site|Discovery Site
+
+|JBoss Tools Central Discovery 
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-discovery_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-discovery.central_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-discovery.central_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-discovery.central_4.4.neon/latest/all/repo/"]
+|image:images/gear.png[title="discovery site", alt="discovery site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-discovery.central_4.4.neon/latest/all/repo/jbosstools-directory.xml"]
+
+|JBoss Tools Central Discovery -  Early Access
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-discovery_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-discovery.earlyaccess_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-discovery.earlyaccess_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-discovery.earlyaccess_4.4.neon/latest/all/repo/"]
+|image:images/gear.png[title="discovery site", alt="discovery site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-discovery.earlyaccess_4.4.neon/latest/all/repo/jbosstools-directory.xml"]
+
+|JBoss Tools Central (aggregate site)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-build-sites/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build-sites.aggregate.child-sites_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-build-sites.aggregate.central-site_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-build-sites.aggregate.central-site_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-build-sites.aggregate.central-site_4.4.neon/latest/all/repo/"]
+|n/a
+
+|JBoss Tools Central - Early Access (aggregate site)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-build-sites/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build-sites.aggregate.child-sites_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-build-sites.aggregate.earlyaccess-site_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-build-sites.aggregate.earlyaccess-site_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-build-sites.aggregate.earlyaccess-site_4.4.neon/latest/all/repo/"]
+|n/a
+
+|Central Target Platform (3rd party)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/lastBuild/console"]
+|image:images/search.png[title="build", alt="build", ", link="http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/"]
+|n/a
+
+|Central Early Access Target Platform (3rd party)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/jbtearlyaccesstarget/"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/lastBuild/console"]
+|image:images/search.png[title="build", alt="build", ", link="http://download.jboss.org/jbosstools/targetplatforms/jbtearlyaccesstarget/"]
+|n/a
+
+|===
+
+.Other Projects (Nexus only) - 4.4 branch
+[cols="<3e,^1m,^1m,^1m,^1m",options="header"]
+|===
+|Name |Repo|Job|Build / Log|Artifacts
+
+|parent pom
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-build/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build.parent_4.4.neon"]
+|image:images/search.png[title="build", alt="build", link="https://repository.jboss.org/nexus/content/repositories/snapshots/org/jboss/tools/parent/"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build.parent_4.4.neon/lastBuild/console"]
+|image:images/gear.png[title="nexus", alt="nexus", link="https://repository.jboss.org/nexus/content/groups/public/org/jboss/tools/parent/"]
+
+|releng/publish tools
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-build-ci/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build-ci_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="https://repository.jboss.org/nexus/content/repositories/snapshots/org/jboss/tools/releng/jbosstools-releng-publish/"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build-ci_4.4.neon/lastBuild/console"]
+|image:images/gear.png[title="nexus", alt="nexus", link="https://repository.jboss.org/nexus/content/groups/public/org/jboss/tools/releng/jbosstools-releng-publish/"]
+
+
+|tycho-plugins
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-maven-plugins/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/job/jbosstools-maven-plugins.tycho-plugins_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="https://repository.jboss.org/nexus/content/repositories/snapshots/org/jboss/tools/tycho-plugins/"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-maven-plugins.tycho-plugins_4.4.neon/lastBuild/console"]
+|image:images/gear.png[title="nexus", alt="nexus", link="https://repository.jboss.org/nexus/content/groups/public/org/jboss/tools/tycho-plugins/"]
+
+|===
+
+
+== Projects in Red Hat JBoss Developer Studio
+
+.JBoss Developer Studio - 10.x branch
+[cols="2e,^1m,^1m,1m,^1m,2m",options="header"]
+|===
+|Name |Repo|Job|Build / Log|Update Site|Reports
+
+|Installer, Update Sites
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbdevstudio/jbdevstudio-product/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/devstudio.product_10.0.neon/"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_10.0.neon/latest/all/"] image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_10.0.neon/latest/all/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_10.0.neon/latest/all/repo/"]
+|n/a
+
+|Target Platform
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-target-platforms/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatforms-matrix/"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbdevstudiotarget"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatforms-matrix/lastBuild/console"]
+|image:images/search.png[title="build", alt="build", ", link="https://devstudio.redhat.com/targetplatforms/jbdevstudiotarget"]
+|n/a
+
+|Version Watch
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-versionwatch/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/devstudio.versionwatch_10.0.neon/"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.versionwatch_10.0.neon/"] image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.versionwatch_10.0.neon/latest/logs/BUILDLOG.txt"]
+|image:images/search.png[title="installations tested", alt="installations tested", link="http://www.qa.jboss.com/binaries/RHDS/builds/versionwatch/installations/"]
+|
+image:images/gear.png[title="Summary Report - JBoss only", alt="Summary Report - JBoss only", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.versionwatch_10.0.neon/latest/all/report_summary_filtered.html"]
+image:images/gears.png[title="Summary Report - All artifacts", alt="Summary Report - All artifacts", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.versionwatch_10.0.neon/latest/all/report_summary_all.html"] 
+image:images/gear.png[title="Detailed Report - JBoss only", alt="Detailed Report - JBoss only", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.versionwatch_10.0.neon/latest/all/report_detailed_filtered.html"]
+image:images/gears.png[title="Detailed Report - All artifacts", alt="Detailed Report - All artifacts", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.versionwatch_10.0.neon/latest/all/report_detailed_all.html"]
+
+|===
+
+.JBoss Developer Studio Central - 10.x branch
+[cols="3e,^1m,^1m,1m,^1m,^1m",options="header"]
+|===
+|Name |Repo|Job|Build / Log|Update Site|Discovery Site
+
+|Developer Studio Central Discovery 
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-discovery_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-discovery.central_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-discovery.central_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-discovery.central_4.4.neon/latest/all/repo/"]
+|image:images/gear.png[title="discovery site", alt="discovery site", link="https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-discovery.central_4.4.neon/latest/all/repo/devstudio-directory.xml"]
+
+|Developer Studio Central Discovery -  Early Access
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-discovery_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-discovery.earlyaccess_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-discovery.earlyaccess_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-discovery.earlyaccess_4.4.neon/latest/all/repo/"]
+|image:images/gear.png[title="discovery site", alt="discovery site", link="https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-discovery.earlyaccess_4.4.neon/latest/all/repo/devstudio-directory.xml"]
+
+|Developer Studio Central (aggregate site)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-build-sites/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build-sites.aggregate.child-sites_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-build-sites.aggregate.central-site_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-build-sites.aggregate.central-site_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-build-sites.aggregate.central-site_4.4.neon/latest/all/repo/"]
+|n/a
+
+|Developer Studio Central - Early Access (aggregate site)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-build-sites/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-build-sites.aggregate.child-sites_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-build-sites.aggregate.earlyaccess-site_4.4.neon/"]
+image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-build-sites.aggregate.earlyaccess-site_4.4.neon/latest/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="update site", alt="update site", link="https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-build-sites.aggregate.earlyaccess-site_4.4.neon/latest/all/repo/"]
+|n/a
+
+|Central Target Platform (3rd party)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/lastBuild/console"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/"]
+|n/a
+
+|Central Early Access Target Platform (3rd party)
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbtearlyaccesstarget/"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/lastBuild/console"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbtearlyaccesstarget/"]
+|n/a
+
+|===
