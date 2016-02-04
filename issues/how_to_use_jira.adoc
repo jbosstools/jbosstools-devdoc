@@ -7,6 +7,7 @@ The three primary ones are:
 JBoss Tools jira - https://jira.jboss.org/jira/browse/JBIDE[JBIDE]
 JBoss Developer Studio - https://jira.jboss.org/jira/browse/JBDS[JBDS]
 JBoss Tools Integration Stack - https://jira.jboss.org/jira/browse/JBTIS[JBTIS]
+Eclipse Release Train - https://jira.jboss.org/jira/browse/ERT[ERT] 
 
 Other specific components are:
 Mobile Tools: https://bugs.eclipse.org/bugs/enter_bug.cgi?product=Thym[Eclipse Thym]
@@ -169,4 +170,45 @@ A few limitations:
 
 The intent of the job is to catch jiras that somehow are in a wrong state.
 
-`jiralint` is a jenkins build job running every day checking if a jira have been resolved without a fix version or with a fix version having ".x" in the fix version.
+`jiralint` is a jenkins build job running every day checking if a jira
+have been resolved without a fix version or with a fix version having
+".x" in the fix version.
+
+=== Eclipse Release Train jira
+
+To allow Eclipse bugs to show up in our sprints we created ERT which is auto-populated
+with bugzillas from bugs.eclipse.org.
+
+These jiras are used purely for planning purposes.
+No comments are synced back and forth and edits on bugzilla are
+not synced (except eventually versions or component changes).
+
+The jiras created follows a specific pattern:
+
+* Title is original title from bugzilla and bugid [EBZ#NNNNN]
+* Description is first comment on bugzilla
+* Component is the bugzilla product
+* bugzilla component is put into labels
+* fix version is calculated with mappings for product version to
+  Eclipse release train version.
+* Link to original bugzilla
+
+Do *not* change the title of the bug since it is used by the script
+to identify the bugzilla. 
+
+Do use it to set story points, assignee and add Red Hat/JBoss planning specific comments - but
+do use original bugzilla for the place to discuss technical details.
+
+The script runs every hour and looks at changed bugs for the last 2 hours.
+
+If you need to run it use http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-jiralint-bzira
+and click https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-jiralint-bzira/build?delay=0sec["Build with Parameters"].
+
+You can increase the HOURS field to make it look at older issues.
+
+In case you find errors in the mapping don't try and change it by hand - much better to fix the mappings done
+in https://github.com/maxandersen/jiralint/blob/master/bzira.py
+
+
+
+
