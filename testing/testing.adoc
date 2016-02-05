@@ -25,10 +25,10 @@ Except a few exceptions, other surefire parameters, such as the very cool https:
 
 Some interesting usages:
 
-- Test against the actual delivery (for tests who know are sensible to packaging) _Does it work in real life?_
-- Try a new test against an older version of JBDS/Eclipse _Did it work previously?_
-- Try an old test against a newer version of JBDS/Eclipse _Does it still work with new version?_
-- Test on another RCP app we want to check compatibility with _Can we put this feature in Zend Studio?_
+- Test/Debug against the actual delivery (for tests who know are sensible to packaging) _Does it work in real life?_
+- Try a new test/debug against an older version of JBDS/Eclipse _Did it work previously?_
+- Try an old test/debug against a newer version of JBDS/Eclipse _Does it still work with new version?_
+- Test/debug on another RCP app we want to check compatibility with _Can we put this feature in Zend Studio?_
 - ...
 
 == Integration or other slow running tests
