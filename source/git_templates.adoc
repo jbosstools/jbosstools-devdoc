@@ -1,0 +1,22 @@
+= Git templates
+
+To help write good commit messages (which will/can be reused as PR messages) we put
+a `git_commit_template` in this repo to use as a good default.
+
+Here is one way how to use it with git command line for all your repositories.
+
+```
+$ ln -s <path-to-jbosstools>/jbosstools-devdoc/source/git_commit_template ~/.gitmessage
+$ git config --global commit.template ~/.gitmessage
+```
+
+NOTE: You can of course also just do the `git config` with the full path. The use of a link
+above just makes it easier to use the template from other git tools.
+
+Now when you do a `git commit` it will pre-load the editor with this template.
+
+And if you use `hub` to open PR's and follow the conventions in the template
+it will look awesome on both command line and in github UI.
+
+See more at http://chris.beams.io/posts/git-commit/ and
+http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
