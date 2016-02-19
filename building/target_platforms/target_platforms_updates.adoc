@@ -1,6 +1,6 @@
 = Process for updates to target platforms
 
-Target platforms should not grow or change unexpectedly. 
+Target platforms should not grow or change unexpectedly.
 
 Below is the process to follow for sanely changing the target platform to empower developers and keep churn to a minimum.
 
@@ -119,21 +119,32 @@ git checkout <relevant version.x or master>
 
 === Build target platform(s) locally
 
-To build, you require specific versions of Java and Maven. Also, there is some Maven setup. 
+To build, you require specific versions of Java and Maven. Also, there is some Maven setup.
 The https://community.jboss.org/wiki/HowToBuildJBossToolsWithMaven3[How to Build JBoss Tools with Maven 3]
 document will guide you through that setup.
 
+Note that you can only build the multiple/pom.xml locally since the unified/pom.xml refers to a remote location on download.jboss.org or devstudio.redhat.com which may or may not exist yet.
+
 This command will run the build, but will NOT download the contents of the target platform to disk:
 
-    $ mvn clean verify
+    $ mvn clean verify -f multiple/pom.xml
 
 If you want to download the contents of the target platform to disk, do this:
 
-    $ mvn clean verify -Pmultiple2repo
+    $ mvn clean verify -f multiple/pom.xml -Pmultiple2repo
 
 If you want to run the build and fetch source bundles at the same time as other bundles are being resolved, do this:
 
-    $ mvn clean verify -Pmultiple2repo -Dmirror-target-to-repo.includeSources=true
+    $ mvn clean verify -f multiple/pom.xml -Pmultiple2repo -Dmirror-target-to-repo.includeSources=true
+
+If you want to build both the multiple and unified target platforms (including mirroring the actual features & plugins onto disk), you need to point the unified pom at your locally created target platform:
+
+    $ mvn clean verify -f pom.xml -Pmultiple2repo -DtargetRepositoryUrl=file:///path/to/jbosstools-target-platforms/jbosstools/multiple/target/jbosstools-multiple.target.repo/
+
+Or to just build the unified .target (after first building the multiple .target):
+
+    $ mvn clean verify -f unified/pom.xml -DtargetRepositoryUrl=file:///path/to/jbosstools-target-platforms/jbosstools/multiple/target/jbosstools-multiple.target.repo/
+
 
 [CAUTION]
 ====
@@ -165,7 +176,7 @@ Edit `jbosstools/multiple/jbosstools-multiple.target`. You may update an existin
     </location>
 ----
 
-If your change affects JBDS too, edit `jbdevstudio/multiple/jbdevstudio-multiple-target` as well. 
+If your change affects JBDS too, edit `jbdevstudio/multiple/jbdevstudio-multiple-target` as well.
 
 For https://github.com/jbosstools/jbosstools-discovery/[JBoss Central], edit `jbtcentraltarget/multiple/jbtcentral-multiple.target` and/or `jbtearlyaccesstarget/multiple/jbtearlyaccess-multiple.target`.
 
@@ -174,7 +185,7 @@ For the https://github.com/jbosstools/jbosstools-integration-stack/tree/master/t
 [NOTE]
 If you do not have a mirrored download.jboss.org location use the vendor's URL, so that the .target file can be easily tested.
 
-Now build and validate the changed target platform. 
+Now build and validate the changed target platform.
 
 
 === Update versions of IUs in the .target files
@@ -228,13 +239,13 @@ cd linux/gtk/x86_64 # or your preferred platform
  file://${HOME}/tru/jbosstools-target-platforms/jbosstools/multiple/target/jbosstools-multiple.target.repo/
 popd
 
-< com.google.gwt.eclipse.sdkbundle.feature.feature.group [2.5.1] 
-< com.google.gwt.eclipse.core [3.4.2.v201310081834-rel-r43] 
-< com.google.gdt.eclipse.core [3.4.2.v201310081834-rel-r43] 
-< com.google.gdt.eclipse.platform [3.4.2.v201310081834-rel-r43] 
-< com.google.gwt.eclipse.sdkbundle.feature.feature.jar [2.5.1] 
-< com.google.gwt.eclipse.oophm [3.4.2.v201310081834-rel-r43] 
-< com.google.gwt.eclipse.sdkbundle [2.5.1] 
+< com.google.gwt.eclipse.sdkbundle.feature.feature.group [2.5.1]
+< com.google.gwt.eclipse.core [3.4.2.v201310081834-rel-r43]
+< com.google.gdt.eclipse.core [3.4.2.v201310081834-rel-r43]
+< com.google.gdt.eclipse.platform [3.4.2.v201310081834-rel-r43]
+< com.google.gwt.eclipse.sdkbundle.feature.feature.jar [2.5.1]
+< com.google.gwt.eclipse.oophm [3.4.2.v201310081834-rel-r43]
+< com.google.gwt.eclipse.sdkbundle [2.5.1]
 === Summary ===
 file:///${HOME}/tru/jbosstools-target-platforms/jbosstools/multiple/target_with_com.google/jbosstools-multiple.target.repo/ contains 7 unique IUs
 
@@ -253,7 +264,7 @@ Send feedback request email to jbosstools-dev@lists.jboss.org, listing the PR, J
 Past examples:
 
 * http://lists.jboss.org/pipermail/jbosstools-dev/2014-April/008765.html[For 4.40.0.Beta2: Remove GPE/GWT, fix Atlassian]
-* http://lists.jboss.org/pipermail/jbosstools-dev/2014-March/008683.html[For 4.40.0.Beta1: Add Sapphire] 
+* http://lists.jboss.org/pipermail/jbosstools-dev/2014-March/008683.html[For 4.40.0.Beta1: Add Sapphire]
 
 [info]
 Using the template below will get you started, but you will still need to fill in these details:
@@ -285,7 +296,7 @@ Proposed change to target platform ${TARGET_PLATFORM_VERSION}
 
 Body:
 
-Here is a proposal for a change to the JBoss Tools and Red Hat JBoss Developer Studio ${TARGET_PLATFORM_VERSION} target platforms. 
+Here is a proposal for a change to the JBoss Tools and Red Hat JBoss Developer Studio ${TARGET_PLATFORM_VERSION} target platforms.
 
 ${PR_URL}
 
@@ -324,8 +335,8 @@ Or, to test the new "unified" target platform against your component's build:
   mvn clean verify -Dtpc.version=${TARGET_PLATFORM_VERSION}
 --
 
-If you want to perform a scripted install of the entire target platform 
-into your local Eclipse or JBDS instance, you can now do so with this 
+If you want to perform a scripted install of the entire target platform
+into your local Eclipse or JBDS instance, you can now do so with this
 script:
 
 https://github.com/jbosstools/jbosstools-build-ci/blob/master/util/installFromTarget.sh
