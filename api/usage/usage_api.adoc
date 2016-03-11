@@ -11,9 +11,9 @@ For basic enablement add dependency to: org.jboss.tools.usage like in https://gi
 
 Then, daily events such as wizard usage will be recorded as soon as the usage reporter plugin is installed (provided the user opted in to being tracked).
 
-If you have code like the snippet below, your event will be tracked.
+=== Wizard IDs tracking
 
-    UsageReporter.getInstance().countEvent(eventType.event(label, value));
+The usage plugin automaticaly tracks all wizard IDs. You don't have to add any specific events for that. When a user press the "Finish" button of any wizard the usage plugin count this event and sends its daily. The event contains the wizard ID and how many times the Finish button of the wizard was pressed. 
 
 === Event format
 Each event type (+UsageEventType+) has the following format:
