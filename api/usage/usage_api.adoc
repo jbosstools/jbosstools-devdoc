@@ -5,6 +5,16 @@ Since *JBoss Tools 4.2.0.Beta1* Usage component can be used to track users event
 - +UsageEvent+ - represents a user event
 - +UsageReporter+ -  a singleton which is used to send events
 
+=== Enabling usage tracking in your plugin
+
+For basic enablement add dependency to: org.jboss.tools.usage like in https://github.com/jbosstools/jbosstools-server/blob/jbosstools-4.2.0.Beta1x/as/plugins/org.jboss.ide.eclipse.as.ui/META-INF/MANIFEST.MF#L67
+
+Then, daily events such as wizard usage will be recorded as soon as the usage reporter plugin is installed (provided the user opted in to being tracked).
+
+If you have code like the snippet below, your event will be tracked.
+
+    UsageReporter.getInstance().countEvent(eventType.event(label, value));
+
 === Event format
 Each event type (+UsageEventType+) has the following format:
 
