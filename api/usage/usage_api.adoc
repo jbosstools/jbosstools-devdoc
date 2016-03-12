@@ -9,7 +9,7 @@ Since *JBoss Tools 4.2.0.Beta1* Usage component can be used to track users event
 
 For basic enablement add dependency to: org.jboss.tools.usage like in https://github.com/jbosstools/jbosstools-server/blob/jbosstools-4.2.0.Beta1x/as/plugins/org.jboss.ide.eclipse.as.ui/META-INF/MANIFEST.MF#L67
 
-Then, daily events such as wizard usage will be recorded as soon as the usage reporter plugin is installed (provided the user opted in to being tracked).
+Then, daily events such as wizard usage will be recorded as soon as the usage reporter plugin is installed (provided the user opted in to participate).
 
 === Wizard IDs tracking
 
