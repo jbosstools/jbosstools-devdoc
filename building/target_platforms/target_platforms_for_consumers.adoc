@@ -181,7 +181,7 @@ unzip jbosstoolstarget-*.zip -d jbosstools/multiple/target/jbosstools-multiple.t
 * If you DO require source bundles, first unpack the zip (as in the step above), then type:
 
 ```bash
-mvn install -Pmultiple2repo -Dmirror-target-to-repo.includeSources=true
+mvn install -f jbosstools/multiple/pom.xml -Pmultiple2repo -Dmirror-target-to-repo.includeSources=true
 ```
 
 * Only the builds which requires sources is long-running, and may take upwards of an hour. Simply downloading and unpacking the zip should be relatively quick.
