@@ -65,6 +65,24 @@ This repo should be considered a wiki, into which all developers can push docs. 
 *** link:api/central/how-to-add-proxy-wizards.adoc[Proxy Wizards]
 * link:community/README.adoc[Community contribution and involvement]
 
+=== Secrets
+
+The folder `secrets` contains usernames and password for various services used by JBoss Tools.
+Encrypted and managed with https://github.com/StackExchange/blackbox[blackbox] tool for easy use of GPG based encryption.
+
+To edit/view install `blackbox` and use `blackbox_edit <filename>` to see the decrypted content.
+
+If you cannot edit/view the content you need someone with admin access to add you to the repo.
+
+To generate key:
+`gpg --gen-key` 
+
+Then register the email used as admin:
+
+`blackbox_addadmin <email>`
+
+From then on you should be able to edit with `blackbox_edit`.
+
 === Other documents
 
 Many of these docs are old and need to be updated, or to be moved to better categories.
