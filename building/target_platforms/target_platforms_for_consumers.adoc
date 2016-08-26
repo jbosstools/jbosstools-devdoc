@@ -218,13 +218,13 @@ git checkout 4.60.x
 * If you do NOT require source bundles, you should then type:
 
 ```bash
-mvn clean install -Pmultiple2repo
+mvn clean install -f jbosstools/multiple/pom.xml -Pmultiple2repo
 ```
 
 * If you DO require source bundles, you should then type:
 
 ```bash
-mvn clean install -Pmultiple2repo -Dmirror-target-to-repo.includeSources=true
+mvn install -f jbosstools/multiple/pom.xml -Pmultiple2repo -Dmirror-target-to-repo.includeSources=true
 ```
 
 * Both of the above builds are long-running, and may take upwards of an hour.
