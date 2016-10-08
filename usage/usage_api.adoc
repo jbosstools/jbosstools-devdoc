@@ -1,0 +1,110 @@
+== Usage
+Since *JBoss Tools 4.2.0.Beta1* Usage component can be used to track users events. The API is pretty simple. Usage provides the following basic classes from package +org.jboss.tools.usage.event+:
+
+- +UsageEventType+ - represents an event type
+- +UsageEvent+ - represents a user event
+- +UsageReporter+ -  a singleton which is used to send events
+
+=== Event format
+Each event type (+UsageEventType+) has the following format:
+
+- Component Name (+String+, e.g. +"server"+)
+- Component Version (+String+, e.g. +"3.5.0"+)
+- Category (+String+, usually equals to Component Name)
+- Action Name (+String+, e.g. +"new"+)
+- Label Description - _optional_ (+String+, it's not the actual label, but just a description. e.g. +"Server type ID"+)
+- Value Description - _optional_ (+String+, e.g. +"1 - success, 0 - failure"+)
+
+There is a few +UsageEventType+ constructors available. Here are the most interesting ones:
+[source,java]
+----
+UsageEventType(String componentName,
+               String componentVersion,
+               String categoryName,         // If null, categoryName = componentName
+               String actionName,
+               String labelDescription,     // Optional
+               String valueDescription)     // Optional
+----
+
+The static method +UsageEventType.getVersion(Plugin plugin)+ may be used to get a short version (X.Y.Z) of the bundle ID. E.g. "1.3.100.20140307" -> "1.3.100".
+
+[source,java]
+----
+UsageEventType(Plugin plugin,
+               String actionName,
+               String labelDescription,   // Optional
+               String valueDescription)  // Optional 
+----
+In this constructor, the fourth segment of the ID of +plugin+ will be used as the component and category name. For example for JST KB plugin with ID +org.jboos.tools.*jst*.kb+, component name = "jst".
+
+A new event can be generated from its type:
+[source,java]
+----
+UsageEventType eventType = ...;
+String label = ...; // Actual label name for event types which have a label description
+int value = ...; // Actual value for event types which have a value description
+
+UsageEvent event = eventType.event(label, value); // label and value are optional
+----
+
+=== Event registration
+JBT should show users any data which are going to be sent by usage plugin. That data are reflected in the *Preferences->JBoss Tools->Usage* preferences page.
+In order to make sure we don't send any hidden data, each event type must be registered before sending an actual event: +UsageReporter.getInstance().registerEvent(UsageEventType)+.
+
+It's a good practise to register an event type in the +start()+ method of your Bundle Activator class:
+
+.Event type registration example
+[source,java]
+----
+import org.jboss.tools.usage.event.UsageEventType;
+import org.jboss.tools.usage.event.UsageReporter;
+...
+
+private UsageEventType eventType;
+
+@Override
+public void start(BundleContext context) {
+    ...
+    eventType = new UsageEventType("server", this, "new", "Server runtime ID", "0= failed, 1= successful");
+    UsageReporter.getInstance().registerEvent(eventType);
+}
+...
+
+----
+
+== Sending Event
+
+As soon as the corresponding event type is registered via +UsageReporter+ you can start to track users events.
+
+.Sending Events Asynchronously
+[source,java]
+----
+UsageEventType eventType = ...;
+String label = ...;
+int value = ...;
+
+// Send a new event asynchronously in a new thread
+UsageReporter.getInstance().trackEvent(eventType.event(label, value));
+----
+
+.Counting Daily Events
+[source,java]
+----
+UsageReporter.getInstance().countEvent(eventType.event(label, value));
+----
+This method does not send a tracking request instantly but remembers the event's value for tracking events once a day. Every 24 hours, a new event with a sum of all previously counted events is sent.
+
+If the type of this event was used for sending or counting events a day before then a new event with a sum (if bigger than 0) of all previously collected events is sent. Category, action names and labels are taken into account when values are being counted. For events without labels and/or values the "N/A" is used as a label and "1" is used as the default value.
+
+=== Examples
+Here is a couple of examples in jboss tools github repos:
+
+==== New Server Wizard:
+
+- https://github.com/jbosstools/jbosstools-server/blob/jbosstools-4.2.0.Beta1x/as/plugins/org.jboss.ide.eclipse.as.ui/jbossui/org/jboss/ide/eclipse/as/ui/JBossServerUIPlugin.java#L95-L96[Event type registration]
+- https://github.com/jbosstools/jbosstools-server/blob/jbosstools-4.2.0.Beta1x/as/plugins/org.jboss.ide.eclipse.as.ui/jbossui/org/jboss/ide/eclipse/as/ui/wizards/ServerProfileWizardFragment.java#L404-L405[Sending new server event]
+
+==== Central Connector Installation:
+
+- https://github.com/jbosstools/jbosstools-central/blob/jbosstools-4.2.0.Beta1x/examples/plugins/org.jboss.tools.project.examples/src/org/jboss/tools/project/examples/ProjectExamplesActivator.java#L259-L260[Event type registration]
+- https://github.com/jbosstools/jbosstools-central/blob/jbosstools-4.2.0.Beta1x/examples/plugins/org.jboss.tools.project.examples/src/org/jboss/tools/project/examples/internal/discovery/JBossDiscoveryUi.java#L73-L74[Sending installation event]
