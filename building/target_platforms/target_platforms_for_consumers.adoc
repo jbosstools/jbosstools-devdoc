@@ -44,9 +44,9 @@ Inside the JBoss Tools Target Platform repository, the two top level folders are
 
 JBoss Tools uses a well-defined versioning scheme for our target platforms.
 
-The first 3 digits are the version of Eclipse included in the target platform, such as 4.41 (Luna SR1) or 4.50 (Mars R).
+The first 3 digits are the version of Eclipse included in the target platform, such as 4.60 (Neon.0) or 4.62 (Neon.2).
 
-The next digit signifies the sequence of target platforms, starting with 0. Should there be multiple JBoss Tools releases on the same Eclipse version, this allows us to have different target platforms using the same baseline, such as 4.42.0, 4.42.1, 4.42.2.
+The next digit signifies the sequence of target platforms, starting with 0. Should there be multiple JBoss Tools releases on the same Eclipse version, this allows us to have different target platforms using the same baseline, such as 4.60.0, 4.60.1, 4.60.2.
 
 After that, the milestone of JBoss Tools that uses the target platform is suffixed, which also defines the quality/stability of the target platform (Alpha1, Alpha2, Beta1, Beta2, CR1, Final).
 
@@ -56,7 +56,7 @@ Finally, the target platform version will have a `-SNAPSHOT` suffix if it has no
 
 Normally, each project uses a parent pom that will default to the right target platform, but in case you need to update to, or test against, a different target platform, this section will be useful for you.
 
-In general, we use the latest target platform for the version of Eclipse your development environment requires. For example, if you are building code for Mars, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.60.x[4.60.x] target platform. If building for Luna SR1 or SR2, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.41.x[4.41.x] or 4.42.x target platform.
+In general, we use the latest target platform for the version of Eclipse your development environment requires. For example, if you are building code for Neon.2, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.62.x[4.62.x] target platform.
 
 If you use the https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L104-L115[latest parent pom], chances are good you'll automatically build with the latest appropriate target platform too.
 
@@ -69,7 +69,7 @@ mvn install -P maximum
 Should you want to build using a *specific* target platform, perhaps because you're testing a new, unreleased one, you could build like this:
 
 ```
-mvn install -Dtpc.version=4.50.0.Beta1-SNAPSHOT
+mvn install -Dtpc.version=4.62.0.AM1-SNAPSHOT
 ```
 
 
@@ -95,15 +95,12 @@ There are several different options you can use when attempting to configure you
 * Requires very little setup
 * Do not need to check out jbosstools-target-platforms
 * Easily reused for an unlimited number of workspaces
-
-But...
-
-* Zips do not contain sources
+* *NOW CONTAINS SOURCES* starting with http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.60.2.Final/jbosstoolstarget-4.60.2.Final.zip[4.60.2.Final] and http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/4.61.0.Final/jbosstoolstarget-4.61.0.Final.zip[4.61.0.Final]. Note that only jbosstools target platforms contain sources - devstudio ones do not.
 
 |
 
 * Browse to http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/
-* Select the folder for the version you want such as `4.41.1.Final`
+* Select the folder for the version you want such as `4.61.0.Final`
 * Select the zip file and save it to disk
 * Unzip it to a location you desire
 * Inside Eclipse, browse to `Window -> Preferences -> Target Platform` and click _Add..._
@@ -128,12 +125,12 @@ But...
 * Eclipse resolution may be a bit slower than building a target platform site on the command line
 * Blocks Eclipse, during which time you can't use it for other work
 |
-* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.5.0, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.60.x[4.60.x] branch.
+* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.6.2 (Neon.2), check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.62.x[4.62.x] branch.
 
 ```bash
 git clone https://github.com/jbosstools/jbosstools-target-platforms.git
 cd jbosstools-target-platforms
-git checkout 4.60.x
+git checkout 4.62.x
 ```
 
 * Next, import the `jbosstools/multiple` project into Eclipse. This project must be imported as a maven project. To import this project, select `File -> Import -> Existing Maven Project` and browse to the jbosstools/multiple project location.
@@ -157,23 +154,24 @@ _If you selected a `.target` file with source references, such as `jbosstools-mu
 * Flexible
 * Can include sources
 * Easily reused for an unlimited number of workspaces
+* *DEPRECATED* - new target platform zips as of 4.6x contain sources. See 'Import target platform zip' section above.
 
 But...
 
 * More complicated
 |
-* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.5.0, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.60.x[4.60.x] branch.
+* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.6.2, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.62.x[4.62.x] branch.
 
 ```bash
 git clone https://github.com/jbosstools/jbosstools-target-platforms.git
 cd jbosstools-target-platforms
-git checkout 4.60.x
+git checkout 4.62.x
 ```
 
 * If you do NOT require source bundles, you should then type:
 
 ```bash
-wget http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.60.0.Alpha1-SNAPSHOT/jbosstoolstarget-4.60.0.Alpha1-SNAPSHOT.zip # or similar URL
+wget http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.62.0.AM1-SNAPSHOT/jbosstoolstarget-4.62.0.AM1-SNAPSHOT.zip # or similar URL
 mkdir -p jbosstools/multiple/target/jbosstools-multiple.target.repo
 unzip jbosstoolstarget-*.zip -d jbosstools/multiple/target/jbosstools-multiple.target.repo
 ```
@@ -207,12 +205,12 @@ But...
 
 * More complicated
 |
-* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.5.0, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.60.x[4.60.x] branch.
+* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.6.2, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.62.x[4.62.x] branch.
 
 ```bash
 git clone https://github.com/jbosstools/jbosstools-target-platforms.git
 cd jbosstools-target-platforms
-git checkout 4.60.x
+git checkout 4.62.x
 ```
 
 * If you do NOT require source bundles, you should then type:
@@ -258,7 +256,7 @@ simply install from our web urls, you can perform the following to install it in
 * Select `Window -> Install New Software`
 * Click `Add...`
 * Provide a name
-* Browse to the location of your local target platform, or paste a target platform URL such as http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.50.0.Alpha1-SNAPSHOT/
+* Browse to the location of your local target platform, or paste a target platform URL such as http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.62.0.AM1-SNAPSHOT/
 * Uncheck `Group item by category`
 * Click `Select All`
 * Click `Next>` and continue until you can `Finish`
@@ -274,5 +272,5 @@ rather than being used only for plug-in dependency resolution.
 
 JBoss Tools modules use Maven to build and are configured to consume the latest target platform from Nexus, based on what's set in the https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L109-L112[parent pom].
 
-If you want to use a newer version, simply build with `mvn verify -Dtpc.version=4.42.1.Final`.
+If you want to use a newer version, simply build with `mvn verify -Dtpc.version=4.61.0.Final`.
 
