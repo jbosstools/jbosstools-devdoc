@@ -39,7 +39,7 @@ Here is the suggested process:
 
 **Before** the release:
 
-1. Build and publish a SNAPSHOT (can be done with jbosstoolstargetplatforms-matrix & jbosstools-centraltarget_master job on Jenkins)
+1. Build and publish a SNAPSHOT (can be done with jbosstoolstargetplatform-matrix & jbosstools-centraltarget_master job on Jenkins)
 2. Compare content of newer SNASPSHOT of target platform site with previous version, using https://github.com/irbull/p2diff[p2diff]. Keep track of the changes that were not announced earlier and send a mail with a summary of those changes. Such changes can be some refactorings inside features, that are not visible directly in the .target file.
 3. Announce on mailing-list the "release candidate" -SNAPSHOT and ask them to test the SNAPSHOT as a "release candidate". This can be achieved by running builds with the following flag `-Dtpc.version=<snapshot-to-test>`
 4. Change component CI jobs and parent pom for the work-in-progress branch to use this snapshot, setting `-DTARGET_PLATFORM_VERSION=<snapshot-to-test>` or `-DTARGET_PLATFORM_VERSION_MAXIMUM=<snapshot-to-test>` in Maven execution
@@ -61,7 +61,7 @@ Here is the suggested process:
         (where 4.40.0.Beta2 has to be replaced by the actual version, and 4.40.x with the actual branch)
 
 9. Repeat the 2 previous steps for jbosstools-discovery component to update and tag its target-platform.
-10. Update https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatforms-matrix/[jbosstoolstargetplatforms-matrix] job to build new SNAPSHOTless version (and therefore produce new update site folders) (eg., 4.40.0.Beta2-SNAPSHOT -> 4.40.0.Beta2)  
+10. Update https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-matrix/[jbosstoolstargetplatform-matrix] job to build new SNAPSHOTless version (and therefore produce new update site folders) (eg., 4.40.0.Beta2-SNAPSHOT -> 4.40.0.Beta2)
 
 [NOTE]
 **(TODO: Try to make the version a job parameter to change it more easily)**
@@ -73,7 +73,7 @@ download.jboss.org & www.qa
 
 **After** the release:
 
-14. Update affected pom files to point to the new release of target-platform (for stable branch) or the new snapshots (for master). Example of affected pom files are `jbdevstudio-product/pom.xml` (for central zip location), 
+14. Update affected pom files to point to the new release of target-platform (for stable branch) or the new snapshots (for master). Example of affected pom files are `jbdevstudio-product/pom.xml` (for central zip location),
 15. Update affected jobs to point explicitly to the new target platform versions (ref: https://issues.jboss.org/browse/JBIDE-13673[JBIDE-13673])
 16. Update relevant SNAPSHOT of parent pom so this new target becomes a default where we want it to be default (most likely on next branch for milestone if already available)
 17. If the target platform is to be used by a recently released development milestone or stable release, these composite site pointers need to be updated to point at this new released target platform. Example:
@@ -98,7 +98,7 @@ Akamai is enabled in the 'static' folder of download.jboss.org/tools, so publish
 From download.jboss.org:
 
 * Move new TP folder from 'tools/targetplatforms' to 'tools/static/targetplatforms', keep the name ("jbosstoolstarget") and version segments. Eg
-  
+
   echo "rename targetplatforms/jbtcentraltarget/4.32.0.Final static/targetplatforms/jbtcentraltarget/4.40.0.Beta2" > sftp tools@filemgmt.jboss.org:downloads_htdocs/tools
 
 * Put at the previous location of TP the necessary p2 composite*.xml files pointing to the new location. For example
@@ -124,7 +124,7 @@ Using the template below will get you started, but you will still need to fill i
 For examples of previous change notification emails, see:
 
 * http://lists.jboss.org/pipermail/jbosstools-dev/2014-April/008765.html[For 4.40.0.Beta2: Remove GPE/GWT, fix Atlassian]
-* http://lists.jboss.org/pipermail/jbosstools-dev/2014-March/008683.html[For 4.40.0.Beta1: Add Sapphire] 
+* http://lists.jboss.org/pipermail/jbosstools-dev/2014-March/008683.html[For 4.40.0.Beta1: Add Sapphire]
 
 Template:
 [source,bash]

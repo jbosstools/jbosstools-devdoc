@@ -1,6 +1,6 @@
-== Projects in JBoss Tools 
+== Projects in JBoss Tools
 
-Below is a table listing the projects in http://tools.jboss.org/downloads/overview.html[JBoss Tools], with links to their source repos, builds, update sites, & jobs. 
+Below is a table listing the projects in http://tools.jboss.org/downloads/overview.html[JBoss Tools], with links to their source repos, builds, update sites, & jobs.
 
 You can also see which projects are mature enough to be included in http://www.jboss.org/products/devstudio/download/[Red Hat JBoss Developer Studio] (JBDS), JBoss Central, or available from Early Access within Central.
 
@@ -30,9 +30,9 @@ image:images/terminal.png[title="log", alt="log", link="http://download.jboss.or
 
 |JBoss Tools Target Platform (3rd party)
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-target-platforms/"]
-|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatforms-matrix/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-matrix/"]
 |image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/"]
-image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatforms-matrix/lastBuild/console"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-matrix/lastBuild/console"]
 |image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/"]
 
 |===
@@ -40,7 +40,7 @@ image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.en
 .JBoss Tools Projects - 4.4 branch
 [cols="e,^m,^m,^m,^m,<",options="header"]
 |===
-|Name |Repo|Job|Build / Log|Update Site|Available From 
+|Name |Repo|Job|Build / Log|Update Site|Available From
 
 |aerogear
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-aerogear/"]
@@ -203,7 +203,7 @@ image:images/terminal.png[title="log", alt="log", link="http://download.jboss.or
 |===
 |Name |Repo|Job|Build / Log|Update Site|Discovery Site
 
-|JBoss Tools Central Discovery 
+|JBoss Tools Central Discovery
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
 |image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-discovery_4.4.neon/"]
 |image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/neon/snapshots/builds/jbosstools-discovery.central_4.4.neon/"]
@@ -299,9 +299,9 @@ image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.en
 
 |Target Platform
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-target-platforms/"]
-|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatforms-matrix/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-matrix/"]
 |image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbdevstudiotarget"]
-image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatforms-matrix/lastBuild/console"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-matrix/lastBuild/console"]
 |image:images/search.png[title="build", alt="build", ", link="https://devstudio.redhat.com/targetplatforms/jbdevstudiotarget"]
 |n/a
 
@@ -312,7 +312,7 @@ image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.en
 |image:images/search.png[title="installations tested", alt="installations tested", link="http://www.qa.jboss.com/binaries/RHDS/builds/versionwatch/installations/"]
 |
 image:images/gear.png[title="Summary Report - JBoss only", alt="Summary Report - JBoss only", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.versionwatch_10.0.neon/latest/all/report_summary_filtered.html"]
-image:images/gears.png[title="Summary Report - All artifacts", alt="Summary Report - All artifacts", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.versionwatch_10.0.neon/latest/all/report_summary_all.html"] 
+image:images/gears.png[title="Summary Report - All artifacts", alt="Summary Report - All artifacts", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.versionwatch_10.0.neon/latest/all/report_summary_all.html"]
 image:images/gear.png[title="Detailed Report - JBoss only", alt="Detailed Report - JBoss only", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.versionwatch_10.0.neon/latest/all/report_detailed_filtered.html"]
 image:images/gears.png[title="Detailed Report - All artifacts", alt="Detailed Report - All artifacts", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.versionwatch_10.0.neon/latest/all/report_detailed_all.html"]
 
@@ -323,7 +323,7 @@ image:images/gears.png[title="Detailed Report - All artifacts", alt="Detailed Re
 |===
 |Name |Repo|Job|Build / Log|Update Site|Discovery Site
 
-|Developer Studio Central Discovery 
+|Developer Studio Central Discovery
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
 |image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-discovery_4.4.neon/"]
 |image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-discovery.central_4.4.neon/"]
