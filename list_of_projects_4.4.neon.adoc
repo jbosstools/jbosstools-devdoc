@@ -237,17 +237,17 @@ image:images/terminal.png[title="log", alt="log", link="http://download.jboss.or
 
 |Central Target Platform (3rd party)
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
-|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-central/"]
 |image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/"]
-image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/lastBuild/console"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-central/lastBuild/console"]
 |image:images/search.png[title="build", alt="build", ", link="http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/"]
 |n/a
 
 |Central Early Access Target Platform (3rd party)
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
-|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-central/"]
 |image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/jbtearlyaccesstarget/"]
-image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/lastBuild/console"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-central/lastBuild/console"]
 |image:images/search.png[title="build", alt="build", ", link="http://download.jboss.org/jbosstools/targetplatforms/jbtearlyaccesstarget/"]
 |n/a
 
@@ -295,6 +295,13 @@ image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.en
 |image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/devstudio.product_10.0.neon/"]
 |image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_10.0.neon/latest/all/"] image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_10.0.neon/latest/all/logs/BUILDLOG.txt"]
 |image:images/gears.png[title="update site", alt="update site", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_10.0.neon/latest/all/repo/"]
+|n/a
+
+|RPMs
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbdevstudio/jbdevstudio-product/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://wonka.mw.lab.eng.bos.redhat.com/jenkins/job/devstudio.rpm_10.0.neon/"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.rpm_10.0.neon/latest/x86_64/"] image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.rpm_10.0.neon/latest/x86_64/logs/BUILDLOG.txt"]
+|image:images/gears.png[title="yum repo", alt="yum repo", link="https://devstudio.jboss.com/10.0/snapshots/rpms/"]
 |n/a
 
 |Target Platform
@@ -357,17 +364,17 @@ image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat
 
 |Central Target Platform (3rd party)
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
-|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-central/"]
 |image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/"]
-image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/lastBuild/console"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-central/lastBuild/console"]
 |image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/"]
 |n/a
 
 |Central Early Access Target Platform (3rd party)
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
-|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/"]
+|image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-central/"]
 |image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbtearlyaccesstarget/"]
-image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-centraltarget_4.4.neon/lastBuild/console"]
+image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-central/lastBuild/console"]
 |image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbtearlyaccesstarget/"]
 |n/a
 

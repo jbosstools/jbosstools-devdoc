@@ -295,13 +295,15 @@ image:images/terminal.png[title="log", alt="log", link="http://jenkins.mw.lab.en
 |image:images/confighistory.png[title="job", alt="job", link="http://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/devstudio.product_master/"]
 |image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_master/latest/all/"] image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_master/latest/all/logs/BUILDLOG.txt"]
 |image:images/gears.png[title="update site", alt="update site", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_master/latest/all/repo/"]
-|n/a
+|
+image:images/gear.png[title="CVE Vulnerabilities", alt="CVE Vulnerabilities", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/devstudio.cve.report-merged/lastBuild/dependency-check-jenkins-pluginResult/"]
+image:images/gears.png[title="CVE Vulnerabilities", alt="CVE Vulnerabilities", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/devstudio.cve.report/lastBuild/dependency-check-jenkins-pluginResult/"]
 
 |RPMs
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbdevstudio/jbdevstudio-product/"]
 |image:images/confighistory.png[title="job", alt="job", link="http://wonka.mw.lab.eng.bos.redhat.com/jenkins/job/devstudio.rpm_master/"]
 |image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.rpm_master/latest/x86_64/"] image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.rpm_master/latest/x86_64/logs/BUILDLOG.txt"]
-|image:images/gears.png[title="yum repo", alt="yum repo", link="https://devstudio.jboss.com/10.0/snapshots/rpms/10.3.0/x86_64/"]
+|image:images/gears.png[title="yum repo", alt="yum repo", link="https://devstudio.jboss.com/10.0/snapshots/rpms/"]
 |n/a
 
 |Target Platform
