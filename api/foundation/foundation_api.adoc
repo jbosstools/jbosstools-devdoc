@@ -160,6 +160,24 @@ image::../../images/tracingUI.png[]
 
 Once performing these tasks, your new trace type should be available to be used either in another `.options` file when running eclipse, or via Eclipse UI for launching via Runtime Workbench. 
 
+=== User-visible Tracing Options
+
+A user can enable these tracing options, but it's a bit complicated. They need to create a .options file, add all the tracing flags, and then launch eclipse with the '-debug' flag. 
+
+However, a user can do it through the general eclipse UI, in the 'Tracing' preference page, if your UI plugin makes use of the tracing extension point. 
+
+```
+	<extension point="org.eclipse.ui.trace.traceComponents">
+		<component id="org.jboss.ide.eclipse.as.core" label="JBoss AS, WildFly &amp; EAP Server Tools - Core Plug-in">
+			<bundle consumed="true" name="org.jboss.ide.eclipse.as.core"/>
+		</component>
+		<component id="org.jboss.ide.eclipse.as.wtp.core" label="JBoss Server Adapter Core Framework">
+			<bundle consumed="true" name="org.jboss.ide.eclipse.as.wtp.core"/>
+		</component>
+	</extension>
+```
+image::../../images/userTracingUI.png[]
+
 == Shared Images
 
 `BaseUIPlugin` in the `org.jboss.tools.foundation.ui` plugin provides infrastructure to help you share images for your various UI wizards, views, and preference pages. 
