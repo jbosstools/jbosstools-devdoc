@@ -118,12 +118,10 @@ There are several different options you can use when attempting to configure you
 
 But...
 
-* May take in excess of an hour each time
+* May take in excess of an hour each time, usually blocking the workspace.
 * Must be done once per workspace
 * Eclipse will cache bundles in hard-to-find locations
-* If your workspace gets corrupted often, this will be time consuming
 * Eclipse resolution may be a bit slower than building a target platform site on the command line
-* Blocks Eclipse, during which time you can't use it for other work
 |
 * Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.6.2 (Neon.2), check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.62.x[4.62.x] branch.
 
