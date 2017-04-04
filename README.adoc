@@ -1,4 +1,4 @@
-= JBoss Tools Developer Documentation 
+= JBoss Tools Developer Documentation
 
 This repository contains documentation for building and developing JBoss Tools.
 
@@ -11,7 +11,7 @@ This repo should be considered a wiki, into which all developers can push docs. 
 == Table of Contents
 * Getting Started
 ** link:building/setup_development_environment.adoc[Setting up the eclipse development environment].
-** link:building/configuring_git_workflow.adoc[Configuring your git workflow]. 
+** link:building/configuring_git_workflow.adoc[Configuring your git workflow].
 ** link:building/target_platforms/target_platforms_for_consumers.adoc[Using target platforms in eclipse]
 * Target Platforms
 ** link:building/target_platforms/target_platforms_for_consumers.adoc[Using target platforms in eclipse]
@@ -22,6 +22,7 @@ This repo should be considered a wiki, into which all developers can push docs. 
 ** link:building/how_to_build_jbosstools_faq.adoc[JBoss Tools Build FAQ]
 ** link:building/build_from_commandline.adoc[Building from the command line]
 ** link:building/build_from_eclipse.adoc[Building with Eclipse (using m2e)]
+** link:building/build_checks.adoc[Build-time baseline and maven enforcer checks]
 ** link:source/build_source_bundles_features_and_src_zips.adoc[How to build source bundles, features, and source zips]
 ** link:building/build_job_cascade_and_where_to_find_build_results.adoc[How to build the whole JBoss Tools cascade / stack of projects]
 *** link:list_of_projects.adoc[List of projects in JBoss Tools / Red Hat JBoss Developer Studio]
@@ -37,6 +38,7 @@ This repo should be considered a wiki, into which all developers can push docs. 
 ** link:debugging/remote_debugging.adoc[Using the Eclipse remote debugger]
 ** link:debugging/debug_tycho_tests.adoc[Debugging maven (surefire) tests]
 ** link:debugging/debug_remote_console.adoc[Debugging on a remote server] (via SSH or VNC)
+** link:building/build_checks.adoc[Why is my build failing due to a baseline or enforcer check?]
 
 * Source and Project Management
 ** link:source/new_project_process.adoc[Adding a new module / repository to JBoss Tools or JBDS]
@@ -49,6 +51,7 @@ This repo should be considered a wiki, into which all developers can push docs. 
 ** Versioning Rules
 *** link:source/versioning.adoc[Versioning Rules] (Plugins, features, products, installers, update sites)
 *** link:source/versioning-build-artifacts.adoc[Versioning Rules for Build Artifacts] (Parent pom, foundation.core, core.central, ide-config.properties)
+*** link:building/build_checks.adoc#Baseline[Baseline version checks]
 ** link:https://developer.jboss.org/en/tools/blog/2011/09/17/coping-with-versions-in-large-multi-module-osgi-projects[Updating Versions for Components]
 * Process and Protocol
 ** link:community/how_to_use_jira.adoc[How to use JIRA]
@@ -73,7 +76,7 @@ To edit/view install `blackbox` and use `blackbox_edit <filename>` to see the de
 If you cannot edit/view the content you need someone with admin access to add you to the repo.
 
 To generate key:
-`gpg --gen-key` 
+`gpg --gen-key`
 
 Then register the email used as admin:
 

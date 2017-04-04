@@ -1,0 +1,175 @@
+= Building with Maven Enforcer Checks & Baseline Comparisons
+
+There are currently 3 Maven Enforcer checks in the JBoss Tools parent pom, and 2 baseline checks.
+
+* <<Enforcer,Enforcer Checks>>
+** <<Enforcer,warn core-has-ui-deps>>
+** <<warn-no-snapshots-AMx>>
+** <<enforce-no-snapshots-Final>>
+* <<Baseline,Baseline Checks>>
+** <<Baseline,tycho.baseline>>
+** <<compare-version-with-baselines>>
+
+
+[[Enforcer]]
+== Enforcer Checks
+
+=== core-has-ui-deps
+
+This check reports if it finds a core plugins which depends on a UI plugin. Currently, this check will only return *warnings* in the console log -- it will NOT fail the build.
+
+link:https://github.com/jbosstools/jbosstools-build/blob/jbosstools-4.4.3.x/parent/pom.xml#L448-L460[Execution config]
+
+[source,xml]
+----
+<execution>
+	<id>core-has-ui-deps</id>
+	<goals>
+		<goal>enforce</goal>
+	</goals>
+	<configuration>
+		<rules>
+			<coreUIDependency implementation="org.jboss.tools.releng.CoreUIDependency"/>
+		</rules>
+		<!-- warn but continue the build when fail = false -->
+		<fail>${enforceFailOnUIDependencyInCore}</fail>
+	</configuration>
+</execution>
+----
+
+[TIP]
+====
+To make your build fail if there are UI dependencies from Core plugins, use +
+  `-DenforceFailOnUIDependencyInCore=true`
+====
+
+=== warn-no-snapshots-AMx
+
+This maven enforcer will check your poms for variables and dependencies which contain *SNAPSHOT* in them, and return warnings in your build log.
+
+It will ignore anything in the regex pattern `enforceExcludePattern`.
+
+link:https://github.com/jbosstools/jbosstools-build/blob/jbosstools-4.4.3.x/parent/pom.xml#L88-L89[Variable config]:
+
+[source,xml]
+----
+<enforceExcludePattern>BUILD_ALIAS|jbossTychoPluginsVersion|jbosstoolsRelengPublishVersion|parsedVersion.qualifier|parsedVersion.osgiVersion|TARGET_PLATFORM_VERSION|TARGET_PLATFORM_VERSION_MIN|TARGET_PLATFORM_VERSION_MAXIMUM|TARGET_PLATFORM_VERSION_MAX|JBTCENTRALTARGET_VERSION|TARGET_PLATFORM_CENTRAL_MAX|tpc.version|central.tpc.version|discovery.tpc.version|p2StatsUrl|angularjs.repo.url|targetplatform.url|jbosstools-target-site</enforceExcludePattern>
+----
+
+link:https://github.com/jbosstools/jbosstools-build/blob/jbosstools-4.4.3.x/parent/pom.xml#L461-L483[Execution config]:
+
+[source,xml]
+----
+<execution>
+	<id>warn-no-snapshots-AMx</id>
+	<goals>
+		<goal>enforce</goal>
+	</goals>
+	<configuration>
+		<rules>
+			<noSnapshotsAllowed implementation="org.jboss.tools.releng.NoSnapshotsAllowed">
+				<buildAlias>${BUILD_ALIAS}</buildAlias>
+				<!-- if AM3, warn if SNAPSHOTs present -->
+				<buildAliasSearch>AM1|AM2|AM3</buildAliasSearch>
+				<!-- properties to include when searching for SNAPSHOT versions, eg., .* (all),
+					openshift-restclient-java.version (openshift), angularjs.repo.url (jst), thym.version (aerogear)
+				 -->
+				<includePattern>.*</includePattern>
+				<!-- properties to exclude when searching for SNAPSHOT versions -->
+				<excludePattern>${enforceExcludePattern}${enforceExcludePatternExtras}</excludePattern>
+			</noSnapshotsAllowed>
+		</rules>
+		<!-- warn but continue the build when fail = false -->
+		<fail>false</fail>
+	</configuration>
+</execution>
+----
+
+=== enforce-no-snapshots-Final
+
+This maven enforcer will check your poms for variables and dependencies which contain *SNAPSHOT* in them, and *fail your build* if any rule violations are found.
+
+It will ignore anything in the regex pattern `enforceExcludePattern`.
+
+
+link:https://github.com/jbosstools/jbosstools-build/blob/jbosstools-4.4.3.x/parent/pom.xml#L88-L91[Variable config]:
+
+[source,xml]
+----
+<!-- more excludes; this lets individual projects add their own exclusions. Note, if using this, must start with a pipe (|) so these are appended as OR matches -->
+<enforceExcludePatternExtras></enforceExcludePatternExtras>
+----
+
+link:https://github.com/jbosstools/jbosstools-build/blob/jbosstools-4.4.3.x/parent/pom.xml#L484-L503[Execution config]:
+
+[source,xml]
+----
+<execution>
+	<id>enforce-no-snapshots-Final</id>
+	<goals>
+		<goal>enforce</goal>
+	</goals>
+	<configuration>
+		<rules>
+			<noSnapshotsAllowed implementation="org.jboss.tools.releng.NoSnapshotsAllowed">
+				<buildAlias>${BUILD_ALIAS}</buildAlias>
+				<!-- if Final or GA, fail build if SNAPSHOTs present -->
+				<buildAliasSearch>Final|GA</buildAliasSearch>
+				<!-- properties to include when searching for SNAPSHOT versions -->
+				<includePattern>.*</includePattern>
+				<!-- properties to exclude when searching for SNAPSHOT versions -->
+				<excludePattern>${enforceExcludePattern}${enforceExcludePatternExtras}</excludePattern>
+			</noSnapshotsAllowed>
+		</rules>
+		<fail>true</fail>
+	</configuration>
+</execution>
+----
+
+[TIP]
+====
+If you would like to add custom exclusions, you can add them using +
+`-DenforceExcludePatternExtras=|more|variables|to|ignore`
+
+Regex string of additional excludes must start with a pipe (|) so these are appended as OR matches.
+====
+
+[[Baseline]]
+== Baseline Checks
+
+=== tycho.baseline
+
+To make sure to report a problem if we need to upversion for a meta-change (eg., build configuration) and there's no accompanying new commit to force the timestamp to increment, we have enabled the tycho.baseline check. See also link:https://issues.jboss.org/browse/JBIDE-22689[JBIDE-22689]
+
+link:https://github.com/jbosstools/jbosstools-build/blob/jbosstools-4.4.3.x/parent/pom.xml#L26-L27[Variable config]
+
+[source,xml]
+----
+<!-- JBIDE-22689 to skip this check, use -Dtycho.baseline=disable, NOT -DskipBaselineComparison=true -->
+<stagingBaselineRepository>http://download.jboss.org/jbosstools/neon/staging/updates/</stagingBaselineRepository>
+----
+
+[TIP]
+====
+To disable this check, use +
+`-Dtycho.baseline=disable`
+====
+
+[[compare-version-with-baselines]]
+=== compare-version-with-baselines
+
+This check ensures that your plugins and features have been correctly (up)versioned relative to a previous Final/GA release baseline. If you commit a change to a plugin after a Final/GA release, but don't upversion that plugin's pom.xml and MANIFEST.MF, this check should fail. To resolve the check, simply bump the version of the plugin and any features that contain that plugin.
+
+link:https://github.com/jbosstools/jbosstools-build/blob/jbosstools-4.4.3.x/parent/pom.xml#L24-L25[Variable config]:
+
+[source,xml]
+----
+<!-- baseline check URL: Skip this check with -DskipBaselineComparison=true -->
+<lastStableRepository>http://download.jboss.org/jbosstools/neon/stable/updates/</lastStableRepository>
+----
+
+[TIP]
+====
+To disable this check, use +
+`-DskipBaselineComparison=true`
+====

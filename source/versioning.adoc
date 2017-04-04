@@ -46,49 +46,26 @@ The only qualifier that cannot have a numeric is Final. Final is final.
 == Expected versioning sequence during development
 
 When you do development you choose the right x.y.z for the next
-upcoming/planned release, i.e. 2.3.0.
+upcoming/planned release, i.e. 4.4.0.
 
-A 2.3.0 that is all new and going to be used by other in-development
-components starts out by being named 2.3.0.Alpha1 and then progress
-through bumping the qualifier until you reach 2.3.0.Final.
+A 4.4.0 that is all new and going to be used by other in-development
+components starts out by being named 4.4.0.AM1 and then progress
+through bumping the qualifier until you reach 4.4.0.Final.
 
 Example:
 
 ------------
-2.3.0.Alpha1
-2.3.0.Alpha2
-2.3.0.Beta1
-2.3.0.CR1
-2.3.0.Final
+4.4.0.AM1
+4.4.0.AM2
+4.4.0.AM3
+4.4.0.Final
 ------------
 
-The exact number of alphas/betas/cr's might be planned for but reality
-might kicks in and add/subtract some during development; what is
-important that the qualifier keeps incrementing lexicographically to
-have a deterministic ordering for both humans and machines.
+The exact number of AMx milestones is 3, but sometimes one might be dropped due to staffing concerns (eg., over December or summer holidays). So a build will always be produced after each 3 week sprint, but it may not be released if it's not ready for consumption.
 
+== When does a component go from a milestone to Final?
 
-== When does a component go from Alpha to Beta to CR ?
-
-The general rules (taken from JBoss description but with a clearer
-layout):
-
-* Alpha - "for early releases that are not API complete, but have
-usuable new functional capabilities where the community can benefit from
-those new capabilites, plus contribute to the testing and fixing of
-those new capabilities."
-* Beta - "for releases where the release is API complete, but its not
-completely tested, or there may even be questions about the API itself,
-that may change, even though the implementation is complete."
-* CR (Candidate Release) - "for releases that we anticipate can be the
-GA (ed. Final) release, but we need the community to help validate the
-release."
-
-Another important part is that your component should not be marked of
-higher quality than any of its dependencies. i.e. if you are using a
-dependency that is in Alpha you cannot be in CR1 since the subcomponent
-can/will change.
-
+We used to increment from Alpha to Beta to CR, but now that we have a clear 3-sprint cycle of AMx milestones, followed by a sprint cyle to Final/GA, that differentiation of quality is no longer required. Instead, we simply have AM1, AM2, AM3, then Final or GA.
 
 == When does a component go Final ?
 
@@ -101,13 +78,13 @@ which subpart has issues.
 
 == When does a component start increasing its micro ?
 
-Once the release have gone final, i.e. 2.3.0.Final the qualifiers cannot
+Once the release have gone final, i.e. 4.4.0.Final the qualifiers cannot
 "move" more for that micro release. After this the component dependent
 on its development pase and phase do either a full development cycle:
 
 -------------
-2.3.1.Alpha1 
-2.3.1.Alpha2 
+4.4.1.AM1
+4.4.1.AM2
 etc.
 -------------
 
@@ -115,30 +92,20 @@ If the changes are pure and simple bugfixes and you got plenty of tests
 to verify this you can directly do
 
 -----------
-2.3.1.Final
+4.4.1.Final
 -----------
-
-
-== What if I run out of numeric numbers, i.e. Alpha9 > Alpha10
-
-If this ever occurs it most likely is because of too many broken
-releases and maybe using a SNAPSHOT mechanism would be better for your
-component.
-
-In this case the option is to use "respin-qualifiers" to "extend" the
-numbers range, i.e. Alpha9a, Alpha9b etc.
 
 == What if Final is released and there is a bug found ?
 
-Example: you just released 2.3.0.Final and minutes/hours after a serious
+Example: you just released 4.4.0.Final and minutes/hours after a serious
 bug is found in your component or a subcomponent. What to do ?
 
 Fix the bug/upgrade to the subcomponent that does not have the bug and
-version accordingly which hopefully would be just 2.3.1.Final.
+version accordingly which hopefully would be just 4.4.1.Final.
 
 In the worst case that the subcomponent needs to be upgraded to
-something that breaks/adds API you would need to do a 2.4.0 instead -
-but in that case you cannot just do a 2.4.0.Final directly. This would
+something that breaks/adds API you would need to do a 4.5.0 instead -
+but in that case you cannot just do a 4.5.0.Final directly. This would
 require a new development phase - thus should be avoided at all costs by
 getting the subcomponent fixed without breaking API.
 
@@ -146,29 +113,29 @@ getting the subcomponent fixed without breaking API.
 
 This concerns how we handle versioning conflicts between streams.
 
-Let's say if you have a component versioned 2.4.0 just released as part of 
-JBoss Tools 4.2/Developer Studio 8.0 and a new major development starts
-for JBoss Tools 4.3/Developer Studio 9.0 - what do you do with the component
-versioned at 2.4.0 ?
+Let's say if you have a component versioned 4.4.0 just released as part of
+JBoss Tools 4.4/Developer Studio 10.0 and a new major development starts
+for JBoss Tools 4.5/Developer Studio 11.0 - what do you do with the component
+versioned at 4.4.0 ?
 
 The *general* rule is as follows:
 
-When it's time to branch between maintenance (eg., 4.2.x) and master branch, you should upversion your features & plugins:
+When it's time to branch between maintenance (eg., 4.4.x) and master branch, you should upversion your features & plugins:
 
-    * in the maintenance stream to x.y.z+1 (eg., 4.2.1, 4.2.2), and
-    * in the master stream to x.y+1.0 (eg., 4.3.0) or, if you can guarantee your master branch stuff works w/ the previous version of Eclipse, then x.y.10z (eg., 4.2.100, 4.2.101)
+    * in the maintenance stream to x.y.z+1 (eg., 4.4.1, 4.4.2), and
+    * in the master stream to x.y+1.0 (eg., 4.5.0) or, if you can guarantee your master branch stuff works w/ the previous version of Eclipse, then x.y.10z (eg., 4.4.100, 4.4.101)
 
-Thus given the example above you have choice between bumping the minor (y) or micro with +100, but the current default is to bump the minor version to get 2.5.0 to avoid promising something we are not actually verifying.
+Thus given the example above you have choice between bumping the minor (y) or micro with +100, but the current default is to bump the minor version to get 4.5.0 to avoid promising something we are not actually verifying.
 
-The question often asked is why not just rely on bump to 2.4.1 or 2.4.100 as
+The question often asked is why not just rely on bump to 4.5.1 or 4.5.100 as
 done in some Eclipse.org projects ?
 
 The main reasons for this is:
 
-* if bumping to 2.4.1 in the new branch, the old branch can no longer do maintenence updates (bad)
-* if bumping to 2.4.100 that is solved and is definitely a good model to strive for, but 
+* if bumping to 4.5.1 in the new branch, the old branch can no longer do maintenence updates (bad)
+* if bumping to 4.5.100 that is solved and is definitely a good model to strive for, but
 since we are in a new development stream moving from i.e. Kepler to Luna you are changing
-the build and test dependencies and are you then confident enough to say your component still works on Kepler ? 
+the build and test dependencies and are you then confident enough to say your component still works on Kepler ?
 (it should since you haven't bumped the major version)
 
 Thus historically we've bumped the minor version between development streams since then there are no false promises
@@ -178,12 +145,12 @@ about backwards compatability.
 
 This situation occurs when you have multiple components in one module (repository).
 
-For example `base` has both `foundation` and `common` and they were released as foundation-1.2.0.Final and common-2.4.0.Final.
-For a maintanence release `foundation` has a bugfix made and according to the basic OSGI/JBoss versioning rules above it bumps to at least foundation-1.2.1.Final. Now what should common do ? 
+For example `base` has both `foundation` and `common` and they were released as foundation-1.2.0.Final and common-4.5.0.Final.
+For a maintanence release `foundation` has a bugfix made and according to the basic OSGI/JBoss versioning rules above it bumps to at least foundation-1.2.1.Final. Now what should common do ?
 
 Most would say `common` should not need to bump its version since it has not changed, but unfortunately that assumes that `common` is not being rebuilt either.
 
-In the current setup of JBoss Tools builds the whole repository is rebuilt and published as one updatesite, which means `common` *will* be rebuilt and thus will as a minimum get a new timestamp in the qualifier (i.e. 2.4.0.Final-v20140912-2255-B61 and 2.4.0.Final-v20141011-2258-B67) and that again breaks the basic versioning rules of artifacts.
+In the current setup of JBoss Tools builds the whole repository is rebuilt and published as one updatesite, which means `common` *will* be rebuilt and thus will as a minimum get a new timestamp in the qualifier (i.e. 4.5.0.Final-v20140912-2255-B61 and 4.5.0.Final-v20141011-2258-B67) and that again breaks the basic versioning rules of artifacts.
 
 Thus if you do not bump `common` it will A) have done different binary releases of the same version B) still result in updates to the user *anyway*.
 
@@ -198,12 +165,11 @@ Now if a plugin have been part of a release and you build locally using a non-bu
 ```
 [INFO] org.jboss.tools.openshift.egit.core ............... FAILURE [9.173s]
 
-[ERROR] Failed to execute goal org.jboss.tools.tycho-plugins:repository-utils:0.22.1-SNAPSHOT:compare-version-with-baselines (default) 
+[ERROR] Failed to execute goal org.jboss.tools.tycho-plugins:repository-utils:0.22.1-SNAPSHOT:compare-version-with-baselines (default)
 
-on project org.jboss.tools.openshift.egit.core: Version of 'org.jboss.tools.openshift.egit.core/2.6.0.Alpha1-v20150128-1932) must be bigger than baseline one (2.6.1.Final-v20141209-0337-B67) -> [Help 1]
+on project org.jboss.tools.openshift.egit.core: Version of 'org.jboss.tools.openshift.egit.core/2.6.0.AM1-v20150128-1932) must be bigger than baseline one (2.6.1.Final-v20141209-0337-B67) -> [Help 1]
 ```
 
 Explaining that there is a problem with the versioning string which can then be handled.
 
-
-
+For more on how baseline checks work, see link:build_checks.adoc[Building with Maven Enforcer Checks & Baseline Comparisons].
