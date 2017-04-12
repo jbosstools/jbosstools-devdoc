@@ -165,7 +165,7 @@ Now if a plugin have been part of a release and you build locally using a non-bu
 ```
 [INFO] org.jboss.tools.openshift.egit.core ............... FAILURE [9.173s]
 
-[ERROR] Failed to execute goal org.jboss.tools.tycho-plugins:repository-utils:0.22.1-SNAPSHOT:compare-version-with-baselines (default)
+[ERROR] Failed to execute goal org.jboss.tools.tycho-plugins:repository-utils:1.0.0-SNAPSHOT:compare-version-with-baselines (default)
 
 on project org.jboss.tools.openshift.egit.core: Version of 'org.jboss.tools.openshift.egit.core/2.6.0.AM1-v20150128-1932) must be bigger than baseline one (2.6.1.Final-v20141209-0337-B67) -> [Help 1]
 ```

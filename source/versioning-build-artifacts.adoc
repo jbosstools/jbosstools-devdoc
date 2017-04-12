@@ -19,14 +19,14 @@ Parent pom is updated at the start of every milestone that will become a public 
 
 Once the initial x.y.0.Final release is completed, service releases may not require a new parent pom. However, parent pom SHOULD be updated & incremented if a new target platform will be used for future builds. For example, JBoss Tools 4.3.0.Final was built using Eclipse 4.5.1 (Mars.1) but a future JBoss Tools 4.3.x will be built using Eclipse 4.5.2 (Mars.2), so a new target platform, and therefore parent pom, will be needed to ensure all projects within JBoss Tools and JBoss Developer Studio are built using the latest upstream dependencies.
 
-    <TARGET_PLATFORM_VERSION>4.50.0.Final</TARGET_PLATFORM_VERSION>
+		<TARGET_PLATFORM_VERSION>4.50.0.Final</TARGET_PLATFORM_VERSION>
 		<TARGET_PLATFORM_VERSION_MAXIMUM>4.51.0.Final</TARGET_PLATFORM_VERSION_MAXIMUM>
 
 Parent pom also controls a few other important properties, such as the version of Tycho and other release engineering tooling used to build & publish.
 
-		<tychoVersion>0.23.1</tychoVersion>
-		<jbossTychoPluginsVersion>0.23.1</jbossTychoPluginsVersion>
-		<jbosstoolsRelengPublishVersion>4.3.0.Final</jbosstoolsRelengPublishVersion>
+		<tychoVersion>1.0.0</tychoVersion>
+		<jbossTychoPluginsVersion>1.0.0</jbossTychoPluginsVersion>
+		<jbosstoolsRelengPublishVersion>4.4.3.Final</jbosstoolsRelengPublishVersion>
 
 As noted below, the version of the parent pom is used to define the "version" of JBoss Tools for the purpose of controlling downstream version-specific changes, such as which JBoss Central site from which to fetch updates.
 
@@ -38,10 +38,10 @@ There are two plugins which control which version of the "product" is running. T
 * org.jboss.tools.foundation.core
 * com.jboss.devstudio.core.central
 
-These plugins inherit their declared versions from the parent pom. This is not the same as their OSGi versions. 
+These plugins inherit their declared versions from the parent pom. This is not the same as their OSGi versions.
 
-So, for a value of 4.3.0.Final-SNAPSHOT in link:https://github.com/jbosstools/jbosstools-build/blob/jbosstools-4.3.x/parent/pom.xml#L7[parent pom], 
-a value of 4.3.0.Final is computed and stored in link:https://github.com/jbosstools/jbosstools-base/blob/jbosstools-4.3.x/foundation/plugins/org.jboss.tools.foundation.core/src/org/jboss/tools/foundation/core/properties/internal/currentversion.properties[org.jboss.tools.foundation.core / currentversion.properties] and 
+So, for a value of 4.3.0.Final-SNAPSHOT in link:https://github.com/jbosstools/jbosstools-build/blob/jbosstools-4.3.x/parent/pom.xml#L7[parent pom],
+a value of 4.3.0.Final is computed and stored in link:https://github.com/jbosstools/jbosstools-base/blob/jbosstools-4.3.x/foundation/plugins/org.jboss.tools.foundation.core/src/org/jboss/tools/foundation/core/properties/internal/currentversion.properties[org.jboss.tools.foundation.core / currentversion.properties] and
 https://github.com/jbdevstudio/jbdevstudio-product/blob/jbosstools-4.3.x/plugins/com.jboss.devstudio.core.central/src/com/jboss/devstudio/core/internal/properties/currentversion.properties[com.jboss.devstudio.core.central / currentversion.properties].
 
 Addionally, a hard-coded default variable is set there too. This is only used when an install cannot reach the internet to :
@@ -117,7 +117,7 @@ There is currently no tool that checks for the value of `default.version`. Howev
 * link:https://github.com/jbdevstudio/jbdevstudio-devdoc/blob/master/release_guide/9.x/JBT_Staging_for_QE.adoc#verify-correct-version-set-in-orgjbosstoolsfoundationcore[JBT Staging]
 * link:https://github.com/jbdevstudio/jbdevstudio-devdoc/blob/master/release_guide/9.x/JBDS_Staging_for_QE.adoc#verify-correct-version-set-in-comjbossdevstudiocentralcore[JBDS Staging]
 
-   
+
 == ide-config.properties versioning & when to update
 
 https://github.com/jbosstools/jbosstools-download.jboss.org/blob/master/jbosstools/configuration/ide-config.properties[ide-config.properties] is split into two major sections: properties for JBoss Tools, and properties for JBoss Developer Studio.
