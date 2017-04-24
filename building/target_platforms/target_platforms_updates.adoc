@@ -176,7 +176,7 @@ Edit `jbosstools/multiple/jbosstools-multiple.target`. You may update an existin
 
 [CAUTION]
 ====
-*UNSTATED* (transient) dependencies could be resolved from any of the available URLs in the target platform.
+*UNSTATED* transitive dependencies could be resolved from any of the available URLs in the target platform.
 
 To avoid resolving the wrong (too old, too new) version of a dependency, make sure that you clearly STATE all dependencies in the <location> that contains on the IU. Using 0.0.0 may resolve to the wrong version.
 
