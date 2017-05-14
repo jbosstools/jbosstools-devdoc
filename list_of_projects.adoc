@@ -142,13 +142,6 @@ image:images/gear.png[title="nexus", alt="nexus", link="https://repository.jboss
 |image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/oxygen/snapshots/builds/jbosstools-openshift_master/latest/all/repo/"]
 |Tools, Devstudio
 
-|playground
-|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-playground/"]
-|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstools-playground_master/"]
-|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/oxygen/snapshots/builds/jbosstools-playground_master/"]
-|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/oxygen/snapshots/builds/jbosstools-playground_master/latest/all/repo/"]
-|Tools, Devstudio
-
 |portlet
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-portlet/"]
 |image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstools-portlet_master/"]
