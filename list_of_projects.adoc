@@ -64,9 +64,9 @@ image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jen
 
 |birt
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-birt/"]
-|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstools-birt_master/"]
-|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/oxygen/snapshots/builds/jbosstools-birt_master/"]
-|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/oxygen/snapshots/builds/jbosstools-birt_master/latest/all/repo/"]
+|n/a
+|n/a
+|n/a
 |Tools
 
 |browsersim
@@ -127,12 +127,10 @@ image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jen
 
 |locus
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-locus/"]
-|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstools-locus.site_master"]
+|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstools-locus.site/"]
 |image:images/search.png[title="build", alt="build", link="http://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/update.site/"]
-image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstools-locus.site_master/lastBuild/console"]
 |image:images/gears.png[title="update site", alt="update site", link="https://repository.jboss.org/nexus/content/unzip/unzip/org/jboss/tools/locus/update.site/"]
 image:images/gear.png[title="nexus", alt="nexus", link="https://repository.jboss.org/nexus/content/groups/public/org/jboss/tools/locus/"]
-
 |Tools, Devstudio
 
 |openshift
@@ -144,9 +142,9 @@ image:images/gear.png[title="nexus", alt="nexus", link="https://repository.jboss
 
 |portlet
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-portlet/"]
-|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstools-portlet_master/"]
-|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/oxygen/snapshots/builds/jbosstools-portlet_master/"]
-|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/oxygen/snapshots/builds/jbosstools-portlet_master/latest/all/repo/"]
+|n/a
+|n/a
+|n/a
 |Tools, Devstudio
 
 |server
@@ -207,18 +205,18 @@ image:images/gear.png[title="nexus", alt="nexus", link="https://repository.jboss
 
 |Central Target Platform (3rd party)
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
-|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central-4.70.x/"]
 |image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/"]
-image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central/lastBuild/console"]
-|image:images/search.png[title="build", alt="build", ", link="http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/"]
+image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central-4.70.x/lastBuild/console"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/"]
 |n/a
 
 |Central Early Access Target Platform (3rd party)
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
-|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central-4.70.x/"]
 |image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/jbtearlyaccesstarget/"]
-image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central/lastBuild/console"]
-|image:images/search.png[title="build", alt="build", ", link="http://download.jboss.org/jbosstools/targetplatforms/jbtearlyaccesstarget/"]
+image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central-4.70.x/lastBuild/console"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/targetplatforms/jbtearlyaccesstarget/"]
 |n/a
 
 |===
@@ -278,17 +276,17 @@ image:images/gears.png[title="CVE Vulnerabilities", alt="CVE Vulnerabilities", l
 
 |Target Platform
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-target-platforms/"]
-|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-matrix/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-4.70.x/"]
 |image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbdevstudiotarget"]
-image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-matrix/lastBuild/console"]
-|image:images/search.png[title="build", alt="build", ", link="https://devstudio.redhat.com/targetplatforms/jbdevstudiotarget"]
+image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-4.70.x/lastBuild/console"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbdevstudiotarget"]
 |n/a
 
 |Version Watch
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-versionwatch/"]
 |image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/devstudio.versionwatch_master/"]
 |image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.versionwatch_master/"] image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.versionwatch_master/latest/logs/BUILDLOG.txt"]
-|image:images/search.png[title="installations tested", alt="installations tested", link="http://www.qa.jboss.com/binaries/RHDS/builds/versionwatch/installations/"]
+|image:images/search.png[title="installations tested", alt="installations tested", link="http://wonka.mw.lab.eng.bos.redhat.com/rhd/devstudio/static_build_env/versionwatch/installations/"]
 |
 image:images/gear.png[title="Summary Report - JBoss only", alt="Summary Report - JBoss only", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.versionwatch_master/latest/report_summary_filtered.html"]
 image:images/gears.png[title="Summary Report - All artifacts", alt="Summary Report - All artifacts", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.versionwatch_master/latest/report_summary_all.html"]
@@ -336,17 +334,17 @@ image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat
 
 |Central Target Platform (3rd party)
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
-|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central-4.70.x/"]
 |image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/"]
-image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central/lastBuild/console"]
+image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central-4.70.x/lastBuild/console"]
 |image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/"]
 |n/a
 
 |Central Early Access Target Platform (3rd party)
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-discovery/"]
-|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central-4.70.x/"]
 |image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbtearlyaccesstarget/"]
-image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central/lastBuild/console"]
+image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatform-central-4.70.x/lastBuild/console"]
 |image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/targetplatforms/jbtearlyaccesstarget/"]
 |n/a
 
