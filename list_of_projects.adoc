@@ -254,14 +254,15 @@ image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jen
 == Projects in Red Hat JBoss Developer Studio
 
 .JBoss Developer Studio - 11.x branch
-[cols="2e,^1m,^1m,1m,^1m,2m",options="header"]
+[cols="2e,^m,^m,^m,^m,^2m",options="header"]
 |===
 |Name |Repo|Job|Build / Log|Update Site|Reports
 
 |Installer, Update Sites
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbdevstudio/jbdevstudio-product/"]
 |image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/devstudio.product_master/"]
-|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.product_master/latest/all/"] image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.product_master/latest/all/logs/BUILDLOG.txt"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.product_master/latest/all/"]
+image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.product_master/latest/all/logs/BUILDLOG.txt"]
 |image:images/gears.png[title="update site", alt="update site", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.product_master/latest/all/repo/"]
 |
 image:images/gear.png[title="CVE Vulnerabilities", alt="CVE Vulnerabilities", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/devstudio.cve.report-merged/lastBuild/dependency-check-jenkins-pluginResult/"]
@@ -270,7 +271,8 @@ image:images/gears.png[title="CVE Vulnerabilities", alt="CVE Vulnerabilities", l
 |RPMs
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbdevstudio/jbdevstudio-product/"]
 |image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/devstudio.rpm_master/"]
-|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.rpm_master/latest/x86_64/"] image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.rpm_master/latest/x86_64/logs/BUILDLOG.txt"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.rpm_master/latest/x86_64/"]
+image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.rpm_master/latest/x86_64/logs/BUILDLOG.txt"]
 |image:images/gears.png[title="yum repo", alt="yum repo", link="https://devstudio.jboss.com/11/snapshots/rpms/"]
 |n/a
 
@@ -285,7 +287,8 @@ image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jen
 |Version Watch
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-versionwatch/"]
 |image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/devstudio.versionwatch_master/"]
-|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.versionwatch_master/"] image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.versionwatch_master/latest/logs/BUILDLOG.txt"]
+|image:images/search.png[title="build", alt="build", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.versionwatch_master/"]
+image:images/terminal.png[title="log", alt="log", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.versionwatch_master/latest/logs/BUILDLOG.txt"]
 |image:images/search.png[title="installations tested", alt="installations tested", link="http://wonka.mw.lab.eng.bos.redhat.com/rhd/devstudio/static_build_env/versionwatch/installations/"]
 |
 image:images/gear.png[title="Summary Report - JBoss only", alt="Summary Report - JBoss only", link="https://devstudio.redhat.com/11/snapshots/builds/devstudio.versionwatch_master/latest/report_summary_filtered.html"]
@@ -296,7 +299,7 @@ image:images/gears.png[title="Detailed Report - All artifacts", alt="Detailed Re
 |===
 
 .JBoss Developer Studio Central - 11.x branch
-[cols="3e,^1m,^1m,1m,^1m,^1m",options="header"]
+[cols="3e,^m,^m,^m,^m,^m",options="header"]
 |===
 |Name |Repo|Job|Build / Log|Update Site|Discovery Site
 
