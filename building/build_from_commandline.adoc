@@ -90,7 +90,7 @@ Trying to build a target platform locally and want it to *include sources*? See 
 
 == Mojo options
 
-Each mojo can have some options. You can list them with `mvn help:describe groupId:artifactId:version:mojo`. This will give details about the mojo, and you'll notice the _expression_ on some paramters. _expression_ tells you the system property that can be used to set the value.
+Each mojo can have some options. You can list them with `mvn help:describe groupId:artifactId:version:mojo`. This will give details about the mojo, and you'll notice the _expression_ on some parameters. _expression_ tells you the system property that can be used to set the value.
 If the mojo parameter was configured directly in pom.xml, then setting the _expression_ for this parameter will be ignore.
 
 Here is the most useful mojo list

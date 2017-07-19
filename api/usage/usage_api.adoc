@@ -13,7 +13,7 @@ Then, daily events such as wizard usage will be recorded as soon as the usage re
 
 === Wizard IDs tracking
 
-The usage plugin automaticaly tracks all wizard IDs. You don't have to add any specific events for that. When a user press the "Finish" button of any wizard the usage plugin count this event and sends its daily. The event contains the wizard ID and how many times the Finish button of the wizard was pressed. 
+The usage plugin automatically tracks all wizard IDs. You don't have to add any specific events for that. When a user press the "Finish" button of any wizard the usage plugin count this event and sends its daily. The event contains the wizard ID and how many times the Finish button of the wizard was pressed. 
 
 === Event format
 Each event type (+UsageEventType+) has the following format:
@@ -61,7 +61,7 @@ UsageEvent event = eventType.event(label, value); // label and value are optiona
 JBT should show users any data which are going to be sent by usage plugin. That data are reflected in the *Preferences->JBoss Tools->Usage* preferences page.
 In order to make sure we don't send any hidden data, each event type must be registered before sending an actual event: +UsageReporter.getInstance().registerEvent(UsageEventType)+.
 
-It's a good practise to register an event type in the +start()+ method of your Bundle Activator class:
+It's a good practice to register an event type in the +start()+ method of your Bundle Activator class:
 
 .Event type registration example
 [source,java]
@@ -107,7 +107,7 @@ This method does not send a tracking request instantly but remembers the event's
 If the type of this event was used for sending or counting events a day before then a new event with a sum (if bigger than 0) of all previously collected events is sent. Category, action names and labels are taken into account when values are being counted. For events without labels and/or values the "N/A" is used as a label and "1" is used as the default value.
 
 === Examples
-Here is a couple of examples in jboss tools github repos:
+Here is a couple of examples in JBoss tools github repos:
 
 ==== New Server Wizard:
 

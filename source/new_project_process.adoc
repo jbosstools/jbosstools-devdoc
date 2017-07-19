@@ -6,7 +6,7 @@ This document outlines how to create a new repository for inclusion in JBoss Too
 
 Submit your proposal to mailto:jbosstools-dev@lists.jboss.org[jbosstools-dev@lists.jboss.org] for review, explaining why your proposed project should stand alone, rather than being part of an existing JBoss Tools project. 
 
-If there is some sensitive content which cannot be publically discussed / announced, please send a private email directly to mailto:max.andersen@redhat.com[max.andersen@redhat.com].
+If there is some sensitive content which cannot be publicly discussed / announced, please send a private email directly to mailto:max.andersen@redhat.com[max.andersen@redhat.com].
 
 
 == Create your own repository
@@ -28,7 +28,7 @@ plugins   - A folder containing a folder for each plugin, and a pom.xml
 tests     - A folder containing a folder for each unit test plugin, and a pom.xml
 itests    - An optional folder containing a folder for each integration test plugin, and a pom.xml
 features  - A folder containing a folder for each feature, and a pom.xml. 
-site      - A folder containing a category.xml nad a pom.xml for generating update sites
+site      - A folder containing a category.xml and a pom.xml for generating update sites
 ```
 
 === Complex project layout

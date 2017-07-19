@@ -65,7 +65,7 @@ The exact number of AMx milestones is 3, but sometimes one might be dropped due 
 
 == When does a component go from a milestone to Final?
 
-We used to increment from Alpha to Beta to CR, but now that we have a clear 3-sprint cycle of AMx milestones, followed by a sprint cyle to Final/GA, that differentiation of quality is no longer required. Instead, we simply have AM1, AM2, AM3, then Final or GA.
+We used to increment from Alpha to Beta to CR, but now that we have a clear 3-sprint cycle of AMx milestones, followed by a sprint cycle to Final/GA, that differentiation of quality is no longer required. Instead, we simply have AM1, AM2, AM3, then Final or GA.
 
 == When does a component go Final ?
 
@@ -132,21 +132,21 @@ done in some Eclipse.org projects ?
 
 The main reasons for this is:
 
-* if bumping to 4.5.1 in the new branch, the old branch can no longer do maintenence updates (bad)
+* if bumping to 4.5.1 in the new branch, the old branch can no longer do maintenance updates (bad)
 * if bumping to 4.5.100 that is solved and is definitely a good model to strive for, but
 since we are in a new development stream moving from i.e. Kepler to Luna you are changing
 the build and test dependencies and are you then confident enough to say your component still works on Kepler ?
 (it should since you haven't bumped the major version)
 
 Thus historically we've bumped the minor version between development streams since then there are no false promises
-about backwards compatability.
+about backwards compatibility.
 
-== Why do I need to bump my module in a bundle that has no code changes when another bundle in the bundle changes for a maintanence release ?
+== Why do I need to bump my module in a bundle that has no code changes when another bundle in the bundle changes for a maintenance release ?
 
 This situation occurs when you have multiple components in one module (repository).
 
 For example `base` has both `foundation` and `common` and they were released as foundation-1.2.0.Final and common-4.5.0.Final.
-For a maintanence release `foundation` has a bugfix made and according to the basic OSGI/JBoss versioning rules above it bumps to at least foundation-1.2.1.Final. Now what should common do ?
+For a maintenance release `foundation` has a bugfix made and according to the basic OSGI/JBoss versioning rules above it bumps to at least foundation-1.2.1.Final. Now what should common do ?
 
 Most would say `common` should not need to bump its version since it has not changed, but unfortunately that assumes that `common` is not being rebuilt either.
 
