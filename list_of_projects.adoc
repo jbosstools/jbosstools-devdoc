@@ -97,6 +97,13 @@ image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jen
 |image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/oxygen/snapshots/builds/jbosstools-freemarker_master/latest/all/repo/"]
 |Tools, Devstudio
 
+|Fuse Tooling
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-fuse/"]
+|image:images/confighistory.png[title="job", alt="job", link="https://fusesource-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/Fuse%20Tooling/job/jbosstools-fuse_master/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/oxygen/snapshots/builds/jbosstools-fuse_master/"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/oxygen/snapshots/builds/jbosstools-fuse_master/latest/all/repo/"]
+|Tools, Devstudio
+
 |hibernate
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-hibernate/"]
 |image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstools-hibernate_master/"]
@@ -146,6 +153,14 @@ image:images/gear.png[title="nexus", alt="nexus", link="https://repository.jboss
 |n/a
 |n/a
 |Tools, Devstudio
+
+|SAP Tooling
+|image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-fuse-extras"]
+|image:images/confighistory.png[title="job", alt="job", link="https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/FuseTooling/job/jbosstools-fuse-extras_master/"]
+|image:images/search.png[title="build", alt="build", link="http://download.jboss.org/jbosstools/oxygen/snapshots/builds/jbosstools-fuse-extras_master/"]
+|image:images/gears.png[title="update site", alt="update site", link="http://download.jboss.org/jbosstools/oxygen/snapshots/builds/jbosstools-fuse-extras_master/latest/all/repo/"]
+|Tools, Devstudio
+
 
 |server
 |image:images/logov3.png[title="github repo", alt="github repo",link="https://github.com/jbosstools/jbosstools-server/"]
