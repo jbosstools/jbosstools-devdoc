@@ -34,7 +34,7 @@ To do this add the following to your `~/.m2/settings.xml` in a `<profiles>` sett
       </pluginRepositories>
    </profile>
 
-This defins a profile that adds the `${tycho.staging.repo}` to the list of plugin repositories.
+This defines a profile that adds the `${tycho.staging.repo}` to the list of plugin repositories.
 
 WARNING: Don't put this profile in activeProfiles. Only enable it when using for tycho staging testing.
 

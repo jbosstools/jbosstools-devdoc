@@ -1,6 +1,6 @@
 = Adding an update site
 
-== Basic reqirements
+== Basic requirements
 
 To create an update site, you need two files:
 

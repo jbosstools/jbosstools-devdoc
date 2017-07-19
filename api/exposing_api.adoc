@@ -48,6 +48,6 @@ After waiting for a full major release, you may be able to migrate the `oopspriv
 
 = Evolving APIs
 
-Changing API is always something that should be done very carefully. Changes generally must be source-compatible AND binary compatible. Changing method signatures, class heirarchy, visibility of fields, all have the potential to break binary compatibility. 
+Changing API is always something that should be done very carefully. Changes generally must be source-compatible AND binary compatible. Changing method signatures, class hierarchy, visibility of fields, all have the potential to break binary compatibility. 
 
 For more information on this topic, please consult Eclipse's guide link:https://wiki.eclipse.org/Evolving_Java-based_APIs_2[Evolving Java-based APIs] for a comprehensive list of compatibility for various changes. 

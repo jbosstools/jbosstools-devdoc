@@ -137,7 +137,7 @@ set MAVEN_OPTS=-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m
 
 ==== m2e
 
-m2e (maven integation for Eclipse) is also required to get the most out of your development experience with JBoss Tools. JBoss Tools uses Maven, and a maven plugin 
+m2e (maven integration for Eclipse) is also required to get the most out of your development experience with JBoss Tools. JBoss Tools uses Maven, and a maven plugin 
 Tycho, to build our tools. To see if your chosen  distribution comes with m2e, you can check http://www.eclipse.org/downloads/compare.php?release=luna[here]. 
 If your chosen Eclipse installation does not come with m2e, you'll want to follow the above instructions to install m2e, using the update site
 url found at m2e's http://download.eclipse.org/technology/m2e/releases/[download page]. 
@@ -166,16 +166,16 @@ in `Window -> Preference -> Java -> Compiler -> Errors/Warning`
 
 image::images/jdtWarnings.png[]
 
-==== Install Findbugs &amp; PMD for Eclipse
+==== Install FindBugs &amp; PMD for Eclipse
 
-Findbugs and PMD are both tools used for static code analysis. Both are useful additions to your development environment, 
+FindBugs and PMD are both tools used for static code analysis. Both are useful additions to your development environment, 
 and will ensure that your patches and contributions are more likely to remain free of the most common bugs. 
 
 You can install both http://marketplace.eclipse.org/content/findbugs-eclipse-plugin[FindBugs] and http://marketplace.eclipse.org/content/pmd-eclipse[PMD] in the Eclipse Marketplace. The Eclipse Marketplace can be accessed in Eclipse via `Help -> Eclipse Marketplace...`. 
 
 image::../images/install-from-marketplace.png[]
 
-You can then search the Marketplace and select PMD and Findbugs to install:
+You can then search the Marketplace and select PMD and FindBugs to install:
 
 image::../images/install-pmd-findbugs-from-eclipse-marketplace.png[]
 
@@ -186,7 +186,7 @@ If your Eclipse does not include the Marketplace, you should first install it fr
 
 Coverage answers the question "What has been tested?"
 
-JBoss Tools CI builds provide Jacoco reports for coverage by unit tests (file name is jacoco.exec). This file can easily be analyzed inside Eclipse on your Java editor using the EclEmma plugin. 
+JBoss Tools CI builds provide JaCoCo reports for coverage by unit tests (file name is jacoco.exec). This file can easily be analyzed inside Eclipse on your Java editor using the EclEmma plugin. 
 The http://marketplace.eclipse.org/content/eclemma-java-code-coverage[EclEmma plugin] can also be installed from Eclipse Marketplace, as in the previous section above. 
 
 == Conclusion

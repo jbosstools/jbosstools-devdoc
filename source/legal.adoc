@@ -43,7 +43,7 @@ WARNING: This is a work in progress. If any questions/concerns contact jbosstool
 | Yes
 | ?
 | Notable example here are OpenJDK libraries. Fine as dependency, but problematic to have in our source since
-  we would need ot be extra careful about how and what gets linked to it.
+  we would need to be extra careful about how and what gets linked to it.
   
 | ASL
 | Limited
