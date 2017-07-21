@@ -166,21 +166,18 @@ in `Window -> Preference -> Java -> Compiler -> Errors/Warning`
 
 image::images/jdtWarnings.png[]
 
-==== Install FindBugs &amp; PMD for Eclipse
+==== Install SonarLint for Eclipse
 
-FindBugs and PMD are both tools used for static code analysis. Both are useful additions to your development environment, 
-and will ensure that your patches and contributions are more likely to remain free of the most common bugs. 
+http://www.sonarlint.org/eclipse/[SonarLint] is an Eclipse plugin that provides on-the-fly feedback to developers on new bugs and quality issues injected into Java, JavaScript, PHP, Python... code. 
+It will ensure that your patches and contributions are more likely to remain free of the most common bugs.
 
-You can install both http://marketplace.eclipse.org/content/findbugs-eclipse-plugin[FindBugs] and http://marketplace.eclipse.org/content/pmd-eclipse[PMD] in the Eclipse Marketplace. The Eclipse Marketplace can be accessed in Eclipse via `Help -> Eclipse Marketplace...`. 
+You can install https://marketplace.eclipse.org/content/sonarlint[SonarLint] from the Eclipse Marketplace. The Eclipse Marketplace can be accessed in Eclipse via `Help -> Eclipse Marketplace...`. 
 
-image::../images/install-from-marketplace.png[]
+You can then search the Marketplace and select SonarLint to install:
 
-You can then search the Marketplace and select PMD and FindBugs to install:
-
-image::../images/install-pmd-findbugs-from-eclipse-marketplace.png[]
+image::images/sonarLintInstall.png[]
 
 If your Eclipse does not include the Marketplace, you should first install it from the http://download.eclipse.org/mpc/luna/[Marketplace Client update site]. 
-
 
 ==== Coverage
 
