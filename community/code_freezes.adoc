@@ -21,7 +21,7 @@ Here are some examples from https://issues.jboss.org/issues/?jql=project%20in%20
 * https://issues.jboss.org/browse/JBIDE-18759[JBT 4.2.1.CR1]
 * https://issues.jboss.org/browse/JBIDE-16671[JBT 4.1.2.CR1]
 
-Task JIRAs are generated using the https://github.com/jbdevstudio/jbdevstudio-ci/blob/master/bin/createTaskJIRAs.py[createTaskJIRAs.py script] footnote:[Don't have permission to view the script? You can https://github.com/jbdevstudio/github-teams/blob/master/jbdevstudio-teams/README.adoc#guide-for-users[request access here].]. The script can be used for https://github.com/jbdevstudio/jbdevstudio-ci/blob/master/bin/createTaskJIRAs.py.examples.txt[all kinds of Task JIRAs].
+Task JIRAs are generated using the https://github.com/jbosstools/jbosstools-build-ci/blob/master/util/createTaskJIRAs.py[createTaskJIRAs.py script]. The script can be used for https://github.com/jbosstools/jbosstools-build-ci/blob/master/util/createTaskJIRAs.py.examples_44x.txt[all kinds of Task JIRAs].
 
 
 == When is the next Code Freeze?
