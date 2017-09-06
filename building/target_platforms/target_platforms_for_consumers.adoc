@@ -30,17 +30,17 @@ JBoss Tools' `target platform update sites` are located here, in both unpacked a
 
 * http://download.jboss.org/jbosstools/targetplatforms/ (SNAPSHOTS, milestones, and links to released versions)
 
-## Exploring the JBoss Tools target platform repository
+== Exploring the JBoss Tools target platform repository
 
 Inside the JBoss Tools Target Platform repository, there is one top level folders, `jbosstools` (there used to be a separate target platform for devstudio but that's since been merged with the jbosstools one).  Both of these folders contain two sub-folders: `multiple` and `unified`.
 
-### Multiple vs unified target platforms
+=== Multiple vs unified target platforms
 
 **Multiple** target platform definition files reference several different update sites, most of which are mirrors located on http://download.jboss.org/jbosstools/. Use this .target file in Eclipse, since it can include sources when built with the proper flags.
 
 **Unified** target platform definition files are generated from the multiple ones, and are then used to produce the target platform update sites. As this file references only a single mirror, it is faster to use in Eclipse but cannot include sources, since it points at the _generated target platform update site_, which does **not include sources**. If you are a developer or adopter, do not choose this definition file - it should only used by end-users at installation time.
 
-### Versioning rules
+=== Versioning rules
 
 JBoss Tools uses a well-defined versioning scheme for our target platforms.
 
@@ -52,7 +52,7 @@ After that, the milestone of JBoss Tools that uses the target platform is suffix
 
 Finally, the target platform version will have a `-SNAPSHOT` suffix if it has not yet been released to Nexus. Once released, the `-SNAPSHOT` suffix is removed. For .Final versions, the bits are moved to mirrored to the Akamai /static/ folder for better performance.
 
-### Choosing the appropriate target platform.
+=== Choosing the appropriate target platform.
 
 Normally, each project uses a parent pom that will default to the right target platform, but in case you need to update to, or test against, a different target platform, this section will be useful for you.
 
@@ -73,7 +73,7 @@ mvn install -Dtpc.version=4.70.0.AM1-SNAPSHOT
 ```
 
 
-## Using a target platform in Eclipse
+== How can I use a target platform in Eclipse?
 
 There are several different options you can use when attempting to configure your Eclipse workspace with a target platform. Each method has its own advantages and disadvantages.
 
@@ -82,13 +82,13 @@ There are several different options you can use when attempting to configure you
 :halign: left
 :valign: top
 
-[cols="5a,8a,10a", options="header"]
+[cols="5a,8a,8a", options="header"]
 |===
 |Method
 |Advantages/Disadvantages
 |Steps
 
-| ###### *Import target platform zip*
+| ====== *Import target platform zip*
 |
 
 * Fast
@@ -112,7 +112,7 @@ There are several different options you can use when attempting to configure you
 * Click _Finish_, and _Finish_ again.
 * Check your new target platform and watch it load very quickly
 
-| ###### *Import .target file*
+| ====== *Import .target file*
 |
 * By far the easiest method.
 * With source bundles, so you can link:../../source/pde-source-lookup.adoc[trace into dependencies' sources]
@@ -152,7 +152,7 @@ _If you selected a `.target` file with source references, such as `jbosstools-mu
 
 * **Beware**, in both cases this is a long operation that can take up to an hour, depending on your internet connection, during which time Eclipse can't be used for anything else.
 
-| ###### *Build target platform*
+| ====== *Build target platform*
 |
 * Fast
 * Flexible
@@ -198,9 +198,7 @@ Next:
 |===
 
 
-
-
-## Installing a target platform into eclipse
+== How can I install the contents of a target platform into Eclipse?
 
 Up until this point, we've only been referencing *using* a target platform in eclipse to resolve dependencies.
 When simply using a target platform, it is not 'installed' into your eclipse, but rather all the units are
@@ -223,13 +221,14 @@ simply install from our web urls, you can perform the following to install it in
 
 If this is a task you intend to perform often, you will find it very useful to have a local target platform folder, rather than continuously download and install from a remote location.
 
-
 After installing the target platform, you should restart your eclipse. You will find you have all dependencies locally installed and running,
 rather than being used only for plug-in dependency resolution.
 
-## Using a target platform in a maven build
 
-JBoss Tools modules use Maven to build and are configured to consume the latest target platform from Nexus, based on what's set in the https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L109-L112[parent pom].
+[[Sources]]
+## How can I resolve target platform sources in Eclipse?
 
-If you want to use a newer version, simply build with `mvn verify -Dtpc.version=4.70.2.Final`.
+If the target platform site is available from `Window -> Preferences -> Install/Update -> Available Software Sites`, you can use the PDE Source Lookup plugin to automatically fetch missing source bundles and make them available for development.
+
+See link:../../source/pde-source-lookup.adoc[Using the PDE Source Lookup plugin] for more how to install and use this plugin.
 
