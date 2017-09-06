@@ -32,7 +32,7 @@ JBoss Tools' `target platform update sites` are located here, in both unpacked a
 
 ## Exploring the JBoss Tools target platform repository
 
-Inside the JBoss Tools Target Platform repository, the two top level folders are `jbdevstudio` and `jbosstools`.  Both of these folders contain two sub-folders: `multiple` and `unified`.
+Inside the JBoss Tools Target Platform repository, there is one top level folders, `jbosstools` (there used to be a separate target platform for devstudio but that's since been merged with the jbosstools one).  Both of these folders contain two sub-folders: `multiple` and `unified`.
 
 ### Multiple vs unified target platforms
 

@@ -64,7 +64,7 @@ should see in your ~/.m2/settings.xml
 			<repository>
 				<id>jboss-snapshots-repository</id>
 				<name>JBoss Snapshots Repository</name>
-				<url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>   
+				<url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
 			</repository>
 		</repositories>
 		<pluginRepositories>
@@ -72,12 +72,12 @@ should see in your ~/.m2/settings.xml
 			<pluginRepository>
 				<id>jboss-public-repository-group</id>
 				<name>JBoss Public Repository Group</name>
-				<url>http://repository.jboss.org/nexus/content/groups/public/</url>   
+				<url>http://repository.jboss.org/nexus/content/groups/public/</url>
 			</pluginRepository>
 			<pluginRepository>
 				<id>jboss-snapshots-repository</id>
 				<name>JBoss Snapshots Repository</name>
-				<url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>   
+				<url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
 			</pluginRepository>
 		</pluginRepositories>
 		</profile>
@@ -158,7 +158,7 @@ Platform repository.
 ** Need only invoke Maven
 ** Always up-to-date
 
-* Cons: 
+* Cons:
 ** Evaluation is slower than when using a local target platform
 
 Consume it by adding `-Punified.target`to your Maven command line
@@ -169,9 +169,9 @@ Consume it by adding `-Punified.target`to your Maven command line
 * Pros:
 ** Faster to use than a remote one
 
-* Cons: 
+* Cons:
 ** Must re-fetch every time remote SNAPSHOT https://github.com/jbosstools/jbosstools-build/tree/master/target-platforms[target platforms] are updated, or a new one is released
- 
+
 ==== Get it
 
 Download TP as a zip and install it by yourself
@@ -209,19 +209,19 @@ http://wiki.eclipse.org/Tycho/Target_Platform/Authentication_and_Mirrors#Mirrors
 
 As example, you can simply edit to your link:#maven-settings[~/.m2/settings.xml] the
 definition of the repositories to mirror: (replace
-/home/hudson/static_build_env/jbds/.... by a path where your local
+/home/hudson/static_build_env/devstudio/.... by a path where your local
 repository actuaaly stands)
 
 ----
-<!-- IMPORTANT: Sites in target platforms: must not have trailing slash! -->        
+<!-- IMPORTANT: Sites in target platforms: must not have trailing slash! -->
 <settings>
   <mirrors>
     <mirror>
       <id>jbosstools-target-platform-4.30.5.Final</id>
-      <mirrorOf>http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.30.5.Final/REPO</mirrorOf>            
-      <url>file:///path/to/jbosstools-target-platforms/jbosstools/multiple/target/jbosstools-multiple.target.repo/</url>            
+      <mirrorOf>http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.30.5.Final/REPO</mirrorOf>
+      <url>file:///path/to/jbosstools-target-platforms/jbosstools/multiple/target/jbosstools-multiple.target.repo/</url>
       <layout>p2</layout>
-      <mirrorOfLayouts>p2</mirrorOfLayouts>        
+      <mirrorOfLayouts>p2</mirrorOfLayouts>
       </mirror>
   </mirrors>
 </settings>
