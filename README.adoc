@@ -15,6 +15,7 @@ This repo should be considered a wiki, into which all developers can push docs. 
 ** link:building/target_platforms/target_platforms_for_consumers.adoc[Using target platforms in eclipse]
 * Target Platforms
 ** link:building/target_platforms/target_platforms_for_consumers.adoc[Using target platforms in eclipse]
+*** link:building/target_platforms/target_platforms_for_consumers.adoc#Sources[Using the PDE Source Lookup plugin with target platforms]
 ** link:building/target_platforms/target_platforms_updates.adoc[Target platform update process]
 *** link:building/target_platforms/target_platforms_dependency_mirrors.adoc[Creating a new dependency mirror]
 ** link:building/target_platforms/target_platforms_releases.adoc[Target platform release process]
@@ -48,6 +49,7 @@ This repo should be considered a wiki, into which all developers can push docs. 
 ** link:source/how_to_add_an_update_site.adoc[Adding an update site] or link:source/build_update_sites_using_associate_sites.adoc[associate site]
 ** link:source/publishing_features_downstream.adoc[Publishing features to JBoss Tools, Red Hat JBoss Developer Studio, JBoss Central, Early Access, and Eclipse Marketplace]
 ** link:source/third_party.adoc[Bundling Third Party Library Dependencies]
+** link:source/pde-source-lookup.adoc[Using the PDE Source Lookup plugin]
 ** Versioning Rules
 *** link:source/versioning.adoc[Versioning Rules] (Plugins, features, products, installers, update sites)
 *** link:source/versioning-build-artifacts.adoc[Versioning Rules for Build Artifacts] (Parent pom, foundation.core, core.central, ide-config.properties)
