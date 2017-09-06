@@ -192,8 +192,6 @@ For example, if docker tools depends on a specific version of httpclient, make s
     </location>
 ====
 
-If your change affects JBDS too, edit `jbdevstudio/multiple/jbdevstudio-multiple-target` as well.
-
 For https://github.com/jbosstools/jbosstools-discovery/[JBoss Central], edit `jbtcentraltarget/multiple/jbtcentral-multiple.target` and/or `jbtearlyaccesstarget/multiple/jbtearlyaccess-multiple.target`.
 
 For the https://github.com/jbosstools/jbosstools-integration-stack/tree/master/target-platform[Integration Stack], edit the applicable .target files in `target-platform/`.
@@ -300,8 +298,7 @@ GITHUB_USER=mickaelistra # or nickboldt, etc. Use "origin" if PR is already appl
 DEADLINE="within 7 days" # or "within 2 days" or "within 24 hours" or "as soon as possible"
 PR_NUM=142
 PR_URL=https://github.com/jbosstools/jbosstools-target-platforms/pull/${PR_NUM}/
-P2DIFF="https://issues.jboss.org/secure/attachment/12389427/jbosstools.p2diff.txt
-https://issues.jboss.org/secure/attachment/12389428/jbdevstudio.p2diff.txt"
+P2DIFF="https://issues.jboss.org/secure/attachment/12389427/jbosstools.p2diff.txt"
 
 echo "
 Subject:
