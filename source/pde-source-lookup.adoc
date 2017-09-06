@@ -1,4 +1,4 @@
-= Using PDE Source Lookup
+= Using the PDE Source Lookup plugin
 
 This document explains how to install, then use the PDE Source Lookup plugin to automatically fetch missing source bundles from enabled p2 repositories, when opening a bundle jar (similar to m2e).
 
@@ -19,3 +19,7 @@ This behavior can be disabled in `Preferences` > `Plug-in Development` > `Source
 ** go to `Help` > `Install New Software...` and add one of these p2 repositories:
 *** Stable: https://dl.bintray.com/fbricon/poc/pde.source.lookup/0.0.4.201612181944
 *** CI: http://download.jboss.org/jbosstools/builds/staging/pde.source.lookup/all/repo/
+
+== Contributing
+
+Want to contribute? See the link:https://github.com/fbricon/pde.source.lookup[pde.source.lookup] project at Github.
