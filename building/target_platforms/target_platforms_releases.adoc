@@ -53,15 +53,15 @@ Here is the suggested process:
 8. Commit it, tag it; push tag and commit to the right branch:
 
         $ git add pom.xml pom.xml */*/pom.xml
-        $ git commit -m "Version 4.40.0.Beta2"
-        $ git tag 4.40.0.Beta2
-        $ git push origin 4.40.0.Beta2
+        $ git commit -m "Version 4.71.0.Final"
+        $ git tag 4.71.0.Final
+        $ git push origin 4.71.0.Final
         $ git push origin HEAD:4.40.x
 
-        (where 4.40.0.Beta2 has to be replaced by the actual version, and 4.40.x with the actual branch)
+        (where 4.71.0.Final has to be replaced by the actual version, and 4.40.x with the actual branch)
 
 9. Repeat the 2 previous steps for jbosstools-discovery component to update and tag its target-platform.
-10. Update https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-matrix/[jbosstoolstargetplatform-matrix] job to build new SNAPSHOTless version (and therefore produce new update site folders) (eg., 4.40.0.Beta2-SNAPSHOT -> 4.40.0.Beta2)
+10. Update https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-matrix/[jbosstoolstargetplatform-matrix] job to build new SNAPSHOTless version (and therefore produce new update site folders) (eg., 4.71.0.Final-SNAPSHOT -> 4.71.0.Final)
 
 [NOTE]
 **(TODO: Try to make the version a job parameter to change it more easily)**
@@ -76,19 +76,14 @@ download.jboss.org & www.qa
 14. Update affected pom files to point to the new release of target-platform (for stable branch) or the new snapshots (for master). Example of affected pom files are `jbdevstudio-product/pom.xml` (for central zip location),
 15. Update affected jobs to point explicitly to the new target platform versions (ref: https://issues.jboss.org/browse/JBIDE-13673[JBIDE-13673])
 16. Update relevant SNAPSHOT of parent pom so this new target becomes a default where we want it to be default (most likely on next branch for milestone if already available)
-17. If the target platform is to be used by a recently released development milestone or stable release, these composite site pointers need to be updated to point at this new released target platform. Example:
-  * http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/luna/ composite*.xml files get updated to point to ../4.40.0.Beta1
-  * http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/luna/  (same thing)
-  * http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/luna/  (same thing)
-  * etc.
-18. Bump target-platform version and add it a -SNAPSHOT to start working on future version.
+17. Bump target-platform version and add it a -SNAPSHOT to start working on future version.
 
         $ mvn -Dtycho.mode=maven versions:set -DnewVersion=x.y.z.qualifier-SNAPSHOT
         $ git add pom.xml */pom.xml */*/pom.xml
         $ git commit -m "Bump to x.y.z.qualifier-SNAPSHOT"
         $ git push origin <branch>
 
-19. Update target-platform job on Jenkins to build the new SNAPSHOT (eg: 4.30.0.Alpha1 -> 4.30.0-Alpha2-SNAPSHOT)
+18. Update target-platform job on Jenkins to build the new SNAPSHOT (eg: 4.30.0.Alpha1 -> 4.30.0-Alpha2-SNAPSHOT)
 
 == Leverage Akamai for better download perforance
 
@@ -99,15 +94,15 @@ From download.jboss.org:
 
 * Move new TP folder from 'tools/targetplatforms' to 'tools/static/targetplatforms', keep the name ("jbosstoolstarget") and version segments. Eg
 
-  echo "rename targetplatforms/jbtcentraltarget/4.32.0.Final static/targetplatforms/jbtcentraltarget/4.40.0.Beta2" > sftp tools@filemgmt.jboss.org:downloads_htdocs/tools
+  echo "rename targetplatforms/jbtcentraltarget/4.71.0.Final static/targetplatforms/jbtcentraltarget/4.71.0.Final" > sftp tools@filemgmt.jboss.org:downloads_htdocs/tools
 
 * Put at the previous location of TP the necessary p2 composite*.xml files pointing to the new location. For example
-** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.40.0.Beta2/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/4.40.0.Beta2'
-** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.40.0.Beta2/REPO' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/4.40.0.Beta2'
-** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.Beta2/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbdevstudiotarget/4.40.0.Beta2'
-** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.Beta2/REPO' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbdevstudiotarget/4.40.0.Beta2'
-** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Beta2/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/4.40.0.Beta2'
-** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Beta2/REPO' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/4.40.0.Beta2'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.71.0.Final/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/4.71.0.Final'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.71.0.Final/REPO' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/4.71.0.Final'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/devstudiotarget/4.71.0.Final/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/devstudiotarget/4.71.0.Final'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/devstudiotarget/4.71.0.Final/REPO' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/devstudiotarget/4.71.0.Final'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.71.0.Final/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/4.71.0.Final'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.71.0.Final/REPO' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/4.71.0.Final'
 
 Then, check with Eclipse or p2diff or whatever p2 tool that location http://download.jboss.org/jbosstools/targetplatforms/${name}/#{version}/ can resolve TP contents.
 
@@ -130,11 +125,11 @@ Template:
 [source,bash]
 ----
 # configure these to generate the email body
-TARGET_PLATFORM_VERSION=4.40.0.Beta2 # no -SNAPSHOT suffix
-TARGET_PLATFORM_VERSION_NEXT=4.40.0.CR1-SNAPSHOT # include -SNAPSHOT suffix
-JBOSSTOOLS_VERSION=4.2.0.Beta2       # no -SNAPSHOT suffix
-JBOSSTOOLS_VERSION_NEXT=4.2.0.CR1    # no -SNAPSHOT suffix
-JBOSSTOOLS_BRANCH=jbosstools-4.2.0.Beta2x # use 4.2.x, after we hit CR
+TARGET_PLATFORM_VERSION=4.71.0.Final # no -SNAPSHOT suffix
+TARGET_PLATFORM_VERSION_NEXT=4.71.1.AM1-SNAPSHOT # include -SNAPSHOT suffix
+JBOSSTOOLS_VERSION=4.5.1.Final       # no -SNAPSHOT suffix
+JBOSSTOOLS_VERSION_NEXT=4.5.2.AM1    # no -SNAPSHOT suffix
+JBOSSTOOLS_BRANCH=master
 
 echo "
 Subject:
@@ -161,12 +156,12 @@ have been updated to use target platform ${TARGET_PLATFORM_VERSION}.
 The following p2 repositories *will be modified* to point to this new target platform once
 JBoss Tools ${JBOSSTOOLS_VERSION} is released:
 
-* http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/luna/
-* http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/luna/
+* http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/
+* https://devstudio.redhat.com/targetplatforms/devstudiotarget/
 
 (TODO: include this next one if this is a Central TP update, not a JBT/JBDS TP update)
 
-* http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/luna/
+* http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/
 
 Until then, you can access the target platform at the URLs below.
 
