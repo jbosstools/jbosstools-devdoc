@@ -44,11 +44,11 @@ Inside the JBoss Tools Target Platform repository, there is one top level folder
 
 JBoss Tools uses a well-defined versioning scheme for our target platforms.
 
-The first 3 digits are the version of Eclipse included in the target platform, such as 4.60 (Neon.0) or 4.62 (Neon.2).
+The first 3 digits are the version of Eclipse included in the target platform, such as 4.70 (Oxygen.0) or 4.71 (Oxygen.1).
 
-The next digit signifies the sequence of target platforms, starting with 0. Should there be multiple JBoss Tools releases on the same Eclipse version, this allows us to have different target platforms using the same baseline, such as 4.60.0, 4.60.1, 4.60.2.
+The next digit signifies the sequence of target platforms, starting with 0. Should there be multiple JBoss Tools releases on the same Eclipse version, this allows us to have different target platforms using the same baseline, such as 4.70.0, 4.70.1, 4.70.2.
 
-After that, the milestone of JBoss Tools that uses the target platform is suffixed, which also defines the quality/stability of the target platform (Alpha1, Alpha2, Beta1, Beta2, CR1, Final).
+After that, the milestone of JBoss Tools that uses the target platform is suffixed, which also defines the quality/stability of the target platform (AM1, AM2, AM3, Final).
 
 Finally, the target platform version will have a `-SNAPSHOT` suffix if it has not yet been released to Nexus. Once released, the `-SNAPSHOT` suffix is removed. For .Final versions, the bits are moved to mirrored to the Akamai /static/ folder for better performance.
 
@@ -56,7 +56,7 @@ Finally, the target platform version will have a `-SNAPSHOT` suffix if it has no
 
 Normally, each project uses a parent pom that will default to the right target platform, but in case you need to update to, or test against, a different target platform, this section will be useful for you.
 
-In general, we use the latest target platform for the version of Eclipse your development environment requires. For example, if you are building code for Neon.2, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.62.x[4.62.x] target platform.
+In general, we use the latest target platform for the version of Eclipse your development environment requires. For example, if you are building code for Neon.2, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.70.x[4.70.x] target platform.
 
 If you use the https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L104-L115[latest parent pom], chances are good you'll automatically build with the latest appropriate target platform too.
 
@@ -69,7 +69,7 @@ mvn install -P maximum
 Should you want to build using a *specific* target platform, perhaps because you're testing a new, unreleased one, you could build like this:
 
 ```
-mvn install -Dtpc.version=4.62.0.AM1-SNAPSHOT
+mvn install -Dtpc.version=4.70.0.AM1-SNAPSHOT
 ```
 
 
@@ -95,12 +95,13 @@ There are several different options you can use when attempting to configure you
 * Requires very little setup
 * Do not need to check out jbosstools-target-platforms
 * Easily reused for an unlimited number of workspaces
-* *NOW CONTAINS SOURCES* starting with http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.60.2.Final/jbosstoolstarget-4.60.2.Final.zip[4.60.2.Final] and http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/4.61.0.Final/jbosstoolstarget-4.61.0.Final.zip[4.61.0.Final]. Note that only jbosstools target platforms contain sources - devstudio ones do not.
+* As of 4.70, both jbosstools & devstudio target platforms include sources and testing dependencies.
+* With source bundles, so you can link:../../source/pde-source-lookup.adoc[trace into dependencies' sources]
 
 |
 
-* Browse to http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/
-* Select the folder for the version you want such as `4.61.0.Final`
+* Browse to link:http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/[jbosstoolstarget] or link:http://devstudio.redhat.com/targetplatforms/devstudiotarget/[devstudiotarget]
+* Select the folder for the version you want such as `4.70.2.Final`
 * Select the zip file and save it to disk
 * Unzip it to a location you desire
 * Inside Eclipse, browse to `Window -> Preferences -> Target Platform` and click _Add..._
@@ -114,20 +115,26 @@ There are several different options you can use when attempting to configure you
 | ###### *Import .target file*
 |
 * By far the easiest method.
-* Can fetch source bundles so you can trace into the source of dependencies
+* With source bundles, so you can link:../../source/pde-source-lookup.adoc[trace into dependencies' sources]
 
 But...
 
-* May take in excess of an hour each time, usually blocking the workspace. (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=507397 for potential improvement)
-* Must be done once per workspace (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=282352 )
-* Eclipse will cache bundles in `${workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool` (see https://bugs.eclipse.org/bugs/show_bug.cgi?id=282352 )
+* May take in excess of an hour each time, usually +
+blocking the workspace. (see link:https://bugs.eclipse.org/bugs/show_bug.cgi?id=507397[EBZ 507397] for +
+potential improvement)
+* Must be done once per workspace (see link:https://bugs.eclipse.org/bugs/show_bug.cgi?id=282352[EBZ 282352] )
+* If your workspace gets corrupted often, this will be time consuming
+* Eclipse will cache bundles in +
+`${workspace}/.metadata/.plugins/ +
+org.eclipse.pde.core/.bundle_pool` +
+(see link:https://bugs.eclipse.org/bugs/show_bug.cgi?id=282352[EBZ 282352] )
 |
-* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.6.2 (Neon.2), check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.62.x[4.62.x] branch.
+* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.7.0 (Oxygen.0), check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.70.x[4.70.x] branch.
 
 ```bash
 git clone https://github.com/jbosstools/jbosstools-target-platforms.git
 cd jbosstools-target-platforms
-git checkout 4.62.x
+git checkout 4.70.x
 ```
 
 * Next, import the `jbosstools/multiple` project into Eclipse. This project must be imported as a maven project. To import this project, select `File -> Import -> Existing Maven Project` and browse to the jbosstools/multiple project location.
@@ -145,81 +152,36 @@ _If you selected a `.target` file with source references, such as `jbosstools-mu
 
 * **Beware**, in both cases this is a long operation that can take up to an hour, depending on your internet connection, during which time Eclipse can't be used for anything else.
 
-| ###### *Build target platform (bootstrapped from zip)*
-|
-* Fast
-* Flexible
-* Can include sources
-* Easily reused for an unlimited number of workspaces
-* *DEPRECATED* - new target platform zips as of 4.6x contain sources. See 'Import target platform zip' section above.
-
-But...
-
-* More complicated
-|
-* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.6.2, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.62.x[4.62.x] branch.
-
-```bash
-git clone https://github.com/jbosstools/jbosstools-target-platforms.git
-cd jbosstools-target-platforms
-git checkout 4.62.x
-```
-
-* If you do NOT require source bundles, you should then type:
-
-```bash
-wget http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.62.0.AM1-SNAPSHOT/jbosstoolstarget-4.62.0.AM1-SNAPSHOT.zip # or similar URL
-mkdir -p jbosstools/multiple/target/jbosstools-multiple.target.repo
-unzip jbosstoolstarget-*.zip -d jbosstools/multiple/target/jbosstools-multiple.target.repo
-```
-
-* If you DO require source bundles, first unpack the zip (as in the step above), then type:
-
-```bash
-mvn install -f jbosstools/multiple/pom.xml -Pmultiple2repo -Dmirror-target-to-repo.includeSources=true
-```
-
-* Only the builds which requires sources is long-running, and may take upwards of an hour. Simply downloading and unpacking the zip should be relatively quick.
-
-Next:
-
-* Inside Eclipse, browse to `Window -> Preferences -> Target Platform` and click _Add..._
-* Click _Next>_
-* On the locations tab, click _Add..._
-* Select _Directory_ and click _Next>_
-* _Browse_ to `jbosstools-target-platforms/jbosstools/multiple/target/jbosstools-multiple.target.repo/plugins
-* Click _Finish_, and _Finish_ again.
-* Check your new target platform and watch it load very quickly
-
 | ###### *Build target platform*
 |
 * Fast
 * Flexible
 * Can include sources
 * Easily reused for an unlimited number of workspaces
+* With source bundles, so you can link:../../source/pde-source-lookup.adoc[trace into dependencies' sources]
 
 But...
 
 * More complicated
 |
-* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.6.2, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.62.x[4.62.x] branch.
+* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.7.0, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.70.x[4.70.x] branch.
 
 ```bash
 git clone https://github.com/jbosstools/jbosstools-target-platforms.git
 cd jbosstools-target-platforms
-git checkout 4.62.x
+git checkout 4.70.x
 ```
 
-* If you do NOT require source bundles, you should then type:
+* If you require source bundles, you should type:
 
 ```bash
-mvn clean install -f jbosstools/multiple/pom.xml -Pmultiple2repo
+mvn install -f jbosstools/multiple/pom.xml -Pmultiple2repo
 ```
 
-* If you DO require source bundles, you should then type:
+* If you do NOT require source bundles, you should type:
 
 ```bash
-mvn install -f jbosstools/multiple/pom.xml -Pmultiple2repo -Dmirror-target-to-repo.includeSources=true
+mvn clean install -f jbosstools/multiple/pom.xml -Pmultiple2repo -Dmirror-target-to-repo.includeSources=false
 ```
 
 * Both of the above builds are long-running, and may take upwards of an hour.
@@ -253,7 +215,7 @@ simply install from our web urls, you can perform the following to install it in
 * Select `Window -> Install New Software`
 * Click `Add...`
 * Provide a name
-* Browse to the location of your local target platform, or paste a target platform URL such as http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.62.0.AM1-SNAPSHOT/
+* Browse to the location of your local target platform, or paste a target platform URL such as http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.70.2.Final/
 * Uncheck `Group item by category`
 * Click `Select All`
 * Click `Next>` and continue until you can `Finish`
@@ -269,5 +231,5 @@ rather than being used only for plug-in dependency resolution.
 
 JBoss Tools modules use Maven to build and are configured to consume the latest target platform from Nexus, based on what's set in the https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L109-L112[parent pom].
 
-If you want to use a newer version, simply build with `mvn verify -Dtpc.version=4.61.0.Final`.
+If you want to use a newer version, simply build with `mvn verify -Dtpc.version=4.70.2.Final`.
 
