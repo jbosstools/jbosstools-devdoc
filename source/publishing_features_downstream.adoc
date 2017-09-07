@@ -8,17 +8,15 @@ Submit a pull request against the appropriate branch of the https://github.com/j
 
 * https://github.com/jbosstools/jbosstools-build-sites/tree/master/aggregate/site/category.xml[aggregate/site/category.xml] - for all features
 * https://github.com/jbosstools/jbosstools-build-sites/tree/master/aggregate/coretests-site/category.xml[aggregate/coretests-site/category.xml] - for test features
-* https://github.com/jbosstools/jbosstools-build-sites/tree/master/aggregate/hibernatetools-site/category.xml[aggregate/hibernatetools-site/category.xml] - for hibernate tools features ONLY
-* https://github.com/jbosstools/jbosstools-build-sites/tree/master/aggregate/webtools-site/category.xml[aggregate/webtools-site/category.xml] - for features required by `org.eclipse.wst.server.core.serverAdapter` ONLY
 
 == Red Hat JBoss Developer Studio
 
 First, ensure your feature(s) are included in JBoss Tools, as above.
 
-Then, submit a pull request here: https://github.com/jbdevstudio/jbdevstudio-product/[jbdevstudio-product] footnote:[Don't have permission to view the repo? You can https://github.com/jbdevstudio/github-teams/blob/master/jbdevstudio-teams/README.adoc#guide-for-users[request access here].]: 
+Then, submit a pull request here: https://github.com/jbdevstudio/jbdevstudio-product/[jbdevstudio-product]
 
 * https://github.com/jbdevstudio/jbdevstudio-product/blob/master/site/category.xml[site/category.xml] - for all features
-* https://github.com/jbdevstudio/jbdevstudio-product/blob/master/features/com.jboss.devstudio.core.feature/feature.xml[features/com.jboss.devstudio.core.feature/feature.xml] - for features that should be installed automatically when installing JBoss Developer Studio via the installer or Eclipse Marketplace
+* https://github.com/jbdevstudio/jbdevstudio-product/blob/master/features/com.jboss.devstudio.core.rpm.feature/feature.xml[features/com.jboss.devstudio.core.rpm.feature/feature.xml] - for features that should be installed automatically when installing JBoss Developer Studio via the installer or Eclipse Marketplace
 
 == JBoss Central
 
@@ -31,7 +29,7 @@ First, update the target platform to include the new feature(s):
 Then, add a new connector to the discovery plugin, to expose those feature(s) via the appropriate categor(ies):
 
 * https://github.com/jbosstools/jbosstools-discovery/blob/master/jbosstools/org.jboss.tools.central.discovery/plugin.xml[jbosstools/org.jboss.tools.central.discovery/plugin.xml]
-* https://github.com/jbosstools/jbosstools-discovery/blob/master/jbdevstudio/com.jboss.jbds.central.discovery/plugin.xml[jbdevstudio/com.jboss.jbds.central.discovery/plugin.xml]
+* https://github.com/jbosstools/jbosstools-discovery/blob/master/devstudio/com.jboss.devstudio.central.discovery/plugin.xml[devstudio/com.jboss.devstudio.central.discovery/plugin.xml]
 
 == Early Access
 
@@ -44,7 +42,7 @@ First, update the target platform to include the new feature(s):
 Then, add a new connector to the discovery plugin, to expose those feature(s) via the appropriate categor(ies):
 
 * https://github.com/jbosstools/jbosstools-discovery/blob/master/jbosstools/org.jboss.tools.central.discovery.earlyaccess/plugin.xml[jbosstools/org.jboss.tools.central.discovery.earlyaccess/plugin.xml]
-* https://github.com/jbosstools/jbosstools-discovery/blob/master/jbdevstudio/com.jboss.jbds.central.discovery.earlyaccess/plugin.xml[jbdevstudio/com.jboss.jbds.central.discovery.earlyaccess/plugin.xml]
+* https://github.com/jbosstools/jbosstools-discovery/blob/master/devstudio/com.jboss.devstudio.central.discovery.earlyaccess/plugin.xml[jbdevstudio/com.jboss.devstudio.central.discovery.earlyaccess/plugin.xml]
 
 == Eclipse Marketplace
 
