@@ -1,6 +1,6 @@
 # JBoss Tools Build FAQ
 
-This document has been updated for JBoss Tools 4.3, but should also be valid for JBoss Tools 4.1 and 4.2.
+This document has been updated for JBoss Tools 4.5.
 
 
 ## How do I configure my settings.xml?
