@@ -7,7 +7,7 @@ This document has been updated for JBoss Tools 4.3, but should also be valid for
 
 See link:building/setup_development_environment.adoc#maven-settings[Configuring Maven Settings]
 
-### Java Home provided by the jbosstools.test.jre.* system properties does not exist! 
+### Java Home provided by the jbosstools.test.jre.* system properties does not exist!
 Some tests require access to specific Java versions following the format:
 
 ----
@@ -26,32 +26,44 @@ or in `~/.m2/settings.xml` as a profile:
 	<profile>
 	  <id>jbosstools-jre</id>
 	  <properties>
-	    <jbosstools.test.jre.9>/Library/Java/JavaVirtualMachines/jdk1.9.0.jdk/Contents/Home/</jbosstools.test.jre.9>
-	    <jbosstools.test.jre.8>/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/</jbosstools.test.jre.8>
-	    <jbosstools.test.jre.7>/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/</jbosstools.test.jre.7>
+	  <jbosstools.test.jre.8>/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home/</jbosstools.test.jre.8>
+	  <jbosstools.test.jre.7>/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home/</jbosstools.test.jre.7>
 	  <jbosstools.test.jre.6>/Library/Java/JavaVirtualMachines/jdk1.6.0_45.jdk/Contents/Home/</jbosstools.test.jre.6>
 	  <jbosstools.test.jre.5>/Library/Java/JavaVirtualMachines/jdk1.5.0.jdk/Contents/Home/</jbosstools.test.jre.5>
 	  </properties>
 	</profile>
 	<activeProfiles>
 	  <activeProfile>jbosstools-jre</activeProfile>
-	</activeProfiles>	
+	</activeProfiles>
 ----
 
-If not defined, you'll erros like:
+If not defined, these properties are set by the link:https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L79-L85[JBoss Tools parent pom]:
 
-	junit.framework.AssertionFailedError: Java Home 
+----
+		<jbosstools.test.jre.8>${JAVA_HOME}</jbosstools.test.jre.8>
+		<jbosstools.test.jre.7>${JAVA_HOME}</jbosstools.test.jre.7>
+		<jbosstools.test.jre.6>${JAVA_HOME}</jbosstools.test.jre.6>
+		<jbosstools.test.jre.5>${JAVA_HOME}</jbosstools.test.jre.5>
+----
+
+If `JAVA_HOME` isn't set, you'll errors like:
+
+----
+	junit.framework.AssertionFailedError: Java Home
 	provided by the jbosstools.test.jre.7 system property does not exist.
-
 or
-
-----
-junit.framework.AssertionFailedError: The JRE5 location is not right
+	junit.framework.AssertionFailedError: The JRE5 location is not right
 ----
 
+[NOTE]
+====
 Note that for Jenkins jobs, this is set to a path similar to `/qa/tools/opt/jdk1.7.0_last`.
+====
 
-p.s. if you do not have the right Java version installed you can reuse one of the others. But be aware your tests will not be running the exact same thing as jenkins.
+[WARNING]
+====
+If you do not have all the old Java version(s) installed you can use a newer one. But be aware your tests will not be running the exact same version as in Jenkins.
+====
 
 ##  How do I build via commandline?
 
@@ -71,10 +83,12 @@ Assuming your goal is to change sources in multiple projects, then build them al
 
 This workflow is useful when you're looking to change framework code in an upstream project like Base on which Webservices or Server depends, and verify that API changes don't break the downstream project's code.
 
-```bash cd ~/jbosstools git clone
+```bash
+cd ~/jbosstools git clone
 https://github.com/jbosstools/jbosstools-base git clone
 https://github.com/jbosstools/jbosstools-server git clone
-https://github.com/jbosstools/jbosstools-webservices ```
+https://github.com/jbosstools/jbosstools-webservices
+```
 
 Then, publish the results of each build into your local `~/.m2` repo, use `mvn install` instead of `mvn verify`.
 
@@ -90,7 +104,7 @@ cd ~/jbosstools/jbosstools-webservices; mvn verify
 
 You could build all the individual components' update sites, and install from multiple sites. See link:../debugging/how_to_install_a_build.adoc#installing-from-a-locally-built-update-site[Installing from a locally built update site].
 
-Or, you can build your local projects into the JBoss Tools aggregate site, and install from that locally built site. This will require using -D flag overrides to ensure that you're building the site based on the above locally built bits. 
+Or, you can build your local projects into the JBoss Tools aggregate site, and install from that locally built site. This will require using -D flag overrides to ensure that you're building the site based on the above locally built bits.
 
 ```bash
 cd ~/jbosstools
@@ -105,7 +119,7 @@ Then:
 
 * launch Eclipse and select `Help -> Install New Software...`
 * Click `Add...`
-* Optionally, provide a name 
+* Optionally, provide a name
 * Browse to the location of your locally built update site, such as `file://${HOME}/jbt/jbosstools-build-sites/aggregate/site/target/repository/`.
 * Select the features you want to install
 * Click `Next>`, accept the licences, and continue until you can press `Finish` to complete the install
@@ -136,7 +150,7 @@ Thus try `-Dtycho.localArtifacts=ignore` first, unless you know you don't want t
 
 ## How do I build a target platform?
 
-See link:target_platforms/target_platforms_for_consumers.adoc[Using target platforms] or 
+See link:target_platforms/target_platforms_for_consumers.adoc[Using target platforms] or
 link:target_platforms/target_platforms_updates.adoc[Target platform updates].
 
 ## Why is there more than one target platform?
@@ -196,7 +210,7 @@ To configure the amount of memory used by Maven, you can define MVN_OPTS as foll
 set MAVEN_OPTS=-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=256m
 ```
 
-Note: support for `-XX:PermSize` and `-XX:MaxPermSize` was removed in JDK 8.0, as the link:http://stackoverflow.com/questions/18339707/permgen-elimination-in-jdk-8[flags are no longer necessary]. 
+Note: support for `-XX:PermSize` and `-XX:MaxPermSize` was removed in JDK 8.0, as the link:http://stackoverflow.com/questions/18339707/permgen-elimination-in-jdk-8[flags are no longer necessary].
 
 
 ## How do I see what's happening on a remote slave running Xvfb?
@@ -231,12 +245,12 @@ Next, using vinagre or any VNC client, connect to the server:
        vinagre vmg18....redhat.com:5913
 
 
-## My build is failing due to UnsatisfiedLinkError or a missing .so file! 
+## My build is failing due to UnsatisfiedLinkError or a missing .so file!
 
 If you're seeing an error like this:
 
 ```bash
-java.lang.UnsatisfiedLinkError: Could not load SWT library. Reasons: 
+java.lang.UnsatisfiedLinkError: Could not load SWT library. Reasons:
  /home/rob/code/jbtools/github/jbosstools-server/archives/tests/org.jboss.ide.eclipse.archives.test/target/work/configuration/org.eclipse.osgi/136/0/.cp/libswt-pi-gtk-4509.so: libgtk-x11-2.0.so.0: cannot open shared object file: No such file or directory
 ```
 
