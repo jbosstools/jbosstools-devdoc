@@ -1,0 +1,33 @@
+# JBoss Tools Jenkins FAQ
+
+
+## Q. My job's build died due to...
+
+* no space on disk
+
+* network error connecting to link:http://download.jboss.org/jbosstools/oxygen/[download.jboss.org] or link:https://repository.jboss.org/nexus/#nexus-search;gav~org.jboss.tools[repository.jboss.org]
+
+* slave already disconnected
+
+* could not resolve parent pom
+
+A. From the job's build's page or console, look for a link to the specific slave that was used. Click that link.
+
+Next, select *Schedule Termination* to ensure the faulty slave will be trashed and its resources repurposed. If the above link returns a 404, then the slave has already been terminated.
+
+Finally, click one of these links on the job page or from a specific build page:
+
+* *Matrix Reloaded* - to rebuild a subset of matrix combinations, eg., just those with failures; uses the same settings as previous build
+* *Retry* - to retry a build with the same settings
+* *Rebuild* - to rebuild a specific build with the same settings, and option to change them
+* *Rebuild Last* - to rebuild the last build with the same settings, and option to change them
+* *Build with Parameters* - to run a new build with optionally different settings
+
+If a respin does not fix the problem, please link:https://issues.jboss.org/secure/CreateIssue.jspa?pid=10020&issuetype=1[open a JBIDE JIRA] with details:
+
+* link to the github repo(s) used for the build
+* link to the job
+* link to the build
+* snippet of the job's build's console log, showing the error
+* screenshots if meaningful / useful
+
