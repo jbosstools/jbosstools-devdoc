@@ -23,6 +23,7 @@ This repo should be considered a wiki, into which all developers can push docs. 
 ** link:building/how_to_build_jbosstools_faq.adoc[JBoss Tools Build FAQ]
 ** link:building/build_from_commandline.adoc[Building from the command line]
 ** link:building/build_from_eclipse.adoc[Building with Eclipse (using m2e)]
+** link:building/jenkins_faq.adoc[Building with Jenkins FAQ]
 ** link:source/build_checks.adoc[Build-time baseline and maven enforcer checks]
 ** link:source/build_source_bundles_features_and_src_zips.adoc[How to build source bundles, features, and source zips]
 ** link:building/build_job_cascade_and_where_to_find_build_results.adoc[How to build the whole JBoss Tools cascade / stack of projects]
