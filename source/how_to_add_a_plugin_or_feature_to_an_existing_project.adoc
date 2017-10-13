@@ -22,9 +22,9 @@ Now that you can build the project, you can easily add a new plugin to that proj
 
 1. When you are satisfied, you can commit your new plugin project to Git.
 
-	    cd ~/jbosstools/jbosstools-YOURPROJECT/as/plugins; \
-	    git add org.jboss.ide.eclipse.as.rse.core; \
-	    git commit -m "JBIDE-123456 Initial commit of new as.rse.core plugin"
+		cd ~/jbosstools/jbosstools-YOURPROJECT/as/plugins; \
+		git add org.jboss.ide.eclipse.as.rse.core; \
+		git commit -m "JBIDE-123456 Initial commit of new as.rse.core plugin"
 
 2. Next, add a pom.xml file to the root of your new project.
 
@@ -32,39 +32,40 @@ You can use m2eclipse to help w/ this if you have it installed; otherwise copy f
 
 3. Build your plugin:
 
-	    cd ~/jbosstools/jbosstools-YOURPROJECT/as/plugins/org.jboss.ide.eclipse.as.rse.core; \
-	    mvn clean verify
+		cd ~/jbosstools/jbosstools-YOURPROJECT/as/plugins/org.jboss.ide.eclipse.as.rse.core; \
+		mvn clean verify
 
 4. If your project's new plugin builds successfully, you can commit the pom.xml file, and add a reference to the new plugin (module) in the container pom:
 
-	    cd ~/jbosstools/jbosstools-YOURPROJECT/as/plugins; \
-	    git add pom.xml
+		cd ~/jbosstools/jbosstools-YOURPROJECT/as/plugins; \
+		git add pom.xml
 
 5. To ensure that your plugin is available on the update site, be sure that it is contained in at least one feature's feature.xml.
 
-	    cd ~/jbosstools/jbosstools-YOURPROJECT/as/features; \
-	    vim org.jboss.ide.eclipse.as.feature/feature.xml
+		cd ~/jbosstools/jbosstools-YOURPROJECT/as/features; \
+		vim org.jboss.ide.eclipse.as.feature/feature.xml
 
 6. If necessary, create a new feature to contain the new plugin - easiest approach is to copy an existing feature project, and string-replace the various files until it suits your needs. Don't forget to update .project and other hidden files.
 
-	    git add org.jboss.ide.eclipse.as.new.feature
-	    git ci -m "JBIDE-123456 Initial commit of new as.new feature" org.jboss.ide.eclipse.as.new.feature
+		git add org.jboss.ide.eclipse.as.new.feature
+		git ci -m "JBIDE-123456 Initial commit of new as.new feature" org.jboss.ide.eclipse.as.new.feature
 
 7. If your project's new feature builds successfully, you can commit the pom.xml file, and add a reference to the new plugin (module) in the container pom:
 
-	    cd ~/jbosstools/jbosstools-YOURPROJECT/as/features; \
-	    vim /features/pom.xml
+		cd ~/jbosstools/jbosstools-YOURPROJECT/as/features; \
+		vim /features/pom.xml
 
 
 ### Add a new plugin or feature to your update site
 
 8. Ensure that the feature appears in your project's update site:
 
-	    vi ~/jbosstools/jbosstools-YOURPROJECT/site/category.xml # (the project's update site)
+		vi ~/jbosstools/jbosstools-YOURPROJECT/site/category.xml # (the project's update site)
 
 Build the sites locally to ensure the XML is valid and the contents appear correctly. You can then install the new feature from the sites into Eclipse or Devstudio to verify it runs as expected (no missing dependencies which prevent the plugin from being activated, no missing metadata such as description, provider, license or copyright while installing, etc.)
 
-	    cd ~/jbosstools/jbosstools-YOURPROJECT/; mvn clean verify; # then point Eclipse at ~/jbosstools/jbosstools-YOURPROJECT/site/target/repository/ to install the feature
+		cd ~/jbosstools/jbosstools-YOURPROJECT/; mvn clean verify;
+		# then point Eclipse at ~/jbosstools/jbosstools-YOURPROJECT/site/target/repository/ to install the feature
 
 ### Add a new plugin or feature to JBoss Tools
 
@@ -75,13 +76,19 @@ Sources are here: https://github.com/jbosstools/jbosstools-build-sites/
 
 9. Ensure that the feature appears in all appropriate JBoss Tools update sites:
 
-	    vi ~/jbosstools/jbosstools-build-sites/aggregate/site/category.xml # (the JBoss Tools aggregate update site)
-	    vi ~/jbosstools/jbosstools-build-sites/aggregate/coretests-site/category.xml # (the JBoss Tools aggregate update site for test plugins)
+		vi ~/jbosstools/jbosstools-build-sites/aggregate/site/category.xml
+		# (the JBoss Tools aggregate update site)
+
+		vi ~/jbosstools/jbosstools-build-sites/aggregate/coretests-site/category.xml
+		# (the JBoss Tools aggregate update site for test plugins)
 
 Build the sites locally to ensure the XML is valid and the contents appear correctly. You can then install the new feature from the sites into Eclipse or Devstudio to verify it runs as expected (no missing dependencies which prevent the plugin from being activated, no missing metadata such as description, provider, license or copyright while installing, etc.)
 
-	    cd ~/jbosstools/jbosstools-build-site/aggregate/site; mvn clean verify; # then point Eclipse at ~/jbosstools/jbosstools-build-site/aggregate/site/target/repository/
-	    cd ~/jbosstools/jbosstools-build-site/aggregate/coretests-site; mvn clean verify; # then point Eclipse at ~/jbosstools/jbosstools-build-site/aggregate/coretests-site/target/repository/
+		cd ~/jbosstools/jbosstools-build-site/aggregate/site; mvn clean verify
+		# then point Eclipse at ~/jbosstools/jbosstools-build-site/aggregate/site/target/repository/
+
+		cd ~/jbosstools/jbosstools-build-site/aggregate/coretests-site; mvn clean verify
+		# then point Eclipse at ~/jbosstools/jbosstools-build-site/aggregate/coretests-site/target/repository/
 
 ### Add a new plugin or feature to JBoss Developer Studio
 
@@ -92,16 +99,17 @@ Sources are here: https://github.com/jbdevstudio/jbdevstudio-product/
 
 10. Ensure that the feature appears in all appropriate JBoss Developer Studio update site:
 
-	    vi ~/jbosstools/jbdevstudio-product/site/category.xml # (the JBoss Developer Studio aggregate update site)
+		vi ~/jbosstools/jbdevstudio-product/site/category.xml
+		# (the JBoss Developer Studio aggregate update site)
 
 11. If you added a new feature, be sure that the feature is included in the Devstudio feature (or wrapped inside another feature) so that it will appear in the installer.
 
-	    vi ~/jbosstools/jbdevstudio-product/features/com.jboss.devstudio.core.rpm.feature/feature.xml
+		vi ~/jbosstools/jbdevstudio-product/features/com.jboss.devstudio.core.rpm.feature/feature.xml
 
 
 Build the sites locally to ensure the XML is valid and the contents appear correctly. You can then install the new feature from the sites into Eclipse or Devstudio to verify it runs as expected (no missing dependencies which prevent the plugin from being activated, no missing metadata such as description, provider, license or copyright while installing, etc.)
 
-	    cd ~/jbosstools/jbdevstudio-product; mvn clean verify
-	    # then point Devstudio at ~/jbosstools/jbdevstudio-product/site/target/repository/
+		cd ~/jbosstools/jbdevstudio-product; mvn clean verify
+		# then point Devstudio at ~/jbosstools/jbdevstudio-product/site/target/repository/
 
 
