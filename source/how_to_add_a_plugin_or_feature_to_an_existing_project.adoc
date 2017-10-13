@@ -2,14 +2,14 @@
 
 ### IMPORTANT PREREQUISITES
 
-1. First, read these documents to learn how to build JBoss Tools project(s) locally: 
+1. First, read these documents to learn how to build JBoss Tools project(s) locally:
 * link:build_from_commandline.adoc[How to build JBoss Tools 4.3 via commandline]
 * link:how_to_build_jbosstools_faq.adoc[JBoss Tools Build FAQ]
 * link:how_to_build_jbosstools_4.adoc[How to build JBoss Tools 4.0]
 
 2. Before adding a complete new feature to JBoss Tools announce the addition on mailto:jbosstools-dev@lists.jboss.org[jbosstools-dev@lists.jboss.org] with reasons WHY a new feature is needed and what new (if any) dependencies it will bring in. New dependencies need to be added to the target platforms, and thus should be reported in JIRA for tracking and task assignment purposes.
 
-3. Note too that new features will often start in JBoss Tools but *NOT* be included in JBoss Developer Studio until they have had time to mature. 
+3. Note too that new features will often start in JBoss Tools but *NOT* be included in JBoss Developer Studio until they have had time to mature.
 
 4. If your new feature needs to be in *BOTH* offerings, please be sure to explain WHY when contacting the above mailing list.
 
@@ -22,7 +22,7 @@ Now that you can build the project, you can easily add a new plugin to that proj
 
 1. When you are satisfied, you can commit your new plugin project to Git.
 
-	    cd ~/jbosstools/jbosstools-server/as/plugins; \
+	    cd ~/jbosstools/jbosstools-YOURPROJECT/as/plugins; \
 	    git add org.jboss.ide.eclipse.as.rse.core; \
 	    git commit -m "JBIDE-123456 Initial commit of new as.rse.core plugin"
 
@@ -32,17 +32,17 @@ You can use m2eclipse to help w/ this if you have it installed; otherwise copy f
 
 3. Build your plugin:
 
-	    cd ~/jbosstools/jbosstools-server/as/plugins/org.jboss.ide.eclipse.as.rse.core; \
+	    cd ~/jbosstools/jbosstools-YOURPROJECT/as/plugins/org.jboss.ide.eclipse.as.rse.core; \
 	    mvn clean verify
 
 4. If your project's new plugin builds successfully, you can commit the pom.xml file, and add a reference to the new plugin (module) in the container pom:
 
-	    cd ~/jbosstools/jbosstools-server/as/plugins; \ 
+	    cd ~/jbosstools/jbosstools-YOURPROJECT/as/plugins; \
 	    git add pom.xml
 
 5. To ensure that your plugin is available on the update site, be sure that it is contained in at least one feature's feature.xml.
 
-	    cd ~/jbosstools/jbosstools-server/as/features; \
+	    cd ~/jbosstools/jbosstools-YOURPROJECT/as/features; \
 	    vim org.jboss.ide.eclipse.as.feature/feature.xml
 
 6. If necessary, create a new feature to contain the new plugin - easiest approach is to copy an existing feature project, and string-replace the various files until it suits your needs. Don't forget to update .project and other hidden files.
@@ -52,7 +52,7 @@ You can use m2eclipse to help w/ this if you have it installed; otherwise copy f
 
 7. If your project's new feature builds successfully, you can commit the pom.xml file, and add a reference to the new plugin (module) in the container pom:
 
-	    cd ~/jbosstools/jbosstools-server/as/features; \
+	    cd ~/jbosstools/jbosstools-YOURPROJECT/as/features; \
 	    vim /features/pom.xml
 
 
@@ -60,7 +60,7 @@ You can use m2eclipse to help w/ this if you have it installed; otherwise copy f
 
 8. Next, ensure that the feature appears in all appropriate JBoss Tools update sites:
 
-	    vi ~/jbosstools/jbosstools-server/site/category.xml # (the project's update site)
+	    vi ~/jbosstools/jbosstools-YOURPROJECT/site/category.xml # (the project's update site)
 
 and one of the following:
 
@@ -68,13 +68,9 @@ and one of the following:
 
 	    vi ~/jbosstools/jbosstools-build-sites/aggregate/coretests-site/category.xml # (the JBoss Tools aggregate update site for test plugins)
 
-Note: for jbosstools-server, and any DEPENDENCIES of jbosstools-server, you MAY want to add your new feature to this site too, if and only if AS Tools makes use of that plugin / feature:
-
-	    vi ~/jbosstools/jbosstools-build-sites/aggregate/webtools-site/category.xml # (the JBoss Tools aggregate update site for WTP adapters)
-
 9. Finally, build the sites locally to ensure the XML is valid and the contents appear correctly. You can then install the new feature from the sites into Eclipse or JBDS to verify it runs as expected (no missing dependencies which prevent the plugin from being activated, no missing metadata such as description, provider, license or copyright while installing, etc.)
 
-	    cd ~/jbosstools/jbosstools-server/; mvn clean verify; # then point Eclipse at ~/jbosstools/jbosstools-server/site/target/repository/
+	    cd ~/jbosstools/jbosstools-YOURPROJECT/; mvn clean verify; # then point Eclipse at ~/jbosstools/jbosstools-YOURPROJECT/site/target/repository/
 	      and
 	    cd ~/jbosstools/jbosstools-build-site/aggregate/site; mvn clean verify; # then point Eclipse at ~/jbosstools/jbosstools-build-site/aggregate/site/target/site/
 
@@ -94,8 +90,8 @@ Note: for jbosstools-server, and any DEPENDENCIES of jbosstools-server, you MAY 
 
 12. Finally, build the sites locally to ensure the XML is valid and the contents appear correctly. You can then install the new feature from the sites into Eclipse or JBDS to verify it runs as expected (no missing dependencies which prevent the plugin from being activated, no missing metadata such as description, provider, license or copyright while installing, etc.)
 
-	    cd ~/jbosstools/jbdevstudio-product; mvn clean verify 
-	    # then point JBDS at ~/jbosstools/jbdevstudio-product/features/com.jboss.jbds/target/repository/ 
+	    cd ~/jbosstools/jbdevstudio-product; mvn clean verify
+	    # then point JBDS at ~/jbosstools/jbdevstudio-product/features/com.jboss.jbds/target/repository/
 	    # (search for "Branded Product" feature, com.jboss.jbds.all)
 
 Note: the product site in ~/jbosstools/jbdevstudio-product/site/target/site/ does not contain the "Branded Product" feature, com.jboss.jbds.all, so you cannot use that site to update an existing *JBDS install*, only an *Eclipse install*.
