@@ -10,8 +10,8 @@ This repo should be considered a wiki, into which all developers can push docs. 
 
 == Table of Contents
 * Getting Started
-** link:building/setup_development_environment.adoc[Setting up the eclipse development environment].
-** link:building/configuring_git_workflow.adoc[Configuring your git workflow].
+** link:building/setup_development_environment.adoc[Setting up the eclipse development environment]
+** link:building/configuring_git_workflow.adoc[Configuring your git workflow]
 ** link:building/target_platforms/target_platforms_for_consumers.adoc[Using target platforms in eclipse]
 * Target Platforms
 ** link:building/target_platforms/target_platforms_for_consumers.adoc[Using target platforms in eclipse]
