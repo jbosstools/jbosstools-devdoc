@@ -7,7 +7,7 @@ RUN gpg2 --export -a f4a80eb5 >f4a80eb5.key
 RUN rpm --import f4a80eb5.key
 #RUN rpm -iUvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
 
-RUN yum install -y git make ruby-devel gcc rpm-build
+RUN yum install -y git make ruby-devel gcc rpm-build automake libffi-devel
 
 RUN gem install --no-ri --no-rdoc fpm
 
