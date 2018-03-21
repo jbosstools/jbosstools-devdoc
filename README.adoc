@@ -9,21 +9,24 @@ See link:CONTRIBUTING.adoc[Contributing] for how to write/add to these docs.
 This repo should be considered a wiki, into which all developers can push docs. External contributors can do pull requests or report issues to improve the quality, clarity, and breadth of this documentation.
 
 == Table of Contents
+
 * Getting Started
 ** link:building/setup_development_environment.adoc[Setting up the eclipse development environment]
 ** link:building/configuring_git_workflow.adoc[Configuring your git workflow]
 ** link:building/target_platforms/target_platforms_for_consumers.adoc[Using target platforms in eclipse]
+
 * Target Platforms
 ** link:building/target_platforms/target_platforms_for_consumers.adoc[Using target platforms in eclipse]
 *** link:building/target_platforms/target_platforms_for_consumers.adoc#Sources[Using the PDE Source Lookup plugin with target platforms]
 ** link:building/target_platforms/target_platforms_updates.adoc[Target platform update process]
 *** link:building/target_platforms/target_platforms_dependency_mirrors.adoc[Creating a new dependency mirror]
 ** link:building/target_platforms/target_platforms_releases.adoc[Target platform release process]
+
 * Building a project (also called module or component)
 ** link:building/how_to_build_jbosstools_faq.adoc[JBoss Tools Build FAQ]
 ** link:building/build_from_commandline.adoc[Building from the command line]
 ** link:building/build_from_eclipse.adoc[Building with Eclipse (using m2e)]
-** link:building/jenkins_faq.adoc[Building with Jenkins FAQ]
+** link:building/jenkins_faq.adoc[Jenkins FAQ: Troubleshooting and reporting problems]
 ** link:source/build_checks.adoc[Build-time baseline and maven enforcer checks]
 ** link:source/build_source_bundles_features_and_src_zips.adoc[How to build source bundles, features, and source zips]
 ** link:building/build_job_cascade_and_where_to_find_build_results.adoc[How to build the whole JBoss Tools cascade / stack of projects]
@@ -41,6 +44,7 @@ This repo should be considered a wiki, into which all developers can push docs. 
 ** link:debugging/debug_tycho_tests.adoc[Debugging maven (surefire) tests]
 ** link:debugging/debug_remote_console.adoc[Debugging on a remote server] (via SSH or VNC)
 ** link:source/build_checks.adoc[Why is my build failing due to a baseline or enforcer check?]
+** link:building/jenkins_faq.adoc[Jenkins FAQ: Troubleshooting and reporting problems]
 
 * Source and Project Management
 ** link:source/new_project_process.adoc[Adding a new module / repository to JBoss Tools or JBDS]
@@ -56,11 +60,14 @@ This repo should be considered a wiki, into which all developers can push docs. 
 *** link:source/versioning-build-artifacts.adoc[Versioning Rules for Build Artifacts] (Parent pom, foundation.core, core.central, ide-config.properties)
 *** link:source/build_checks.adoc#Baseline[Baseline version checks]
 ** link:https://developer.jboss.org/en/tools/blog/2011/09/17/coping-with-versions-in-large-multi-module-osgi-projects[Updating Versions for Components]
+
 * Process and Protocol
 ** link:community/how_to_use_jira.adoc[How to use JIRA]
 ** link:community/code_freezes.adoc[Code freezes]
 ** link:community/release_guidelines.adoc[Release guidelines]
 ** link:source/tagging_branching.adoc[Tagging & branching]
+** link:building/jenkins_faq.adoc[Jenkins FAQ: Troubleshooting and reporting problems]
+
 * API
 ** link:api/exposing_api.adoc[Exposing And Migrating API]
 ** Common APIs You May Need

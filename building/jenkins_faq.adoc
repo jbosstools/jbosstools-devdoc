@@ -13,6 +13,8 @@
 
 ### A. From the job's build's page or console...
 
+#### Step 1. Troubleshoot the issue
+
 * Look for a link to the specific slave that was used. Click that link.
 
 * Next, select *Schedule Termination* to ensure the faulty slave will be trashed and its resources repurposed. If the above link returns a 404, then the slave has already been terminated.
@@ -25,6 +27,8 @@
 ** *Rebuild Last* - to rebuild the last build with the same settings, and option to change them
 ** *Build with Parameters* - to run a new build with optionally different settings
 
+#### Step 2. Report to Central CI maintainers
+
 * If a new build does not fix the problem, please link:https://issues.jboss.org/secure/CreateIssue.jspa?pid=10020&issuetype=1[open a JBIDE JIRA] with these details:
 
 ** link to the github repo(s) used for the build
@@ -36,3 +40,10 @@
 *** Nick Boldt
 *** Pavol Srna
 
+#### Step 3. Report to PnT / DevOps
+
+* If you have persistent issues, or the issue cannot solved opening a JIRA, link:https://redhat.service-now.com/pnt?id=sc_cat_item&sys_id=b86bfc10133ce200dce03ff18144b028[open a PnT ticket] with the same details as noted above in step 2.
+
+Should you need to *ESCALATE* the issue, log onto VPN, open up your IRC client, and go into *#ops-escalation*.
+
+Ping the moderators for help, and they'll be able to help you.
