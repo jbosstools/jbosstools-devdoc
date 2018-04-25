@@ -6,11 +6,11 @@ The process for link:target_platforms_updates.adoc[updating target platforms] is
 
 1. find an update site from which the dependency can be resolved (often from download.eclipse.org). You can either simply use a web browser, or the https://github.com/ifedorenko/p2-browser[p2 browser], to find the plugins/features you need
 
-2. mirror that update site into a subfolder of http://downloads.jboss.org/jbosstools/updates/requirements/ 
+2. mirror that update site into a subfolder of http://downloads.jboss.org/jbosstools/updates/requirements/
 
 3. point your .target file https://github.com/jbosstools/jbosstools-target-platforms/blob/4.42.x/jbosstools/multiple/jbosstools-multiple.target#L22[at that mirror]
 
-4. resolve target platform site from .target file (see link:target_platforms_updates.adoc#update-versions-of-ius-in-the-target-files[target_platforms_updates.adoc] - Update versions of IUs in the .target files)
+4. resolve target platform site from .target file (see link:target_platforms_updates.adoc#update-versions-of-ius-in-the-target-files[target platforms updates] - Update versions of IUs in the .target files)
 
 Generally, your release engineering team handles the first two steps. But, it's not hard to find and produce the mirror yourself, in order to then produce a locally modified .target file with the correctly updated versions of your chosen IUs. This document will explain how to produce such a mirror.
 
@@ -19,10 +19,10 @@ Generally, your release engineering team handles the first two steps. But, it's 
 
 If no mirror yet exists for the version of features/plugins you'd like to add to the target platform, look in https://github.com/jbosstools/jbosstools-download.jboss.org/tree/master/jbosstools/updates/requirements[updates/requirements/] for your requirement's folder, or perhaps the name of a project that includes your requirement. Often, you can find things in Orbit or in the current simulataneous release train's folder:
 
-* https://github.com/jbosstools/jbosstools-download.jboss.org/tree/master/jbosstools/updates/requirements/orbit/[Orbit - Scripts]
-* https://github.com/jbosstools/jbosstools-download.jboss.org/tree/master/jbosstools/updates/requirements/mars/[Eclipse 4.5 Mars - Scripts]
+* https://github.com/jbosstools/jbosstools-download.jboss.org/tree/master/jbosstools/updates/requirements/orbit/build.xml[Orbit build.xml]
+* https://github.com/jbosstools/jbosstools-download.jboss.org/tree/master/jbosstools/updates/requirements/photon/build.xml[Eclipse 4.8 Photon build.xml]
 
-In the github folder, there should also be a `build.xml` file showing the most recent URL and version mirrored. 
+In the github folder, there should also be a `build.xml` file showing the most recent URL and version mirrored.
 
 Similarly, if you browse to the equivalent folder on download.jboss.org, you will see one or more versioned subfolders. These are the *actual mirrors* (not just the scripts), produced from the `build.xml` script then pushed to the server.
 
@@ -42,7 +42,7 @@ So here's what you do:
 
 If you can't find an existing mirror with your requirement - even an older version - you may need to create a whole new `build.xml` script.
 
-Or, perhaps you found your requirement, but you need something NEWER than the lastest available in Mars. This https://github.com/jbosstools/jbosstools-target-platforms/commit/74e4db8b13eb03539c61cc6f8f92e5aa7842c4fb[happened] for the https://github.com/jbosstools/jbosstools-download.jboss.org/blob/master/jbosstools/updates/requirements/launchbar[CDT launchbar] feature. 
+Or, perhaps you found your requirement, but you need something NEWER than the lastest available in Mars. This https://github.com/jbosstools/jbosstools-target-platforms/commit/74e4db8b13eb03539c61cc6f8f92e5aa7842c4fb[happened] for the https://github.com/jbosstools/jbosstools-download.jboss.org/blob/master/jbosstools/updates/requirements/launchbar[CDT launchbar] feature.
 
 Or, maybe SOME of your requirements are in Mars, but you need something else as well. This applies to projects like https://github.com/jbosstools/jbosstools-download.jboss.org/blob/master/jbosstools/updates/requirements/birt/build.xml[BIRT], as Mars does not include the chart integration features, or https://github.com/jbosstools/jbosstools-download.jboss.org/blob/master/jbosstools/updates/requirements/webtools/build.xml[Web Tools], as Mars only includes a subset of the WTP projects.
 
@@ -57,7 +57,7 @@ So here's what you do:
 
 == Mirroring with Jenkins
 
-Your build.xml script can be run via https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstools-requirements/[this Jenkins job] (if you have VPN access). 
+Your build.xml script can be run via https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/job/jbosstoolstargetplatformrequirements-mirror-matrix/configure[this Jenkins job] (if you have VPN access).
 
 You can even pass in alternate values for `SOURCE_URL` and `VERSION`, which are the two most likely things you'd be changing in a pull request above. This allows you to re-use an existing build.xml script without having to work through the pull request process above.
 
