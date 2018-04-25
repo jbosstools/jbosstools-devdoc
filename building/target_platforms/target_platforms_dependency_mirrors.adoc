@@ -4,11 +4,11 @@ Why would you need to do this?
 
 The process for link:target_platforms_updates.adoc[updating target platforms] is as follows:
 
-1. find an update site from which the dependency can be resolved (often from download.eclipse.org). You can either simply use a web browser, or the https://github.com/ifedorenko/p2-browser[p2 browser], to find the plugins/features you need
+1. find an update site from which the dependency can be resolved (often from download.eclipse.org). You can either simply use a web browser, or the https://github.com/nickboldt/p2-browser[p2 browser], to find the plugins/features you need
 
 2. mirror that update site into a subfolder of http://downloads.jboss.org/jbosstools/updates/requirements/
 
-3. point your .target file https://github.com/jbosstools/jbosstools-target-platforms/blob/4.42.x/jbosstools/multiple/jbosstools-multiple.target#L22[at that mirror]
+3. point your .target file https://github.com/jbosstools/jbosstools-target-platforms/blob/4.80.x/jbosstools/multiple/jbosstools-multiple.target[at that mirror]
 
 4. resolve target platform site from .target file (see link:target_platforms_updates.adoc#update-versions-of-ius-in-the-target-files[target platforms updates] - Update versions of IUs in the .target files)
 
@@ -27,7 +27,7 @@ In the github folder, there should also be a `build.xml` file showing the most r
 Similarly, if you browse to the equivalent folder on download.jboss.org, you will see one or more versioned subfolders. These are the *actual mirrors* (not just the scripts), produced from the `build.xml` script then pushed to the server.
 
 * http://download.jboss.org/jbosstools/updates/requirements/orbit/[Orbit - Mirrors]
-* http://download.jboss.org/jbosstools/updates/requirements/mars/[Eclipse 4.5 Mars - Mirrors]
+* http://download.jboss.org/jbosstools/updates/requirements/photon/[Eclipse 4.8 Photon - Mirrors]
 
 So here's what you do:
 
@@ -42,9 +42,9 @@ So here's what you do:
 
 If you can't find an existing mirror with your requirement - even an older version - you may need to create a whole new `build.xml` script.
 
-Or, perhaps you found your requirement, but you need something NEWER than the lastest available in Mars. This https://github.com/jbosstools/jbosstools-target-platforms/commit/74e4db8b13eb03539c61cc6f8f92e5aa7842c4fb[happened] for the https://github.com/jbosstools/jbosstools-download.jboss.org/blob/master/jbosstools/updates/requirements/launchbar[CDT launchbar] feature.
+Or, perhaps you found your requirement, but you need something NEWER than the lastest available in the latest Eclipse simrel. This https://github.com/jbosstools/jbosstools-target-platforms/commit/74e4db8b13eb03539c61cc6f8f92e5aa7842c4fb[happened] for the https://github.com/jbosstools/jbosstools-download.jboss.org/blob/master/jbosstools/updates/requirements/launchbar[CDT launchbar] feature.
 
-Or, maybe SOME of your requirements are in Mars, but you need something else as well. This applies to projects like https://github.com/jbosstools/jbosstools-download.jboss.org/blob/master/jbosstools/updates/requirements/birt/build.xml[BIRT], as Mars does not include the chart integration features, or https://github.com/jbosstools/jbosstools-download.jboss.org/blob/master/jbosstools/updates/requirements/webtools/build.xml[Web Tools], as Mars only includes a subset of the WTP projects.
+Or, maybe SOME of your requirements are in the latest Eclipse simrel, but you need something else as well. This applies to projects like https://github.com/jbosstools/jbosstools-download.jboss.org/blob/master/jbosstools/updates/requirements/webtools/build.xml[Web Tools], as the latest Eclipse simrel only includes a subset of the WTP plugins/features.
 
 So here's what you do:
 
