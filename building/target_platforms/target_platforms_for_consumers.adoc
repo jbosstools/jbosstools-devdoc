@@ -44,19 +44,19 @@ Inside the JBoss Tools Target Platform repository, there is one top level folder
 
 JBoss Tools uses a well-defined versioning scheme for our target platforms.
 
-The first 3 digits are the version of Eclipse included in the target platform, such as 4.70 (Oxygen.0) or 4.71 (Oxygen.1).
+The first 3 digits are the version of Eclipse included in the target platform, such as 4.80 (Photon.0).
 
-The next digit signifies the sequence of target platforms, starting with 0. Should there be multiple JBoss Tools releases on the same Eclipse version, this allows us to have different target platforms using the same baseline, such as 4.70.0, 4.70.1, 4.70.2.
+The next digit signifies the sequence of target platforms, starting with 0. Should there be multiple JBoss Tools releases on the same Eclipse version, this allows us to have different target platforms using the same baseline, such as 4.80.0, 4.80.1, 4.80.2.
 
 After that, the milestone of JBoss Tools that uses the target platform is suffixed, which also defines the quality/stability of the target platform (AM1, AM2, AM3, Final).
 
 Finally, the target platform version will have a `-SNAPSHOT` suffix if it has not yet been released to Nexus. Once released, the `-SNAPSHOT` suffix is removed. For .Final versions, the bits are moved to mirrored to the Akamai /static/ folder for better performance.
 
-=== Choosing the appropriate target platform.
+=== Choosing the appropriate target platform
 
 Normally, each project uses a parent pom that will default to the right target platform, but in case you need to update to, or test against, a different target platform, this section will be useful for you.
 
-In general, we use the latest target platform for the version of Eclipse your development environment requires. For example, if you are building code for Neon.2, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.70.x[4.70.x] target platform.
+In general, we use the latest target platform for the version of Eclipse your development environment requires. For example, if you are building code for Photon, use a https://github.com/jbosstools/jbosstools-target-platforms/tree/4.80.x[4.80.x] target platform.
 
 If you use the https://github.com/jbosstools/jbosstools-build/blob/master/parent/pom.xml#L104-L115[latest parent pom], chances are good you'll automatically build with the latest appropriate target platform too.
 
@@ -69,9 +69,49 @@ mvn install -P maximum
 Should you want to build using a *specific* target platform, perhaps because you're testing a new, unreleased one, you could build like this:
 
 ```
-mvn install -Dtpc.version=4.70.0.AM1-SNAPSHOT
+mvn install -Dtpc.version=4.80.0.AM1-SNAPSHOT
 ```
 
+=== Using a locally-built target platform
+
+If you built a target platform locally from the sources in https://github.com/jbosstools/jbosstools-target-platforms/tree/4.80.x[4.80.x] target platform, you can reference that unified target platform from within your `.m2` repo.
+
+```
+mvn install -Dtpc.version=4.80.0.AM1-SNAPSHOT
+```
+
+=== Using a locally-downloaded target platform
+
+But if you http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/?C=M;O=D[downloaded the target platform as a zip], and want to use that instead, you'll need to use a couple more commandline properties. First, download and unpack the target platform zip.
+
+Then add this to your root pom:
+
+```
+  <profiles>
+    <profile>
+      <id>target-site</id>
+      <activation>
+        <property>
+          <name>jbosstools-target-site</name>
+        </property>
+      </activation>
+      <repositories>
+        <repository>
+          <id>jbosstools-target-site</id>
+          <layout>p2</layout>
+          <url>${jbosstools-target-site}</url>
+        </repository>
+      </repositories>
+    </profile>
+  <profiles>
+```
+
+Now you can build using the target platform update site, rather than the target platform definition:
+
+```
+mvn clean install -Dno-target-platform \
+  -Djbosstools-target-site=file:///path/to/where/you/unzipped/jbosstoolstarget/4.80.0.AM1-SNAPSHOT/jbosstoolstarget-4.80.0.AM1-SNAPSHOT.zip/
+```
 
 == How can I use a target platform in Eclipse?
 
@@ -95,13 +135,13 @@ There are several different options you can use when attempting to configure you
 * Requires very little setup
 * Do not need to check out jbosstools-target-platforms
 * Easily reused for an unlimited number of workspaces
-* As of 4.70, both jbosstools & devstudio target platforms include sources and testing dependencies.
+* As of 4.80, both jbosstools & devstudio target platforms include sources and testing dependencies.
 * With source bundles, so you can link:../../source/pde-source-lookup.adoc[trace into dependencies' sources]
 
 |
 
 * Browse to link:http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/[jbosstoolstarget] or link:http://devstudio.redhat.com/targetplatforms/devstudiotarget/[devstudiotarget]
-* Select the folder for the version you want such as `4.70.2.Final`
+* Select the folder for the version you want such as `4.80.0.Final`
 * Select the zip file and save it to disk
 * Unzip it to a location you desire
 * Inside Eclipse, browse to `Window -> Preferences -> Target Platform` and click _Add..._
@@ -129,12 +169,12 @@ potential improvement)
 org.eclipse.pde.core/.bundle_pool` +
 (see link:https://bugs.eclipse.org/bugs/show_bug.cgi?id=282352[EBZ 282352] )
 |
-* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.7.0 (Oxygen.0), check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.70.x[4.70.x] branch.
+* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.8.0 (Photon.0), check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.80.x[4.80.x] branch.
 
 ```bash
 git clone https://github.com/jbosstools/jbosstools-target-platforms.git
 cd jbosstools-target-platforms
-git checkout 4.70.x
+git checkout 4.80.x
 ```
 
 * Next, import the `jbosstools/multiple` project into Eclipse. This project must be imported as a maven project. To import this project, select `File -> Import -> Existing Maven Project` and browse to the jbosstools/multiple project location.
@@ -164,12 +204,12 @@ But...
 
 * More complicated
 |
-* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.7.0, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.70.x[4.70.x] branch.
+* Check out the target platform branch matching the version of Eclipse you need. For a target platform containing Eclipse 4.8.0, check out the https://github.com/jbosstools/jbosstools-target-platforms/tree/4.80.x[4.80.x] branch.
 
 ```bash
 git clone https://github.com/jbosstools/jbosstools-target-platforms.git
 cd jbosstools-target-platforms
-git checkout 4.70.x
+git checkout 4.80.x
 ```
 
 * If you require source bundles, you should type:
@@ -213,7 +253,7 @@ simply install from our web urls, you can perform the following to install it in
 * Select `Window -> Install New Software`
 * Click `Add...`
 * Provide a name
-* Browse to the location of your local target platform, or paste a target platform URL such as http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.70.2.Final/
+* Browse to the location of your local target platform, or paste a target platform URL such as http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.80.0.Final/
 * Uncheck `Group item by category`
 * Click `Select All`
 * Click `Next>` and continue until you can `Finish`
