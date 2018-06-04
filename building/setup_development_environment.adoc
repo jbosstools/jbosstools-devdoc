@@ -8,10 +8,10 @@ This article explains the different options you have to set up a first-class dev
 
 JBoss Tools 4.3 requires Java 8. JBoss Tools 4.2 required Java 7 or 8.
 
-For other versions of JBoss Tools or Red Hat JBoss Developer Studio, see:
+For other versions of JBoss Tools or Red Hat Developer Studio, see:
 
 * https://developer.jboss.org/wiki/MatrixOfSupportedPlatformsRuntimesAndTechnologiesInJBossToolsJBDS[Matrix of supported platforms, runtimes and technologies in JBossTools & JBDS] or
-* https://access.redhat.com/articles/427493[Red Hat JBoss Developer Studio Components and Supported Configurations]
+* https://access.redhat.com/articles/427493[Red Hat Developer Studio Components and Supported Configurations]
 
 === Eclipse Base Installation
 

@@ -1,6 +1,6 @@
 = Build cascade & results
 
-Each year our process for building JBoss Tools & Red Hat JBoss Developer Studio evolves and improves, 
+Each year our process for building JBoss Tools & Red Hat Developer Studio evolves and improves,
 so each year our process documentation is by necessity also evolving (and hopefully improving, too).
 
 The basic workflow can be defined as follows:
@@ -18,18 +18,18 @@ The basic workflow can be defined as follows:
 
 3. Then, for JBoss Tools, we build a series of aggregate update sites (core, coretests, central, earlyaccess).
 
-4. For Red Hat JBoss Developer Studio, we then we build the JBoss Developer Studio update site, and use that to build the installers.
+4. For Red Hat Developer Studio, we then we build the JBoss Developer Studio update site, and use that to build the installers.
 
 All builds depend on their respective target platforms being built and up-to-date with the latest upstream dependencies from Eclipse and other third-party vendors.
 
  * http://download.jboss.org/jbosstools/targetplatforms/
  * https://devstudio.redhat.com/targetplatforms/
 
-For the latest list of projects & links to their builds, logs & output, see: 
+For the latest list of projects & links to their builds, logs & output, see:
 
 https://github.com/jbosstools/jbosstools-devdoc/blob/master/list_of_projects.adoc
 
-For the relationships between component projects (deprecated), see: 
+For the relationships between component projects (deprecated), see:
 
 http://download.jboss.org/jbosstools/builds/cascade/swimlanes.html[http://download.jboss.org/jbosstools/builds/cascade/swimlanes.html]
 

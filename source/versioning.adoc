@@ -1,6 +1,6 @@
 = Versioning rules
 
-This document describes how we handle the versioning of plugins, features, products, installers, and update sites in JBoss Tools and Red Hat JBoss Developer Studio.
+This document describes how we handle the versioning of plugins, features, products, installers, and update sites in JBoss Tools and Red Hat Developer Studio.
 
 :toc: macro
 toc::[]
