@@ -1,0 +1,58 @@
+# Jenkins Job Maintenance
+
+This page documents how to pull copies of Jenkins job config.xml files to your local machine, make changes, and push them back to Jenkins.
+
+The tool used for this is a maven mojo called link:https://github.com/nickboldt/maven-plugins/tree/master/hudson-job-sync-plugin[hudson-job-sync]
+
+## Setting up hudson-job-sync
+
+As link:https://github.com/nickboldt/maven-plugins/blob/master/hudson-job-sync-plugin/README.adoc[documented here], there are a number of steps to using this tool.
+
+. Clone the link:https://github.com/nickboldt/maven-plugins/tree/master/hudson-job-sync-plugin[sources]
+
+. Build the maven mojo
+
+. link:https://github.com/nickboldt/maven-plugins/blob/master/hudson-job-sync-plugin/README.adoc[Configure your JDK's keystore]
+
+. Configure usage for your Jenkins machine. For example, create link:https://github.com/nickboldt/maven-plugins/blob/master/hudson-job-sync-plugin/pom-sync.xml[a pom file like this one] in which you set defaults for:
+.. viewFilter, regexFilter
+.. hudsonURL, username, password
+
+## Using hudson-job-sync
+
+Once you have the above steps completed, you can run the mojo as a *push* (from local to remote server) or *pull* (from remote server to local) operation.
+
+Here are a couple of shell scripts to make that easier. You'll have to adjust them to match your own paths on disk where you have your link:https://github.com/nickboldt/eclipse.ci.jobs/tree/master/cache/https/ci.eclipse.org[config.xml files] checked out.
+
+* *link:https://github.com/nickboldt/maven-plugins/blob/master/hudson-job-sync-plugin/scripts/hudpull-eclipseJIPP.sh[operation = pull]*
+* *link:https://github.com/nickboldt/maven-plugins/blob/master/hudson-job-sync-plugin/scripts/hudpush-eclipseJIPP.sh[operation = push]*
+
+Some examples:
+
+[source,bash]
+----
+# to pull jobs matching /.*servertools.*/
+. ~/bin/hudpull-eclipseJIPP.sh -DhudsonURL=https://ci.eclipse.org/webtools/ \
+-DviewFilter=view/webtools_R3_10/ -DregexFilter=servertools
+
+# make changes locally, then push back to server
+. ~/bin/hudpush-eclipseJIPP.sh -DhudsonURL=https://ci.eclipse.org/webtools/ \
+-DviewFilter=view/webtools_R3_10/ -DregexFilter=servertools
+
+# or, for a different view filter:
+. ~/bin/hudpull-eclipseJIPP.sh -DhudsonURL=https://ci.eclipse.org/webtools/ \
+-DviewFilter=view/gerrit/ -DregexFilter=jsdt
+
+# make changes locally, then push back to server:
+. ~/bin/hudpush-eclipseJIPP.sh -DhudsonURL=https://ci.eclipse.org/webtools/ \
+-DviewFilter=view/gerrit/ -DregexFilter=jsdt
+----
+
+Note that using no viewFilter will default to whatever value is set in your pom.xml.
+
+If you want to match on all configs in the view, use `.*`
+
+## Commit changes
+
+After confirming your changes are pushed to the remote server, and didn't break anything, you can commit the same changes to your local link:https://github.com/nickboldt/eclipse.ci.jobs[config.xml cache] for storage/versioning.
+
