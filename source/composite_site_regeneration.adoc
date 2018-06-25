@@ -1,0 +1,21 @@
+= Regenerating a composite update site
+
+Should you need to regen a composite update site to include some list of its child folders, there's a script for that.
+
+https://github.com/jbosstools/jbosstools-build-ci/blob/master/util/cleanup/jbosstools-cleanup.sh#L47
+
+Example usage:
+
+```bash
+cd /tmp
+wget https://raw.githubusercontent.com/jbosstools/jbosstools-build-ci/master/util/cleanup/jbosstools-cleanup.sh
+
+./jbosstools-cleanup.sh --regen-metadata-only --no-subdirs \
+  --link 5 -d updates/m2e-extensions/m2e-apt
+```
+
+Result:
+
+http://download.jboss.org/jbosstools/updates/m2e-extensions/m2e-apt/compositeArtifacts.xml
+http://download.jboss.org/jbosstools/updates/m2e-extensions/m2e-apt/compositeContent.xml
+

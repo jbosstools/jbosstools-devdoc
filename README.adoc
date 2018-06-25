@@ -53,6 +53,7 @@ This repo should be considered a wiki, into which all developers can push docs. 
 ** link:source/how_to_add_a_test_plugin_or_feature.adoc[Adding a new unit or integration test and test feature]
 ** link:building/target_platforms/target_platforms_updates.adoc[Requesting Target Platform Updates]
 ** link:source/how_to_add_an_update_site.adoc[Adding an update site] or link:source/build_update_sites_using_associate_sites.adoc[associate site]
+** link:source/composite_site_regeneration.adoc[Regenerating a composite update site]
 ** link:source/publishing_features_downstream.adoc[Publishing features to JBoss Tools, Red Hat Developer Studio, JBoss Central, Early Access, and Eclipse Marketplace]
 ** link:source/third_party.adoc[Bundling Third Party Library Dependencies]
 ** link:source/pde-source-lookup.adoc[Using the PDE Source Lookup plugin]
