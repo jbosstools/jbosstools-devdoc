@@ -53,21 +53,21 @@ Here is the suggested process:
 8. Commit it, tag it; push tag and commit to the right branch:
 
         $ git add pom.xml pom.xml */*/pom.xml
-        $ git commit -m "Version 4.71.0.Final"
-        $ git tag 4.71.0.Final
-        $ git push origin 4.71.0.Final
-        $ git push origin HEAD:4.40.x
+        $ git commit -m "Version 4.90.0.Final"
+        $ git tag 4.90.0.Final
+        $ git push origin 4.90.0.Final
+        $ git push origin HEAD:4.90.x
 
-        (where 4.71.0.Final has to be replaced by the actual version, and 4.40.x with the actual branch)
+        (where 4.90.0.Final has to be replaced by the actual version, and 4.90.x with the actual branch)
 
 9. Repeat the 2 previous steps for jbosstools-discovery component to update and tag its target-platform.
-10. Update https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-matrix/[jbosstoolstargetplatform-matrix] job to build new SNAPSHOTless version (and therefore produce new update site folders) (eg., 4.71.0.Final-SNAPSHOT -> 4.71.0.Final)
+10. Update https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/jbosstoolstargetplatform-matrix/[jbosstoolstargetplatform-matrix] job to build new SNAPSHOTless version (and therefore produce new update site folders) (eg., 4.90.0.Final-SNAPSHOT -> 4.90.0.Final)
 
 [NOTE]
 **(TODO: Try to make the version a job parameter to change it more easily)**
 
 11. Run the CI jobs to publish new versions.
-12. Verify everything is correct on staging repo, plus published JBT/JBDS target platform update sites on
+12. Verify everything is correct on staging repo, plus published jbosstools/devstudio target platform update sites on
 download.jboss.org & www.qa
 13. Go to Nexus[http://repository.jboss.org/nexus] and promote the target-platforms as release. (See https://community.jboss.org/wiki/MavenDeployingARelease)
 
@@ -83,30 +83,34 @@ download.jboss.org & www.qa
         $ git commit -m "Bump to x.y.z.qualifier-SNAPSHOT"
         $ git push origin <branch>
 
-18. Update target-platform job on Jenkins to build the new SNAPSHOT (eg: 4.30.0.Alpha1 -> 4.30.0-Alpha2-SNAPSHOT)
+18. Update target-platform job on Jenkins to build the new SNAPSHOT (eg: 4.90.0.AM1 -> 4.90.0.AM2-SNAPSHOT)
 
 == Leverage Akamai for better download perforance
 
 In order to improve the installation time for a user, it's recommended to move the aggregated repository for a RELEASED (ie not SNAPSHOT) target-platform to Akamai.
 Akamai is enabled in the 'static' folder of download.jboss.org/tools, so publishing to Akamai is mainly a matter of moving stuff around.
 
-From download.jboss.org:
+Here's a Jenkins job that handles the move into the 'static' folder, then symlinks from the old path to the new one.
+
+https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/Devstudio/view/jbosstools-releng/job/jbosstools-releng-push-to-dev-stable-05-release-target-platforms/
+
+=== Manual method:
+
+First, ssh mount a file system from download.jboss.org, then:
 
 * Move new TP folder from 'tools/targetplatforms' to 'tools/static/targetplatforms', keep the name ("jbosstoolstarget") and version segments. Eg
 
-  echo "rename targetplatforms/jbtcentraltarget/4.71.0.Final static/targetplatforms/jbtcentraltarget/4.71.0.Final" > sftp tools@filemgmt.jboss.org:downloads_htdocs/tools
+  echo "rename targetplatforms/jbtcentraltarget/4.90.0.Final static/targetplatforms/jbtcentraltarget/4.90.0.Final" > sftp tools@filemgmt.jboss.org:downloads_htdocs/tools
 
 * Put at the previous location of TP the necessary p2 composite*.xml files pointing to the new location. For example
-** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.71.0.Final/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/4.71.0.Final'
-** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.71.0.Final/REPO' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/4.71.0.Final'
-** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/devstudiotarget/4.71.0.Final/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/devstudiotarget/4.71.0.Final'
-** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/devstudiotarget/4.71.0.Final/REPO' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/devstudiotarget/4.71.0.Final'
-** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.71.0.Final/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/4.71.0.Final'
-** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.71.0.Final/REPO' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/4.71.0.Final'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.90.0.Final/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/4.90.0.Final'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/4.90.0.Final/REPO' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbosstoolstarget/4.90.0.Final'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/devstudiotarget/4.90.0.Final/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/devstudiotarget/4.90.0.Final'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/devstudiotarget/4.90.0.Final/REPO' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/devstudiotarget/4.90.0.Final'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.90.0.Final/' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/4.90.0.Final'
+** change/create the composite files in 'http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.90.0.Final/REPO' to reference 'http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/4.90.0.Final'
 
 Then, check with Eclipse or p2diff or whatever p2 tool that location http://download.jboss.org/jbosstools/targetplatforms/${name}/#{version}/ can resolve TP contents.
-
-NOTE: the public URLs for a release train (such as 'http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/kepler/') are updated later, while releasing a new version of JBoss Tools and JBoss Developer Studio.
 
 == Announce release
 
@@ -114,21 +118,25 @@ NOTE: the public URLs for a release train (such as 'http://download.jboss.org/jb
 Using the template below will get you started, but you will still need to fill in these details:
 
 * changes since previous target platform release
-* specify if this is a Central target platform release, or a JBT/JBDS target platform release. Often these are not released at the same time, as Central updates at a slower cadence than JBT/JBDS.
+* specify if this is a Central target platform release, or a jbosstools/devstudio target platform release. Often these are not released at the same time, as Central updates at a slower cadence than jbosstools/devstudio.
 
 For examples of previous change notification emails, see:
 
 * http://lists.jboss.org/pipermail/jbosstools-dev/2014-April/008765.html[For 4.40.0.Beta2: Remove GPE/GWT, fix Atlassian]
 * http://lists.jboss.org/pipermail/jbosstools-dev/2014-March/008683.html[For 4.40.0.Beta1: Add Sapphire]
 
+Note that this step is often omitted, but is still useful from a notification point of view.
+
+You might want to create a new link:https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/Devstudio/view/jbosstools-releng/[job] to automate these notifications.
+
 Template:
 [source,bash]
 ----
 # configure these to generate the email body
-TARGET_PLATFORM_VERSION=4.71.0.Final # no -SNAPSHOT suffix
-TARGET_PLATFORM_VERSION_NEXT=4.71.1.AM1-SNAPSHOT # include -SNAPSHOT suffix
-JBOSSTOOLS_VERSION=4.5.1.Final       # no -SNAPSHOT suffix
-JBOSSTOOLS_VERSION_NEXT=4.5.2.AM1    # no -SNAPSHOT suffix
+TARGET_PLATFORM_VERSION=4.90.0.Final # no -SNAPSHOT suffix
+TARGET_PLATFORM_VERSION_NEXT=4.90.1.AM1-SNAPSHOT # include -SNAPSHOT suffix
+JBOSSTOOLS_VERSION=4.9.1.Final       # no -SNAPSHOT suffix
+JBOSSTOOLS_VERSION_NEXT=4.9.2.AM1    # no -SNAPSHOT suffix
 JBOSSTOOLS_BRANCH=master
 
 echo "
@@ -159,7 +167,7 @@ JBoss Tools ${JBOSSTOOLS_VERSION} is released:
 * http://download.jboss.org/jbosstools/targetplatforms/jbosstoolstarget/
 * https://devstudio.redhat.com/targetplatforms/devstudiotarget/
 
-(TODO: include this next one if this is a Central TP update, not a JBT/JBDS TP update)
+(TODO: include this next one if this is a Central TP update, not a jbosstools/devstudio TP update)
 
 * http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/
 
@@ -195,12 +203,12 @@ For advanced usage and help (using in IDE, building a mirror locally, using a zi
 What's next?
 ============
 
-jbosstools-target-platforms project branch 4.40.x has been prepared for potential upgrades, and its version is now ${TARGET_PLATFORM_VERSION_NEXT}.  We can at least expect for Beta3:
+jbosstools-target-platforms project branch 4.90.x has been prepared for potential upgrades, and its version is now ${TARGET_PLATFORM_VERSION_NEXT}.  We can at least expect for Beta3:
 * [[ Examples of highly probably changes, update them ]]
 * Move to Luna release/R/SR0
 * Re-introduction of a compatible version of Birt
 * Shall you need anything else, please follow those instructions to request a change ASAP: https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/target_platforms/target_platforms_updates.adoc
- Deadline for changes in target platform 4.40.0.Beta4-SNAPSHOT is *Monday, June 30th*
+ Deadline for changes in target platform 4.90.0.Beta4-SNAPSHOT is *Monday, June 30th*
 
 
 All Jenkins jobs for *master* and parent pom ${JBOSSTOOLS_VERSION_NEXT}-SNAPSHOT
