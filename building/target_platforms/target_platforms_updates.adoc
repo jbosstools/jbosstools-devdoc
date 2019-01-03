@@ -215,7 +215,7 @@ When moving from one version of the target to another, the steps are:
 [CAUTION]
 ====
 . Regenerate the IU versions, using https://github.com/jbosstools/jbosstools-maven-plugins/wiki[org.jboss.tools.tycho-plugins:target-platform-utils], and validate the results.
-* `mvn -U org.jboss.tools.tycho-plugins:target-platform-utils:1.0.0:fix-versions -DgroupId=org.jboss.tools.tycho-plugins -DartifactId=target-platform-utils -Dversion=1.0.0 -Dpackaging=jar -DtargetFile=/path/to/jbosstools/multiple/jbosstools-multiple.target`
+* `mvn -U org.jboss.tools.tycho-plugins:target-platform-utils:fix-versions -DtargetFile=jbosstools/multiple/jbosstools-multiple.target`
 
 . Resolve & verify the new target platform, optionally including sources (which will produce a MUCH larger on-disk footprint).
 * `mvn (clean) install -Pmultiple2repo`
