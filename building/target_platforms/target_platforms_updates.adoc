@@ -367,6 +367,8 @@ More info:
 
 ----
 
+You can also use a https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/Devstudio/view/devstudio_target_platforms/job/jbosstoolstargetplatform-notification-emails/[Jenkins job] to send the mail.
+
 Then *Await feedback*: Generally, developers should have 7 days to review a proposed change. However, for more urgent
 changes (such as to fix a broken contribution from a previous PR or to remove something on which no projects still depend),
 *1 or 2 days* may be sufficient. For components that are known to be potentially affected, directly ping their developers
@@ -389,3 +391,6 @@ for a given PR.
 == Notify the team
 
 When the change is applied and that TP has been rebuilt and made available, send a mail to jbosstools-dev to notify about that change.
+
+You can also use a https://dev-platform-jenkins.rhev-ci-vms.eng.rdu2.redhat.com/view/Devstudio/view/devstudio_target_platforms/job/jbosstoolstargetplatform-notification-emails/[Jenkins job] to send the mail.
+
