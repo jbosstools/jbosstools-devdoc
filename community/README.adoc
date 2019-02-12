@@ -18,7 +18,7 @@ For the latest announced milestone release schedule, see https://issues.jboss.or
 
 === Release Guide
 
-The release guide for JBoss Tools and Red Hat Developer Studio is located here: https://github.com/jbdevstudio/jbdevstudio-devdoc[jbdevstudio-devdoc].
+The release guide for JBoss Tools and Red Hat CodeReady Studio is located here: https://github.com/jbdevstudio/jbdevstudio-devdoc[jbdevstudio-devdoc].
 
 If not authorized, or you get a 404, please submit a PR to get your github username added to https://github.com/jbdevstudio/github-teams/blob/master/jbdevstudio-teams/jbdevstudio-devdoc.team[jbdevstudio-devdoc.team].
 

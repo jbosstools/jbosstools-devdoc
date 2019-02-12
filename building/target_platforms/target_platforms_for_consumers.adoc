@@ -22,7 +22,7 @@ See these slides for more about target platforms: http://www.slideshare.net/mick
 
 JBoss Tools' `target platform definition files` are stored in github:
 
-* https://github.com/jbosstools/jbosstools-target-platforms[JBoss Tools & Red Hat Developer Studio Target Platforms]
+* https://github.com/jbosstools/jbosstools-target-platforms[JBoss Tools & Red Hat CodeReady Studio Target Platforms]
 * https://github.com/jbosstools/jbosstools-discovery[JBoss Tools Central Target Platforms]
 * https://github.com/jbosstools/jbosstools-integration-stack[Integration Stack Target Platforms]
 

@@ -2,7 +2,7 @@
 
 Below is a table listing the projects in http://tools.jboss.org/downloads/overview.html[JBoss Tools], with links to their source repos, builds, update sites, & jobs.
 
-You can also see which projects are mature enough to be included in https://developers.redhat.com/products/devstudio/download/[Red Hat Developer Studio] (Devstudio),
+You can also see which projects are mature enough to be included in https://developers.redhat.com/products/devstudio/download/[Red Hat CodeReady Studio] (Devstudio),
 Red Hat Central, or available from Early Access within Central.
 
 IMPORTANT: _[blue]#Looking for 4.4.x? See https://github.com/jbosstools/jbosstools-devdoc/blob/jbosstools-4.4.x/list_of_projects.adoc[4.4.x Branch Project List]#_
@@ -266,7 +266,7 @@ image:images/terminal.png[title="log", alt="log", link="https://dev-platform-jen
 |===
 
 
-== Projects in Red Hat Developer Studio
+== Projects in Red Hat CodeReady Studio
 
 .JBoss Developer Studio - 11.x branch
 [cols="2e,^m,^m,^m,^m,^2m",options="header"]
