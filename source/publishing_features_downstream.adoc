@@ -1,4 +1,4 @@
-= Publishing features to JBoss Tools, Red Hat Developer Studio, JBoss Central, Early Access, and Eclipse Marketplace
+= Publishing features to JBoss Tools, Red Hat CodeReady Studio, JBoss Central, Early Access, and Eclipse Marketplace
 
 Once your features are ready for consumption by other projects, you can have them aggregated into a downstream project.
 
@@ -9,7 +9,7 @@ Submit a pull request against the appropriate branch of the https://github.com/j
 * https://github.com/jbosstools/jbosstools-build-sites/tree/master/aggregate/site/category.xml[aggregate/site/category.xml] - for all features
 * https://github.com/jbosstools/jbosstools-build-sites/tree/master/aggregate/coretests-site/category.xml[aggregate/coretests-site/category.xml] - for test features
 
-== Red Hat Developer Studio
+== Red Hat CodeReady Studio
 
 First, ensure your feature(s) are included in JBoss Tools, as above.
 

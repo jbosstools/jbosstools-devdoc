@@ -29,7 +29,7 @@ This repo should be considered a wiki, into which all developers can push docs. 
 ** link:source/build_checks.adoc[Build-time baseline and maven enforcer checks]
 ** link:source/build_source_bundles_features_and_src_zips.adoc[How to build source bundles, features, and source zips]
 ** link:building/build_job_cascade_and_where_to_find_build_results.adoc[How to build the whole JBoss Tools cascade / stack of projects]
-*** link:list_of_projects.adoc[List of projects in JBoss Tools / Red Hat Developer Studio]
+*** link:list_of_projects.adoc[List of projects in JBoss Tools / Red Hat CodeReady Studio]
 ** link:building/export_plugin_from_eclipse.adoc[Exporting plugins from eclipse]
 ** link:building/tycho.adoc[All about Tycho]
 *** link:building/how_to_test_tycho.adoc[How to test new versions of Tycho]
@@ -54,7 +54,7 @@ This repo should be considered a wiki, into which all developers can push docs. 
 ** link:building/target_platforms/target_platforms_updates.adoc[Requesting Target Platform Updates]
 ** link:source/how_to_add_an_update_site.adoc[Adding an update site] or link:source/build_update_sites_using_associate_sites.adoc[associate site]
 ** link:source/composite_site_regeneration.adoc[Regenerating a composite update site]
-** link:source/publishing_features_downstream.adoc[Publishing features to JBoss Tools, Red Hat Developer Studio, JBoss Central, Early Access, and Eclipse Marketplace]
+** link:source/publishing_features_downstream.adoc[Publishing features to JBoss Tools, Red Hat CodeReady Studio, JBoss Central, Early Access, and Eclipse Marketplace]
 ** link:source/third_party.adoc[Bundling Third Party Library Dependencies]
 ** link:source/pde-source-lookup.adoc[Using the PDE Source Lookup plugin]
 ** Versioning Rules

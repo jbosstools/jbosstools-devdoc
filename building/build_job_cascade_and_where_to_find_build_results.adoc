@@ -1,6 +1,6 @@
 = Build cascade & results
 
-Each year our process for building JBoss Tools & Red Hat Developer Studio evolves and improves,
+Each year our process for building JBoss Tools & Red Hat CodeReady Studio evolves and improves,
 so each year our process documentation is by necessity also evolving (and hopefully improving, too).
 
 The basic workflow can be defined as follows:
@@ -18,7 +18,7 @@ The basic workflow can be defined as follows:
 
 3. Then, for JBoss Tools, we build a series of aggregate update sites (core, coretests, central, earlyaccess).
 
-4. For Red Hat Developer Studio, we then we build the JBoss Developer Studio update site, and use that to build the installers.
+4. For Red Hat CodeReady Studio, we then we build the JBoss Developer Studio update site, and use that to build the installers.
 
 All builds depend on their respective target platforms being built and up-to-date with the latest upstream dependencies from Eclipse and other third-party vendors.
 

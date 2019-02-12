@@ -309,7 +309,7 @@ Proposed change to target platform ${TARGET_PLATFORM_VERSION}
 
 Body:
 
-Here is a proposal for a change to the JBoss Tools and Red Hat Developer Studio ${TARGET_PLATFORM_VERSION} target platforms.
+Here is a proposal for a change to the JBoss Tools and Red Hat CodeReady Studio ${TARGET_PLATFORM_VERSION} target platforms.
 
 ${PR_URL}
 

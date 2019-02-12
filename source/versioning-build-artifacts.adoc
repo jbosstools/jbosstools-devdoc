@@ -1,6 +1,6 @@
 = Versioning rules for build artifacts
 
-This document describes how we handle the versioning of build artifacts in JBoss Tools and Red Hat Developer Studio.
+This document describes how we handle the versioning of build artifacts in JBoss Tools and Red Hat CodeReady Studio.
 
 :toc: macro
 toc::[]
@@ -31,7 +31,7 @@ Parent pom also controls a few other important properties, such as the version o
 As noted below, the version of the parent pom is used to define the "version" of JBoss Tools for the purpose of controlling downstream version-specific changes, such as which JBoss Central site from which to fetch updates.
 
 
-== Properties that define what version of JBoss Tools and Red Hat Developer Studio is running
+== Properties that define what version of JBoss Tools and Red Hat CodeReady Studio is running
 
 There are two plugins which control which version of the "product" is running. These are:
 
