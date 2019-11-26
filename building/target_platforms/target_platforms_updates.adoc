@@ -32,7 +32,7 @@ Use https://jira.jboss.org/jira/browse/JBIDE to open the issue.
 
 * _Bug_ if this is just to fix/update existing plugins
 
-*Component*: _target-platform_ + releated components if applicable (i.e. _gwt_)
+*Component*: _target-platform_ + related components if applicable (i.e. _gwt_)
 
 *Assignee*: (default)
 
@@ -190,6 +190,7 @@ For example, if docker tools depends on a specific version of httpclient, make s
       <unit id="org.apache.httpcomponents.httpclient" version="4.5.2.v20170210-0925"/>
       ...
     </location>
+----
 ====
 
 For https://github.com/jbosstools/jbosstools-discovery/[JBoss Central], edit `jbtcentraltarget/multiple/jbtcentral-multiple.target` and/or `jbtearlyaccesstarget/multiple/jbtearlyaccess-multiple.target`.
@@ -231,7 +232,7 @@ or
 
 * `mvn verify -Dtpc.targetKind=multiple -Dtpc.version=<version-you-built>`
 .. Note that `tpc.version` is the version listed in the `pom.xml` file of the target platform ( eg., `4.40.0.Beta4-SNAPSHOT`) and `tpc.targetKind` is set to `multiple` since the default (`unified`) will not work before the target platform (.target and site) are published to Nexus and http://download.jboss.org/jbosstools/targetplatforms/[download.jboss.org]
-.. If everything builds OK, can be installed (see install validation step in <<updating-versions-of-ius-in-target-files,Update versions of IUs in the .target files>>), and you can use the new functionallity needed by the change, commit your change to a topic branch and submit a pull request for your update.
+.. If everything builds OK, can be installed (see install validation step in <<updating-versions-of-ius-in-target-files,Update versions of IUs in the .target files>>), and you can use the new functionality needed by the change, commit your change to a topic branch and submit a pull request for your update.
 
 . Follow the https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/target_platforms/target_platforms_updates.adoc[release guidelines] for how to commit to a topic branch, and announce target platform changes.
 

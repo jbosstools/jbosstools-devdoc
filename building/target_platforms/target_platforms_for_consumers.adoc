@@ -12,9 +12,9 @@ A target platform, in abstract terms, is a set of external dependencies that you
 
 In concrete terms, a target platform can take two forms: a `target platform definition file` and a `target platform update site`.
 
-A `target platform definition file` is a custom Eclipse file, with a `.target` suffix, for use by Eclipse's Plug-in Development Environment (PDE) tools. The file lists  the versions of installable units (IUs) to be used as dependencies, as well as the repositories from which those dependencies can be found. The contained IUs are generally features, but can also be invididual plugins.
+A `target platform definition file` is a custom Eclipse file, with a `.target` suffix, for use by Eclipse's Plug-in Development Environment (PDE) tools. The file lists  the versions of installable units (IUs) to be used as dependencies, as well as the repositories from which those dependencies can be found. The contained IUs are generally features, but can also be individual plugins.
 
-A `target platform update site` is the result of `resolving` the target platform definition file, which is the process of downloading all the IUs, and thier contained IUs, to one's local disk. It includes the full set of jars for all dependencies our project may depend on, as well as the required Eclipse metadata to act as an update site. An update site, in Eclipse, is a mechanism used to install new (or update existing) software into Eclipse. Because of this, you could probably install the entire target platform into your Eclipse using such an update site.
+A `target platform update site` is the result of `resolving` the target platform definition file, which is the process of downloading all the IUs, and their contained IUs, to one's local disk. It includes the full set of jars for all dependencies our project may depend on, as well as the required Eclipse metadata to act as an update site. An update site, in Eclipse, is a mechanism used to install new (or update existing) software into Eclipse. Because of this, you could probably install the entire target platform into your Eclipse using such an update site.
 
 See these slides for more about target platforms: http://www.slideshare.net/mickaelistria/a-journey-with-target-platforms.
 

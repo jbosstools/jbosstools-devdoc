@@ -17,7 +17,7 @@ Generally, your release engineering team handles the first two steps. But, it's 
 
 == If no *_current_* mirror exists...
 
-If no mirror yet exists for the version of features/plugins you'd like to add to the target platform, look in https://github.com/jbosstools/jbosstools-download.jboss.org/tree/master/jbosstools/updates/requirements[updates/requirements/] for your requirement's folder, or perhaps the name of a project that includes your requirement. Often, you can find things in Orbit or in the current simulataneous release train's folder:
+If no mirror yet exists for the version of features/plugins you'd like to add to the target platform, look in https://github.com/jbosstools/jbosstools-download.jboss.org/tree/master/jbosstools/updates/requirements[updates/requirements/] for your requirement's folder, or perhaps the name of a project that includes your requirement. Often, you can find things in Orbit or in the current simultaneous release train's folder:
 
 * https://github.com/jbosstools/jbosstools-download.jboss.org/tree/master/jbosstools/updates/requirements/orbit/build.xml[Orbit build.xml]
 * https://github.com/jbosstools/jbosstools-download.jboss.org/tree/master/jbosstools/updates/requirements/photon/build.xml[Eclipse 4.8 Photon build.xml]
@@ -42,7 +42,7 @@ So here's what you do:
 
 If you can't find an existing mirror with your requirement - even an older version - you may need to create a whole new `build.xml` script.
 
-Or, perhaps you found your requirement, but you need something NEWER than the lastest available in the latest Eclipse simrel. This https://github.com/jbosstools/jbosstools-target-platforms/commit/74e4db8b13eb03539c61cc6f8f92e5aa7842c4fb[happened] for the https://github.com/jbosstools/jbosstools-download.jboss.org/blob/master/jbosstools/updates/requirements/launchbar[CDT launchbar] feature.
+Or, perhaps you found your requirement, but you need something NEWER than the latest available in the latest Eclipse simrel. This https://github.com/jbosstools/jbosstools-target-platforms/commit/74e4db8b13eb03539c61cc6f8f92e5aa7842c4fb[happened] for the https://github.com/jbosstools/jbosstools-download.jboss.org/blob/master/jbosstools/updates/requirements/launchbar[CDT launchbar] feature.
 
 Or, maybe SOME of your requirements are in the latest Eclipse simrel, but you need something else as well. This applies to projects like https://github.com/jbosstools/jbosstools-download.jboss.org/blob/master/jbosstools/updates/requirements/webtools/build.xml[Web Tools], as the latest Eclipse simrel only includes a subset of the WTP plugins/features.
 
