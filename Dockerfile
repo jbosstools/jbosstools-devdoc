@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM centos:centos8
 MAINTAINER Jeff Maury <jmaury@redhat.com>
 
 # install deps required by our build
