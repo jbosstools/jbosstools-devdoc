@@ -2,10 +2,9 @@ FROM centos:centos8
 MAINTAINER Jeff Maury <jmaury@redhat.com>
 
 # install deps required by our build
-RUN gpg2 --keyserver hkp://keys.gnupg.net --recv-keys f4a80eb5
-RUN gpg2 --export -a f4a80eb5 >f4a80eb5.key
-RUN rpm --import f4a80eb5.key
-#RUN rpm -iUvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-9.noarch.rpm
+RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+
+RUN sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
 
 RUN yum install -y git make ruby-devel gcc rpm-build automake libffi-devel
 
