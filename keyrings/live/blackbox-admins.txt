@@ -2,3 +2,4 @@ alkazako@redhat.com
 gpg@xam.dk
 jeffmaury@jeffmaury.com
 nboldt@redhat.com
+sbouchet@redhat.com
